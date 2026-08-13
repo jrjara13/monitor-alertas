@@ -1,0 +1,620 @@
+{
+  "NFLX": {
+    "tecnico": {
+      "precio_actual": 78.23999786376953,
+      "rsi": 62.04196424899933,
+      "macd_hist": 0.7945537870801329,
+      "sma20": 72.32449913024902,
+      "sma50": 74.90859924316406,
+      "sma200": 89.36056476593018,
+      "bb_superior": 78.06168966037346,
+      "bb_inferior": 66.58730860012459,
+      "posicion_bollinger": 1.02,
+      "atr": 2.437051410045592,
+      "volumen_relativo": 0.89,
+      "señales": {
+        "rsi": 0,
+        "macd": 1,
+        "tendencia": 0,
+        "bollinger": -1
+      },
+      "score_tecnico": 0
+    },
+    "fundamental": {
+      "pe": 24.603773,
+      "peg": 1.71,
+      "margen_operativo": 0.33381,
+      "crecimiento_ingresos": 0.134,
+      "roe": 0.49541,
+      "deuda_capital": 55.236,
+      "fcf": 25387552768,
+      "señales": {
+        "pe": 0,
+        "peg": 0,
+        "margen": 1,
+        "crecimiento": 1,
+        "roe": 1,
+        "deuda": 0
+      },
+      "score_fundamental": 3
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 35.2,
+      "max_drawdown": -46.5,
+      "beta": 1.51,
+      "atr_relativo": 3.11,
+      "score_riesgo": 68.3,
+      "nivel_riesgo": "Alto"
+    },
+    "compuesto": {
+      "score_compuesto": 14.5,
+      "señal": "MANTENER / OBSERVAR"
+    }
+  },
+  "IBM": {
+    "tecnico": {
+      "precio_actual": 236.99000549316406,
+      "rsi": 50.710791754100654,
+      "macd_hist": 3.390695238936808,
+      "sma20": 223.4485092163086,
+      "sma50": 252.09377258300782,
+      "sma200": 264.36843269348145,
+      "bb_superior": 246.7606691767485,
+      "bb_inferior": 200.13634925586868,
+      "posicion_bollinger": 0.79,
+      "atr": 9.219520654760887,
+      "volumen_relativo": 0.52,
+      "señales": {
+        "rsi": 0,
+        "macd": 1,
+        "tendencia": 0,
+        "bollinger": 0
+      },
+      "score_tecnico": 1
+    },
+    "fundamental": {
+      "pe": 21.273788,
+      "peg": 2.4,
+      "margen_operativo": 0.16548,
+      "crecimiento_ingresos": 0.011,
+      "roe": 0.34460998,
+      "deuda_capital": 188.97,
+      "fcf": 12049750016,
+      "señales": {
+        "pe": 0,
+        "peg": -1,
+        "margen": 0,
+        "crecimiento": 0,
+        "roe": 1,
+        "deuda": -1
+      },
+      "score_fundamental": -1
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 48.3,
+      "max_drawdown": -37.5,
+      "beta": 0.7,
+      "atr_relativo": 3.89,
+      "score_riesgo": 66.0,
+      "nivel_riesgo": "Alto"
+    },
+    "compuesto": {
+      "score_compuesto": -0.2,
+      "señal": "MANTENER / OBSERVAR"
+    }
+  },
+  "OKLO": {
+    "tecnico": {
+      "precio_actual": 46.47999954223633,
+      "rsi": 51.76329934304178,
+      "macd_hist": 1.1607463924200707,
+      "sma20": 42.74550037384033,
+      "sma50": 49.43420021057129,
+      "sma200": 70.94974983215332,
+      "bb_superior": 48.49351865930366,
+      "bb_inferior": 36.997482088377,
+      "posicion_bollinger": 0.82,
+      "atr": 3.6641121276728263,
+      "volumen_relativo": 0.84,
+      "señales": {
+        "rsi": 0,
+        "macd": 1,
+        "tendencia": 0,
+        "bollinger": 0
+      },
+      "score_tecnico": 1
+    },
+    "fundamental": {
+      "pe": null,
+      "peg": null,
+      "margen_operativo": -60.4876,
+      "crecimiento_ingresos": null,
+      "roe": -0.07696,
+      "deuda_capital": 0.121,
+      "fcf": -239324880,
+      "señales": {
+        "margen": -1,
+        "roe": -1,
+        "deuda": 1
+      },
+      "score_fundamental": -1
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 101.4,
+      "max_drawdown": -78.8,
+      "beta": 1.2,
+      "atr_relativo": 7.88,
+      "score_riesgo": 89.6,
+      "nivel_riesgo": "Alto"
+    },
+    "compuesto": {
+      "score_compuesto": -7.3,
+      "señal": "MANTENER / OBSERVAR"
+    }
+  },
+  "GLW": {
+    "tecnico": {
+      "precio_actual": 158.5500030517578,
+      "rsi": 48.25934451176636,
+      "macd_hist": 3.5231973486937065,
+      "sma20": 151.14049949645997,
+      "sma50": 177.1645997619629,
+      "sma200": 138.2952240371704,
+      "bb_superior": 175.61882095583127,
+      "bb_inferior": 126.66217803708865,
+      "posicion_bollinger": 0.65,
+      "atr": 12.792768814476792,
+      "volumen_relativo": 0.52,
+      "señales": {
+        "rsi": 0,
+        "macd": 1,
+        "tendencia": 0,
+        "bollinger": 0
+      },
+      "score_tecnico": 1
+    },
+    "fundamental": {
+      "pe": 72.729355,
+      "peg": 1.2,
+      "margen_operativo": 0.15649,
+      "crecimiento_ingresos": 0.166,
+      "roe": 0.16813,
+      "deuda_capital": 71.448,
+      "fcf": 734499968,
+      "señales": {
+        "pe": -1,
+        "peg": 0,
+        "margen": 0,
+        "crecimiento": 1,
+        "roe": 1,
+        "deuda": 0
+      },
+      "score_fundamental": 1
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 69.4,
+      "max_drawdown": -51.5,
+      "beta": 1.15,
+      "atr_relativo": 8.07,
+      "score_riesgo": 89.2,
+      "nivel_riesgo": "Alto"
+    },
+    "compuesto": {
+      "score_compuesto": 6.2,
+      "señal": "MANTENER / OBSERVAR"
+    }
+  },
+  "UBER": {
+    "tecnico": {
+      "precio_actual": 75.86499786376953,
+      "rsi": 56.78287012964359,
+      "macd_hist": 0.7707830706300653,
+      "sma20": 71.86375007629394,
+      "sma50": 72.16850006103516,
+      "sma200": 77.69512512207031,
+      "bb_superior": 78.39891707631973,
+      "bb_inferior": 65.32858307626815,
+      "posicion_bollinger": 0.81,
+      "atr": 2.6382623367851172,
+      "volumen_relativo": 0.46,
+      "señales": {
+        "rsi": 0,
+        "macd": 1,
+        "tendencia": 0,
+        "bollinger": 0
+      },
+      "score_tecnico": 1
+    },
+    "fundamental": {
+      "pe": 16.637062,
+      "peg": 8.66,
+      "margen_operativo": 0.13317999,
+      "crecimiento_ingresos": 0.122,
+      "roe": 0.3716,
+      "deuda_capital": 51.872,
+      "fcf": 7244749824,
+      "señales": {
+        "pe": 0,
+        "peg": -1,
+        "margen": 0,
+        "crecimiento": 1,
+        "roe": 1,
+        "deuda": 0
+      },
+      "score_fundamental": 1
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 35.6,
+      "max_drawdown": -34.1,
+      "beta": 1.15,
+      "atr_relativo": 3.48,
+      "score_riesgo": 59.2,
+      "nivel_riesgo": "Medio"
+    },
+    "compuesto": {
+      "score_compuesto": 15.2,
+      "señal": "COMPRA"
+    }
+  },
+  "AMD": {
+    "tecnico": {
+      "precio_actual": 483.010009765625,
+      "rsi": 47.40753432130374,
+      "macd_hist": -0.9954129678706529,
+      "sma20": 493.30650329589844,
+      "sma50": 510.9628009033203,
+      "sma200": 323.0568002319336,
+      "bb_superior": 553.4718766718541,
+      "bb_inferior": 433.1411299199427,
+      "posicion_bollinger": 0.41,
+      "atr": 32.40768931529757,
+      "volumen_relativo": 0.63,
+      "señales": {
+        "rsi": 0,
+        "macd": -1,
+        "tendencia": -1,
+        "bollinger": 0
+      },
+      "score_tecnico": -2
+    },
+    "fundamental": {
+      "pe": 123.53197,
+      "peg": 1.01,
+      "margen_operativo": 0.1725,
+      "crecimiento_ingresos": 0.501,
+      "roe": 0.10196,
+      "deuda_capital": 6.361,
+      "fcf": 8841499648,
+      "señales": {
+        "pe": -1,
+        "peg": 0,
+        "margen": 0,
+        "crecimiento": 1,
+        "roe": 0,
+        "deuda": 1
+      },
+      "score_fundamental": 1
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 71.6,
+      "max_drawdown": -27.8,
+      "beta": 2.49,
+      "atr_relativo": 6.71,
+      "score_riesgo": 86.6,
+      "nivel_riesgo": "Alto"
+    },
+    "compuesto": {
+      "score_compuesto": -26.8,
+      "señal": "VENTA"
+    }
+  },
+  "MSFT": {
+    "tecnico": {
+      "precio_actual": 496.8800048828125,
+      "rsi": 71.84392199790561,
+      "macd_hist": 5.168105601598725,
+      "sma20": 445.16199951171876,
+      "sma50": 411.4143975830078,
+      "sma200": 431.48036849975585,
+      "bb_superior": 548.7259127006641,
+      "bb_inferior": 341.5980863227733,
+      "posicion_bollinger": 0.75,
+      "atr": 14.395976628812095,
+      "volumen_relativo": 0.55,
+      "señales": {
+        "rsi": -1,
+        "macd": 1,
+        "tendencia": 1,
+        "bollinger": 0
+      },
+      "score_tecnico": 1
+    },
+    "fundamental": {
+      "pe": 27.65053,
+      "peg": 1.65,
+      "margen_operativo": 0.45111,
+      "crecimiento_ingresos": 0.177,
+      "roe": 0.34039003,
+      "deuda_capital": 29.118,
+      "fcf": 16545500160,
+      "señales": {
+        "pe": 0,
+        "peg": 0,
+        "margen": 1,
+        "crecimiento": 1,
+        "roe": 1,
+        "deuda": 1
+      },
+      "score_fundamental": 4
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 32.2,
+      "max_drawdown": -34.5,
+      "beta": 1.1,
+      "atr_relativo": 2.9,
+      "score_riesgo": 55.5,
+      "nivel_riesgo": "Medio"
+    },
+    "compuesto": {
+      "score_compuesto": 36.3,
+      "señal": "COMPRA FUERTE"
+    }
+  },
+  "AAOI": {
+    "tecnico": {
+      "precio_actual": 130.0800018310547,
+      "rsi": 53.564523887178645,
+      "macd_hist": 5.130498811174348,
+      "sma20": 112.99200019836425,
+      "sma50": 134.61820037841798,
+      "sma200": 94.42122517585754,
+      "bb_superior": 149.92272762287416,
+      "bb_inferior": 76.06127277385434,
+      "posicion_bollinger": 0.73,
+      "atr": 15.837921179181166,
+      "volumen_relativo": 0.88,
+      "señales": {
+        "rsi": 0,
+        "macd": 1,
+        "tendencia": 0,
+        "bollinger": 0
+      },
+      "score_tecnico": 1
+    },
+    "fundamental": {
+      "pe": null,
+      "peg": 0.78,
+      "margen_operativo": -0.12884,
+      "crecimiento_ingresos": 0.864,
+      "roe": -0.05449,
+      "deuda_capital": 17.994,
+      "fcf": -887050112,
+      "señales": {
+        "peg": 1,
+        "margen": -1,
+        "crecimiento": 1,
+        "roe": -1,
+        "deuda": 1
+      },
+      "score_fundamental": 1
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 145.6,
+      "max_drawdown": -65.7,
+      "beta": 3.79,
+      "atr_relativo": 12.18,
+      "score_riesgo": 100.0,
+      "nivel_riesgo": "Alto"
+    },
+    "compuesto": {
+      "score_compuesto": 2.9,
+      "señal": "MANTENER / OBSERVAR"
+    }
+  },
+  "MELI": {
+    "tecnico": {
+      "precio_actual": 1828.25,
+      "rsi": 50.36902416502552,
+      "macd_hist": -8.883535468873248,
+      "sma20": 1851.6844970703125,
+      "sma50": 1752.236796875,
+      "sma200": 1886.2802520751952,
+      "bb_superior": 1930.93556754892,
+      "bb_inferior": 1772.433426591705,
+      "posicion_bollinger": 0.35,
+      "atr": 67.52784723633467,
+      "volumen_relativo": 0.76,
+      "señales": {
+        "rsi": 0,
+        "macd": -1,
+        "tendencia": 0,
+        "bollinger": 0
+      },
+      "score_tecnico": -1
+    },
+    "fundamental": {
+      "pe": 49.7483,
+      "peg": 1.3,
+      "margen_operativo": 0.06716,
+      "crecimiento_ingresos": 0.498,
+      "roe": 0.27504,
+      "deuda_capital": 168.586,
+      "fcf": 353375008,
+      "señales": {
+        "pe": -1,
+        "peg": 0,
+        "margen": 0,
+        "crecimiento": 1,
+        "roe": 1,
+        "deuda": -1
+      },
+      "score_fundamental": 0
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 41.1,
+      "max_drawdown": -38.4,
+      "beta": 1.31,
+      "atr_relativo": 3.69,
+      "score_riesgo": 66.7,
+      "nivel_riesgo": "Alto"
+    },
+    "compuesto": {
+      "score_compuesto": -16.3,
+      "señal": "VENTA"
+    }
+  },
+  "TSM": {
+    "tecnico": {
+      "precio_actual": 430.5450134277344,
+      "rsi": 56.71461947161127,
+      "macd_hist": 3.6050547047458448,
+      "sma20": 410.7427490234375,
+      "sma50": 425.2502667236328,
+      "sma200": 361.66784378051756,
+      "bb_superior": 438.31761208008925,
+      "bb_inferior": 383.1678859667858,
+      "posicion_bollinger": 0.86,
+      "atr": 14.967736696891075,
+      "volumen_relativo": 0.55,
+      "señales": {
+        "rsi": 0,
+        "macd": 1,
+        "tendencia": 0,
+        "bollinger": -1
+      },
+      "score_tecnico": 0
+    },
+    "fundamental": {
+      "pe": 32.469456,
+      "peg": 1.01,
+      "margen_operativo": 0.60344005,
+      "crecimiento_ingresos": 0.36,
+      "roe": 0.39969003,
+      "deuda_capital": 15.174,
+      "fcf": 739057991680,
+      "señales": {
+        "pe": 0,
+        "peg": 0,
+        "margen": 1,
+        "crecimiento": 1,
+        "roe": 1,
+        "deuda": 1
+      },
+      "score_fundamental": 4
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 40.5,
+      "max_drawdown": -21.5,
+      "beta": 1.26,
+      "atr_relativo": 3.48,
+      "score_riesgo": 55.3,
+      "nivel_riesgo": "Medio"
+    },
+    "compuesto": {
+      "score_compuesto": 25.1,
+      "señal": "COMPRA"
+    }
+  },
+  "CLSK": {
+    "tecnico": {
+      "precio_actual": 11.520000457763672,
+      "rsi": 39.94054140952862,
+      "macd_hist": -0.20749605981147273,
+      "sma20": 13.514000034332275,
+      "sma50": 14.498400039672852,
+      "sma200": 12.814699983596801,
+      "bb_superior": 16.192232849955044,
+      "bb_inferior": 10.835767218709504,
+      "posicion_bollinger": 0.13,
+      "atr": 1.278127476246203,
+      "volumen_relativo": 1.12,
+      "señales": {
+        "rsi": 0,
+        "macd": -1,
+        "tendencia": -1,
+        "bollinger": 1
+      },
+      "score_tecnico": -1
+    },
+    "fundamental": {
+      "pe": null,
+      "peg": null,
+      "margen_operativo": -1.65191,
+      "crecimiento_ingresos": -0.305,
+      "roe": -0.68622,
+      "deuda_capital": 234.725,
+      "fcf": 48898124,
+      "señales": {
+        "margen": -1,
+        "crecimiento": -1,
+        "roe": -1,
+        "deuda": -1
+      },
+      "score_fundamental": -4
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 93.4,
+      "max_drawdown": -64.7,
+      "beta": 3.89,
+      "atr_relativo": 11.09,
+      "score_riesgo": 100.0,
+      "nivel_riesgo": "Alto"
+    },
+    "compuesto": {
+      "score_compuesto": -52.9,
+      "señal": "VENTA FUERTE"
+    }
+  },
+  "ORCL": {
+    "tecnico": {
+      "precio_actual": 156.30209350585938,
+      "rsi": 61.56004104471118,
+      "macd_hist": 4.4360335055523406,
+      "sma20": 133.96610488891602,
+      "sma50": 153.66357833862304,
+      "sma200": 175.73076526641844,
+      "bb_superior": 160.9750613497182,
+      "bb_inferior": 106.95714842811384,
+      "posicion_bollinger": 0.91,
+      "atr": 7.572174766085894,
+      "volumen_relativo": 0.7,
+      "señales": {
+        "rsi": 0,
+        "macd": 1,
+        "tendencia": 0,
+        "bollinger": -1
+      },
+      "score_tecnico": 0
+    },
+    "fundamental": {
+      "pe": 26.85603,
+      "peg": 0.85,
+      "margen_operativo": 0.36202,
+      "crecimiento_ingresos": 0.206,
+      "roe": 0.53376,
+      "deuda_capital": 388.87,
+      "fcf": -24536750080,
+      "señales": {
+        "pe": 0,
+        "peg": 1,
+        "margen": 1,
+        "crecimiento": 1,
+        "roe": 1,
+        "deuda": -1
+      },
+      "score_fundamental": 3
+    },
+    "riesgo": {
+      "volatilidad_anualizada": 67.4,
+      "max_drawdown": -64.6,
+      "beta": 1.72,
+      "atr_relativo": 4.84,
+      "score_riesgo": 90.9,
+      "nivel_riesgo": "Alto"
+    },
+    "compuesto": {
+      "score_compuesto": 7.7,
+      "señal": "MANTENER / OBSERVAR"
+    }
+  }
+}
