@@ -1,89 +1,210 @@
 """
 main.py
-Motor de alertas técnico + fundamental + riesgo.
+Motor de alertas técnico + fundamental + riesgo, para universo amplio
+(S&P 500 + NASDAQ-100 + BMV).
 
-USO:
-    python3 main.py
-
-CONFIGURA tu lista de tickers y umbrales abajo, en TICKERS y PESOS.
-Requiere: pip install yfinance pandas numpy --break-system-packages
+Estrategia:
+  - Precios: descarga por lotes (rápido, todos los tickers en cada corrida).
+  - Fundamentales: se cachean en docs/fundamentales.json y solo se refrescan
+    los que tengan más de DIAS_CACHE_FUND días, con un tope por corrida.
+    (Los fundamentales cambian trimestralmente; no tiene sentido bajarlos
+    cada 15 minutos y hacerlo satura la fuente.)
 """
 import json
-import traceback
+import os
+import time
+from datetime import datetime, timezone
 
-from datos import obtener_datos_ticker
+import pandas as pd
+import yfinance as yf
+
+from universo import construir_universo
 from indicadores import analisis_tecnico, analisis_fundamental, score_riesgo, señal_compuesta
-from dashboard import generar_dashboard
 
 # ------------------------------------------------------------------
-# CONFIGURACIÓN — ajusta aquí tu universo de tickers
+# CONFIGURACIÓN
 # ------------------------------------------------------------------
-TICKERS = [
-    "NFLX", "IBM", "OKLO", "GLW", "UBER", "AMD", "MSFT", "AAOI",
-    "MELI", "TSM", "CLSK", "ORCL",
-]
-
-# Pesos de la señal compuesta (deben sumar 1.0)
 PESOS = {"peso_tecnico": 0.45, "peso_fundamental": 0.40, "peso_riesgo": 0.15}
 
-import os
+TAMANO_LOTE = 100          # tickers por lote de descarga de precios
+DIAS_CACHE_FUND = 7        # refrescar fundamentales con más de N días
+MAX_FUND_POR_CORRIDA = 60  # tope de fundamentales a refrescar por corrida
+PERIODO = "1y"
 
-# Si corre dentro de GitHub Actions, guarda en docs/ para que GitHub Pages lo publique.
-CARPETA_SALIDA = "docs" if os.environ.get("GITHUB_ACTIONS") else "."
-os.makedirs(CARPETA_SALIDA, exist_ok=True)
-ARCHIVO_SALIDA_HTML = os.path.join(CARPETA_SALIDA, "index.html")
-ARCHIVO_SALIDA_JSON = os.path.join(CARPETA_SALIDA, "alertas.json")
-
-
-def analizar_ticker(ticker: str) -> dict:
-    datos = obtener_datos_ticker(ticker, periodo="1y")
-    tec = analisis_tecnico(datos["ohlcv"])
-    fund = analisis_fundamental(datos["info"])
-    riesgo = score_riesgo(datos["ohlcv"], beta=datos["beta"])
-    comp = señal_compuesta(tec["score_tecnico"], fund["score_fundamental"],
-                            riesgo["score_riesgo"], **PESOS)
-    return {"tecnico": tec, "fundamental": fund, "riesgo": riesgo, "compuesto": comp}
+CARPETA = "docs" if os.environ.get("GITHUB_ACTIONS") else "."
+os.makedirs(CARPETA, exist_ok=True)
+ARCHIVO_ALERTAS = os.path.join(CARPETA, "alertas.json")
+ARCHIVO_FUND = os.path.join(CARPETA, "fundamentales.json")
 
 
-def main():
-    resultados = {}
-    errores = []
-
-    for ticker in TICKERS:
-        print(f"Analizando {ticker}...")
+# ------------------------------------------------------------------
+# CACHÉ DE FUNDAMENTALES
+# ------------------------------------------------------------------
+def cargar_cache_fundamentales() -> dict:
+    if os.path.exists(ARCHIVO_FUND):
         try:
-            resultados[ticker] = analizar_ticker(ticker)
+            with open(ARCHIVO_FUND, encoding="utf-8") as f:
+                return json.load(f)
         except Exception as e:
-            errores.append((ticker, str(e)))
-            print(f"  ⚠ Error con {ticker}: {e}")
+            print(f"⚠ No se pudo leer el caché de fundamentales: {e}")
+    return {}
+
+
+def guardar_cache_fundamentales(cache: dict):
+    with open(ARCHIVO_FUND, "w", encoding="utf-8") as f:
+        json.dump(cache, f, ensure_ascii=False, indent=1)
+
+
+def necesita_refresco(entrada: dict) -> bool:
+    if not entrada or "actualizado" not in entrada:
+        return True
+    try:
+        ts = datetime.fromisoformat(entrada["actualizado"])
+        edad_dias = (datetime.now(timezone.utc) - ts).days
+        return edad_dias >= DIAS_CACHE_FUND
+    except Exception:
+        return True
+
+
+def refrescar_fundamentales(tickers: list, cache: dict) -> dict:
+    """Refresca hasta MAX_FUND_POR_CORRIDA entradas vencidas del caché."""
+    pendientes = [t for t in tickers if necesita_refresco(cache.get(t))]
+    por_hacer = pendientes[:MAX_FUND_POR_CORRIDA]
+    if not por_hacer:
+        print("Fundamentales: caché al día, nada que refrescar.")
+        return cache
+
+    print(f"Fundamentales: refrescando {len(por_hacer)} de {len(pendientes)} pendientes...")
+    for i, t in enumerate(por_hacer, 1):
+        try:
+            info = yf.Ticker(t).info or {}
+            cache[t] = {
+                "trailingPE": info.get("trailingPE"),
+                "pegRatio": info.get("pegRatio"),
+                "operatingMargins": info.get("operatingMargins"),
+                "revenueGrowth": info.get("revenueGrowth"),
+                "debtToEquity": info.get("debtToEquity"),
+                "returnOnEquity": info.get("returnOnEquity"),
+                "freeCashflow": info.get("freeCashflow"),
+                "beta": info.get("beta"),
+                "sector": info.get("sector"),
+                "nombre": info.get("shortName") or info.get("longName"),
+                "actualizado": datetime.now(timezone.utc).isoformat(),
+            }
+        except Exception as e:
+            print(f"  ⚠ {t}: {e}")
+            # Marcar como intentado para no reintentar en bucle esta corrida
+            cache[t] = {"actualizado": datetime.now(timezone.utc).isoformat()}
+        if i % 20 == 0:
+            print(f"  ...{i}/{len(por_hacer)}")
+        time.sleep(0.15)  # pausa breve para no saturar la fuente
+    return cache
+
+
+# ------------------------------------------------------------------
+# DESCARGA DE PRECIOS POR LOTES
+# ------------------------------------------------------------------
+def descargar_precios(tickers: list) -> dict:
+    """Retorna {ticker: DataFrame OHLCV}. Omite los que no devuelvan datos."""
+    resultado = {}
+    for inicio in range(0, len(tickers), TAMANO_LOTE):
+        lote = tickers[inicio:inicio + TAMANO_LOTE]
+        n_lote = inicio // TAMANO_LOTE + 1
+        print(f"Precios: lote {n_lote} ({len(lote)} tickers)...")
+        try:
+            data = yf.download(lote, period=PERIODO, group_by="ticker",
+                                auto_adjust=True, threads=True, progress=False)
+        except Exception as e:
+            print(f"  ⚠ Falló el lote {n_lote}: {e}")
+            continue
+
+        for t in lote:
+            try:
+                df = data[t] if isinstance(data.columns, pd.MultiIndex) else data
+                df = df.dropna(how="all")
+                if df.empty or len(df) < 60:  # necesitamos historia suficiente para SMA50
+                    continue
+                resultado[t] = df
+            except Exception:
+                continue
+    return resultado
+
+
+# ------------------------------------------------------------------
+# PRINCIPAL
+# ------------------------------------------------------------------
+def main():
+    inicio = time.time()
+    tickers = construir_universo()
+
+    cache = cargar_cache_fundamentales()
+    cache = refrescar_fundamentales(tickers, cache)
+    guardar_cache_fundamentales(cache)
+
+    precios = descargar_precios(tickers)
+    print(f"Precios obtenidos para {len(precios)} de {len(tickers)} tickers.")
+
+    resultados = {}
+    for t, df in precios.items():
+        try:
+            fund_raw = cache.get(t, {})
+            tec = analisis_tecnico(df)
+            fund = analisis_fundamental(fund_raw)
+            riesgo = score_riesgo(df, beta=fund_raw.get("beta"))
+            comp = señal_compuesta(tec["score_tecnico"], fund["score_fundamental"],
+                                    riesgo["score_riesgo"], **PESOS)
+
+            # Guardar solo lo que consume el dashboard (mantiene el JSON ligero)
+            resultados[t] = {
+                "nombre": fund_raw.get("nombre"),
+                "sector": fund_raw.get("sector"),
+                "tecnico": {
+                    "precio_actual": round(tec["precio_actual"], 2),
+                    "rsi": round(tec["rsi"], 1),
+                    "macd_hist": round(tec["macd_hist"], 3),
+                    "sma20": round(tec["sma20"], 2),
+                    "sma50": round(tec["sma50"], 2),
+                    "volumen_relativo": tec["volumen_relativo"],
+                },
+                "fundamental": {
+                    "pe": fund["pe"],
+                    "peg": fund["peg"],
+                    "margen_operativo": fund["margen_operativo"],
+                    "crecimiento_ingresos": fund["crecimiento_ingresos"],
+                    "roe": fund["roe"],
+                    "deuda_capital": fund["deuda_capital"],
+                },
+                "riesgo": riesgo,
+                "compuesto": comp,
+            }
+        except Exception as e:
+            print(f"  ⚠ Error analizando {t}: {e}")
 
     if not resultados:
-        print("No se pudo analizar ningún ticker. Revisa tu conexión o los símbolos.")
+        print("No se pudo analizar ningún ticker.")
         return
 
-    # --- Alertas en consola, ordenadas por score compuesto ---
-    print("\n" + "=" * 60)
-    print("ALERTAS")
-    print("=" * 60)
-    orden = sorted(resultados.items(), key=lambda kv: kv[1]["compuesto"]["score_compuesto"], reverse=True)
-    for ticker, r in orden:
-        c = r["compuesto"]
-        print(f"{ticker:>6}  {c['señal']:<20}  score={c['score_compuesto']:>6}  "
-              f"riesgo={r['riesgo']['nivel_riesgo']}")
+    salida = {
+        "actualizado": datetime.now(timezone.utc).isoformat(),
+        "total": len(resultados),
+        "tickers": resultados,
+    }
+    with open(ARCHIVO_ALERTAS, "w", encoding="utf-8") as f:
+        json.dump(salida, f, ensure_ascii=False, separators=(",", ":"))
 
-    # --- Guardar JSON ---
-    with open(ARCHIVO_SALIDA_JSON, "w", encoding="utf-8") as f:
-        json.dump(resultados, f, ensure_ascii=False, indent=2, default=str)
-    print(f"\nJSON guardado en {ARCHIVO_SALIDA_JSON}")
+    tam_mb = os.path.getsize(ARCHIVO_ALERTAS) / 1_000_000
+    print(f"\n{len(resultados)} tickers analizados. JSON: {tam_mb:.2f} MB")
+    print(f"Tiempo total: {time.time() - inicio:.0f}s")
 
-    # --- Generar dashboard HTML ---
-    html = generar_dashboard(resultados, titulo="Monitor de Oportunidades — Cartera")
-    with open(ARCHIVO_SALIDA_HTML, "w", encoding="utf-8") as f:
-        f.write(html)
-    print(f"Dashboard guardado en {ARCHIVO_SALIDA_HTML} — ábrelo en tu navegador.")
-
-    if errores:
-        print(f"\n{len(errores)} ticker(s) con error: {[t for t,_ in errores]}")
+    # Top señales en consola
+    orden = sorted(resultados.items(),
+                   key=lambda kv: kv[1]["compuesto"]["score_compuesto"], reverse=True)
+    print("\nTOP 10 COMPRA:")
+    for t, r in orden[:10]:
+        print(f"  {t:>12}  {r['compuesto']['señal']:<20} {r['compuesto']['score_compuesto']:>6}")
+    print("\nTOP 10 VENTA:")
+    for t, r in orden[-10:]:
+        print(f"  {t:>12}  {r['compuesto']['señal']:<20} {r['compuesto']['score_compuesto']:>6}")
 
 
 if __name__ == "__main__":
