@@ -9838,5 +9838,2855 @@
    }
   ],
   "actualizado": "2026-08-14T15:38:12+00:00"
+ },
+ "O": {
+  "trailingPE": 45.91971,
+  "pegRatio": 2.94,
+  "operatingMargins": 0.46965998,
+  "revenueGrowth": 0.096,
+  "debtToEquity": 74.722,
+  "returnOnEquity": 0.03225,
+  "freeCashflow": 1582081920,
+  "marketCap": 59525566464,
+  "dividendYield": 5.2,
+  "targetMeanPrice": 68.2125,
+  "numeroAnalistas": 20,
+  "beta": 0.72,
+  "sector": "Real Estate",
+  "industria": "REIT - Retail",
+  "bolsa": "NYQ",
+  "nombre": "Realty Income Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1387631000.0,
+    "util_operativa": 582409000.0,
+    "margen_op": 42.0,
+    "util_neta": 315771000.0,
+    "eps": 0.35,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1708836000.0,
+    "util_operativa": 943044000.0,
+    "margen_op": 55.2,
+    "util_neta": 296085000.0,
+    "eps": 0.32,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1446487000.0,
+    "util_operativa": 601381000.0,
+    "margen_op": 41.6,
+    "util_neta": 311766000.0,
+    "eps": 0.33,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1427170000.0,
+    "util_operativa": 605191000.0,
+    "margen_op": 42.4,
+    "util_neta": 343955000.0,
+    "eps": 0.37,
+    "var_ingresos": 6.6
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "REG": {
+  "trailingPE": 25.824915,
+  "pegRatio": 2.61,
+  "operatingMargins": 0.39643002,
+  "revenueGrowth": 0.089,
+  "debtToEquity": 71.972,
+  "returnOnEquity": 0.081870005,
+  "freeCashflow": 743363968,
+  "marketCap": 14339734528,
+  "dividendYield": 3.99,
+  "targetMeanPrice": 86.66667,
+  "numeroAnalistas": 18,
+  "beta": 0.819,
+  "sector": "Real Estate",
+  "industria": "REIT - Retail",
+  "bolsa": "NMS",
+  "nombre": "Regency Centers Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 387570000.0,
+    "util_operativa": 143390000.0,
+    "margen_op": 37.0,
+    "util_neta": 109373000.0,
+    "eps": 0.58,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 404194000.0,
+    "util_operativa": 148014000.0,
+    "margen_op": 36.6,
+    "util_neta": 202479000.0,
+    "eps": 1.09,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 412453000.0,
+    "util_operativa": 154714000.0,
+    "margen_op": 37.5,
+    "util_neta": 128549000.0,
+    "eps": 0.68,
+    "var_ingresos": 8.3
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": 0.61,
+    "var_ingresos": null
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "RF": {
+  "trailingPE": 12.932927,
+  "pegRatio": 1.83,
+  "operatingMargins": 0.39314997,
+  "revenueGrowth": 0.034,
+  "debtToEquity": null,
+  "returnOnEquity": 0.118669994,
+  "freeCashflow": null,
+  "marketCap": 27104139264,
+  "dividendYield": 3.47,
+  "targetMeanPrice": 32.93,
+  "numeroAnalistas": 20,
+  "beta": 1.012,
+  "sector": "Financial Services",
+  "industria": "Banks - Regional",
+  "bolsa": "NYQ",
+  "nombre": "Regions Financial Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1916000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 569000000.0,
+    "eps": 0.61,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1921000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 534000000.0,
+    "eps": 0.58,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1873000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 559000000.0,
+    "eps": 0.62,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1907000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 570000000.0,
+    "eps": 0.64,
+    "var_ingresos": 0.1
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "RSG": {
+  "trailingPE": 30.549574,
+  "pegRatio": 3.09,
+  "operatingMargins": 0.20429,
+  "revenueGrowth": 0.046,
+  "debtToEquity": 118.798,
+  "returnOnEquity": 0.18152,
+  "freeCashflow": 1942625024,
+  "marketCap": 66044014592,
+  "dividendYield": 1.25,
+  "targetMeanPrice": 246.58333,
+  "numeroAnalistas": 24,
+  "beta": 0.396,
+  "sector": "Industrials",
+  "industria": "Waste Management",
+  "bolsa": "NYQ",
+  "nombre": "Republic Services, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 4212000000.0,
+    "util_operativa": 839000000.0,
+    "margen_op": 19.9,
+    "util_neta": 550000000.0,
+    "eps": 1.76,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 4135000000.0,
+    "util_operativa": 807000000.0,
+    "margen_op": 19.5,
+    "util_neta": 544000000.0,
+    "eps": 1.76,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 4113000000.0,
+    "util_operativa": 831000000.0,
+    "margen_op": 20.2,
+    "util_neta": 525000000.0,
+    "eps": 1.7,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 4430000000.0,
+    "util_operativa": 905000000.0,
+    "margen_op": 20.4,
+    "util_neta": 566000000.0,
+    "eps": 1.84,
+    "var_ingresos": 4.6
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "RMD": {
+  "trailingPE": 21.572866,
+  "pegRatio": 1.32,
+  "operatingMargins": 0.31041,
+  "revenueGrowth": 0.086,
+  "debtToEquity": 12.542,
+  "returnOnEquity": 0.24269,
+  "freeCashflow": 939248256,
+  "marketCap": 32638412800,
+  "dividendYield": 1.17,
+  "targetMeanPrice": 247.2,
+  "numeroAnalistas": 15,
+  "beta": 0.748,
+  "sector": "Healthcare",
+  "industria": "Medical Instruments & Supplies",
+  "bolsa": "NYQ",
+  "nombre": "ResMed Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1335582000.0,
+    "util_operativa": 462347000.0,
+    "margen_op": 34.6,
+    "util_neta": 348536000.0,
+    "eps": 2.37,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1422808000.0,
+    "util_operativa": 497595000.0,
+    "margen_op": 35.0,
+    "util_neta": 392593000.0,
+    "eps": 2.68,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1431406000.0,
+    "util_operativa": 499810000.0,
+    "margen_op": 34.9,
+    "util_neta": 398732000.0,
+    "eps": 2.74,
+    "var_ingresos": 10.8
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": 2.64,
+    "var_ingresos": null
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "RVTY": {
+  "trailingPE": 56.194714,
+  "pegRatio": 0.72,
+  "operatingMargins": 0.17052999,
+  "revenueGrowth": 0.013,
+  "debtToEquity": 46.225,
+  "returnOnEquity": 0.03211,
+  "freeCashflow": 604992128,
+  "marketCap": 13042777088,
+  "dividendYield": 0.24,
+  "targetMeanPrice": 121.06667,
+  "numeroAnalistas": 15,
+  "beta": 1.072,
+  "sector": "Healthcare",
+  "industria": "Diagnostics & Research",
+  "bolsa": "NYQ",
+  "nombre": "Revvity, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 698949000.0,
+    "util_operativa": 81896000.0,
+    "margen_op": 11.7,
+    "util_neta": 46652000.0,
+    "eps": 0.4,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 772056000.0,
+    "util_operativa": 111749000.0,
+    "margen_op": 14.5,
+    "util_neta": 98364000.0,
+    "eps": 0.87,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 711118000.0,
+    "util_operativa": 75886000.0,
+    "margen_op": 10.7,
+    "util_neta": 40718000.0,
+    "eps": 0.36,
+    "var_ingresos": 7.0
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": 0.46,
+    "var_ingresos": null
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "HOOD": {
+  "trailingPE": 40.45148,
+  "pegRatio": 2.15,
+  "operatingMargins": 0.43884,
+  "revenueGrowth": 0.323,
+  "debtToEquity": 240.279,
+  "returnOnEquity": 0.23618999,
+  "freeCashflow": null,
+  "marketCap": 86195019776,
+  "dividendYield": null,
+  "targetMeanPrice": 120.00769,
+  "numeroAnalistas": 26,
+  "beta": 2.321,
+  "sector": "Financial Services",
+  "industria": "Capital Markets",
+  "bolsa": "NMS",
+  "nombre": "Robinhood Markets, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1274000000.0,
+    "util_operativa": 635000000.0,
+    "margen_op": 49.8,
+    "util_neta": 556000000.0,
+    "eps": 0.61,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1283000000.0,
+    "util_operativa": 650000000.0,
+    "margen_op": 50.7,
+    "util_neta": 605000000.0,
+    "eps": 0.66,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1067000000.0,
+    "util_operativa": 411000000.0,
+    "margen_op": 38.5,
+    "util_neta": 350000000.0,
+    "eps": 0.38,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1308000000.0,
+    "util_operativa": 574000000.0,
+    "margen_op": 43.9,
+    "util_neta": 561000000.0,
+    "eps": 0.62,
+    "var_ingresos": 32.3
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "ROK": {
+  "trailingPE": 41.982227,
+  "pegRatio": 1.9,
+  "operatingMargins": 0.20968,
+  "revenueGrowth": 0.079,
+  "debtToEquity": 103.347,
+  "returnOnEquity": 0.30629,
+  "freeCashflow": 1303874944,
+  "marketCap": 49837535232,
+  "dividendYield": 1.22,
+  "targetMeanPrice": 477.66666,
+  "numeroAnalistas": 24,
+  "beta": 1.535,
+  "sector": "Industrials",
+  "industria": "Specialty Industrial Machinery",
+  "bolsa": "NYQ",
+  "nombre": "Rockwell Automation, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 2316000000.0,
+    "util_operativa": 458000000.0,
+    "margen_op": 19.8,
+    "util_neta": 138000000.0,
+    "eps": 1.23,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 2105000000.0,
+    "util_operativa": 366000000.0,
+    "margen_op": 17.4,
+    "util_neta": 305000000.0,
+    "eps": 2.69,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 2239000000.0,
+    "util_operativa": 467000000.0,
+    "margen_op": 20.9,
+    "util_neta": 351000000.0,
+    "eps": 3.1,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 2313000000.0,
+    "util_operativa": 481000000.0,
+    "margen_op": 20.8,
+    "util_neta": 408000000.0,
+    "eps": 3.65,
+    "var_ingresos": 7.9
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "ROL": {
+  "trailingPE": 32.977272,
+  "pegRatio": 3.16,
+  "operatingMargins": 0.18799,
+  "revenueGrowth": 0.079,
+  "debtToEquity": 78.015,
+  "returnOnEquity": 0.37008998,
+  "freeCashflow": 501737504,
+  "marketCap": 17453549568,
+  "dividendYield": 2.0,
+  "targetMeanPrice": 45.58824,
+  "numeroAnalistas": 17,
+  "beta": 0.744,
+  "sector": "Consumer Cyclical",
+  "industria": "Personal Services",
+  "bolsa": "NYQ",
+  "nombre": "Rollins, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1026106000.0,
+    "util_operativa": 225021000.0,
+    "margen_op": 21.9,
+    "util_neta": 163527000.0,
+    "eps": 0.34,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 912913000.0,
+    "util_operativa": 160066000.0,
+    "margen_op": 17.5,
+    "util_neta": 116441000.0,
+    "eps": 0.24,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 906424000.0,
+    "util_operativa": 145486000.0,
+    "margen_op": 16.1,
+    "util_neta": 107838000.0,
+    "eps": 0.22,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1078576000.0,
+    "util_operativa": 201359000.0,
+    "margen_op": 18.7,
+    "util_neta": 143910000.0,
+    "eps": 0.3,
+    "var_ingresos": 7.9
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "ROST": {
+  "trailingPE": 34.12797,
+  "pegRatio": 3.01,
+  "operatingMargins": 0.13377,
+  "revenueGrowth": 0.206,
+  "debtToEquity": 74.911,
+  "returnOnEquity": 0.38981998,
+  "freeCashflow": 2047583488,
+  "marketCap": 78275395584,
+  "dividendYield": 0.72,
+  "targetMeanPrice": 254.61111,
+  "numeroAnalistas": 18,
+  "beta": 0.877,
+  "sector": "Consumer Cyclical",
+  "industria": "Apparel Retail",
+  "bolsa": "NMS",
+  "nombre": "Ross Stores, Inc.",
+  "trimestres": [
+   {
+    "periodo": "31 Jul 2025",
+    "ingresos": 5529152000.0,
+    "util_operativa": 638274000.0,
+    "margen_op": 11.5,
+    "util_neta": 507995000.0,
+    "eps": 1.56,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Oct 2025",
+    "ingresos": 5600946000.0,
+    "util_operativa": 648498000.0,
+    "margen_op": 11.6,
+    "util_neta": 511935000.0,
+    "eps": 1.58,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Jan 2026",
+    "ingresos": 6635490000.0,
+    "util_operativa": 814115000.0,
+    "margen_op": 12.3,
+    "util_neta": 645865000.0,
+    "eps": 2.0,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Apr 2026",
+    "ingresos": 6010476000.0,
+    "util_operativa": 804026000.0,
+    "margen_op": 13.4,
+    "util_neta": 649964000.0,
+    "eps": 2.02,
+    "var_ingresos": 20.6
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "RCL": {
+  "trailingPE": 18.94066,
+  "pegRatio": 1.44,
+  "operatingMargins": 0.2707,
+  "revenueGrowth": 0.065,
+  "debtToEquity": 224.816,
+  "returnOnEquity": 0.44669998,
+  "freeCashflow": -1516249984,
+  "marketCap": 81963335680,
+  "dividendYield": 1.62,
+  "targetMeanPrice": 346.92307,
+  "numeroAnalistas": 26,
+  "beta": 1.779,
+  "sector": "Consumer Cyclical",
+  "industria": "Travel Services",
+  "bolsa": "NYQ",
+  "nombre": "Royal Caribbean Cruises Ltd.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 5139000000.0,
+    "util_operativa": 1702000000.0,
+    "margen_op": 33.1,
+    "util_neta": 1575000000.0,
+    "eps": 5.74,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 4258000000.0,
+    "util_operativa": 934000000.0,
+    "margen_op": 21.9,
+    "util_neta": 754000000.0,
+    "eps": 2.76,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 4452000000.0,
+    "util_operativa": 1162000000.0,
+    "margen_op": 26.1,
+    "util_neta": 941000000.0,
+    "eps": 3.48,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 4832000000.0,
+    "util_operativa": 1308000000.0,
+    "margen_op": 27.1,
+    "util_neta": 1128000000.0,
+    "eps": 4.2,
+    "var_ingresos": 6.5
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SPGI": {
+  "trailingPE": 25.445862,
+  "pegRatio": 2.04,
+  "operatingMargins": 0.4479,
+  "revenueGrowth": 0.104,
+  "debtToEquity": 42.98,
+  "returnOnEquity": 0.14255,
+  "freeCashflow": 5448249856,
+  "marketCap": 123323678720,
+  "dividendYield": 0.95,
+  "targetMeanPrice": 516.95,
+  "numeroAnalistas": 20,
+  "beta": 1.072,
+  "sector": "Financial Services",
+  "industria": "Financial Data & Stock Exchanges",
+  "bolsa": "NYQ",
+  "nombre": "S&P Global Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 3888000000.0,
+    "util_operativa": 1668000000.0,
+    "margen_op": 42.9,
+    "util_neta": 1176000000.0,
+    "eps": 3.86,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 3916000000.0,
+    "util_operativa": 1404000000.0,
+    "margen_op": 35.9,
+    "util_neta": 1134000000.0,
+    "eps": 3.75,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 4171000000.0,
+    "util_operativa": 1827000000.0,
+    "margen_op": 43.8,
+    "util_neta": 1395000000.0,
+    "eps": 4.69,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 4146000000.0,
+    "util_operativa": 1801000000.0,
+    "margen_op": 43.4,
+    "util_neta": 1217000000.0,
+    "eps": 4.12,
+    "var_ingresos": 10.4
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "CRM": {
+  "trailingPE": 22.763193,
+  "pegRatio": 0.8,
+  "operatingMargins": 0.218,
+  "revenueGrowth": 0.133,
+  "debtToEquity": 124.282,
+  "returnOnEquity": 0.16908,
+  "freeCashflow": 16552999936,
+  "marketCap": 161076002816,
+  "dividendYield": 0.87,
+  "targetMeanPrice": 242.4287,
+  "numeroAnalistas": 54,
+  "beta": 1.152,
+  "sector": "Technology",
+  "industria": "Software - Application",
+  "bolsa": "NYQ",
+  "nombre": "Salesforce, Inc.",
+  "trimestres": [
+   {
+    "periodo": "31 Jul 2025",
+    "ingresos": 10236000000.0,
+    "util_operativa": 2336000000.0,
+    "margen_op": 22.8,
+    "util_neta": 1887000000.0,
+    "eps": 1.96,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Oct 2025",
+    "ingresos": 10259000000.0,
+    "util_operativa": 2448000000.0,
+    "margen_op": 23.9,
+    "util_neta": 2086000000.0,
+    "eps": 2.19,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Jan 2026",
+    "ingresos": 11201000000.0,
+    "util_operativa": 2155000000.0,
+    "margen_op": 19.2,
+    "util_neta": 1943000000.0,
+    "eps": 2.07,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Apr 2026",
+    "ingresos": 11133000000.0,
+    "util_operativa": 2427000000.0,
+    "margen_op": 21.8,
+    "util_neta": 2107000000.0,
+    "eps": 2.42,
+    "var_ingresos": 13.3
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SNDK": {
+  "trailingPE": 22.058664,
+  "pegRatio": null,
+  "operatingMargins": 0.78494,
+  "revenueGrowth": 3.716,
+  "debtToEquity": null,
+  "returnOnEquity": 0.9164,
+  "freeCashflow": 7744875008,
+  "marketCap": 237709901824,
+  "dividendYield": null,
+  "targetMeanPrice": 2053.5,
+  "numeroAnalistas": 22,
+  "beta": null,
+  "sector": "Technology",
+  "industria": "Computer Hardware",
+  "bolsa": "NMS",
+  "nombre": "Sandisk Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 2308000000.0,
+    "util_operativa": 192000000.0,
+    "margen_op": 8.3,
+    "util_neta": 112000000.0,
+    "eps": 0.75,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 3025000000.0,
+    "util_operativa": 1075000000.0,
+    "margen_op": 35.5,
+    "util_neta": 803000000.0,
+    "eps": 5.15,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 5950000000.0,
+    "util_operativa": 4164000000.0,
+    "margen_op": 70.0,
+    "util_neta": 3615000000.0,
+    "eps": 23.03,
+    "var_ingresos": 251.0
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": 43.97,
+    "var_ingresos": null
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SBAC": {
+  "trailingPE": 20.051779,
+  "pegRatio": 11.42,
+  "operatingMargins": 0.52165,
+  "revenueGrowth": 0.023,
+  "debtToEquity": null,
+  "returnOnEquity": null,
+  "freeCashflow": 752056384,
+  "marketCap": 19719659520,
+  "dividendYield": 2.73,
+  "targetMeanPrice": 228.25,
+  "numeroAnalistas": 20,
+  "beta": 0.979,
+  "sector": "Real Estate",
+  "industria": "REIT - Specialty",
+  "bolsa": "NMS",
+  "nombre": "SBA Communications Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 732327000.0,
+    "util_operativa": 399647000.0,
+    "margen_op": 54.6,
+    "util_neta": 236816000.0,
+    "eps": 2.2,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 719583000.0,
+    "util_operativa": 389410000.0,
+    "margen_op": 54.1,
+    "util_neta": 370290000.0,
+    "eps": 3.47,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 703438000.0,
+    "util_operativa": 380238000.0,
+    "margen_op": 54.1,
+    "util_neta": 184830000.0,
+    "eps": 1.74,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 715274000.0,
+    "util_operativa": 380353000.0,
+    "margen_op": 53.2,
+    "util_neta": 198777000.0,
+    "eps": 1.87,
+    "var_ingresos": 2.3
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SLB": {
+  "trailingPE": 26.243902,
+  "pegRatio": 1.79,
+  "operatingMargins": 0.12706,
+  "revenueGrowth": 0.05,
+  "debtToEquity": 47.002,
+  "returnOnEquity": 0.12909001,
+  "freeCashflow": 2955124992,
+  "marketCap": 79846907904,
+  "dividendYield": 2.24,
+  "targetMeanPrice": 61.96552,
+  "numeroAnalistas": 29,
+  "beta": 0.749,
+  "sector": "Energy",
+  "industria": "Oil & Gas Equipment & Services",
+  "bolsa": "NYQ",
+  "nombre": "SLB Limited",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 8928000000.0,
+    "util_operativa": 1316000000.0,
+    "margen_op": 14.7,
+    "util_neta": 739000000.0,
+    "eps": 0.5,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 9745000000.0,
+    "util_operativa": 1458000000.0,
+    "margen_op": 15.0,
+    "util_neta": 824000000.0,
+    "eps": 0.55,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 8721000000.0,
+    "util_operativa": 1070000000.0,
+    "margen_op": 12.3,
+    "util_neta": 752000000.0,
+    "eps": 0.5,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 8972000000.0,
+    "util_operativa": 1140000000.0,
+    "margen_op": 12.7,
+    "util_neta": 786000000.0,
+    "eps": 0.52,
+    "var_ingresos": 5.0
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "STX": {
+  "trailingPE": 70.07657,
+  "pegRatio": 0.5,
+  "operatingMargins": 0.4307,
+  "revenueGrowth": 0.485,
+  "debtToEquity": 179.88,
+  "returnOnEquity": 3.7152898,
+  "freeCashflow": 1943750016,
+  "marketCap": 221271654400,
+  "dividendYield": 0.34,
+  "targetMeanPrice": 1115.8696,
+  "numeroAnalistas": 23,
+  "beta": 2.102,
+  "sector": "Technology",
+  "industria": "Computer Hardware",
+  "bolsa": "NMS",
+  "nombre": "Seagate Technology Holdings PLC",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 2629000000.0,
+    "util_operativa": 707000000.0,
+    "margen_op": 26.9,
+    "util_neta": 549000000.0,
+    "eps": 2.43,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 2825000000.0,
+    "util_operativa": 846000000.0,
+    "margen_op": 29.9,
+    "util_neta": 593000000.0,
+    "eps": 2.6,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 3112000000.0,
+    "util_operativa": 1110000000.0,
+    "margen_op": 35.7,
+    "util_neta": 748000000.0,
+    "eps": 3.27,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 3629000000.0,
+    "util_operativa": 1563000000.0,
+    "margen_op": 43.1,
+    "util_neta": 1294000000.0,
+    "eps": 5.58,
+    "var_ingresos": 48.5
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SRE": {
+  "trailingPE": 25.168116,
+  "pegRatio": 0.75,
+  "operatingMargins": 0.28328,
+  "revenueGrowth": -0.001,
+  "debtToEquity": 84.663,
+  "returnOnEquity": 0.06679,
+  "freeCashflow": -27657750528,
+  "marketCap": 56778170368,
+  "dividendYield": 3.06,
+  "targetMeanPrice": 104.69444,
+  "numeroAnalistas": 18,
+  "beta": 0.576,
+  "sector": "Utilities",
+  "industria": "Utilities - Diversified",
+  "bolsa": "NYQ",
+  "nombre": "DBA Sempra",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 3151000000.0,
+    "util_operativa": 497000000.0,
+    "margen_op": 15.8,
+    "util_neta": 95000000.0,
+    "eps": 0.12,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 3749000000.0,
+    "util_operativa": 1040000000.0,
+    "margen_op": 27.7,
+    "util_neta": 352000000.0,
+    "eps": 0.54,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 3655000000.0,
+    "util_operativa": 1090000000.0,
+    "margen_op": 29.8,
+    "util_neta": 1037000000.0,
+    "eps": 1.58,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 2997000000.0,
+    "util_operativa": 832000000.0,
+    "margen_op": 27.8,
+    "util_neta": 797000000.0,
+    "eps": 1.21,
+    "var_ingresos": -0.1
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "NOW": {
+  "trailingPE": 78.13125,
+  "pegRatio": 1.14,
+  "operatingMargins": 0.04063,
+  "revenueGrowth": 0.24,
+  "debtToEquity": 67.538,
+  "returnOnEquity": 0.14244,
+  "freeCashflow": 5149374976,
+  "marketCap": 129243095040,
+  "dividendYield": null,
+  "targetMeanPrice": 140.25282,
+  "numeroAnalistas": 46,
+  "beta": 0.93,
+  "sector": "Technology",
+  "industria": "Software - Application",
+  "bolsa": "NYQ",
+  "nombre": "ServiceNow, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 3407000000.0,
+    "util_operativa": 572000000.0,
+    "margen_op": 16.8,
+    "util_neta": 502000000.0,
+    "eps": 0.48,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 3568000000.0,
+    "util_operativa": 443000000.0,
+    "margen_op": 12.4,
+    "util_neta": 401000000.0,
+    "eps": 0.38,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 3770000000.0,
+    "util_operativa": 503000000.0,
+    "margen_op": 13.3,
+    "util_neta": 469000000.0,
+    "eps": 0.45,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 3987000000.0,
+    "util_operativa": 162000000.0,
+    "margen_op": 4.1,
+    "util_neta": 298000000.0,
+    "eps": 0.29,
+    "var_ingresos": 24.0
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SHW": {
+  "trailingPE": 33.07097,
+  "pegRatio": 2.7,
+  "operatingMargins": 0.18124,
+  "revenueGrowth": 0.075,
+  "debtToEquity": 389.958,
+  "returnOnEquity": 0.65124,
+  "freeCashflow": 2506037504,
+  "marketCap": 87106478080,
+  "dividendYield": 0.89,
+  "targetMeanPrice": 390.09525,
+  "numeroAnalistas": 21,
+  "beta": 1.093,
+  "sector": "Basic Materials",
+  "industria": "Specialty Chemicals",
+  "bolsa": "NYQ",
+  "nombre": "Sherwin-Williams Company (The)",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 6358200000.0,
+    "util_operativa": 1153600000.0,
+    "margen_op": 18.1,
+    "util_neta": 833100000.0,
+    "eps": 3.35,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 5595900000.0,
+    "util_operativa": 789700000.0,
+    "margen_op": 14.1,
+    "util_neta": 476800000.0,
+    "eps": 1.92,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 5666900000.0,
+    "util_operativa": 802700000.0,
+    "margen_op": 14.2,
+    "util_neta": 534700000.0,
+    "eps": 2.15,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 6789300000.0,
+    "util_operativa": 1231000000.0,
+    "margen_op": 18.1,
+    "util_neta": 843600000.0,
+    "eps": 3.43,
+    "var_ingresos": 7.5
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SPG": {
+  "trailingPE": 15.458715,
+  "pegRatio": 4.58,
+  "operatingMargins": 0.46023998,
+  "revenueGrowth": 0.195,
+  "debtToEquity": 503.504,
+  "returnOnEquity": 1.20508,
+  "freeCashflow": 2595271168,
+  "marketCap": 83156525056,
+  "dividendYield": 4.04,
+  "targetMeanPrice": 231.3158,
+  "numeroAnalistas": 19,
+  "beta": 1.326,
+  "sector": "Real Estate",
+  "industria": "REIT - Retail",
+  "bolsa": "NYQ",
+  "nombre": "Simon Property Group, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 1498459000.0,
+    "util_operativa": 744197000.0,
+    "margen_op": 49.7,
+    "util_neta": 556967000.0,
+    "eps": 1.7,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1601572000.0,
+    "util_operativa": 812914000.0,
+    "margen_op": 50.8,
+    "util_neta": 607008000.0,
+    "eps": 1.86,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1791462000.0,
+    "util_operativa": 890669000.0,
+    "margen_op": 49.7,
+    "util_neta": 3049103000.0,
+    "eps": 9.35,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1757093000.0,
+    "util_operativa": 762163000.0,
+    "margen_op": 43.4,
+    "util_neta": 480403000.0,
+    "eps": 1.48,
+    "var_ingresos": 19.3
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SWKS": {
+  "trailingPE": 35.663216,
+  "pegRatio": 9.74,
+  "operatingMargins": 0.08825,
+  "revenueGrowth": -0.031,
+  "debtToEquity": 11.869,
+  "returnOnEquity": 0.05094,
+  "freeCashflow": 448812512,
+  "marketCap": 10352443392,
+  "dividendYield": 4.13,
+  "targetMeanPrice": 68.25,
+  "numeroAnalistas": 16,
+  "beta": 1.51,
+  "sector": "Technology",
+  "industria": "Semiconductors",
+  "bolsa": "NMS",
+  "nombre": "Skyworks Solutions, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1100200000.0,
+    "util_operativa": 112600000.0,
+    "margen_op": 10.2,
+    "util_neta": 141400000.0,
+    "eps": 0.94,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1035400000.0,
+    "util_operativa": 115200000.0,
+    "margen_op": 11.1,
+    "util_neta": 79200000.0,
+    "eps": 0.53,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 943700000.0,
+    "util_operativa": 53000000.0,
+    "margen_op": 5.6,
+    "util_neta": 35600000.0,
+    "eps": 0.24,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 934800000.0,
+    "util_operativa": 68300000.0,
+    "margen_op": 7.3,
+    "util_neta": 33900000.0,
+    "eps": 0.22,
+    "var_ingresos": -3.1
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SJM": {
+  "trailingPE": null,
+  "pegRatio": 2.17,
+  "operatingMargins": 0.18456,
+  "revenueGrowth": 0.058,
+  "debtToEquity": 128.609,
+  "returnOnEquity": -0.02386,
+  "freeCashflow": 1005774976,
+  "marketCap": 12907446272,
+  "dividendYield": 3.71,
+  "targetMeanPrice": 124.875,
+  "numeroAnalistas": 16,
+  "beta": 0.25,
+  "sector": "Consumer Defensive",
+  "industria": "Packaged Foods",
+  "bolsa": "NYQ",
+  "nombre": "The J.M. Smucker Company",
+  "trimestres": [
+   {
+    "periodo": "31 Jul 2025",
+    "ingresos": 2113300000.0,
+    "util_operativa": 51600000.0,
+    "margen_op": 2.4,
+    "util_neta": -43900000.0,
+    "eps": -0.41,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Oct 2025",
+    "ingresos": 2330100000.0,
+    "util_operativa": 424100000.0,
+    "margen_op": 18.2,
+    "util_neta": 241300000.0,
+    "eps": 2.26,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Jan 2026",
+    "ingresos": 2339400000.0,
+    "util_operativa": 418300000.0,
+    "margen_op": 17.9,
+    "util_neta": -724200000.0,
+    "eps": -6.79,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Apr 2026",
+    "ingresos": 2268100000.0,
+    "util_operativa": 449000000.0,
+    "margen_op": 19.8,
+    "util_neta": 388100000.0,
+    "eps": 3.64,
+    "var_ingresos": 5.8
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SW": {
+  "trailingPE": 52.393616,
+  "pegRatio": 0.26,
+  "operatingMargins": 0.05466,
+  "revenueGrowth": 0.011,
+  "debtToEquity": 78.427,
+  "returnOnEquity": 0.02715,
+  "freeCashflow": 1215000064,
+  "marketCap": 25832753152,
+  "dividendYield": 3.67,
+  "targetMeanPrice": 56.36667,
+  "numeroAnalistas": 15,
+  "beta": 0.93,
+  "sector": "Consumer Cyclical",
+  "industria": "Packaging & Containers",
+  "bolsa": "NYQ",
+  "nombre": "Smurfit WestRock plc",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 8003000000.0,
+    "util_operativa": 606000000.0,
+    "margen_op": 7.6,
+    "util_neta": 246000000.0,
+    "eps": 0.47,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 7580000000.0,
+    "util_operativa": 462000000.0,
+    "margen_op": 6.1,
+    "util_neta": 97000000.0,
+    "eps": 0.18,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 7712000000.0,
+    "util_operativa": 307000000.0,
+    "margen_op": 4.0,
+    "util_neta": 65000000.0,
+    "eps": 0.12,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 8031000000.0,
+    "util_operativa": 429000000.0,
+    "margen_op": 5.3,
+    "util_neta": 89000000.0,
+    "eps": 0.17,
+    "var_ingresos": 1.1
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SNA": {
+  "trailingPE": 20.60189,
+  "pegRatio": 2.27,
+  "operatingMargins": 0.25397,
+  "revenueGrowth": 0.042,
+  "debtToEquity": 21.595,
+  "returnOnEquity": 0.17932,
+  "freeCashflow": 1109474944,
+  "marketCap": 20865945600,
+  "dividendYield": 2.41,
+  "targetMeanPrice": 413.77777,
+  "numeroAnalistas": 9,
+  "beta": 0.723,
+  "sector": "Industrials",
+  "industria": "Tools & Accessories",
+  "bolsa": "NYQ",
+  "nombre": "Snap-On Incorporated",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1291900000.0,
+    "util_operativa": 347400000.0,
+    "margen_op": 26.9,
+    "util_neta": 265400000.0,
+    "eps": 5.02,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1339900000.0,
+    "util_operativa": 339600000.0,
+    "margen_op": 25.3,
+    "util_neta": 260700000.0,
+    "eps": 4.94,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1308300000.0,
+    "util_operativa": 318800000.0,
+    "margen_op": 24.4,
+    "util_neta": 247000000.0,
+    "eps": 4.69,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1334800000.0,
+    "util_operativa": 336400000.0,
+    "margen_op": 25.2,
+    "util_neta": 260600000.0,
+    "eps": 4.96,
+    "var_ingresos": 4.2
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SOLV": {
+  "trailingPE": 10.878972,
+  "pegRatio": 1.22,
+  "operatingMargins": 0.09778,
+  "revenueGrowth": 0.022,
+  "debtToEquity": 110.313,
+  "returnOnEquity": 0.33960998,
+  "freeCashflow": 489000000,
+  "marketCap": 15148209152,
+  "dividendYield": null,
+  "targetMeanPrice": 93.92308,
+  "numeroAnalistas": 13,
+  "beta": 0.671,
+  "sector": "Healthcare",
+  "industria": "Medical Instruments & Supplies",
+  "bolsa": "NYQ",
+  "nombre": "Solventum Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 2096000000.0,
+    "util_operativa": 172000000.0,
+    "margen_op": 8.2,
+    "util_neta": 1266000000.0,
+    "eps": 7.22,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1998000000.0,
+    "util_operativa": 93000000.0,
+    "margen_op": 4.7,
+    "util_neta": 63000000.0,
+    "eps": 0.36,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 2006000000.0,
+    "util_operativa": 79000000.0,
+    "margen_op": 3.9,
+    "util_neta": 13000000.0,
+    "eps": 0.07,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 2209000000.0,
+    "util_operativa": 181000000.0,
+    "margen_op": 8.2,
+    "util_neta": 92000000.0,
+    "eps": 0.53,
+    "var_ingresos": 2.2
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SO": {
+  "trailingPE": 22.463854,
+  "pegRatio": 2.32,
+  "operatingMargins": 0.29612,
+  "revenueGrowth": 0.001,
+  "debtToEquity": 182.058,
+  "returnOnEquity": 0.114829995,
+  "freeCashflow": -3913374976,
+  "marketCap": 107242586112,
+  "dividendYield": 3.29,
+  "targetMeanPrice": 100.675,
+  "numeroAnalistas": 20,
+  "beta": 0.327,
+  "sector": "Utilities",
+  "industria": "Utilities - Regulated Electric",
+  "bolsa": "NYQ",
+  "nombre": "Southern Company (The)",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 7823000000.0,
+    "util_operativa": 2594000000.0,
+    "margen_op": 33.2,
+    "util_neta": 1711000000.0,
+    "eps": 1.54,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 6981000000.0,
+    "util_operativa": 917000000.0,
+    "margen_op": 13.1,
+    "util_neta": 416000000.0,
+    "eps": 0.38,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 8397000000.0,
+    "util_operativa": 2018000000.0,
+    "margen_op": 24.0,
+    "util_neta": 1356000000.0,
+    "eps": 1.2,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 6977000000.0,
+    "util_operativa": 1776000000.0,
+    "margen_op": 25.5,
+    "util_neta": 1174000000.0,
+    "eps": 1.03,
+    "var_ingresos": 0.1
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "LUV": {
+  "trailingPE": 27.74375,
+  "pegRatio": 0.35,
+  "operatingMargins": 0.033800002,
+  "revenueGrowth": 0.164,
+  "debtToEquity": 97.275,
+  "returnOnEquity": 0.11099,
+  "freeCashflow": -834750016,
+  "marketCap": 21715951616,
+  "dividendYield": 1.6,
+  "targetMeanPrice": 51.78696,
+  "numeroAnalistas": 23,
+  "beta": 1.143,
+  "sector": "Industrials",
+  "industria": "Airlines",
+  "bolsa": "NYQ",
+  "nombre": "Southwest Airlines Company",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 6949000000.0,
+    "util_operativa": 35000000.0,
+    "margen_op": 0.5,
+    "util_neta": 54000000.0,
+    "eps": 0.1,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 7442000000.0,
+    "util_operativa": 391000000.0,
+    "margen_op": 5.3,
+    "util_neta": 323000000.0,
+    "eps": 0.61,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 7249000000.0,
+    "util_operativa": 330000000.0,
+    "margen_op": 4.6,
+    "util_neta": 227000000.0,
+    "eps": 0.45,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 8432000000.0,
+    "util_operativa": 285000000.0,
+    "margen_op": 3.4,
+    "util_neta": 233000000.0,
+    "eps": 0.47,
+    "var_ingresos": 16.4
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SWK": {
+  "trailingPE": 24.9511,
+  "pegRatio": 1.39,
+  "operatingMargins": 0.08443,
+  "revenueGrowth": 0.004,
+  "debtToEquity": 58.172,
+  "returnOnEquity": 0.06886,
+  "freeCashflow": 1419049984,
+  "marketCap": 15411248128,
+  "dividendYield": 3.27,
+  "targetMeanPrice": 98.0,
+  "numeroAnalistas": 11,
+  "beta": 1.172,
+  "sector": "Industrials",
+  "industria": "Tools & Accessories",
+  "bolsa": "NYQ",
+  "nombre": "Stanley Black & Decker, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 3756000000.0,
+    "util_operativa": 388100000.0,
+    "margen_op": 10.3,
+    "util_neta": 51400000.0,
+    "eps": 0.34,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 3684600000.0,
+    "util_operativa": 420100000.0,
+    "margen_op": 11.4,
+    "util_neta": 158200000.0,
+    "eps": 1.04,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 3846400000.0,
+    "util_operativa": 231400000.0,
+    "margen_op": 6.0,
+    "util_neta": 59600000.0,
+    "eps": 0.39,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 3960700000.0,
+    "util_operativa": 357900000.0,
+    "margen_op": 9.0,
+    "util_neta": 351300000.0,
+    "eps": 2.33,
+    "var_ingresos": 0.4
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "STT": {
+  "trailingPE": 16.8985,
+  "pegRatio": 0.79,
+  "operatingMargins": 0.27818,
+  "revenueGrowth": -0.028,
+  "debtToEquity": null,
+  "returnOnEquity": 0.12437,
+  "freeCashflow": null,
+  "marketCap": 52594401280,
+  "dividendYield": 1.94,
+  "targetMeanPrice": 199.5,
+  "numeroAnalistas": 14,
+  "beta": 1.418,
+  "sector": "Financial Services",
+  "industria": "Asset Management",
+  "bolsa": "NYQ",
+  "nombre": "State Street Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 3545000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 861000000.0,
+    "eps": 2.78,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 3667000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 747000000.0,
+    "eps": 2.42,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 3796000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 764000000.0,
+    "eps": 2.49,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 4048000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 1084000000.0,
+    "eps": 3.65,
+    "var_ingresos": 16.7
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "STLD": {
+  "trailingPE": 23.377495,
+  "pegRatio": 11.95,
+  "operatingMargins": 0.114989996,
+  "revenueGrowth": 0.334,
+  "debtToEquity": 46.924,
+  "returnOnEquity": 0.17568001,
+  "freeCashflow": 234191248,
+  "marketCap": 36924182528,
+  "dividendYield": 0.81,
+  "targetMeanPrice": 272.64285,
+  "numeroAnalistas": 14,
+  "beta": 1.532,
+  "sector": "Basic Materials",
+  "industria": "Steel",
+  "bolsa": "NMS",
+  "nombre": "Steel Dynamics, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 4828215000.0,
+    "util_operativa": 550146000.0,
+    "margen_op": 11.4,
+    "util_neta": 403685000.0,
+    "eps": 2.74,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 4414048000.0,
+    "util_operativa": 337426000.0,
+    "margen_op": 7.6,
+    "util_neta": 266033000.0,
+    "eps": 1.82,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 5204858000.0,
+    "util_operativa": 580202000.0,
+    "margen_op": 11.1,
+    "util_neta": 403436000.0,
+    "eps": 2.78,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 6091557000.0,
+    "util_operativa": 757793000.0,
+    "margen_op": 12.4,
+    "util_neta": 534087000.0,
+    "eps": 3.69,
+    "var_ingresos": 33.4
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "STE": {
+  "trailingPE": 28.505497,
+  "pegRatio": 1.97,
+  "operatingMargins": 0.19153,
+  "revenueGrowth": 0.073,
+  "debtToEquity": 28.312,
+  "returnOnEquity": 0.11389,
+  "freeCashflow": 798862528,
+  "marketCap": 22762377216,
+  "dividendYield": 1.09,
+  "targetMeanPrice": 263.125,
+  "numeroAnalistas": 8,
+  "beta": 0.914,
+  "sector": "Healthcare",
+  "industria": "Medical Devices",
+  "bolsa": "NYQ",
+  "nombre": "STERIS plc (Ireland)",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1460300000.0,
+    "util_operativa": 268000000.0,
+    "margen_op": 18.4,
+    "util_neta": 191900000.0,
+    "eps": 1.94,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1496200000.0,
+    "util_operativa": 273700000.0,
+    "margen_op": 18.3,
+    "util_neta": 192800000.0,
+    "eps": 1.96,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1588400000.0,
+    "util_operativa": 316500000.0,
+    "margen_op": 19.9,
+    "util_neta": 220200000.0,
+    "eps": 2.24,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1492700000.0,
+    "util_operativa": 285900000.0,
+    "margen_op": 19.2,
+    "util_neta": 200100000.0,
+    "eps": 2.04,
+    "var_ingresos": 7.3
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SYK": {
+  "trailingPE": 35.249744,
+  "pegRatio": 1.64,
+  "operatingMargins": 0.27015,
+  "revenueGrowth": 0.094,
+  "debtToEquity": 64.391,
+  "returnOnEquity": 0.16508,
+  "freeCashflow": 4107624960,
+  "marketCap": 130476212224,
+  "dividendYield": 1.01,
+  "targetMeanPrice": 382.88,
+  "numeroAnalistas": 25,
+  "beta": 0.771,
+  "sector": "Healthcare",
+  "industria": "Medical Devices",
+  "bolsa": "NYQ",
+  "nombre": "Stryker Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 6057000000.0,
+    "util_operativa": 1208000000.0,
+    "margen_op": 19.9,
+    "util_neta": 859000000.0,
+    "eps": 2.22,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 7171000000.0,
+    "util_operativa": 1811000000.0,
+    "margen_op": 25.3,
+    "util_neta": 849000000.0,
+    "eps": 2.2,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 6020000000.0,
+    "util_operativa": 936000000.0,
+    "margen_op": 15.5,
+    "util_neta": 745000000.0,
+    "eps": 1.93,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 6589000000.0,
+    "util_operativa": 1660000000.0,
+    "margen_op": 25.2,
+    "util_neta": 1276000000.0,
+    "eps": 3.3,
+    "var_ingresos": 9.4
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SMCI": {
+  "trailingPE": 20.936,
+  "pegRatio": 0.91,
+  "operatingMargins": 0.13382,
+  "revenueGrowth": 0.932,
+  "debtToEquity": 64.308,
+  "returnOnEquity": 0.21465999,
+  "freeCashflow": -8231267840,
+  "marketCap": 25731573760,
+  "dividendYield": null,
+  "targetMeanPrice": 41.75,
+  "numeroAnalistas": 16,
+  "beta": 1.967,
+  "sector": "Technology",
+  "industria": "Computer Hardware",
+  "bolsa": "NMS",
+  "nombre": "Super Micro Computer, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 5756911000.0,
+    "util_operativa": 228391000.0,
+    "margen_op": 4.0,
+    "util_neta": 195154000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 5017790000.0,
+    "util_operativa": 182256000.0,
+    "margen_op": 3.6,
+    "util_neta": 168285000.0,
+    "eps": 0.26,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 12682491000.0,
+    "util_operativa": 474298000.0,
+    "margen_op": 3.7,
+    "util_neta": 400564000.0,
+    "eps": 0.6,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 10243014000.0,
+    "util_operativa": 625868000.0,
+    "margen_op": 6.1,
+    "util_neta": 483387000.0,
+    "eps": 0.72,
+    "var_ingresos": 122.7
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SYF": {
+  "trailingPE": 8.278975,
+  "pegRatio": 1.11,
+  "operatingMargins": 0.50219,
+  "revenueGrowth": 0.006,
+  "debtToEquity": null,
+  "returnOnEquity": 0.20786,
+  "freeCashflow": null,
+  "marketCap": 26263934976,
+  "dividendYield": 1.71,
+  "targetMeanPrice": 89.08696,
+  "numeroAnalistas": 23,
+  "beta": 1.311,
+  "sector": "Financial Services",
+  "industria": "Credit Services",
+  "bolsa": "NYQ",
+  "nombre": "Synchrony Financial",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 3823000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 1077000000.0,
+    "eps": 0.48,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 3793000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 751000000.0,
+    "eps": 0.34,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 3698000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 805000000.0,
+    "eps": 0.38,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 3718000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 885000000.0,
+    "eps": 0.43,
+    "var_ingresos": 1.9
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "SYY": {
+  "trailingPE": 22.743168,
+  "pegRatio": 1.58,
+  "operatingMargins": 0.05013,
+  "revenueGrowth": 0.047,
+  "debtToEquity": 561.403,
+  "returnOnEquity": 0.77692,
+  "freeCashflow": 1953124992,
+  "marketCap": 39850344448,
+  "dividendYield": 2.63,
+  "targetMeanPrice": 89.30769,
+  "numeroAnalistas": 13,
+  "beta": 0.636,
+  "sector": "Consumer Defensive",
+  "industria": "Food Distribution",
+  "bolsa": "NYQ",
+  "nombre": "Sysco Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 21148000000.0,
+    "util_operativa": 800000000.0,
+    "margen_op": 3.8,
+    "util_neta": 476000000.0,
+    "eps": 0.99,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 20762000000.0,
+    "util_operativa": 692000000.0,
+    "margen_op": 3.3,
+    "util_neta": 389000000.0,
+    "eps": 0.81,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 20519000000.0,
+    "util_operativa": 619000000.0,
+    "margen_op": 3.0,
+    "util_neta": 340000000.0,
+    "eps": 0.71,
+    "var_ingresos": 4.7
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": 1.15,
+    "var_ingresos": null
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TROW": {
+  "trailingPE": 11.096385,
+  "pegRatio": 3.04,
+  "operatingMargins": 0.28688,
+  "revenueGrowth": 0.107,
+  "debtToEquity": 3.702,
+  "returnOnEquity": 0.19399999,
+  "freeCashflow": 2023912448,
+  "marketCap": 23575666688,
+  "dividendYield": 4.67,
+  "targetMeanPrice": 109.91667,
+  "numeroAnalistas": 12,
+  "beta": 1.483,
+  "sector": "Financial Services",
+  "industria": "Asset Management",
+  "bolsa": "NMS",
+  "nombre": "T. Rowe Price Group, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1893500000.0,
+    "util_operativa": 698500000.0,
+    "margen_op": 36.9,
+    "util_neta": 646100000.0,
+    "eps": 2.87,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1934100000.0,
+    "util_operativa": 644400000.0,
+    "margen_op": 33.3,
+    "util_neta": 445300000.0,
+    "eps": 1.99,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1857000000.0,
+    "util_operativa": 708500000.0,
+    "margen_op": 38.2,
+    "util_neta": 498200000.0,
+    "eps": 2.23,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1907400000.0,
+    "util_operativa": 563700000.0,
+    "margen_op": 29.6,
+    "util_neta": 632000000.0,
+    "eps": 2.88,
+    "var_ingresos": 10.7
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TTWO": {
+  "trailingPE": null,
+  "pegRatio": 3.54,
+  "operatingMargins": 0.0051499996,
+  "revenueGrowth": 0.02,
+  "debtToEquity": 81.607,
+  "returnOnEquity": -0.09039,
+  "freeCashflow": 1256137472,
+  "marketCap": 46245875712,
+  "dividendYield": null,
+  "targetMeanPrice": 287.10516,
+  "numeroAnalistas": 29,
+  "beta": 0.983,
+  "sector": "Communication Services",
+  "industria": "Electronic Gaming & Multimedia",
+  "bolsa": "NMS",
+  "nombre": "Take-Two Interactive Software, ",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1773800000.0,
+    "util_operativa": -97900000.0,
+    "margen_op": -5.5,
+    "util_neta": -133900000.0,
+    "eps": -0.73,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1699000000.0,
+    "util_operativa": -38100000.0,
+    "margen_op": -2.2,
+    "util_neta": -92900000.0,
+    "eps": -0.5,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1679800000.0,
+    "util_operativa": 10000000.0,
+    "margen_op": 0.6,
+    "util_neta": -59500000.0,
+    "eps": -0.32,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1533900000.0,
+    "util_operativa": -35500000.0,
+    "margen_op": -2.3,
+    "util_neta": -34100000.0,
+    "eps": -0.18,
+    "var_ingresos": 2.0
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TPR": {
+  "trailingPE": 17.643053,
+  "pegRatio": 0.31,
+  "operatingMargins": 0.22578,
+  "revenueGrowth": 0.089,
+  "debtToEquity": 571.16,
+  "returnOnEquity": 1.97135,
+  "freeCashflow": 1364899968,
+  "marketCap": 25574973440,
+  "dividendYield": 1.25,
+  "targetMeanPrice": 168.2,
+  "numeroAnalistas": 20,
+  "beta": null,
+  "sector": "Consumer Cyclical",
+  "industria": "Luxury Goods",
+  "bolsa": "NYQ",
+  "nombre": "Tapestry, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 1723200000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": -517100000.0,
+    "eps": -2.49,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1704600000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 274800000.0,
+    "eps": 1.28,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 2502400000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 561300000.0,
+    "eps": 2.68,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1920600000.0,
+    "util_operativa": 427500000.0,
+    "margen_op": 22.3,
+    "util_neta": 343800000.0,
+    "eps": 1.65,
+    "var_ingresos": 21.2
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TRGP": {
+  "trailingPE": 26.390059,
+  "pegRatio": 1.25,
+  "operatingMargins": 0.27803,
+  "revenueGrowth": 0.042,
+  "debtToEquity": 515.794,
+  "returnOnEquity": 0.70839995,
+  "freeCashflow": 65837500,
+  "marketCap": 59191541760,
+  "dividendYield": 1.86,
+  "targetMeanPrice": 299.0,
+  "numeroAnalistas": 21,
+  "beta": 0.716,
+  "sector": "Energy",
+  "industria": "Oil & Gas Midstream",
+  "bolsa": "NYQ",
+  "nombre": "Targa Resources, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 4151200000.0,
+    "util_operativa": 836900000.0,
+    "margen_op": 20.2,
+    "util_neta": 478400000.0,
+    "eps": 2.2,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 4055500000.0,
+    "util_operativa": 917400000.0,
+    "margen_op": 22.6,
+    "util_neta": 545000000.0,
+    "eps": 2.54,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 4094700000.0,
+    "util_operativa": 846900000.0,
+    "margen_op": 20.7,
+    "util_neta": 479600000.0,
+    "eps": 2.23,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 4440100000.0,
+    "util_operativa": 1234500000.0,
+    "margen_op": 27.8,
+    "util_neta": 764600000.0,
+    "eps": 3.57,
+    "var_ingresos": 4.2
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TGT": {
+  "trailingPE": 20.27059,
+  "pegRatio": 2.82,
+  "operatingMargins": 0.0452,
+  "revenueGrowth": 0.067,
+  "debtToEquity": 117.548,
+  "returnOnEquity": 0.22015,
+  "freeCashflow": 3141250048,
+  "marketCap": 70431416320,
+  "dividendYield": 3.01,
+  "targetMeanPrice": 139.51912,
+  "numeroAnalistas": 34,
+  "beta": 0.973,
+  "sector": "Consumer Defensive",
+  "industria": "Discount Stores",
+  "bolsa": "NYQ",
+  "nombre": "Target Corporation",
+  "trimestres": [
+   {
+    "periodo": "31 Jul 2025",
+    "ingresos": 25211000000.0,
+    "util_operativa": 1317000000.0,
+    "margen_op": 5.2,
+    "util_neta": 935000000.0,
+    "eps": 2.05,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Oct 2025",
+    "ingresos": 25270000000.0,
+    "util_operativa": 948000000.0,
+    "margen_op": 3.8,
+    "util_neta": 689000000.0,
+    "eps": 1.51,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Jan 2026",
+    "ingresos": 30453000000.0,
+    "util_operativa": 1380000000.0,
+    "margen_op": 4.5,
+    "util_neta": 1045000000.0,
+    "eps": 2.3,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Apr 2026",
+    "ingresos": 25443000000.0,
+    "util_operativa": 1135000000.0,
+    "margen_op": 4.5,
+    "util_neta": 781000000.0,
+    "eps": 1.71,
+    "var_ingresos": 6.7
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TEL": {
+  "trailingPE": 21.32206,
+  "pegRatio": 0.92,
+  "operatingMargins": 0.20775,
+  "revenueGrowth": 0.138,
+  "debtToEquity": 43.441,
+  "returnOnEquity": 0.23290001,
+  "freeCashflow": 2336875008,
+  "marketCap": 63057747968,
+  "dividendYield": 1.39,
+  "targetMeanPrice": 246.78947,
+  "numeroAnalistas": 19,
+  "beta": 1.162,
+  "sector": "Technology",
+  "industria": "Electronic Components",
+  "bolsa": "NYQ",
+  "nombre": "TE Connectivity plc",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 4749000000.0,
+    "util_operativa": 939000000.0,
+    "margen_op": 19.8,
+    "util_neta": 663000000.0,
+    "eps": 2.22,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 4669000000.0,
+    "util_operativa": 976000000.0,
+    "margen_op": 20.9,
+    "util_neta": 750000000.0,
+    "eps": 2.53,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 4744000000.0,
+    "util_operativa": 972000000.0,
+    "margen_op": 20.5,
+    "util_neta": 855000000.0,
+    "eps": 2.9,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 5160000000.0,
+    "util_operativa": 1073000000.0,
+    "margen_op": 20.8,
+    "util_neta": 748000000.0,
+    "eps": 2.55,
+    "var_ingresos": 13.8
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TDY": {
+  "trailingPE": 32.745163,
+  "pegRatio": 1.4,
+  "operatingMargins": 0.20198,
+  "revenueGrowth": 0.098,
+  "debtToEquity": 18.565,
+  "returnOnEquity": 0.09154,
+  "freeCashflow": 912675008,
+  "marketCap": 31372699648,
+  "dividendYield": null,
+  "targetMeanPrice": 754.3333,
+  "numeroAnalistas": 12,
+  "beta": 0.92,
+  "sector": "Technology",
+  "industria": "Scientific & Technical Instruments",
+  "bolsa": "NYQ",
+  "nombre": "Teledyne Technologies Incorpora",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1539500000.0,
+    "util_operativa": 282800000.0,
+    "margen_op": 18.4,
+    "util_neta": 220700000.0,
+    "eps": 4.65,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1612300000.0,
+    "util_operativa": 329500000.0,
+    "margen_op": 20.4,
+    "util_neta": 275600000.0,
+    "eps": 5.84,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1560100000.0,
+    "util_operativa": 294200000.0,
+    "margen_op": 18.9,
+    "util_neta": 226800000.0,
+    "eps": 4.85,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1662500000.0,
+    "util_operativa": 333200000.0,
+    "margen_op": 20.0,
+    "util_neta": 251700000.0,
+    "eps": 5.37,
+    "var_ingresos": 9.8
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TER": {
+  "trailingPE": 55.971115,
+  "pegRatio": 0.93,
+  "operatingMargins": 0.33161,
+  "revenueGrowth": 1.039,
+  "debtToEquity": 2.883,
+  "returnOnEquity": 0.36465,
+  "freeCashflow": 437381248,
+  "marketCap": 63616614400,
+  "dividendYield": 0.13,
+  "targetMeanPrice": 449.8,
+  "numeroAnalistas": 15,
+  "beta": 1.793,
+  "sector": "Technology",
+  "industria": "Semiconductor Equipment & Materials",
+  "bolsa": "NMS",
+  "nombre": "Teradyne, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 769210000.0,
+    "util_operativa": 151888000.0,
+    "margen_op": 19.7,
+    "util_neta": 119558000.0,
+    "eps": 0.75,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1083337000.0,
+    "util_operativa": 308283000.0,
+    "margen_op": 28.5,
+    "util_neta": 257220000.0,
+    "eps": 1.63,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1282494000.0,
+    "util_operativa": 476427000.0,
+    "margen_op": 37.1,
+    "util_neta": 398908000.0,
+    "eps": 2.53,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1328990000.0,
+    "util_operativa": 440842000.0,
+    "margen_op": 33.2,
+    "util_neta": 374533000.0,
+    "eps": 2.38,
+    "var_ingresos": 103.9
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TPL": {
+  "trailingPE": 45.95631,
+  "pegRatio": 7.33,
+  "operatingMargins": 0.78177,
+  "revenueGrowth": 0.312,
+  "debtToEquity": 1.077,
+  "returnOnEquity": 0.36566,
+  "freeCashflow": -32836124,
+  "marketCap": 24851402752,
+  "dividendYield": 0.69,
+  "targetMeanPrice": 443.5,
+  "numeroAnalistas": 2,
+  "beta": 0.633,
+  "sector": "Energy",
+  "industria": "Oil & Gas E&P",
+  "bolsa": "NYQ",
+  "nombre": "Texas Pacific Land Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 203085000.0,
+    "util_operativa": 149091000.0,
+    "margen_op": 73.4,
+    "util_neta": 121238000.0,
+    "eps": 1.76,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 211579000.0,
+    "util_operativa": 149246000.0,
+    "margen_op": 70.5,
+    "util_neta": 123346000.0,
+    "eps": 1.79,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 236818000.0,
+    "util_operativa": 182328000.0,
+    "margen_op": 77.0,
+    "util_neta": 142902000.0,
+    "eps": 2.07,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 246059000.0,
+    "util_operativa": 191817000.0,
+    "margen_op": 78.0,
+    "util_neta": 153930000.0,
+    "eps": 2.23,
+    "var_ingresos": 31.2
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TXT": {
+  "trailingPE": 16.719397,
+  "pegRatio": 1.19,
+  "operatingMargins": 0.08701,
+  "revenueGrowth": 0.03,
+  "debtToEquity": 52.285,
+  "returnOnEquity": 0.12126,
+  "freeCashflow": 452750016,
+  "marketCap": 15437862912,
+  "dividendYield": 0.09,
+  "targetMeanPrice": 101.88938,
+  "numeroAnalistas": 16,
+  "beta": 0.908,
+  "sector": "Industrials",
+  "industria": "Aerospace & Defense",
+  "bolsa": "NYQ",
+  "nombre": "Textron Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 3602000000.0,
+    "util_operativa": 279000000.0,
+    "margen_op": 7.7,
+    "util_neta": 234000000.0,
+    "eps": 1.31,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 4175000000.0,
+    "util_operativa": 249000000.0,
+    "margen_op": 6.0,
+    "util_neta": 235000000.0,
+    "eps": 1.33,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 3695000000.0,
+    "util_operativa": 231000000.0,
+    "margen_op": 6.3,
+    "util_neta": 220000000.0,
+    "eps": 1.25,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 3827000000.0,
+    "util_operativa": 267000000.0,
+    "margen_op": 7.0,
+    "util_neta": 248000000.0,
+    "eps": 1.42,
+    "var_ingresos": 3.0
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TMO": {
+  "trailingPE": 31.890665,
+  "pegRatio": 1.97,
+  "operatingMargins": 0.18751,
+  "revenueGrowth": 0.105,
+  "debtToEquity": 80.575,
+  "returnOnEquity": 0.13515,
+  "freeCashflow": 6237250048,
+  "marketCap": 219203747840,
+  "dividendYield": 0.31,
+  "targetMeanPrice": 631.4231,
+  "numeroAnalistas": 26,
+  "beta": 0.847,
+  "sector": "Healthcare",
+  "industria": "Diagnostics & Research",
+  "bolsa": "NYQ",
+  "nombre": "Thermo Fisher Scientific Inc",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 11122000000.0,
+    "util_operativa": 2075000000.0,
+    "margen_op": 18.7,
+    "util_neta": 1616000000.0,
+    "eps": 4.27,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 12215000000.0,
+    "util_operativa": 2303000000.0,
+    "margen_op": 18.9,
+    "util_neta": 1964000000.0,
+    "eps": 5.21,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 11005000000.0,
+    "util_operativa": 1913000000.0,
+    "margen_op": 17.4,
+    "util_neta": 1651000000.0,
+    "eps": 4.43,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 11994000000.0,
+    "util_operativa": 2185000000.0,
+    "margen_op": 18.2,
+    "util_neta": 1736000000.0,
+    "eps": 4.68,
+    "var_ingresos": 10.5
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TJX": {
+  "trailingPE": 29.576847,
+  "pegRatio": 3.39,
+  "operatingMargins": 0.11771,
+  "revenueGrowth": 0.092,
+  "debtToEquity": 136.307,
+  "returnOnEquity": 0.6125,
+  "freeCashflow": 4314250240,
+  "marketCap": 167942684672,
+  "dividendYield": 1.26,
+  "targetMeanPrice": 177.4,
+  "numeroAnalistas": 20,
+  "beta": 0.616,
+  "sector": "Consumer Cyclical",
+  "industria": "Apparel Retail",
+  "bolsa": "NYQ",
+  "nombre": "TJX Companies, Inc. (The)",
+  "trimestres": [
+   {
+    "periodo": "31 Jul 2025",
+    "ingresos": 14401000000.0,
+    "util_operativa": 1620000000.0,
+    "margen_op": 11.2,
+    "util_neta": 1243000000.0,
+    "eps": 1.1,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Oct 2025",
+    "ingresos": 15117000000.0,
+    "util_operativa": 1888000000.0,
+    "margen_op": 12.5,
+    "util_neta": 1442000000.0,
+    "eps": 1.28,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Jan 2026",
+    "ingresos": 17743000000.0,
+    "util_operativa": 2354000000.0,
+    "margen_op": 13.3,
+    "util_neta": 1773000000.0,
+    "eps": 1.58,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Apr 2026",
+    "ingresos": 14323000000.0,
+    "util_operativa": 1686000000.0,
+    "margen_op": 11.8,
+    "util_neta": 1332000000.0,
+    "eps": 1.19,
+    "var_ingresos": 9.2
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TKO": {
+  "trailingPE": 70.6084,
+  "pegRatio": 1.53,
+  "operatingMargins": 0.32388002,
+  "revenueGrowth": 0.182,
+  "debtToEquity": 59.216,
+  "returnOnEquity": 0.07063,
+  "freeCashflow": 856147520,
+  "marketCap": 38221127680,
+  "dividendYield": 1.56,
+  "targetMeanPrice": 232.47368,
+  "numeroAnalistas": 19,
+  "beta": 0.648,
+  "sector": "Communication Services",
+  "industria": "Entertainment",
+  "bolsa": "NYQ",
+  "nombre": "TKO Group Holdings, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1119914000.0,
+    "util_operativa": 171963000.0,
+    "margen_op": 15.4,
+    "util_neta": 41005000.0,
+    "eps": 0.47,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1037995000.0,
+    "util_operativa": 57383000.0,
+    "margen_op": 5.5,
+    "util_neta": -2375000.0,
+    "eps": -0.08,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1596876000.0,
+    "util_operativa": 338479000.0,
+    "margen_op": 21.2,
+    "util_neta": 89351000.0,
+    "eps": 1.12,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1547078000.0,
+    "util_operativa": 429806000.0,
+    "margen_op": 27.8,
+    "util_neta": 101575000.0,
+    "eps": 1.34,
+    "var_ingresos": 18.2
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
+ },
+ "TTD": {
+  "trailingPE": 16.732143,
+  "pegRatio": 1.14,
+  "operatingMargins": 0.14205,
+  "revenueGrowth": 0.03,
+  "debtToEquity": 16.863,
+  "returnOnEquity": 0.15441,
+  "freeCashflow": 582992768,
+  "marketCap": 6604166144,
+  "dividendYield": null,
+  "targetMeanPrice": 13.62,
+  "numeroAnalistas": 30,
+  "beta": 1.037,
+  "sector": "Communication Services",
+  "industria": "Advertising Agencies",
+  "bolsa": "NGM",
+  "nombre": "The Trade Desk, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 739433000.0,
+    "util_operativa": 161219000.0,
+    "margen_op": 21.8,
+    "util_neta": 115547000.0,
+    "eps": 0.23,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 846791000.0,
+    "util_operativa": 256873000.0,
+    "margen_op": 30.3,
+    "util_neta": 186950000.0,
+    "eps": 0.39,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 688857000.0,
+    "util_operativa": 66647000.0,
+    "margen_op": 9.7,
+    "util_neta": 39997000.0,
+    "eps": 0.08,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 715057000.0,
+    "util_operativa": 101577000.0,
+    "margen_op": 14.2,
+    "util_neta": 64394000.0,
+    "eps": 0.14,
+    "var_ingresos": 3.0
+   }
+  ],
+  "actualizado": "2026-08-14T18:35:56+00:00"
  }
 }
