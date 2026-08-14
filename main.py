@@ -1,7 +1,7 @@
 """
-main.py
-Motor de alertas técnico + fundamental + riesgo (S&P 500 + NASDAQ-100 + BMV),
-más panel de índices y mercados de referencia.
+main.py — v4
+Motor de alertas (S&P 500 + NASDAQ-100 + BMV) con índices de referencia,
+series de precio, niveles operativos y estados financieros trimestrales.
 """
 import json
 import math
@@ -9,7 +9,6 @@ import os
 import time
 from datetime import datetime, timezone
 
-import numpy as np
 import pandas as pd
 import yfinance as yf
 
@@ -20,7 +19,7 @@ PESOS = {"peso_tecnico": 0.45, "peso_fundamental": 0.40, "peso_riesgo": 0.15}
 
 TAMANO_LOTE = 100
 DIAS_CACHE_FUND = 7
-MAX_FUND_POR_CORRIDA = 60
+MAX_FUND_POR_CORRIDA = 50
 PERIODO = "1y"
 DIAS_SERIE = 150
 
@@ -41,7 +40,6 @@ ARCHIVO_FUND = os.path.join(CARPETA, "fundamentales.json")
 
 
 def limpiar(obj):
-    """NaN/Infinity -> None (no son JSON válido y rompen JSON.parse)."""
     if isinstance(obj, dict):
         return {k: limpiar(v) for k, v in obj.items()}
     if isinstance(obj, list):
@@ -89,13 +87,59 @@ def niveles(df):
             "s2": num(l.tail(60).min()),
             "r1": num(h.tail(20).max()),
             "r2": num(h.tail(60).max()),
+            "max52": num(h.max()),
+            "min52": num(l.min()),
         }
     except Exception:
-        return {"s1": None, "s2": None, "r1": None, "r2": None}
+        return {}
 
 
 def serie_precio(df, n=DIAS_SERIE):
     return [num(c) for c in df["Close"].tail(n).tolist()]
+
+
+def _fila(df, nombres):
+    for n in nombres:
+        if n in df.index:
+            return df.loc[n]
+    return None
+
+
+def trimestrales(tk) -> list:
+    """Hasta 4 trimestres: ingresos, utilidad operativa, margen, neta, EPS y var. anual."""
+    try:
+        df = tk.quarterly_income_stmt
+        if df is None or df.empty:
+            return []
+        cols = list(df.columns)[:5]
+        ingresos = _fila(df, ["Total Revenue", "Operating Revenue"])
+        op = _fila(df, ["Operating Income", "Total Operating Income As Reported"])
+        neta = _fila(df, ["Net Income", "Net Income Common Stockholders"])
+        eps = _fila(df, ["Diluted EPS", "Basic EPS"])
+        if ingresos is None:
+            return []
+
+        out = []
+        for i, c in enumerate(cols[:4]):
+            ing = num(ingresos.get(c), 0) if ingresos is not None else None
+            opv = num(op.get(c), 0) if op is not None else None
+            var = None
+            if ingresos is not None and i + 4 < len(df.columns):
+                prev = num(ingresos.get(df.columns[i + 4]), 0)
+                if prev:
+                    var = num((ing / prev - 1) * 100, 1) if ing else None
+            out.append({
+                "periodo": pd.Timestamp(c).strftime("%d %b %Y"),
+                "ingresos": ing,
+                "util_operativa": opv,
+                "margen_op": num(opv / ing * 100, 1) if (ing and opv) else None,
+                "util_neta": num(neta.get(c), 0) if neta is not None else None,
+                "eps": num(eps.get(c), 2) if eps is not None else None,
+                "var_ingresos": var,
+            })
+        return list(reversed(out))
+    except Exception:
+        return []
 
 
 def cargar_cache_fundamentales() -> dict:
@@ -104,7 +148,7 @@ def cargar_cache_fundamentales() -> dict:
             with open(ARCHIVO_FUND, encoding="utf-8") as f:
                 return json.load(f)
         except Exception as e:
-            print(f"⚠ No se pudo leer el caché de fundamentales: {e}")
+            print(f"⚠ No se pudo leer el caché: {e}")
     return {}
 
 
@@ -134,7 +178,8 @@ def refrescar_fundamentales(tickers: list, cache: dict) -> dict:
     ahora = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     for i, t in enumerate(por_hacer, 1):
         try:
-            info = yf.Ticker(t).info or {}
+            tk = yf.Ticker(t)
+            info = tk.info or {}
             cache[t] = {
                 "trailingPE": info.get("trailingPE"),
                 "pegRatio": info.get("pegRatio"),
@@ -146,10 +191,13 @@ def refrescar_fundamentales(tickers: list, cache: dict) -> dict:
                 "marketCap": info.get("marketCap"),
                 "dividendYield": info.get("dividendYield"),
                 "targetMeanPrice": info.get("targetMeanPrice"),
+                "numeroAnalistas": info.get("numberOfAnalystOpinions"),
                 "beta": info.get("beta"),
                 "sector": info.get("sector"),
                 "industria": info.get("industry"),
+                "bolsa": info.get("exchange"),
                 "nombre": info.get("shortName") or info.get("longName"),
+                "trimestres": trimestrales(tk),
                 "actualizado": ahora,
             }
         except Exception as e:
@@ -157,7 +205,7 @@ def refrescar_fundamentales(tickers: list, cache: dict) -> dict:
             cache[t] = {"actualizado": ahora}
         if i % 20 == 0:
             print(f"  ...{i}/{len(por_hacer)}")
-        time.sleep(0.15)
+        time.sleep(0.2)
     return cache
 
 
@@ -225,13 +273,13 @@ def main():
         if df is None:
             continue
         try:
-            fund_raw = cache.get(t, {})
+            fr = cache.get(t, {})
             tec = analisis_tecnico(df)
             if math.isnan(tec["precio_actual"]) or math.isnan(tec["rsi"]):
                 continue
 
-            fund = analisis_fundamental(fund_raw)
-            riesgo = score_riesgo(df, beta=fund_raw.get("beta"))
+            fund = analisis_fundamental(fr)
+            riesgo = score_riesgo(df, beta=fr.get("beta"))
             comp = señal_compuesta(tec["score_tecnico"], fund["score_fundamental"],
                                     riesgo["score_riesgo"], **PESOS)
 
@@ -240,9 +288,10 @@ def main():
             rel = num(ret_3m - sp_3m, 2) if (ret_3m is not None and sp_3m is not None) else None
 
             resultados[t] = {
-                "nombre": fund_raw.get("nombre"),
-                "sector": fund_raw.get("sector"),
-                "industria": fund_raw.get("industria"),
+                "nombre": fr.get("nombre"),
+                "sector": fr.get("sector"),
+                "industria": fr.get("industria"),
+                "bolsa": fr.get("bolsa"),
                 "tecnico": {
                     "precio_actual": num(tec["precio_actual"]),
                     "rsi": num(tec["rsi"], 1),
@@ -250,9 +299,9 @@ def main():
                     "sma20": num(tec["sma20"]),
                     "sma50": num(tec["sma50"]),
                     "sma200": num(tec["sma200"]),
-                    "bb_superior": num(tec["bb_superior"]),
-                    "bb_inferior": num(tec["bb_inferior"]),
                     "volumen_relativo": tec["volumen_relativo"],
+                    "score_tecnico": tec["score_tecnico"],
+                    "señales": tec["señales"],
                 },
                 "fundamental": {
                     "pe": num(fund["pe"], 2),
@@ -261,9 +310,12 @@ def main():
                     "crecimiento_ingresos": num(fund["crecimiento_ingresos"], 4),
                     "roe": num(fund["roe"], 4),
                     "deuda_capital": num(fund["deuda_capital"], 1),
-                    "market_cap": fund_raw.get("marketCap"),
-                    "dividend_yield": num(fund_raw.get("dividendYield"), 4),
-                    "precio_objetivo": num(fund_raw.get("targetMeanPrice")),
+                    "market_cap": fr.get("marketCap"),
+                    "dividend_yield": num(fr.get("dividendYield"), 4),
+                    "precio_objetivo": num(fr.get("targetMeanPrice")),
+                    "num_analistas": fr.get("numeroAnalistas"),
+                    "score_fundamental": fund["score_fundamental"],
+                    "señales": fund["señales"],
                 },
                 "riesgo": riesgo,
                 "compuesto": comp,
@@ -275,6 +327,7 @@ def main():
                     "ytd": rendimiento_ytd(cierres),
                     "vs_sp500_3m": rel,
                 },
+                "trimestres": fr.get("trimestres") or [],
                 "serie": serie_precio(df),
             }
         except Exception as e:
