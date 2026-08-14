@@ -3,28 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Finanzas RJARA</title>
+<title>Cazador de Oportunidades - JARASOFT</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:#0b0f14;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:20px 16px}
   .wrap{max-width:1200px;margin:0 auto}
-  h1{font-size:22px;font-weight:700;letter-spacing:-.02em}
-  .sub{color:#64748b;font-size:12px;margin-top:2px}
+  h1{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+  h1 span{display:block;font-size:11px;font-weight:600;color:#475569;letter-spacing:.14em;margin-top:3px}
+  .sub{color:#64748b;font-size:12px;margin-top:6px}
   .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:18px}
   button{background:#131922;border:1px solid #1e2733;color:#cbd5e1;font-size:12px;font-weight:600;padding:8px 12px;border-radius:8px;cursor:pointer;font-family:inherit}
   button:active{border-color:#64748b}
-  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+  input{width:100%;background:#131922;border:1px solid #1e2733;border-radius:10px;padding:13px 14px;color:#e2e8f0;font-size:16px;outline:none;font-family:inherit;margin-bottom:18px}
+  input:focus{border-color:#64748b}
+
+  .secc{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#475569;font-weight:700;margin:4px 0 12px}
+  .idx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-bottom:26px}
+  .idx{background:#131922;border:1px solid #1e2733;border-radius:12px;padding:14px}
+  .idx-n{font-size:12px;color:#94a3b8;font-weight:600}
+  .idx-p{font-size:21px;font-weight:700;margin:4px 0 2px}
+  .idx-c{font-size:12px;font-weight:600}
+  .idx-x{font-size:10px;color:#475569;margin-top:6px}
+  .spark{display:block;margin-top:8px}
+
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
   .tab{background:#131922;border:1px solid #1e2733;color:#94a3b8;font-size:12px;font-weight:600;padding:7px 13px;border-radius:20px;cursor:pointer}
   .tab.on{background:rgba(74,222,128,.12);border-color:rgba(74,222,128,.4);color:#4ade80}
-  input{width:100%;background:#131922;border:1px solid #1e2733;border-radius:10px;padding:13px 14px;color:#e2e8f0;font-size:16px;outline:none;font-family:inherit;margin-bottom:16px}
-  input:focus{border-color:#64748b}
-  .resumen{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-  .ri{flex:1;min-width:120px;background:#131922;border:1px solid #1e2733;border-radius:10px;padding:12px 14px}
-  .ri .n{font-size:21px;font-weight:700}
-  .ri .l{font-size:11px;color:#64748b;margin-top:2px}
+
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
   .card{background:#131922;border:1px solid #1e2733;border-radius:14px;padding:18px}
-  .card.big{grid-column:1/-1}
   .ch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:10px}
   .tk{font-size:19px;font-weight:700}
   .nm{font-size:11px;color:#64748b;margin-top:1px}
@@ -40,6 +47,24 @@
   .rf{display:flex;align-items:center;gap:8px;padding-top:12px;border-top:1px solid #1e2733;flex-wrap:wrap}
   .rb{font-size:10px;font-weight:700;padding:4px 8px;border-radius:6px;border:1px solid}
   .rd{font-size:10px;color:#64748b}
+
+  .full{background:#131922;border:1px solid #1e2733;border-radius:16px;padding:22px;margin-bottom:14px}
+  .fh{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .fh .tk{font-size:28px;letter-spacing:-.01em}
+  .fh .pr{font-size:22px;color:#e2e8f0;font-weight:600}
+  .rends{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 20px}
+  .rend{background:#0b0f14;border:1px solid #1e2733;border-radius:9px;padding:9px 13px;min-width:78px}
+  .rend .l{font-size:10px;color:#475569;font-weight:600}
+  .rend .v{font-size:15px;font-weight:700;margin-top:2px}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:20px}
+  .an{font-size:12.5px;color:#94a3b8;line-height:1.65}
+  .an b{color:#cbd5e1}
+  .niv{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .niv-i{flex:1;min-width:88px;background:#0b0f14;border:1px solid #1e2733;border-radius:9px;padding:9px 11px}
+  .niv-i .l{font-size:10px;color:#475569;font-weight:600}
+  .niv-i .v{font-size:14px;font-weight:700;margin-top:2px}
+  .volver{margin-bottom:14px}
+
   .msg{text-align:center;color:#64748b;font-size:14px;padding:40px 20px;line-height:1.6}
   .err{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);color:#fca5a5;padding:14px;border-radius:10px;font-size:13px}
   .foot{text-align:center;font-size:11px;color:#475569;margin-top:32px;line-height:1.6}
@@ -49,15 +74,14 @@
 <div class="wrap">
   <div class="top">
     <div>
-      <h1>Monitor de Oportunidades</h1>
+      <h1>Cazador de Oportunidades<span>JARASOFT</span></h1>
       <div class="sub" id="sub">Cargando...</div>
     </div>
     <button onclick="cargar()">Actualizar</button>
   </div>
 
-  <input id="busq" placeholder="Escribe un ticker o nombre (ej. NVDA, WALMEX, Apple)..." oninput="buscar(this.value)" autocomplete="off">
+  <input id="busq" placeholder="Busca un ticker o nombre (ej. NVDA, WALMEX, Apple)..." oninput="buscar(this.value)" autocomplete="off">
 
-  <div class="tabs" id="tabs"></div>
   <div id="cont"><div class="msg">Cargando datos...</div></div>
 
   <div class="foot">
@@ -75,13 +99,24 @@ const CS = {
   "MANTENER / OBSERVAR": "#94a3b8", "VENTA": "#f87171", "VENTA FUERTE": "#ef4444"
 };
 const CR = { Bajo: "#22c55e", Medio: "#f59e0b", Alto: "#ef4444" };
+const VERDE = "#4ade80", ROJO = "#f87171", GRIS = "#94a3b8";
 
-let datos = null, filtro = "", vista = "compra";
+let datos = null, indices = null, filtro = "", vista = "compra", detalle = null;
 
 const fmt = (v, d = 2) => typeof v === "number" ? v.toFixed(d) : "—";
 const fmtPct = v => typeof v === "number" ? (v * 100).toFixed(1) + "%" : "—";
+const pct = v => typeof v === "number" ? (v >= 0 ? "+" : "") + v.toFixed(2) + "%" : "—";
+const colr = v => typeof v !== "number" ? GRIS : v > 0 ? VERDE : v < 0 ? ROJO : GRIS;
 const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c =>
   ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function cap(n) {
+  if (typeof n !== "number") return "—";
+  if (n >= 1e12) return "$" + (n / 1e12).toFixed(2) + " B";
+  if (n >= 1e9) return "$" + (n / 1e9).toFixed(1) + " mil M";
+  if (n >= 1e6) return "$" + (n / 1e6).toFixed(0) + " M";
+  return "$" + n;
+}
 
 async function cargar() {
   document.getElementById("sub").textContent = "Cargando...";
@@ -90,16 +125,14 @@ async function cargar() {
     if (!r.ok) throw new Error("HTTP " + r.status);
     const j = await r.json();
     datos = j.tickers || j;
-        // Safari no parsea microsegundos (6 dígitos); los recortamos a milisegundos.
+    indices = j.indices || {};
     let fecha = "—";
     if (j.actualizado) {
-      const limpia = j.actualizado.replace(/\.(\d{3})\d+/, ".$1");
-      const d = new Date(limpia);
+      const d = new Date(j.actualizado.replace(/\.(\d{3})\d+/, ".$1"));
       if (!isNaN(d)) fecha = d.toLocaleString("es-MX");
     }
-
     document.getElementById("sub").textContent =
-      Object.keys(datos).length + " tickers · Actualizado: " + fecha;
+      Object.keys(datos).length + " emisoras · Actualizado: " + fecha;
     render();
   } catch (e) {
     document.getElementById("sub").textContent = "Error";
@@ -108,104 +141,297 @@ async function cargar() {
   }
 }
 
-function buscar(v) { filtro = v.trim(); render(); }
+function buscar(v) { filtro = v.trim(); detalle = null; render(); }
 function cambiarVista(v) { vista = v; render(); }
+function abrir(t) { detalle = t; window.scrollTo(0, 0); render(); }
+function cerrar() { detalle = null; render(); }
+
+function sparkline(serie, color, w = 160, h = 34) {
+  const s = (serie || []).filter(v => typeof v === "number");
+  if (s.length < 2) return "";
+  const mn = Math.min(...s), mx = Math.max(...s), rg = mx - mn || 1;
+  const pts = s.map((v, i) =>
+    (i / (s.length - 1) * w).toFixed(1) + "," + (h - (v - mn) / rg * h).toFixed(1)).join(" ");
+  return '<svg class="spark" width="100%" height="' + h + '" viewBox="0 0 ' + w + ' ' + h +
+    '" preserveAspectRatio="none"><polyline points="' + pts +
+    '" fill="none" stroke="' + color + '" stroke-width="1.6"/></svg>';
+}
+
+function media(s, n) {
+  const out = [];
+  for (let i = 0; i < s.length; i++) {
+    if (i < n - 1) { out.push(null); continue; }
+    let sum = 0;
+    for (let k = i - n + 1; k <= i; k++) sum += s[k];
+    out.push(sum / n);
+  }
+  return out;
+}
+
+function grafico(serie) {
+  const s = (serie || []).filter(v => typeof v === "number");
+  if (s.length < 25) return '<div class="an">Sin historial suficiente para graficar.</div>';
+  const W = 600, H = 190, P = 4;
+  const m20 = media(s, 20), m50 = media(s, 50);
+  const todos = s.concat(m20.filter(v => v != null), m50.filter(v => v != null));
+  const mn = Math.min(...todos), mx = Math.max(...todos), rg = mx - mn || 1;
+  const X = i => (i / (s.length - 1) * (W - P * 2) + P).toFixed(1);
+  const Y = v => (H - P - (v - mn) / rg * (H - P * 2)).toFixed(1);
+  const linea = (arr, color, gr) => {
+    const pts = arr.map((v, i) => v == null ? null : X(i) + "," + Y(v))
+      .filter(Boolean).join(" ");
+    return pts ? '<polyline points="' + pts + '" fill="none" stroke="' + color +
+      '" stroke-width="' + gr + '"/>' : "";
+  };
+  const subida = s[s.length - 1] >= s[0];
+  return '<svg width="100%" height="' + H + '" viewBox="0 0 ' + W + ' ' + H +
+    '" preserveAspectRatio="none" style="margin:6px 0 4px">' +
+    linea(s, subida ? VERDE : ROJO, 1.8) +
+    linea(m20, "#60a5fa", 1.1) +
+    linea(m50, "#f59e0b", 1.1) +
+    '</svg>' +
+    '<div style="font-size:10px;color:#475569;display:flex;gap:14px;flex-wrap:wrap">' +
+    '<span style="color:' + (subida ? VERDE : ROJO) + '">— Precio</span>' +
+    '<span style="color:#60a5fa">— SMA 20</span>' +
+    '<span style="color:#f59e0b">— SMA 50</span>' +
+    '<span>· últimos ' + s.length + ' días hábiles</span></div>';
+}
 
 function render() {
   if (!datos) return;
-  const todos = Object.entries(datos);
+  const cont = document.getElementById("cont");
+
+  if (detalle && datos[detalle]) { cont.innerHTML = vistaCompleta(detalle, datos[detalle]); return; }
 
   if (filtro) {
     const f = filtro.toLowerCase();
-    const hits = todos.filter(([t, r]) =>
+    const hits = Object.entries(datos).filter(([t, r]) =>
       t.toLowerCase().includes(f) || (r.nombre || "").toLowerCase().includes(f));
-    document.getElementById("tabs").innerHTML = "";
     if (!hits.length) {
-      document.getElementById("cont").innerHTML =
-        '<div class="msg">Sin resultados para "' + esc(filtro) + '".<br>' +
-        'El universo cubre S&P 500, NASDAQ-100 y BMV. Para tickers de BMV usa el sufijo .MX (ej. WALMEX.MX).</div>';
+      cont.innerHTML = '<div class="msg">Sin resultados para "' + esc(filtro) + '".<br>' +
+        'El universo cubre S&P 500, NASDAQ-100 y BMV. Para emisoras de BMV usa el sufijo .MX (ej. WALMEX.MX).</div>';
       return;
     }
+    if (hits.length === 1) { cont.innerHTML = vistaCompleta(hits[0][0], hits[0][1]); return; }
     hits.sort((a, b) => b[1].compuesto.score_compuesto - a[1].compuesto.score_compuesto);
-    const grande = hits.length === 1;
-    document.getElementById("cont").innerHTML =
-      '<div class="grid">' + hits.slice(0, 60).map(([t, r]) => card(t, r, grande)).join("") + '</div>';
+    cont.innerHTML = '<div class="secc">' + hits.length + ' coincidencias — toca una para ver el detalle</div>' +
+      '<div class="grid">' + hits.slice(0, 60).map(([t, r]) => card(t, r)).join("") + '</div>';
     return;
   }
 
+  const todos = Object.entries(datos);
   const compra = todos.filter(([, r]) => r.compuesto.señal.includes("COMPRA"));
   const venta = todos.filter(([, r]) => r.compuesto.señal.includes("VENTA"));
-  const mant = todos.length - compra.length - venta.length;
 
-  document.getElementById("tabs").innerHTML =
-    tab("compra", "Mejores compras") + tab("venta", "Mayores ventas") + tab("riesgo", "Menor riesgo");
+  let html = '<div class="secc">Mercados en este momento</div><div class="idx-grid">' +
+    Object.values(indices || {}).map(tarjetaIndice).join("") + '</div>';
+
+  html += '<div class="secc">Señales activas</div>' +
+    '<div class="tabs">' +
+    tab("compra", "Compras (" + compra.length + ")") +
+    tab("venta", "Ventas (" + venta.length + ")") +
+    tab("riesgo", "Compras de bajo riesgo") + '</div>';
 
   let lista;
-  if (vista === "compra") {
-    lista = compra.sort((a, b) => b[1].compuesto.score_compuesto - a[1].compuesto.score_compuesto);
-  } else if (vista === "venta") {
-    lista = venta.sort((a, b) => a[1].compuesto.score_compuesto - b[1].compuesto.score_compuesto);
-  } else {
-    lista = compra.filter(([, r]) => r.riesgo.nivel_riesgo === "Bajo")
-      .sort((a, b) => b[1].compuesto.score_compuesto - a[1].compuesto.score_compuesto);
-  }
+  if (vista === "compra") lista = compra.sort((a, b) => b[1].compuesto.score_compuesto - a[1].compuesto.score_compuesto);
+  else if (vista === "venta") lista = venta.sort((a, b) => a[1].compuesto.score_compuesto - b[1].compuesto.score_compuesto);
+  else lista = compra.filter(([, r]) => r.riesgo.nivel_riesgo === "Bajo")
+    .sort((a, b) => b[1].compuesto.score_compuesto - a[1].compuesto.score_compuesto);
 
-  document.getElementById("cont").innerHTML =
-    '<div class="resumen">' +
-      ri(compra.length, "Señales de compra", "#4ade80") +
-      ri(mant, "Mantener / observar", "#94a3b8") +
-      ri(venta.length, "Señales de venta", "#f87171") +
-      ri(todos.length, "Tickers analizados", "#e2e8f0") +
-    '</div>' +
-    (lista.length
-      ? '<div class="grid">' + lista.slice(0, 30).map(([t, r]) => card(t, r)).join("") + '</div>'
-      : '<div class="msg">Sin resultados en esta vista.</div>');
+  html += lista.length
+    ? '<div class="grid">' + lista.slice(0, 12).map(([t, r]) => card(t, r)).join("") + '</div>' +
+      (lista.length > 12 ? '<div class="msg">Mostrando las 12 principales de ' + lista.length +
+        '. Usa el buscador para ver cualquier emisora.</div>' : '')
+    : '<div class="msg">Sin resultados en esta vista.</div>';
+
+  cont.innerHTML = html;
+}
+
+function tarjetaIndice(x) {
+  const c = colr(x.cambio_1d);
+  return '<div class="idx"><div class="idx-n">' + esc(x.nombre) + '</div>' +
+    '<div class="idx-p">' + fmt(x.precio) + '</div>' +
+    '<div class="idx-c" style="color:' + c + '">' + pct(x.cambio_1d) + ' hoy</div>' +
+    sparkline(x.serie, c) +
+    '<div class="idx-x">1 mes ' + pct(x.cambio_1m) + ' · YTD ' + pct(x.ytd) + '</div></div>';
 }
 
 function tab(v, l) {
   return '<div class="tab' + (vista === v ? ' on' : '') + '" onclick="cambiarVista(\'' + v + '\')">' + l + '</div>';
 }
 
-function ri(n, l, c) {
-  return '<div class="ri"><div class="n" style="color:' + c + '">' + n + '</div><div class="l">' + l + '</div></div>';
-}
-
-function card(t, r, grande) {
-  const c = CS[r.compuesto.señal] || "#94a3b8";
-  const cr = CR[r.riesgo.nivel_riesgo] || "#94a3b8";
+function card(t, r) {
+  const c = CS[r.compuesto.señal] || GRIS;
+  const cr = CR[r.riesgo.nivel_riesgo] || GRIS;
   const sc = r.compuesto.score_compuesto;
-  const w = Math.min(Math.abs(sc), 100) / 2;
-  const left = sc >= 0 ? 50 : 50 - w;
+  const w = Math.min(Math.abs(sc), 100) / 2, left = sc >= 0 ? 50 : 50 - w;
 
-  return '<div class="card' + (grande ? ' big' : '') + '">' +
+  return '<div class="card" style="cursor:pointer" onclick="abrir(\'' + t.replace(/'/g, "\\'") + '\')">' +
     '<div class="ch"><div><div class="tk">' + esc(t) + '</div>' +
-    (r.nombre ? '<div class="nm">' + esc(r.nombre) + (r.sector ? ' · ' + esc(r.sector) : '') + '</div>' : '') +
+    (r.nombre ? '<div class="nm">' + esc(r.nombre) + '</div>' : '') +
     '<div class="pr">$' + fmt(r.tecnico.precio_actual) + '</div></div>' +
     '<div class="badge" style="color:' + c + ';background:' + c + '1a;border-color:' + c + '4d">' +
     esc(r.compuesto.señal) + '</div></div>' +
     '<div class="barbg"><div class="barfill" style="width:' + w + '%;left:' + left + '%;background:' + c + '"></div></div>' +
-    '<div class="sv">Score compuesto: <b style="color:#cbd5e1">' + sc + '</b> / ±100</div>' +
+    '<div class="sv">Score: <b style="color:#cbd5e1">' + sc + '</b> / ±100</div>' +
     '<div class="mg"><div><div class="mt">Técnico</div>' +
-    mf("RSI (14)", fmt(r.tecnico.rsi, 1)) +
-    mf("MACD hist.", fmt(r.tecnico.macd_hist, 3)) +
-    mf("SMA20 / 50", fmt(r.tecnico.sma20) + " / " + fmt(r.tecnico.sma50)) +
-    mf("Vol. relativo", fmt(r.tecnico.volumen_relativo, 2) + "x") +
+    mf("RSI (14)", fmt(r.tecnico.rsi, 1)) + mf("MACD hist.", fmt(r.tecnico.macd_hist, 3)) +
     '</div><div><div class="mt">Fundamental</div>' +
-    mf("P/E", fmt(r.fundamental.pe, 1)) +
-    mf("PEG", fmt(r.fundamental.peg, 2)) +
-    mf("Margen op.", fmtPct(r.fundamental.margen_operativo)) +
-    mf("Crec. ingresos", fmtPct(r.fundamental.crecimiento_ingresos)) +
-    (grande ? mf("ROE", fmtPct(r.fundamental.roe)) + mf("Deuda/Capital", fmt(r.fundamental.deuda_capital, 1)) : "") +
+    mf("P/E", fmt(r.fundamental.pe, 1)) + mf("Margen op.", fmtPct(r.fundamental.margen_operativo)) +
     '</div></div>' +
     '<div class="rf"><span class="rb" style="color:' + cr + ';background:' + cr + '1a;border-color:' + cr + '4d">Riesgo ' +
-    esc(r.riesgo.nivel_riesgo) + '</span>' +
-    '<span class="rd">Vol. anual ' + fmt(r.riesgo.volatilidad_anualizada, 1) +
-    '% · Drawdown ' + fmt(r.riesgo.max_drawdown, 1) +
-    '% · Beta ' + fmt(r.riesgo.beta, 2) + '</span></div></div>';
+    esc(r.riesgo.nivel_riesgo) + '</span><span class="rd">Toca para ver el detalle</span></div></div>';
 }
 
-function mf(l, v) {
-  return '<div class="mf"><span>' + l + '</span><b>' + v + '</b></div>';
+function mf(l, v) { return '<div class="mf"><span>' + l + '</span><b>' + v + '</b></div>'; }
+
+function vistaCompleta(t, r) {
+  const c = CS[r.compuesto.señal] || GRIS;
+  const cr = CR[r.riesgo.nivel_riesgo] || GRIS;
+  const sc = r.compuesto.score_compuesto;
+  const w = Math.min(Math.abs(sc), 100) / 2, left = sc >= 0 ? 50 : 50 - w;
+  const rd = r.rendimiento || {}, nv = r.niveles || {}, tc = r.tecnico, fu = r.fundamental;
+
+  const rend = (l, v) => '<div class="rend"><div class="l">' + l +
+    '</div><div class="v" style="color:' + colr(v) + '">' + pct(v) + '</div></div>';
+  const niv = (l, v, col) => '<div class="niv-i"><div class="l">' + l +
+    '</div><div class="v" style="color:' + col + '">' + (typeof v === "number" ? "$" + fmt(v) : "—") + '</div></div>';
+
+  return '<div class="volver"><button onclick="cerrar()">← Volver</button></div>' +
+    '<div class="full">' +
+    '<div class="fh"><div><div class="tk">' + esc(t) + '</div>' +
+    '<div class="nm">' + esc(r.nombre || "") + (r.sector ? ' · ' + esc(r.sector) : '') +
+    (r.industria ? ' · ' + esc(r.industria) : '') + '</div>' +
+    '<div class="pr" style="margin-top:8px">$' + fmt(tc.precio_actual) + '</div></div>' +
+    '<div class="badge" style="font-size:12px;padding:8px 13px;color:' + c + ';background:' + c + '1a;border-color:' + c + '4d">' +
+    esc(r.compuesto.señal) + '</div></div>' +
+
+    '<div class="barbg"><div class="barfill" style="width:' + w + '%;left:' + left + '%;background:' + c + '"></div></div>' +
+    '<div class="sv">Score compuesto: <b style="color:#cbd5e1">' + sc + '</b> / ±100 &nbsp;·&nbsp; ' +
+    'Riesgo <b style="color:' + cr + '">' + esc(r.riesgo.nivel_riesgo) + '</b></div>' +
+
+    '<div class="rends">' + rend("5 días", rd.d5) + rend("1 mes", rd.m1) + rend("3 meses", rd.m3) +
+    rend("En el año", rd.ytd) + rend("vs S&P 3m", rd.vs_sp500_3m) + '</div>' +
+
+    grafico(r.serie) +
+
+    '<div class="cols">' +
+
+    '<div><div class="mt">Análisis técnico</div><div class="an">' + textoTecnico(tc) + '</div>' +
+    '<div class="mt" style="margin-top:16px">Niveles clave</div><div class="niv">' +
+    niv("Soporte 2", nv.s2, ROJO) + niv("Soporte 1", nv.s1, ROJO) +
+    niv("Resist. 1", nv.r1, VERDE) + niv("Resist. 2", nv.r2, VERDE) + '</div>' +
+    '<div style="margin-top:12px">' +
+    mf("SMA 20", "$" + fmt(tc.sma20)) + mf("SMA 50", "$" + fmt(tc.sma50)) +
+    mf("SMA 200", typeof tc.sma200 === "number" ? "$" + fmt(tc.sma200) : "—") +
+    mf("Volumen relativo", fmt(tc.volumen_relativo, 2) + "x") + '</div></div>' +
+
+    '<div><div class="mt">Análisis fundamental</div><div class="an">' + textoFundamental(fu, r) + '</div>' +
+    '<div style="margin-top:12px">' +
+    mf("P/E", fmt(fu.pe, 1)) + mf("PEG", fmt(fu.peg, 2)) +
+    mf("Margen operativo", fmtPct(fu.margen_operativo)) +
+    mf("Crecimiento ingresos", fmtPct(fu.crecimiento_ingresos)) +
+    mf("ROE", fmtPct(fu.roe)) + mf("Deuda / Capital", fmt(fu.deuda_capital, 1)) +
+    mf("Dividendo", fmtPct(fu.dividend_yield)) +
+    mf("Capitalización", cap(fu.market_cap)) +
+    mf("Precio objetivo (consenso)", typeof fu.precio_objetivo === "number" ? "$" + fmt(fu.precio_objetivo) : "—") +
+    '</div></div>' +
+
+    '<div><div class="mt">Perfil de riesgo</div><div class="an">' + textoRiesgo(r.riesgo, rd) + '</div>' +
+    '<div style="margin-top:12px">' +
+    mf("Score de riesgo", fmt(r.riesgo.score_riesgo, 1) + " / 100") +
+    mf("Volatilidad anual", fmt(r.riesgo.volatilidad_anualizada, 1) + "%") +
+    mf("Máximo drawdown", fmt(r.riesgo.max_drawdown, 1) + "%") +
+    mf("Beta", fmt(r.riesgo.beta, 2)) +
+    mf("ATR relativo", fmt(r.riesgo.atr_relativo, 2) + "%") + '</div></div>' +
+
+    '</div></div>';
+}
+
+function textoTecnico(tc) {
+  const p = tc.precio_actual, partes = [];
+  if (typeof tc.rsi === "number") {
+    partes.push(tc.rsi < 30 ? "El <b>RSI en " + fmt(tc.rsi, 1) + "</b> indica sobreventa: el papel ha caído con fuerza y podría rebotar."
+      : tc.rsi > 70 ? "El <b>RSI en " + fmt(tc.rsi, 1) + "</b> indica sobrecompra: el avance ha sido rápido y podría corregir."
+      : "El <b>RSI en " + fmt(tc.rsi, 1) + "</b> está en zona neutral, sin extremos de sobrecompra ni sobreventa.");
+  }
+  if (typeof tc.macd_hist === "number") {
+    partes.push(tc.macd_hist > 0
+      ? "El <b>histograma MACD es positivo</b>, señal de momentum alcista vigente."
+      : "El <b>histograma MACD es negativo</b>, señal de momentum bajista vigente.");
+  }
+  if (typeof p === "number" && typeof tc.sma20 === "number" && typeof tc.sma50 === "number") {
+    partes.push(p > tc.sma20 && tc.sma20 > tc.sma50
+      ? "El precio cotiza <b>por encima de sus medias de 20 y 50 días</b>, con las medias alineadas al alza: tendencia positiva."
+      : p < tc.sma20 && tc.sma20 < tc.sma50
+      ? "El precio cotiza <b>por debajo de sus medias de 20 y 50 días</b>, con las medias alineadas a la baja: tendencia negativa."
+      : "El precio y sus medias móviles <b>no muestran una alineación clara</b>: tendencia indefinida o en transición.");
+  }
+  if (typeof p === "number" && typeof tc.sma200 === "number") {
+    partes.push(p > tc.sma200
+      ? "Se mantiene <b>sobre la media de 200 días</b>, referencia habitual de tendencia de largo plazo alcista."
+      : "Cotiza <b>bajo la media de 200 días</b>, lo que suele leerse como debilidad de largo plazo.");
+  }
+  if (typeof tc.volumen_relativo === "number" && tc.volumen_relativo > 1.5) {
+    partes.push("El <b>volumen reciente supera en " + fmt(tc.volumen_relativo, 1) +
+      "x su promedio</b>, señal de interés inusual que suele acompañar movimientos relevantes.");
+  }
+  return partes.join(" ") || "Sin datos técnicos suficientes.";
+}
+
+function textoFundamental(fu, r) {
+  const partes = [];
+  if (typeof fu.pe === "number") {
+    partes.push(fu.pe < 0 ? "La empresa <b>reporta pérdidas</b>, por lo que el P/E no es interpretable."
+      : fu.pe < 15 ? "Cotiza a <b>" + fmt(fu.pe, 1) + " veces utilidades</b>, múltiplo bajo frente al promedio del mercado."
+      : fu.pe > 35 ? "Cotiza a <b>" + fmt(fu.pe, 1) + " veces utilidades</b>, múltiplo exigente que descuenta crecimiento elevado."
+      : "Cotiza a <b>" + fmt(fu.pe, 1) + " veces utilidades</b>, en rango razonable.");
+  }
+  if (typeof fu.crecimiento_ingresos === "number") {
+    partes.push(fu.crecimiento_ingresos > 0.15 ? "Los ingresos crecen <b>" + fmtPct(fu.crecimiento_ingresos) + " anual</b>, ritmo alto."
+      : fu.crecimiento_ingresos < 0 ? "Los ingresos <b>se contraen " + fmtPct(fu.crecimiento_ingresos) + "</b>, señal de deterioro operativo."
+      : "Los ingresos crecen <b>" + fmtPct(fu.crecimiento_ingresos) + " anual</b>, ritmo moderado.");
+  }
+  if (typeof fu.margen_operativo === "number") {
+    partes.push(fu.margen_operativo > 0.20 ? "El <b>margen operativo de " + fmtPct(fu.margen_operativo) + "</b> refleja alta rentabilidad."
+      : fu.margen_operativo < 0.05 ? "El <b>margen operativo de " + fmtPct(fu.margen_operativo) + "</b> es estrecho: poco colchón ante costos."
+      : "El <b>margen operativo de " + fmtPct(fu.margen_operativo) + "</b> es intermedio.");
+  }
+  if (typeof fu.deuda_capital === "number") {
+    partes.push(fu.deuda_capital > 150 ? "El <b>apalancamiento es elevado</b> (deuda/capital " + fmt(fu.deuda_capital, 0) + "), lo que amplifica el riesgo financiero."
+      : fu.deuda_capital < 50 ? "El <b>balance está poco apalancado</b> (deuda/capital " + fmt(fu.deuda_capital, 0) + ")."
+      : "El <b>apalancamiento es moderado</b> (deuda/capital " + fmt(fu.deuda_capital, 0) + ").");
+  }
+  if (typeof fu.precio_objetivo === "number" && typeof r.tecnico.precio_actual === "number") {
+    const up = (fu.precio_objetivo / r.tecnico.precio_actual - 1) * 100;
+    partes.push("El <b>consenso de analistas</b> ubica el precio objetivo en $" + fmt(fu.precio_objetivo) +
+      " (" + pct(up) + " respecto al precio actual).");
+  }
+  return partes.join(" ") || "Sin datos fundamentales disponibles todavía para esta emisora.";
+}
+
+function textoRiesgo(rg, rd) {
+  const partes = [];
+  partes.push("Score de riesgo <b>" + fmt(rg.score_riesgo, 1) + "/100 (" + rg.nivel_riesgo + ")</b>.");
+  if (typeof rg.volatilidad_anualizada === "number") {
+    partes.push(rg.volatilidad_anualizada > 45 ? "Su <b>volatilidad anual de " + fmt(rg.volatilidad_anualizada, 1) + "%</b> es muy alta: movimientos amplios en ambos sentidos."
+      : rg.volatilidad_anualizada < 20 ? "Su <b>volatilidad anual de " + fmt(rg.volatilidad_anualizada, 1) + "%</b> es contenida."
+      : "Su <b>volatilidad anual es de " + fmt(rg.volatilidad_anualizada, 1) + "%</b>, en rango medio.");
+  }
+  if (typeof rg.max_drawdown === "number") {
+    partes.push("La <b>caída máxima del último año fue de " + fmt(rg.max_drawdown, 1) + "%</b> desde su punto más alto.");
+  }
+  if (typeof rg.beta === "number") {
+    partes.push(rg.beta > 1.3 ? "Con <b>beta de " + fmt(rg.beta, 2) + "</b> amplifica los movimientos del mercado."
+      : rg.beta < 0.8 ? "Con <b>beta de " + fmt(rg.beta, 2) + "</b> se mueve menos que el mercado: perfil defensivo."
+      : "Con <b>beta de " + fmt(rg.beta, 2) + "</b> se mueve en línea con el mercado.");
+  }
+  if (typeof rd.vs_sp500_3m === "number") {
+    partes.push(rd.vs_sp500_3m > 0
+      ? "En los últimos tres meses ha <b>superado al S&P 500 por " + fmt(rd.vs_sp500_3m, 1) + " puntos porcentuales</b>."
+      : "En los últimos tres meses ha <b>quedado " + fmt(Math.abs(rd.vs_sp500_3m), 1) + " puntos porcentuales por debajo del S&P 500</b>.");
+  }
+  return partes.join(" ");
 }
 
 cargar();
