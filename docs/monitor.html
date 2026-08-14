@@ -1,1 +1,161 @@
-https://jrjara13.github.io/monitor-alertas/monitor.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monitor de Oportunidades</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0b0f14;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:20px 16px}
+  .wrap{max-width:1200px;margin:0 auto}
+  h1{font-size:22px;font-weight:700;letter-spacing:-.02em}
+  .sub{color:#64748b;font-size:12px;margin-top:2px}
+  .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+  button{background:#131922;border:1px solid #1e2733;color:#cbd5e1;font-size:12px;font-weight:600;padding:8px 12px;border-radius:8px;cursor:pointer;font-family:inherit}
+  button:active{border-color:#64748b}
+  .resumen{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  .ri{flex:1;min-width:130px;background:#131922;border:1px solid #1e2733;border-radius:10px;padding:12px 16px}
+  .ri .n{font-size:22px;font-weight:700}
+  .ri .l{font-size:11px;color:#64748b;margin-top:2px}
+  input{width:100%;background:#131922;border:1px solid #1e2733;border-radius:8px;padding:10px 12px;color:#e2e8f0;font-size:14px;outline:none;font-family:inherit;margin-bottom:20px}
+  input:focus{border-color:#64748b}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+  .card{background:#131922;border:1px solid #1e2733;border-radius:14px;padding:18px}
+  .ch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+  .tk{font-size:18px;font-weight:700}
+  .pr{font-size:13px;color:#94a3b8;margin-top:2px}
+  .badge{font-size:10px;font-weight:700;letter-spacing:.04em;padding:5px 9px;border-radius:6px;white-space:nowrap;border:1px solid}
+  .barbg{height:6px;background:#1e2733;border-radius:3px;position:relative;overflow:hidden}
+  .barfill{height:100%;border-radius:3px;position:absolute}
+  .sv{font-size:11px;color:#64748b;margin:6px 0 14px}
+  .mg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+  .mt{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#475569;margin-bottom:6px;font-weight:600}
+  .mf{display:flex;justify-content:space-between;font-size:12px;padding:3px 0;color:#cbd5e1}
+  .mf b{color:#e2e8f0;font-weight:600}
+  .rf{display:flex;align-items:center;gap:8px;padding-top:12px;border-top:1px solid #1e2733;flex-wrap:wrap}
+  .rb{font-size:10px;font-weight:700;padding:4px 8px;border-radius:6px;border:1px solid}
+  .rd{font-size:10px;color:#64748b}
+  .err{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);color:#fca5a5;padding:14px;border-radius:10px;font-size:13px;margin-bottom:20px}
+  .foot{text-align:center;font-size:11px;color:#475569;margin-top:32px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>
+      <h1>Monitor de Oportunidades</h1>
+      <div class="sub" id="sub">Cargando...</div>
+    </div>
+    <button onclick="cargar()">Actualizar</button>
+  </div>
+  <div id="cont"></div>
+  <div class="foot">
+    Herramienta de apoyo cuantitativo — no constituye recomendación de inversión individualizada.<br>
+    Score compuesto = 45% técnico + 40% fundamental − 15% penalización por riesgo.
+  </div>
+</div>
+
+<script>
+const URL_JSON = "https://jrjara13.github.io/monitor-alertas/alertas.json";
+
+const CS = {
+  "COMPRA FUERTE": "#22c55e",
+  "COMPRA": "#4ade80",
+  "MANTENER / OBSERVAR": "#94a3b8",
+  "VENTA": "#f87171",
+  "VENTA FUERTE": "#ef4444"
+};
+const CR = { Bajo: "#22c55e", Medio: "#f59e0b", Alto: "#ef4444" };
+
+let datos = null;
+let filtro = "";
+
+const fmt = (v, d = 2) => typeof v === "number" ? v.toFixed(d) : "—";
+const fmtPct = v => typeof v === "number" ? (v * 100).toFixed(1) + "%" : "—";
+
+async function cargar() {
+  document.getElementById("sub").textContent = "Cargando...";
+  try {
+    const r = await fetch(URL_JSON + "?t=" + Date.now());
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    datos = await r.json();
+    document.getElementById("sub").textContent = "Actualizado: " + new Date().toLocaleString("es-MX");
+    render();
+  } catch (e) {
+    document.getElementById("sub").textContent = "Error";
+    document.getElementById("cont").innerHTML =
+      '<div class="err">No se pudo cargar los datos: ' + e.message + '</div>';
+  }
+}
+
+function render() {
+  if (!datos) return;
+  let ent = Object.entries(datos);
+  const total = ent.length;
+  const compra = ent.filter(([, r]) => r.compuesto.señal.includes("COMPRA")).length;
+  const venta = ent.filter(([, r]) => r.compuesto.señal.includes("VENTA")).length;
+  const mant = total - compra - venta;
+
+  if (filtro) ent = ent.filter(([t]) => t.toLowerCase().includes(filtro.toLowerCase()));
+  ent.sort((a, b) => b[1].compuesto.score_compuesto - a[1].compuesto.score_compuesto);
+
+  let html = '<div class="resumen">' +
+    ri(compra, "Señales de compra", "#4ade80") +
+    ri(mant, "Mantener / observar", "#94a3b8") +
+    ri(venta, "Señales de venta", "#f87171") +
+    ri(total, "Tickers analizados", "#e2e8f0") +
+    '</div>' +
+    '<input id="busq" placeholder="Buscar ticker..." value="' + filtro + '" oninput="filtrar(this.value)">' +
+    '<div class="grid">' + ent.map(([t, r]) => card(t, r)).join("") + '</div>';
+
+  document.getElementById("cont").innerHTML = html;
+  if (filtro) {
+    const i = document.getElementById("busq");
+    i.focus();
+    i.setSelectionRange(i.value.length, i.value.length);
+  }
+}
+
+function ri(n, l, c) {
+  return '<div class="ri"><div class="n" style="color:' + c + '">' + n + '</div><div class="l">' + l + '</div></div>';
+}
+
+function card(t, r) {
+  const c = CS[r.compuesto.señal] || "#94a3b8";
+  const cr = CR[r.riesgo.nivel_riesgo] || "#94a3b8";
+  const sc = r.compuesto.score_compuesto;
+  const w = Math.min(Math.abs(sc), 100) / 2;
+  const left = sc >= 0 ? 50 : 50 - w;
+
+  return '<div class="card">' +
+    '<div class="ch"><div><div class="tk">' + t + '</div><div class="pr">$' + fmt(r.tecnico.precio_actual) + '</div></div>' +
+    '<div class="badge" style="color:' + c + ';background:' + c + '1a;border-color:' + c + '4d">' + r.compuesto.señal + '</div></div>' +
+    '<div class="barbg"><div class="barfill" style="width:' + w + '%;left:' + left + '%;background:' + c + '"></div></div>' +
+    '<div class="sv">Score compuesto: <b style="color:#cbd5e1">' + sc + '</b> / ±100</div>' +
+    '<div class="mg"><div><div class="mt">Técnico</div>' +
+    mf("RSI (14)", fmt(r.tecnico.rsi, 1)) +
+    mf("MACD hist.", fmt(r.tecnico.macd_hist, 2)) +
+    mf("SMA20/50", fmt(r.tecnico.sma20) + " / " + fmt(r.tecnico.sma50)) +
+    mf("Vol. relativo", fmt(r.tecnico.volumen_relativo, 2) + "x") +
+    '</div><div><div class="mt">Fundamental</div>' +
+    mf("P/E", fmt(r.fundamental.pe, 1)) +
+    mf("PEG", fmt(r.fundamental.peg, 2)) +
+    mf("Margen op.", fmtPct(r.fundamental.margen_operativo)) +
+    mf("Crec. ingresos", fmtPct(r.fundamental.crecimiento_ingresos)) +
+    '</div></div>' +
+    '<div class="rf"><span class="rb" style="color:' + cr + ';background:' + cr + '1a;border-color:' + cr + '4d">Riesgo ' + r.riesgo.nivel_riesgo + '</span>' +
+    '<span class="rd">Vol. anual ' + fmt(r.riesgo.volatilidad_anualizada, 1) + '% · Drawdown ' + fmt(r.riesgo.max_drawdown, 1) + '% · Beta ' + fmt(r.riesgo.beta, 2) + '</span></div>' +
+    '</div>';
+}
+
+function mf(l, v) {
+  return '<div class="mf"><span>' + l + '</span><b>' + v + '</b></div>';
+}
+
+function filtrar(v) { filtro = v; render(); }
+
+cargar();
+</script>
+</body>
+</html>
+
