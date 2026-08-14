@@ -7,10 +7,9 @@ Estrategia:
   - Precios: descarga por lotes (rápido, todos los tickers en cada corrida).
   - Fundamentales: se cachean en docs/fundamentales.json y solo se refrescan
     los que tengan más de DIAS_CACHE_FUND días, con un tope por corrida.
-    (Los fundamentales cambian trimestralmente; no tiene sentido bajarlos
-    cada 15 minutos y hacerlo satura la fuente.)
 """
 import json
+import math
 import os
 import time
 from datetime import datetime, timezone
@@ -38,6 +37,23 @@ ARCHIVO_FUND = os.path.join(CARPETA, "fundamentales.json")
 
 
 # ------------------------------------------------------------------
+# UTILIDADES
+# ------------------------------------------------------------------
+def limpiar(obj):
+    """
+    Convierte NaN/Infinity a None. Python los escribe literalmente como
+    NaN/Infinity, que NO son JSON válido y rompen JSON.parse del navegador.
+    """
+    if isinstance(obj, dict):
+        return {k: limpiar(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [limpiar(v) for v in obj]
+    if isinstance(obj, float) and (math.isnan(obj) or math.isinf(obj)):
+        return None
+    return obj
+
+
+# ------------------------------------------------------------------
 # CACHÉ DE FUNDAMENTALES
 # ------------------------------------------------------------------
 def cargar_cache_fundamentales() -> dict:
@@ -52,7 +68,7 @@ def cargar_cache_fundamentales() -> dict:
 
 def guardar_cache_fundamentales(cache: dict):
     with open(ARCHIVO_FUND, "w", encoding="utf-8") as f:
-        json.dump(cache, f, ensure_ascii=False, indent=1)
+        json.dump(limpiar(cache), f, ensure_ascii=False, indent=1, allow_nan=False)
 
 
 def necesita_refresco(entrada: dict) -> bool:
@@ -75,6 +91,7 @@ def refrescar_fundamentales(tickers: list, cache: dict) -> dict:
         return cache
 
     print(f"Fundamentales: refrescando {len(por_hacer)} de {len(pendientes)} pendientes...")
+    ahora = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     for i, t in enumerate(por_hacer, 1):
         try:
             info = yf.Ticker(t).info or {}
@@ -89,15 +106,14 @@ def refrescar_fundamentales(tickers: list, cache: dict) -> dict:
                 "beta": info.get("beta"),
                 "sector": info.get("sector"),
                 "nombre": info.get("shortName") or info.get("longName"),
-                "actualizado": datetime.now(timezone.utc).isoformat(),
+                "actualizado": ahora,
             }
         except Exception as e:
             print(f"  ⚠ {t}: {e}")
-            # Marcar como intentado para no reintentar en bucle esta corrida
-            cache[t] = {"actualizado": datetime.now(timezone.utc).isoformat()}
+            cache[t] = {"actualizado": ahora}
         if i % 20 == 0:
             print(f"  ...{i}/{len(por_hacer)}")
-        time.sleep(0.15)  # pausa breve para no saturar la fuente
+        time.sleep(0.15)
     return cache
 
 
@@ -122,7 +138,7 @@ def descargar_precios(tickers: list) -> dict:
             try:
                 df = data[t] if isinstance(data.columns, pd.MultiIndex) else data
                 df = df.dropna(how="all")
-                if df.empty or len(df) < 60:  # necesitamos historia suficiente para SMA50
+                if df.empty or len(df) < 60:
                     continue
                 resultado[t] = df
             except Exception:
@@ -149,12 +165,16 @@ def main():
         try:
             fund_raw = cache.get(t, {})
             tec = analisis_tecnico(df)
+
+            # Si los indicadores base salen NaN, el ticker no es utilizable
+            if math.isnan(tec["precio_actual"]) or math.isnan(tec["rsi"]):
+                continue
+
             fund = analisis_fundamental(fund_raw)
             riesgo = score_riesgo(df, beta=fund_raw.get("beta"))
             comp = señal_compuesta(tec["score_tecnico"], fund["score_fundamental"],
                                     riesgo["score_riesgo"], **PESOS)
 
-            # Guardar solo lo que consume el dashboard (mantiene el JSON ligero)
             resultados[t] = {
                 "nombre": fund_raw.get("nombre"),
                 "sector": fund_raw.get("sector"),
@@ -185,18 +205,20 @@ def main():
         return
 
     salida = {
-        "actualizado": datetime.now(timezone.utc).isoformat(),
+        # Sin microsegundos: Safari no los parsea.
+        "actualizado": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "total": len(resultados),
-        "tickers": resultados,
+        "tickers": limpiar(resultados),
     }
     with open(ARCHIVO_ALERTAS, "w", encoding="utf-8") as f:
-        json.dump(salida, f, ensure_ascii=False, separators=(",", ":"))
+        # allow_nan=False falla ruidosamente si algún NaN se escapa,
+        # en vez de generar JSON inválido silenciosamente.
+        json.dump(salida, f, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
 
     tam_mb = os.path.getsize(ARCHIVO_ALERTAS) / 1_000_000
     print(f"\n{len(resultados)} tickers analizados. JSON: {tam_mb:.2f} MB")
     print(f"Tiempo total: {time.time() - inicio:.0f}s")
 
-    # Top señales en consola
     orden = sorted(resultados.items(),
                    key=lambda kv: kv[1]["compuesto"]["score_compuesto"], reverse=True)
     print("\nTOP 10 COMPRA:")
