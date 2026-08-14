@@ -15538,5 +15538,2818 @@
    }
   ],
   "actualizado": "2026-08-14T20:17:26+00:00"
+ },
+ "XYL": {
+  "trailingPE": 28.49524,
+  "pegRatio": 1.66,
+  "operatingMargins": 0.16995001,
+  "revenueGrowth": 0.015,
+  "debtToEquity": 28.642,
+  "returnOnEquity": 0.09182999,
+  "freeCashflow": 1183750016,
+  "marketCap": 27943702528,
+  "dividendYield": 1.43,
+  "targetMeanPrice": 153.23529,
+  "numeroAnalistas": 17,
+  "beta": 1.01,
+  "sector": "Industrials",
+  "industria": "Specialty Industrial Machinery",
+  "bolsa": "NYQ",
+  "nombre": "Xylem Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 2268000000.0,
+    "util_operativa": 357000000.0,
+    "margen_op": 15.7,
+    "util_neta": 227000000.0,
+    "eps": 0.93,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 2397000000.0,
+    "util_operativa": 386000000.0,
+    "margen_op": 16.1,
+    "util_neta": 335000000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 2125000000.0,
+    "util_operativa": 275000000.0,
+    "margen_op": 12.9,
+    "util_neta": 193000000.0,
+    "eps": 0.79,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 2336000000.0,
+    "util_operativa": 401000000.0,
+    "margen_op": 17.2,
+    "util_neta": 263000000.0,
+    "eps": 1.11,
+    "var_ingresos": 1.5
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "YUM": {
+  "trailingPE": 18.677176,
+  "pegRatio": 1.91,
+  "operatingMargins": 0.32779998,
+  "revenueGrowth": 0.122,
+  "debtToEquity": null,
+  "returnOnEquity": null,
+  "freeCashflow": 833249984,
+  "marketCap": 40419381248,
+  "dividendYield": 1.99,
+  "targetMeanPrice": 173.38095,
+  "numeroAnalistas": 21,
+  "beta": 0.553,
+  "sector": "Consumer Cyclical",
+  "industria": "Restaurants",
+  "bolsa": "NYQ",
+  "nombre": "Yum! Brands, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1980000000.0,
+    "util_operativa": 649000000.0,
+    "margen_op": 32.8,
+    "util_neta": 397000000.0,
+    "eps": 1.41,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 2515000000.0,
+    "util_operativa": 742000000.0,
+    "margen_op": 29.5,
+    "util_neta": 535000000.0,
+    "eps": 1.91,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 2059000000.0,
+    "util_operativa": 598000000.0,
+    "margen_op": 29.0,
+    "util_neta": 432000000.0,
+    "eps": 1.55,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 2170000000.0,
+    "util_operativa": 661000000.0,
+    "margen_op": 30.5,
+    "util_neta": 853000000.0,
+    "eps": 3.08,
+    "var_ingresos": 12.3
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "ZBRA": {
+  "trailingPE": 34.498165,
+  "pegRatio": 0.7,
+  "operatingMargins": 0.21259001,
+  "revenueGrowth": 0.204,
+  "debtToEquity": 86.23,
+  "returnOnEquity": 0.15286,
+  "freeCashflow": 576750016,
+  "marketCap": 17790226432,
+  "dividendYield": null,
+  "targetMeanPrice": 399.00125,
+  "numeroAnalistas": 16,
+  "beta": 1.583,
+  "sector": "Technology",
+  "industria": "Communication Equipment",
+  "bolsa": "NMS",
+  "nombre": "Zebra Technologies Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1320000000.0,
+    "util_operativa": 193000000.0,
+    "margen_op": 14.6,
+    "util_neta": 101000000.0,
+    "eps": 1.97,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1475000000.0,
+    "util_operativa": 222000000.0,
+    "margen_op": 15.1,
+    "util_neta": 70000000.0,
+    "eps": 1.39,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1495000000.0,
+    "util_operativa": 224000000.0,
+    "margen_op": 15.0,
+    "util_neta": 135000000.0,
+    "eps": 2.72,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1557000000.0,
+    "util_operativa": 331000000.0,
+    "margen_op": 21.3,
+    "util_neta": 233000000.0,
+    "eps": 4.85,
+    "var_ingresos": 20.4
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "ZBH": {
+  "trailingPE": 24.429613,
+  "pegRatio": 0.65,
+  "operatingMargins": 0.17959999,
+  "revenueGrowth": 0.048,
+  "debtToEquity": 60.175,
+  "returnOnEquity": 0.06413,
+  "freeCashflow": 1090899968,
+  "marketCap": 19197749248,
+  "dividendYield": 0.96,
+  "targetMeanPrice": 107.57143,
+  "numeroAnalistas": 21,
+  "beta": 0.462,
+  "sector": "Healthcare",
+  "industria": "Medical Devices",
+  "bolsa": "NYQ",
+  "nombre": "Zimmer Biomet Holdings, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 2001400000.0,
+    "util_operativa": 338300000.0,
+    "margen_op": 16.9,
+    "util_neta": 230900000.0,
+    "eps": 1.16,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 2243700000.0,
+    "util_operativa": 282600000.0,
+    "margen_op": 12.6,
+    "util_neta": 139300000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 2086700000.0,
+    "util_operativa": 395100000.0,
+    "margen_op": 18.9,
+    "util_neta": 238100000.0,
+    "eps": 1.22,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 2177000000.0,
+    "util_operativa": 374000000.0,
+    "margen_op": 17.2,
+    "util_neta": 198300000.0,
+    "eps": 1.03,
+    "var_ingresos": 4.8
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "ZTS": {
+  "trailingPE": 12.03752,
+  "pegRatio": 6.71,
+  "operatingMargins": 0.40721,
+  "revenueGrowth": -0.002,
+  "debtToEquity": 293.996,
+  "returnOnEquity": 0.64911,
+  "freeCashflow": 2016999936,
+  "marketCap": 30491770880,
+  "dividendYield": 2.8,
+  "targetMeanPrice": 100.9375,
+  "numeroAnalistas": 16,
+  "beta": 0.73,
+  "sector": "Healthcare",
+  "industria": "Drug Manufacturers - Specialty & Generic",
+  "bolsa": "NYQ",
+  "nombre": "Zoetis Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 2400000000.0,
+    "util_operativa": 936000000.0,
+    "margen_op": 39.0,
+    "util_neta": 721000000.0,
+    "eps": 1.63,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 2387000000.0,
+    "util_operativa": 826000000.0,
+    "margen_op": 34.6,
+    "util_neta": 603000000.0,
+    "eps": 1.37,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 2262000000.0,
+    "util_operativa": 822000000.0,
+    "margen_op": 36.3,
+    "util_neta": 601000000.0,
+    "eps": 1.42,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 2468000000.0,
+    "util_operativa": 999000000.0,
+    "margen_op": 40.5,
+    "util_neta": 691000000.0,
+    "eps": 1.65,
+    "var_ingresos": -0.2
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "EA": {
+  "trailingPE": 59.743587,
+  "pegRatio": 1.3,
+  "operatingMargins": 0.25881,
+  "revenueGrowth": 0.189,
+  "debtToEquity": 26.43,
+  "returnOnEquity": 0.16458,
+  "freeCashflow": 1692499968,
+  "marketCap": 52925640704,
+  "dividendYield": 0.36,
+  "targetMeanPrice": 205.46153,
+  "numeroAnalistas": 13,
+  "beta": 0.642,
+  "sector": "Communication Services",
+  "industria": "Electronic Gaming & Multimedia",
+  "bolsa": "NMS",
+  "nombre": "Electronic Arts Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1839000000.0,
+    "util_operativa": 200000000.0,
+    "margen_op": 10.9,
+    "util_neta": 137000000.0,
+    "eps": 0.54,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1901000000.0,
+    "util_operativa": 127000000.0,
+    "margen_op": 6.7,
+    "util_neta": 88000000.0,
+    "eps": 0.35,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 2120000000.0,
+    "util_operativa": 564000000.0,
+    "margen_op": 26.6,
+    "util_neta": 461000000.0,
+    "eps": 1.81,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1986000000.0,
+    "util_operativa": 513000000.0,
+    "margen_op": 25.8,
+    "util_neta": 397000000.0,
+    "eps": 1.56,
+    "var_ingresos": 18.9
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "CCEP": {
+  "trailingPE": 20.982456,
+  "pegRatio": 3.1,
+  "operatingMargins": 0.134,
+  "revenueGrowth": 0.044,
+  "debtToEquity": 139.064,
+  "returnOnEquity": 0.23544,
+  "freeCashflow": 1583000064,
+  "marketCap": 47565406208,
+  "dividendYield": 2.24,
+  "targetMeanPrice": 112.599144,
+  "numeroAnalistas": 11,
+  "beta": 0.48,
+  "sector": "Consumer Defensive",
+  "industria": "Beverages - Non-Alcoholic",
+  "bolsa": "NMS",
+  "nombre": "Coca-Cola Europacific Partners ",
+  "trimestres": [],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "AZN": {
+  "trailingPE": 23.420658,
+  "pegRatio": 1.4,
+  "operatingMargins": 0.23459,
+  "revenueGrowth": 0.064,
+  "debtToEquity": 64.225,
+  "returnOnEquity": 0.21965,
+  "freeCashflow": 4905375232,
+  "marketCap": 242636095488,
+  "dividendYield": 2.03,
+  "targetMeanPrice": 213.69,
+  "numeroAnalistas": 10,
+  "beta": 0.211,
+  "sector": "Healthcare",
+  "industria": "Drug Manufacturers - General",
+  "bolsa": "NYQ",
+  "nombre": "AstraZeneca PLC",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 15191000000.0,
+    "util_operativa": 3583000000.0,
+    "margen_op": 23.6,
+    "util_neta": 2533000000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 15503000000.0,
+    "util_operativa": 2978000000.0,
+    "margen_op": 19.2,
+    "util_neta": 2326000000.0,
+    "eps": 1.49,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 15288000000.0,
+    "util_operativa": 4246000000.0,
+    "margen_op": 27.8,
+    "util_neta": 3080000000.0,
+    "eps": 1.97,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 15384000000.0,
+    "util_operativa": 3164000000.0,
+    "margen_op": 20.6,
+    "util_neta": 2507000000.0,
+    "eps": 1.61,
+    "var_ingresos": 6.4
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "TEAM": {
+  "trailingPE": null,
+  "pegRatio": 1.21,
+  "operatingMargins": 0.11929,
+  "revenueGrowth": 0.276,
+  "debtToEquity": 116.483,
+  "returnOnEquity": -0.04478,
+  "freeCashflow": 1510031104,
+  "marketCap": 41166221312,
+  "dividendYield": null,
+  "targetMeanPrice": 188.2062,
+  "numeroAnalistas": 29,
+  "beta": 1.038,
+  "sector": "Technology",
+  "industria": "Software - Application",
+  "bolsa": "NMS",
+  "nombre": "Atlassian Corporation",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1432553000.0,
+    "util_operativa": -96337000.0,
+    "margen_op": -6.7,
+    "util_neta": -51870000.0,
+    "eps": -0.2,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1586315000.0,
+    "util_operativa": -47747000.0,
+    "margen_op": -3.0,
+    "util_neta": -42645000.0,
+    "eps": -0.16,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1786971000.0,
+    "util_operativa": -56284000.0,
+    "margen_op": -3.1,
+    "util_neta": -98389000.0,
+    "eps": -0.38,
+    "var_ingresos": 31.7
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": 0.55,
+    "var_ingresos": null
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "ZS": {
+  "trailingPE": null,
+  "pegRatio": 1.92,
+  "operatingMargins": -0.03276,
+  "revenueGrowth": 0.254,
+  "debtToEquity": 78.939,
+  "returnOnEquity": -0.037100002,
+  "freeCashflow": 1108818560,
+  "marketCap": 29689868288,
+  "dividendYield": null,
+  "targetMeanPrice": 192.5534,
+  "numeroAnalistas": 44,
+  "beta": 0.917,
+  "sector": "Technology",
+  "industria": "Software - Infrastructure",
+  "bolsa": "NMS",
+  "nombre": "Zscaler, Inc.",
+  "trimestres": [
+   {
+    "periodo": "31 Jul 2025",
+    "ingresos": 719226000.0,
+    "util_operativa": -30926000.0,
+    "margen_op": -4.3,
+    "util_neta": -17578000.0,
+    "eps": -0.11,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Oct 2025",
+    "ingresos": 788112000.0,
+    "util_operativa": -36362000.0,
+    "margen_op": -4.6,
+    "util_neta": -11615000.0,
+    "eps": -0.07,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Jan 2026",
+    "ingresos": 815751000.0,
+    "util_operativa": -51773000.0,
+    "margen_op": -6.3,
+    "util_neta": -34312000.0,
+    "eps": -0.21,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Apr 2026",
+    "ingresos": 850475000.0,
+    "util_operativa": -29640000.0,
+    "margen_op": -3.5,
+    "util_neta": -13883000.0,
+    "eps": -0.09,
+    "var_ingresos": 25.4
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "GFS": {
+  "trailingPE": 42.64063,
+  "pegRatio": 0.97,
+  "operatingMargins": 0.09742,
+  "revenueGrowth": 0.058,
+  "debtToEquity": 14.132,
+  "returnOnEquity": 0.061690003,
+  "freeCashflow": 758249984,
+  "marketCap": 29948094464,
+  "dividendYield": 0.91,
+  "targetMeanPrice": 76.7619,
+  "numeroAnalistas": 21,
+  "beta": 1.796,
+  "sector": "Technology",
+  "industria": "Semiconductors",
+  "bolsa": "NMS",
+  "nombre": "GlobalFoundries Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1688000000.0,
+    "util_operativa": 195000000.0,
+    "margen_op": 11.6,
+    "util_neta": 248000000.0,
+    "eps": 0.44,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1830000000.0,
+    "util_operativa": 255000000.0,
+    "margen_op": 13.9,
+    "util_neta": 199000000.0,
+    "eps": 0.36,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1634000000.0,
+    "util_operativa": 180000000.0,
+    "margen_op": 11.0,
+    "util_neta": 103000000.0,
+    "eps": 0.18,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1786000000.0,
+    "util_operativa": 174000000.0,
+    "margen_op": 9.7,
+    "util_neta": 166000000.0,
+    "eps": 0.3,
+    "var_ingresos": 5.8
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "ILMN": {
+  "trailingPE": 35.613804,
+  "pegRatio": 2.74,
+  "operatingMargins": 0.21139,
+  "revenueGrowth": 0.094,
+  "debtToEquity": 89.042,
+  "returnOnEquity": 0.32339,
+  "freeCashflow": 797625024,
+  "marketCap": 28824389632,
+  "dividendYield": null,
+  "targetMeanPrice": 198.89474,
+  "numeroAnalistas": 19,
+  "beta": 1.464,
+  "sector": "Healthcare",
+  "industria": "Diagnostics & Research",
+  "bolsa": "NMS",
+  "nombre": "Illumina, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1084000000.0,
+    "util_operativa": 227000000.0,
+    "margen_op": 20.9,
+    "util_neta": 150000000.0,
+    "eps": 0.98,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1159000000.0,
+    "util_operativa": 211000000.0,
+    "margen_op": 18.2,
+    "util_neta": 334000000.0,
+    "eps": 2.16,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1091000000.0,
+    "util_operativa": 209000000.0,
+    "margen_op": 19.2,
+    "util_neta": 134000000.0,
+    "eps": 0.87,
+    "var_ingresos": 4.8
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": 1.35,
+    "var_ingresos": null
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "MDB": {
+  "trailingPE": null,
+  "pegRatio": 1.67,
+  "operatingMargins": -0.03607,
+  "revenueGrowth": 0.252,
+  "debtToEquity": 1.998,
+  "returnOnEquity": -0.00975,
+  "freeCashflow": 517605376,
+  "marketCap": 37025226752,
+  "dividendYield": null,
+  "targetMeanPrice": 396.21222,
+  "numeroAnalistas": 36,
+  "beta": 1.545,
+  "sector": "Technology",
+  "industria": "Software - Infrastructure",
+  "bolsa": "NGM",
+  "nombre": "MongoDB, Inc.",
+  "trimestres": [
+   {
+    "periodo": "31 Jul 2025",
+    "ingresos": 591402000.0,
+    "util_operativa": -65294000.0,
+    "margen_op": -11.0,
+    "util_neta": -47048000.0,
+    "eps": -0.58,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Oct 2025",
+    "ingresos": 628309000.0,
+    "util_operativa": -18424000.0,
+    "margen_op": -2.9,
+    "util_neta": -2007000.0,
+    "eps": -0.02,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Jan 2026",
+    "ingresos": 695072000.0,
+    "util_operativa": 304000.0,
+    "margen_op": 0.0,
+    "util_neta": 15530000.0,
+    "eps": 0.18,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Apr 2026",
+    "ingresos": 687616000.0,
+    "util_operativa": -24804000.0,
+    "margen_op": -3.6,
+    "util_neta": 4434000.0,
+    "eps": 0.05,
+    "var_ingresos": 25.2
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "SIRI": {
+  "trailingPE": 11.429718,
+  "pegRatio": 1.23,
+  "operatingMargins": 0.22129999,
+  "revenueGrowth": 0.01,
+  "debtToEquity": 81.105,
+  "returnOnEquity": 0.07574,
+  "freeCashflow": 1186000000,
+  "marketCap": 9592923136,
+  "dividendYield": 3.86,
+  "targetMeanPrice": 32.0,
+  "numeroAnalistas": 13,
+  "beta": 0.964,
+  "sector": "Communication Services",
+  "industria": "Entertainment",
+  "bolsa": "NMS",
+  "nombre": "SiriusXM Holdings Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 2159000000.0,
+    "util_operativa": 502000000.0,
+    "margen_op": 23.3,
+    "util_neta": 297000000.0,
+    "eps": 0.84,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 2193000000.0,
+    "util_operativa": 498000000.0,
+    "margen_op": 22.7,
+    "util_neta": 99000000.0,
+    "eps": 0.24,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 2091000000.0,
+    "util_operativa": 460000000.0,
+    "margen_op": 22.0,
+    "util_neta": 245000000.0,
+    "eps": 0.72,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 2160000000.0,
+    "util_operativa": 478000000.0,
+    "margen_op": 22.1,
+    "util_neta": 239000000.0,
+    "eps": 0.7,
+    "var_ingresos": 1.0
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "ARM": {
+  "trailingPE": 285.14285,
+  "pegRatio": 2.2,
+  "operatingMargins": 0.07603,
+  "revenueGrowth": 0.224,
+  "debtToEquity": 5.62,
+  "returnOnEquity": 0.13352999,
+  "freeCashflow": 1334499968,
+  "marketCap": 298441539584,
+  "dividendYield": null,
+  "targetMeanPrice": 287.79474,
+  "numeroAnalistas": 38,
+  "beta": 3.909,
+  "sector": "Technology",
+  "industria": "Semiconductors",
+  "bolsa": "NMS",
+  "nombre": "Arm Holdings plc",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 1135000000.0,
+    "util_operativa": 163000000.0,
+    "margen_op": 14.4,
+    "util_neta": 238000000.0,
+    "eps": 0.22,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1242000000.0,
+    "util_operativa": 191000000.0,
+    "margen_op": 15.4,
+    "util_neta": 223000000.0,
+    "eps": 0.21,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1490000000.0,
+    "util_operativa": 440000000.0,
+    "margen_op": 29.5,
+    "util_neta": 313000000.0,
+    "eps": 0.29,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1289000000.0,
+    "util_operativa": 98000000.0,
+    "margen_op": 7.6,
+    "util_neta": 270000000.0,
+    "eps": 0.25,
+    "var_ingresos": 22.4
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "PDD": {
+  "trailingPE": 8.8692465,
+  "pegRatio": 0.85,
+  "operatingMargins": 0.18419,
+  "revenueGrowth": 0.11,
+  "debtToEquity": 1.21,
+  "returnOnEquity": 0.254,
+  "freeCashflow": 71642849280,
+  "marketCap": 120689786880,
+  "dividendYield": null,
+  "targetMeanPrice": 116.66384,
+  "numeroAnalistas": 34,
+  "beta": -0.005,
+  "sector": "Consumer Cyclical",
+  "industria": "Internet Retail",
+  "bolsa": "NMS",
+  "nombre": "PDD Holdings Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 103984832000.0,
+    "util_operativa": 25792899000.0,
+    "margen_op": 24.8,
+    "util_neta": 30753457000.0,
+    "eps": 20.76,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 108276512000.0,
+    "util_operativa": 25025924000.0,
+    "margen_op": 23.1,
+    "util_neta": 29328184000.0,
+    "eps": 19.72,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 123912194000.0,
+    "util_operativa": 26197745000.0,
+    "margen_op": 21.1,
+    "util_neta": 23019069000.0,
+    "eps": 16.52,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 106229000000.0,
+    "util_operativa": 19566000000.0,
+    "margen_op": 18.4,
+    "util_neta": 12547000000.0,
+    "eps": 8.48,
+    "var_ingresos": 11.0
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "AMXB.MX": {
+  "trailingPE": 13.52027,
+  "pegRatio": 0.9,
+  "operatingMargins": 0.21493,
+  "revenueGrowth": 0.031,
+  "debtToEquity": 157.801,
+  "returnOnEquity": 0.21579,
+  "freeCashflow": 153238798336,
+  "marketCap": 1200460005376,
+  "dividendYield": 2.72,
+  "targetMeanPrice": 24.41818,
+  "numeroAnalistas": 11,
+  "beta": 0.265,
+  "sector": "Communication Services",
+  "industria": "Telecom Services",
+  "bolsa": "MEX",
+  "nombre": "AMERICA MOVIL SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 232918917000.0,
+    "util_operativa": 50123072000.0,
+    "margen_op": 21.5,
+    "util_neta": 22700155000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 244896960000.0,
+    "util_operativa": 48263878000.0,
+    "margen_op": 19.7,
+    "util_neta": 19134242000.0,
+    "eps": 0.32,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 236844000000.0,
+    "util_operativa": 52238000000.0,
+    "margen_op": 22.1,
+    "util_neta": 23401000000.0,
+    "eps": 0.39,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 241071000000.0,
+    "util_operativa": 55069000000.0,
+    "margen_op": 22.8,
+    "util_neta": 24332000000.0,
+    "eps": 0.4,
+    "var_ingresos": 3.1
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "WALMEX.MX": {
+  "trailingPE": 16.408304,
+  "pegRatio": 2.01,
+  "operatingMargins": 0.06782,
+  "revenueGrowth": 0.019,
+  "debtToEquity": 34.825,
+  "returnOnEquity": 0.21922001,
+  "freeCashflow": 22467825664,
+  "marketCap": null,
+  "dividendYield": 4.27,
+  "targetMeanPrice": 61.15,
+  "numeroAnalistas": 18,
+  "beta": 0.028,
+  "sector": "Consumer Defensive",
+  "industria": "Discount Stores",
+  "bolsa": "MEX",
+  "nombre": "WAL-MART DE MEXICO SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 246253797000.0,
+    "util_operativa": 17267099000.0,
+    "margen_op": 7.0,
+    "util_neta": 11226894000.0,
+    "eps": 0.65,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 282849301000.0,
+    "util_operativa": 23316985000.0,
+    "margen_op": 8.2,
+    "util_neta": 14599806000.0,
+    "eps": 0.84,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 245018486000.0,
+    "util_operativa": 18471574000.0,
+    "margen_op": 7.5,
+    "util_neta": 12499551000.0,
+    "eps": 0.72,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 250947844000.0,
+    "util_operativa": 17019686000.0,
+    "margen_op": 6.8,
+    "util_neta": 11152382000.0,
+    "eps": 0.65,
+    "var_ingresos": 4.1
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "FEMSAUBD.MX": {
+  "trailingPE": 16.50534,
+  "pegRatio": 2.28,
+  "operatingMargins": 0.07997,
+  "revenueGrowth": 0.093,
+  "debtToEquity": 84.073,
+  "returnOnEquity": 0.14746,
+  "freeCashflow": 89772843008,
+  "marketCap": 828024684544,
+  "dividendYield": 2.4,
+  "targetMeanPrice": 246.96922,
+  "numeroAnalistas": 13,
+  "beta": 0.184,
+  "sector": "Consumer Defensive",
+  "industria": "Beverages - Brewers",
+  "bolsa": "MEX",
+  "nombre": "FOMENTO ECONOMICO MEXICANO SAB ",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 214638000000.0,
+    "util_operativa": 18125000000.0,
+    "margen_op": 8.4,
+    "util_neta": 2415000000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 220104000000.0,
+    "util_operativa": 22712000000.0,
+    "margen_op": 10.3,
+    "util_neta": 8511000000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 207784000000.0,
+    "util_operativa": 14314000000.0,
+    "margen_op": 6.9,
+    "util_neta": 14826000000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 231002000000.0,
+    "util_operativa": 19110000000.0,
+    "margen_op": 8.3,
+    "util_neta": 5535000000.0,
+    "eps": null,
+    "var_ingresos": 9.3
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "GFNORTEO.MX": {
+  "trailingPE": 8.661447,
+  "pegRatio": 0.52,
+  "operatingMargins": 0.59359,
+  "revenueGrowth": 0.041,
+  "debtToEquity": null,
+  "returnOnEquity": 0.23516001,
+  "freeCashflow": null,
+  "marketCap": null,
+  "dividendYield": 9.09,
+  "targetMeanPrice": 224.93333,
+  "numeroAnalistas": 15,
+  "beta": 0.134,
+  "sector": "Financial Services",
+  "industria": "Banks - Regional",
+  "bolsa": "MEX",
+  "nombre": "GRUPO FINANCIERO BANORTE",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 57788000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 15874000000.0,
+    "eps": 5.63,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 67892313104.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 15458033913.0,
+    "eps": 5.0,
+    "var_ingresos": 7.1
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 62585511890.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 15550239002.0,
+    "eps": null,
+    "var_ingresos": -561.7
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "GMEXICOB.MX": {
+  "trailingPE": 15.371206,
+  "pegRatio": 0.28,
+  "operatingMargins": 0.55206,
+  "revenueGrowth": 0.35,
+  "debtToEquity": 42.379,
+  "returnOnEquity": 0.27071,
+  "freeCashflow": 4438724608,
+  "marketCap": null,
+  "dividendYield": 1.46,
+  "targetMeanPrice": 205.26778,
+  "numeroAnalistas": 15,
+  "beta": 1.062,
+  "sector": "Basic Materials",
+  "industria": "Other Industrial Metals & Mining",
+  "bolsa": "MEX",
+  "nombre": "GRUPO MEXICO SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 4236523000.0,
+    "util_operativa": 1990053000.0,
+    "margen_op": 47.0,
+    "util_neta": 1234603000.0,
+    "eps": 0.16,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 5153715000.0,
+    "util_operativa": 2553442000.0,
+    "margen_op": 49.5,
+    "util_neta": 1430988000.0,
+    "eps": 0.18,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 5565304000.0,
+    "util_operativa": 2963758000.0,
+    "margen_op": 53.3,
+    "util_neta": 1712891000.0,
+    "eps": 0.22,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 5717547000.0,
+    "util_operativa": 3116866000.0,
+    "margen_op": 54.5,
+    "util_neta": 2203856000.0,
+    "eps": 0.28,
+    "var_ingresos": 36.3
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "CEMEXCPO.MX": {
+  "trailingPE": null,
+  "pegRatio": 0.39,
+  "operatingMargins": 0.13738,
+  "revenueGrowth": 0.122,
+  "debtToEquity": 53.59,
+  "returnOnEquity": 0.040149998,
+  "freeCashflow": 1122481408,
+  "marketCap": 273006608384,
+  "dividendYield": 1.13,
+  "targetMeanPrice": 25.258404,
+  "numeroAnalistas": 7,
+  "beta": 0.847,
+  "sector": "Basic Materials",
+  "industria": "Building Materials",
+  "bolsa": "MEX",
+  "nombre": "CEMEX S.A.B. DE C.V.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 4245421000.0,
+    "util_operativa": 547329000.0,
+    "margen_op": 12.9,
+    "util_neta": 263699000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 4179825000.0,
+    "util_operativa": 456918000.0,
+    "margen_op": 10.9,
+    "util_neta": -355676000.0,
+    "eps": -0.02,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 4019000000.0,
+    "util_operativa": 453000000.0,
+    "margen_op": 11.3,
+    "util_neta": 228000000.0,
+    "eps": 0.02,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 4593416000.0,
+    "util_operativa": 680644000.0,
+    "margen_op": 14.8,
+    "util_neta": 346639000.0,
+    "eps": 0.24,
+    "var_ingresos": 12.2
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "TLEVISACPO.MX": {
+  "trailingPE": null,
+  "pegRatio": 57.07,
+  "operatingMargins": 0.110039994,
+  "revenueGrowth": -0.03,
+  "debtToEquity": 78.645,
+  "returnOnEquity": -0.0796,
+  "freeCashflow": 5341964800,
+  "marketCap": 25984057344,
+  "dividendYield": 3.35,
+  "targetMeanPrice": 22.3,
+  "numeroAnalistas": 5,
+  "beta": 1.041,
+  "sector": "Communication Services",
+  "industria": "Telecom Services",
+  "bolsa": "MEX",
+  "nombre": "GRUPO TELEVISA SAB",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 14627086000.0,
+    "util_operativa": 972549000.0,
+    "margen_op": 6.6,
+    "util_neta": -1932468000.0,
+    "eps": -0.72,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 14548111000.0,
+    "util_operativa": 1884516000.0,
+    "margen_op": 13.0,
+    "util_neta": -8030057000.0,
+    "eps": -351.0,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 14512525000.0,
+    "util_operativa": 1621808000.0,
+    "margen_op": 11.2,
+    "util_neta": 1031887000.0,
+    "eps": 0.39,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 14288877000.0,
+    "util_operativa": 1671472000.0,
+    "margen_op": 11.7,
+    "util_neta": -497351000.0,
+    "eps": -22.23,
+    "var_ingresos": -3.0
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "KOFUBL.MX": {
+  "trailingPE": 19.86344,
+  "pegRatio": 19.98,
+  "operatingMargins": 0.13621001,
+  "revenueGrowth": 0.047,
+  "debtToEquity": 61.95,
+  "returnOnEquity": 0.17065,
+  "freeCashflow": 16191672320,
+  "marketCap": 400949051392,
+  "dividendYield": 4.16,
+  "targetMeanPrice": 211.36154,
+  "numeroAnalistas": 13,
+  "beta": 0.525,
+  "sector": "Consumer Defensive",
+  "industria": "Beverages - Non-Alcoholic",
+  "bolsa": "MEX",
+  "nombre": "COCA-COLA FEMSA S.A.B. DE C.V.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 71884000000.0,
+    "util_operativa": 10194000000.0,
+    "margen_op": 14.2,
+    "util_neta": 5898000000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 77762000000.0,
+    "util_operativa": 11668000000.0,
+    "margen_op": 15.0,
+    "util_neta": 7502000000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 70926000000.0,
+    "util_operativa": 8934000000.0,
+    "margen_op": 12.6,
+    "util_neta": 4342000000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 76318000000.0,
+    "util_operativa": 10527000000.0,
+    "margen_op": 13.8,
+    "util_neta": 6211000000.0,
+    "eps": null,
+    "var_ingresos": 4.7
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "ASURB.MX": {
+  "trailingPE": 13.747702,
+  "pegRatio": 0.92,
+  "operatingMargins": 0.40611,
+  "revenueGrowth": 0.099,
+  "debtToEquity": 71.103,
+  "returnOnEquity": 0.22775999,
+  "freeCashflow": -5993828864,
+  "marketCap": 134535004160,
+  "dividendYield": 2.2,
+  "targetMeanPrice": 660.00714,
+  "numeroAnalistas": 14,
+  "beta": 0.199,
+  "sector": "Industrials",
+  "industria": "Airports & Air Services",
+  "bolsa": "MEX",
+  "nombre": "GPO AEROPORTUARIO DEL SURESTE S",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 8715432000.0,
+    "util_operativa": 4414008000.0,
+    "margen_op": 50.6,
+    "util_neta": 2144814000.0,
+    "eps": 7.15,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 8765450000.0,
+    "util_operativa": 3694943000.0,
+    "margen_op": 42.2,
+    "util_neta": 2114592000.0,
+    "eps": 7.05,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 10969074000.0,
+    "util_operativa": 3785108000.0,
+    "margen_op": 34.5,
+    "util_neta": 2713713000.0,
+    "eps": 9.05,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 8858050000.0,
+    "util_operativa": 4687877000.0,
+    "margen_op": 52.9,
+    "util_neta": 2813204000.0,
+    "eps": 9.38,
+    "var_ingresos": 0.8
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "GAPB.MX": {
+  "trailingPE": 19.093224,
+  "pegRatio": 1.08,
+  "operatingMargins": 0.44162998,
+  "revenueGrowth": 0.037,
+  "debtToEquity": 117.519,
+  "returnOnEquity": 0.28030002,
+  "freeCashflow": 6897928192,
+  "marketCap": 209607049216,
+  "dividendYield": 4.61,
+  "targetMeanPrice": 473.80768,
+  "numeroAnalistas": 13,
+  "beta": 0.309,
+  "sector": "Industrials",
+  "industria": "Airports & Air Services",
+  "bolsa": "MEX",
+  "nombre": "GPO AEROPORTUARIO DEL PACIFICO ",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 9576583000.0,
+    "util_operativa": 4149966000.0,
+    "margen_op": 43.3,
+    "util_neta": 2695980000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 9894777000.0,
+    "util_operativa": 4069177000.0,
+    "margen_op": 41.1,
+    "util_neta": 1355937000.0,
+    "eps": 3.55,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 11369628000.0,
+    "util_operativa": 5042801000.0,
+    "margen_op": 44.4,
+    "util_neta": 3312008000.0,
+    "eps": 6.55,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 11289710000.0,
+    "util_operativa": 4985920000.0,
+    "margen_op": 44.2,
+    "util_neta": 2893509000.0,
+    "eps": 4.86,
+    "var_ingresos": 3.7
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "OMAB.MX": {
+  "trailingPE": 15.643163,
+  "pegRatio": 0.76,
+  "operatingMargins": 0.53489,
+  "revenueGrowth": 0.026,
+  "debtToEquity": 153.584,
+  "returnOnEquity": 0.60541,
+  "freeCashflow": 2208885760,
+  "marketCap": 84814397440,
+  "dividendYield": 5.26,
+  "targetMeanPrice": 262.3857,
+  "numeroAnalistas": 14,
+  "beta": 0.333,
+  "sector": "Industrials",
+  "industria": "Airports & Air Services",
+  "bolsa": "MEX",
+  "nombre": "GRUPO AEROPORTUARIO DEL CENTRO ",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 3929012000.0,
+    "util_operativa": 2403168000.0,
+    "margen_op": 61.2,
+    "util_neta": 1504373000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 4113416000.0,
+    "util_operativa": 2128613000.0,
+    "margen_op": 51.7,
+    "util_neta": 1217201000.0,
+    "eps": 3.15,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 3816372000.0,
+    "util_operativa": 2080953000.0,
+    "margen_op": 54.5,
+    "util_neta": 1233146000.0,
+    "eps": 3.19,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 4466478000.0,
+    "util_operativa": 2389091000.0,
+    "margen_op": 53.5,
+    "util_neta": 1466505000.0,
+    "eps": 3.8,
+    "var_ingresos": 2.6
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "ALSEA.MX": {
+  "trailingPE": 22.076504,
+  "pegRatio": 0.99,
+  "operatingMargins": 0.099589996,
+  "revenueGrowth": -0.018,
+  "debtToEquity": 603.906,
+  "returnOnEquity": 0.20224,
+  "freeCashflow": 5761016320,
+  "marketCap": 32079648768,
+  "dividendYield": 2.47,
+  "targetMeanPrice": 60.85,
+  "numeroAnalistas": 14,
+  "beta": 0.393,
+  "sector": "Consumer Cyclical",
+  "industria": "Restaurants",
+  "bolsa": "MEX",
+  "nombre": "ALSEA SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "31 Mar 2025",
+    "ingresos": 19835812000.0,
+    "util_operativa": 1648027000.0,
+    "margen_op": 8.3,
+    "util_neta": 227395000.0,
+    "eps": 0.28,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 21474436000.0,
+    "util_operativa": 2138615000.0,
+    "margen_op": 10.0,
+    "util_neta": 1131075000.0,
+    "eps": 1.41,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 22024022000.0,
+    "util_operativa": 2688577000.0,
+    "margen_op": 12.2,
+    "util_neta": 650225000.0,
+    "eps": 0.81,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 20102614000.0,
+    "util_operativa": 1637571000.0,
+    "margen_op": 8.1,
+    "util_neta": 89305000.0,
+    "eps": 0.11,
+    "var_ingresos": -8.5
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "BIMBOA.MX": {
+  "trailingPE": 22.032846,
+  "pegRatio": 2.51,
+  "operatingMargins": 0.08405,
+  "revenueGrowth": -0.022,
+  "debtToEquity": 163.525,
+  "returnOnEquity": 0.115930006,
+  "freeCashflow": 26066513920,
+  "marketCap": 259366666240,
+  "dividendYield": 1.76,
+  "targetMeanPrice": 70.125,
+  "numeroAnalistas": 12,
+  "beta": 0.281,
+  "sector": "Consumer Defensive",
+  "industria": "Packaged Foods",
+  "bolsa": "MEX",
+  "nombre": "GRUPO BIMBO SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 108688058000.0,
+    "util_operativa": 11612523000.0,
+    "margen_op": 10.7,
+    "util_neta": 3157826000.0,
+    "eps": 0.73,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 100318746000.0,
+    "util_operativa": 8374354000.0,
+    "margen_op": 8.3,
+    "util_neta": 2361947000.0,
+    "eps": 0.55,
+    "var_ingresos": -3.0
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 105025793000.0,
+    "util_operativa": 9876745000.0,
+    "margen_op": 9.4,
+    "util_neta": 2934922000.0,
+    "eps": 0.68,
+    "var_ingresos": -2.2
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "PINFRA.MX": {
+  "trailingPE": 7.493238,
+  "pegRatio": 1.41,
+  "operatingMargins": 0.51413,
+  "revenueGrowth": 0.232,
+  "debtToEquity": 12.845,
+  "returnOnEquity": 0.22247,
+  "freeCashflow": 9915905024,
+  "marketCap": 97586618368,
+  "dividendYield": 2.82,
+  "targetMeanPrice": 320.375,
+  "numeroAnalistas": 8,
+  "beta": 0.372,
+  "sector": "Industrials",
+  "industria": "Infrastructure Operations",
+  "bolsa": "MEX",
+  "nombre": "PROMOTORA Y OPERADORA DE INFRST",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 4934758000.0,
+    "util_operativa": 2924123000.0,
+    "margen_op": 59.3,
+    "util_neta": 2138050000.0,
+    "eps": 5.85,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 5516473000.0,
+    "util_operativa": 3150026000.0,
+    "margen_op": 57.1,
+    "util_neta": 1276662000.0,
+    "eps": 4.07,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 5449123000.0,
+    "util_operativa": 2937197000.0,
+    "margen_op": 53.9,
+    "util_neta": 2212254000.0,
+    "eps": 6.14,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 6078037000.0,
+    "util_operativa": 3124891000.0,
+    "margen_op": 51.4,
+    "util_neta": 1765910000.0,
+    "eps": 5.21,
+    "var_ingresos": 32.1
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "ORBIA.MX": {
+  "trailingPE": null,
+  "pegRatio": 1.43,
+  "operatingMargins": 0.12925,
+  "revenueGrowth": 0.196,
+  "debtToEquity": 217.908,
+  "returnOnEquity": -0.07047,
+  "freeCashflow": 404624992,
+  "marketCap": 42051776512,
+  "dividendYield": null,
+  "targetMeanPrice": 26.751394,
+  "numeroAnalistas": 13,
+  "beta": 0.725,
+  "sector": "Industrials",
+  "industria": "Conglomerates",
+  "bolsa": "MEX",
+  "nombre": "ORBIA ADVANCE CORP S A B DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 1967000000.0,
+    "util_operativa": 138000000.0,
+    "margen_op": 7.0,
+    "util_neta": -126000000.0,
+    "eps": -0.07,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1875000000.0,
+    "util_operativa": 61000000.0,
+    "margen_op": 3.3,
+    "util_neta": -158000000.0,
+    "eps": -0.08,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1963000000.0,
+    "util_operativa": 95000000.0,
+    "margen_op": 4.8,
+    "util_neta": -38000000.0,
+    "eps": -0.02,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 2352000000.0,
+    "util_operativa": 304000000.0,
+    "margen_op": 12.9,
+    "util_neta": 15000000.0,
+    "eps": 0.01,
+    "var_ingresos": 29.9
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "GCARSOA1.MX": {
+  "trailingPE": 35.30334,
+  "pegRatio": null,
+  "operatingMargins": 0.10615,
+  "revenueGrowth": 0.039,
+  "debtToEquity": 30.96,
+  "returnOnEquity": 0.07295,
+  "freeCashflow": 12032209920,
+  "marketCap": 309392932864,
+  "dividendYield": 1.06,
+  "targetMeanPrice": 130.0,
+  "numeroAnalistas": 1,
+  "beta": 0.511,
+  "sector": "Industrials",
+  "industria": "Conglomerates",
+  "bolsa": "MEX",
+  "nombre": "GRUPO CARSO S.A.B. DE C.V.",
+  "trimestres": [
+   {
+    "periodo": "31 Mar 2025",
+    "ingresos": 44508083000.0,
+    "util_operativa": 4125914000.0,
+    "margen_op": 9.3,
+    "util_neta": 1630884000.0,
+    "eps": 1.06,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 46369475000.0,
+    "util_operativa": 4457989000.0,
+    "margen_op": 9.6,
+    "util_neta": 2678972000.0,
+    "eps": 1.78,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 54862057000.0,
+    "util_operativa": 4758496000.0,
+    "margen_op": 8.7,
+    "util_neta": 3066173000.0,
+    "eps": 1.7,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 44107216000.0,
+    "util_operativa": 3700984000.0,
+    "margen_op": 8.4,
+    "util_neta": 1523704000.0,
+    "eps": 0.85,
+    "var_ingresos": -23.4
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "PE&OLES.MX": {
+  "trailingPE": 9.172134,
+  "pegRatio": 0.52,
+  "operatingMargins": 0.44210997,
+  "revenueGrowth": 0.389,
+  "debtToEquity": 33.718,
+  "returnOnEquity": 0.42049,
+  "freeCashflow": 2108590080,
+  "marketCap": 337810653184,
+  "dividendYield": 0.75,
+  "targetMeanPrice": 948.0,
+  "numeroAnalistas": 5,
+  "beta": 1.111,
+  "sector": "Basic Materials",
+  "industria": "Other Industrial Metals & Mining",
+  "bolsa": "MEX",
+  "nombre": "INDUSTRIAS PENOLES SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 2078626000.0,
+    "util_operativa": 518645000.0,
+    "margen_op": 25.0,
+    "util_neta": 333254000.0,
+    "eps": 0.84,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 2792092000.0,
+    "util_operativa": 1040379000.0,
+    "margen_op": 37.3,
+    "util_neta": 551990000.0,
+    "eps": 1.39,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 3444491000.0,
+    "util_operativa": 1571227000.0,
+    "margen_op": 45.6,
+    "util_neta": 665034000.0,
+    "eps": 1.67,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 2886938000.0,
+    "util_operativa": 1297411000.0,
+    "margen_op": 44.9,
+    "util_neta": 642007000.0,
+    "eps": 1.62,
+    "var_ingresos": 60.6
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "AC.MX": {
+  "trailingPE": 17.899721,
+  "pegRatio": 2.28,
+  "operatingMargins": 0.16397,
+  "revenueGrowth": 0.001,
+  "debtToEquity": 39.041,
+  "returnOnEquity": 0.14336,
+  "freeCashflow": 13712402432,
+  "marketCap": 327377453056,
+  "dividendYield": 4.02,
+  "targetMeanPrice": 239.5,
+  "numeroAnalistas": 18,
+  "beta": 0.093,
+  "sector": "Consumer Defensive",
+  "industria": "Beverages - Non-Alcoholic",
+  "bolsa": "MEX",
+  "nombre": "ARCA CONTINENTAL SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 120465520000.0,
+    "util_operativa": 17868527000.0,
+    "margen_op": 14.8,
+    "util_neta": 9611769000.0,
+    "eps": 11.78,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 66872642000.0,
+    "util_operativa": 9721098000.0,
+    "margen_op": 14.5,
+    "util_neta": 4657897000.0,
+    "eps": 11.53,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 57127507000.0,
+    "util_operativa": 7594958000.0,
+    "margen_op": 13.3,
+    "util_neta": 3792058000.0,
+    "eps": 11.32,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 120616108000.0,
+    "util_operativa": 17493130000.0,
+    "margen_op": 14.5,
+    "util_neta": 8743699000.0,
+    "eps": 11.02,
+    "var_ingresos": 111.5
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "LIVEPOLC-1.MX": {
+  "trailingPE": 7.447008,
+  "pegRatio": 0.98,
+  "operatingMargins": 0.12109,
+  "revenueGrowth": 0.015,
+  "debtToEquity": 30.986,
+  "returnOnEquity": 0.1062,
+  "freeCashflow": 19993268224,
+  "marketCap": 138635427840,
+  "dividendYield": 2.83,
+  "targetMeanPrice": 121.2375,
+  "numeroAnalistas": 16,
+  "beta": 0.355,
+  "sector": "Consumer Cyclical",
+  "industria": "Department Stores",
+  "bolsa": "MEX",
+  "nombre": "EL PUERTO DE LIVERPOOL SAB DE C",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 56423963000.0,
+    "util_operativa": 7107597000.0,
+    "margen_op": 12.6,
+    "util_neta": 3294905000.0,
+    "eps": 2.46,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 79123334000.0,
+    "util_operativa": 13510582000.0,
+    "margen_op": 17.1,
+    "util_neta": 7589075000.0,
+    "eps": 5.66,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 45417648000.0,
+    "util_operativa": 3609359000.0,
+    "margen_op": 7.9,
+    "util_neta": 1914734000.0,
+    "eps": 1.43,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 57290244000.0,
+    "util_operativa": 6937216000.0,
+    "margen_op": 12.1,
+    "util_neta": 5118886000.0,
+    "eps": 3.83,
+    "var_ingresos": 25.8
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "GRUMAB.MX": {
+  "trailingPE": 10.70447,
+  "pegRatio": 1.08,
+  "operatingMargins": 0.13016,
+  "revenueGrowth": 0.031,
+  "debtToEquity": 93.759,
+  "returnOnEquity": 0.22107,
+  "freeCashflow": 264219120,
+  "marketCap": 85194145792,
+  "dividendYield": 2.27,
+  "targetMeanPrice": 354.3846,
+  "numeroAnalistas": 13,
+  "beta": -0.002,
+  "sector": "Consumer Defensive",
+  "industria": "Packaged Foods",
+  "bolsa": "MEX",
+  "nombre": "GRUMA SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 1600727000.0,
+    "util_operativa": 229768000.0,
+    "margen_op": 14.4,
+    "util_neta": 134089000.0,
+    "eps": 0.38,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 1589766000.0,
+    "util_operativa": 212685000.0,
+    "margen_op": 13.4,
+    "util_neta": 126625000.0,
+    "eps": 0.36,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 1624728000.0,
+    "util_operativa": 194444000.0,
+    "margen_op": 12.0,
+    "util_neta": 100643000.0,
+    "eps": 0.29,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 1649941000.0,
+    "util_operativa": 214759000.0,
+    "margen_op": 13.0,
+    "util_neta": 118668000.0,
+    "eps": 0.35,
+    "var_ingresos": 6.6
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "KIMBERA.MX": {
+  "trailingPE": 14.897727,
+  "pegRatio": 2.41,
+  "operatingMargins": 0.23666,
+  "revenueGrowth": 0.027,
+  "debtToEquity": 822.869,
+  "returnOnEquity": 1.94224,
+  "freeCashflow": 7160527872,
+  "marketCap": 117446025216,
+  "dividendYield": 5.58,
+  "targetMeanPrice": 43.125,
+  "numeroAnalistas": 12,
+  "beta": 0.192,
+  "sector": "Consumer Defensive",
+  "industria": "Household & Personal Products",
+  "bolsa": "MEX",
+  "nombre": "KIMBERLY-CLARK DE MEXICO SAB DE",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 14057927000.0,
+    "util_operativa": 3215339000.0,
+    "margen_op": 22.9,
+    "util_neta": 2195389000.0,
+    "eps": 0.73,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 14330984000.0,
+    "util_operativa": 3329255000.0,
+    "margen_op": 23.2,
+    "util_neta": 2026184000.0,
+    "eps": 0.68,
+    "var_ingresos": 3.6
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 14447603000.0,
+    "util_operativa": 3419116000.0,
+    "margen_op": 23.7,
+    "util_neta": 2034112000.0,
+    "eps": 0.68,
+    "var_ingresos": 2.7
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "CHDRAUIB.MX": {
+  "trailingPE": 13.965098,
+  "pegRatio": 0.79,
+  "operatingMargins": 0.056550004,
+  "revenueGrowth": -0.039,
+  "debtToEquity": 102.429,
+  "returnOnEquity": 0.122209996,
+  "freeCashflow": 14765657088,
+  "marketCap": 88278933504,
+  "dividendYield": 1.09,
+  "targetMeanPrice": 123.07143,
+  "numeroAnalistas": 14,
+  "beta": -0.071,
+  "sector": "Consumer Defensive",
+  "industria": "Grocery Stores",
+  "bolsa": "MEX",
+  "nombre": "GRUPO COMERCIAL CHEDRAUI SAB DE",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 73883849000.0,
+    "util_operativa": 4247997000.0,
+    "margen_op": 5.7,
+    "util_neta": 2008600000.0,
+    "eps": 2.08,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 75221139000.0,
+    "util_operativa": 3402986000.0,
+    "margen_op": 4.5,
+    "util_neta": 1356231000.0,
+    "eps": 1.41,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 69795808000.0,
+    "util_operativa": 3680616000.0,
+    "margen_op": 5.3,
+    "util_neta": 1559696000.0,
+    "eps": 1.62,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 71034917000.0,
+    "util_operativa": 4016894000.0,
+    "margen_op": 5.7,
+    "util_neta": 1781621000.0,
+    "eps": 1.85,
+    "var_ingresos": -4.6
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "LABB.MX": {
+  "trailingPE": 8.259036,
+  "pegRatio": 0.47,
+  "operatingMargins": 0.19950001,
+  "revenueGrowth": -0.06,
+  "debtToEquity": 66.651,
+  "returnOnEquity": 0.14162,
+  "freeCashflow": 438721984,
+  "marketCap": 13404988416,
+  "dividendYield": 5.78,
+  "targetMeanPrice": 22.66667,
+  "numeroAnalistas": 6,
+  "beta": 0.135,
+  "sector": "Healthcare",
+  "industria": "Drug Manufacturers - Specialty & Generic",
+  "bolsa": "MEX",
+  "nombre": "GENOMMA LAB INTERNACIONAL SAB",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 4016967000.0,
+    "util_operativa": 861168000.0,
+    "margen_op": 21.4,
+    "util_neta": 319636000.0,
+    "eps": 0.33,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 4190623000.0,
+    "util_operativa": 874418000.0,
+    "margen_op": 20.9,
+    "util_neta": 494647000.0,
+    "eps": 0.51,
+    "var_ingresos": -4.9
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 4397037000.0,
+    "util_operativa": 873033000.0,
+    "margen_op": 19.9,
+    "util_neta": 374493000.0,
+    "eps": 0.38,
+    "var_ingresos": -6.0
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "MEGACPO.MX": {
+  "trailingPE": 21.18421,
+  "pegRatio": null,
+  "operatingMargins": null,
+  "revenueGrowth": null,
+  "debtToEquity": null,
+  "returnOnEquity": null,
+  "freeCashflow": null,
+  "marketCap": null,
+  "dividendYield": null,
+  "targetMeanPrice": 69.62308,
+  "numeroAnalistas": 13,
+  "beta": null,
+  "sector": null,
+  "industria": null,
+  "bolsa": "MEX",
+  "nombre": "MEGACABLE HOLDINGS SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 8699519000.0,
+    "util_operativa": 1657058000.0,
+    "margen_op": 19.0,
+    "util_neta": 767654000.0,
+    "eps": 0.48,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 9202079000.0,
+    "util_operativa": 1567006000.0,
+    "margen_op": 17.0,
+    "util_neta": 43244000.0,
+    "eps": 0.44,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 9356792000.0,
+    "util_operativa": 1831805000.0,
+    "margen_op": 19.6,
+    "util_neta": 841097000.0,
+    "eps": 0.52,
+    "var_ingresos": 10.0
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": 0.99,
+    "var_ingresos": null
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "Q.MX": {
+  "trailingPE": 13.182615,
+  "pegRatio": null,
+  "operatingMargins": 0.10719,
+  "revenueGrowth": 0.037,
+  "debtToEquity": null,
+  "returnOnEquity": 0.1825,
+  "freeCashflow": -3994426624,
+  "marketCap": 59217068032,
+  "dividendYield": 9.03,
+  "targetMeanPrice": 181.18182,
+  "numeroAnalistas": 11,
+  "beta": -0.006,
+  "sector": "Financial Services",
+  "industria": "Insurance - Property & Casualty",
+  "bolsa": "MEX",
+  "nombre": "QUALITAS CONTROLADORA SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 18436255177.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 1404349330.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 23267684647.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": -195084634.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 22652471670.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 1556225067.0,
+    "eps": 3.95,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 18066409283.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 1389366658.0,
+    "eps": null,
+    "var_ingresos": -9.9
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "RA.MX": {
+  "trailingPE": 6.8300824,
+  "pegRatio": null,
+  "operatingMargins": 0.5065,
+  "revenueGrowth": 0.003,
+  "debtToEquity": null,
+  "returnOnEquity": 0.17709999,
+  "freeCashflow": null,
+  "marketCap": 43631263744,
+  "dividendYield": 6.19,
+  "targetMeanPrice": 173.83846,
+  "numeroAnalistas": 13,
+  "beta": 0.174,
+  "sector": "Financial Services",
+  "industria": "Banks - Regional",
+  "bolsa": "MEX",
+  "nombre": "REGIONAL SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 4851000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 1639000000.0,
+    "eps": 5.0,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 5048000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 1816000000.0,
+    "eps": 5.54,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 4833000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 1515000000.0,
+    "eps": 4.62,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 4952000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 1526000000.0,
+    "eps": 4.65,
+    "var_ingresos": 5.2
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "VESTA.MX": {
+  "trailingPE": 7.409731,
+  "pegRatio": null,
+  "operatingMargins": 0.74651,
+  "revenueGrowth": 0.168,
+  "debtToEquity": 37.431,
+  "returnOnEquity": 0.14135,
+  "freeCashflow": 161418304,
+  "marketCap": 53696471040,
+  "dividendYield": 2.54,
+  "targetMeanPrice": 70.22592,
+  "numeroAnalistas": 13,
+  "beta": 0.271,
+  "sector": "Real Estate",
+  "industria": "Real Estate - Diversified",
+  "bolsa": "MEX",
+  "nombre": "CORPORACION INMOBILIARIA VESTA ",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 67274134.0,
+    "util_operativa": 52310585.0,
+    "margen_op": 77.8,
+    "util_neta": 27719313.0,
+    "eps": 0.03,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 76445076.0,
+    "util_operativa": 60336320.0,
+    "margen_op": 78.9,
+    "util_neta": 174280456.0,
+    "eps": 0.2,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 76749154.0,
+    "util_operativa": 59545571.0,
+    "margen_op": 77.6,
+    "util_neta": 100982534.0,
+    "eps": 0.12,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 78487715.0,
+    "util_operativa": 61056387.0,
+    "margen_op": 77.8,
+    "util_neta": 101830636.0,
+    "eps": 0.11,
+    "var_ingresos": 17.0
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "FUNO11.MX": {
+  "trailingPE": 6.0874996,
+  "pegRatio": null,
+  "operatingMargins": 0.72435,
+  "revenueGrowth": 0.055,
+  "debtToEquity": 61.359,
+  "returnOnEquity": 0.12712,
+  "freeCashflow": 1410225664,
+  "marketCap": 112170426368,
+  "dividendYield": 8.75,
+  "targetMeanPrice": 34.84615,
+  "numeroAnalistas": 13,
+  "beta": 0.191,
+  "sector": "Real Estate",
+  "industria": "REIT - Diversified",
+  "bolsa": "MEX",
+  "nombre": "BANCO ACTINVER SA",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": null,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": null,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 7799065000.0,
+    "util_operativa": 5026800000.0,
+    "margen_op": 64.5,
+    "util_neta": 13783232000.0,
+    "eps": 3.62,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 7936771000.0,
+    "util_operativa": 5731317000.0,
+    "margen_op": 72.2,
+    "util_neta": 1372386000.0,
+    "eps": 0.36,
+    "var_ingresos": 5.4
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 7859051000.0,
+    "util_operativa": 5701074000.0,
+    "margen_op": 72.5,
+    "util_neta": 4107164000.0,
+    "eps": 1.07,
+    "var_ingresos": 5.8
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "GENTERA.MX": {
+  "trailingPE": 7.0314817,
+  "pegRatio": 0.59,
+  "operatingMargins": 0.35524,
+  "revenueGrowth": 0.091,
+  "debtToEquity": null,
+  "returnOnEquity": 0.26146,
+  "freeCashflow": null,
+  "marketCap": null,
+  "dividendYield": 4.68,
+  "targetMeanPrice": 54.73333,
+  "numeroAnalistas": 15,
+  "beta": 0.049,
+  "sector": "Financial Services",
+  "industria": "Credit Services",
+  "bolsa": "MEX",
+  "nombre": "GENTERA SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 11449074729.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 2105715044.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 13674552362.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 1906459423.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 12645473584.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 2428761375.0,
+    "eps": 2.0,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 13036841659.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 2283808379.0,
+    "eps": 1.45,
+    "var_ingresos": 18.0
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "BBAJIOO.MX": {
+  "trailingPE": 7.7423825,
+  "pegRatio": null,
+  "operatingMargins": 0.5284,
+  "revenueGrowth": 0.048,
+  "debtToEquity": null,
+  "returnOnEquity": 0.18596001,
+  "freeCashflow": null,
+  "marketCap": 66517180416,
+  "dividendYield": 12.89,
+  "targetMeanPrice": 64.19231,
+  "numeroAnalistas": 13,
+  "beta": 0.162,
+  "sector": "Financial Services",
+  "industria": "Banks - Regional",
+  "bolsa": "MEX",
+  "nombre": "BANCO DEL BAJIO",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 6356000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 2166000000.0,
+    "eps": 1.82,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 6809942693.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 2154952522.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 6127862387.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 2041547286.0,
+    "eps": 2.0,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 6172000000.0,
+    "util_operativa": null,
+    "margen_op": null,
+    "util_neta": 2118000000.0,
+    "eps": 1.78,
+    "var_ingresos": -6.1
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "CUERVO.MX": {
+  "trailingPE": 7.507389,
+  "pegRatio": 1.85,
+  "operatingMargins": 0.17352,
+  "revenueGrowth": -0.139,
+  "debtToEquity": 28.923,
+  "returnOnEquity": 0.10712,
+  "freeCashflow": 6617938944,
+  "marketCap": 54729523200,
+  "dividendYield": 3.57,
+  "targetMeanPrice": 19.22727,
+  "numeroAnalistas": 11,
+  "beta": 0.227,
+  "sector": "Consumer Defensive",
+  "industria": "Beverages - Wineries & Distilleries",
+  "bolsa": "MEX",
+  "nombre": "BECLE SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 11461567000.0,
+    "util_operativa": 2355590000.0,
+    "margen_op": 20.6,
+    "util_neta": 2003184000.0,
+    "eps": 0.56,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 11077000000.0,
+    "util_operativa": 2350000000.0,
+    "margen_op": 21.2,
+    "util_neta": 1353000000.0,
+    "eps": 0.38,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 7404704000.0,
+    "util_operativa": 683281000.0,
+    "margen_op": 9.2,
+    "util_neta": 388201000.0,
+    "eps": 0.11,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 9865449000.0,
+    "util_operativa": 1711812000.0,
+    "margen_op": 17.4,
+    "util_neta": 1409736000.0,
+    "eps": 0.39,
+    "var_ingresos": 2.5
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "VOLARA.MX": {
+  "trailingPE": null,
+  "pegRatio": 13.46,
+  "operatingMargins": -0.11504,
+  "revenueGrowth": 0.239,
+  "debtToEquity": 5717.213,
+  "returnOnEquity": -1.16834,
+  "freeCashflow": 429944736,
+  "marketCap": 15518435328,
+  "dividendYield": null,
+  "targetMeanPrice": 16.91667,
+  "numeroAnalistas": 6,
+  "beta": 1.063,
+  "sector": "Industrials",
+  "industria": "Airlines",
+  "bolsa": "MEX",
+  "nombre": "CONTROLADORA VUELA CIA DE AVIAC",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 784000000.0,
+    "util_operativa": 68000000.0,
+    "margen_op": 8.7,
+    "util_neta": 6000000.0,
+    "eps": null,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 881516000.0,
+    "util_operativa": 63878000.0,
+    "margen_op": 7.2,
+    "util_neta": 4128000.0,
+    "eps": 0.0,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 770000000.0,
+    "util_operativa": -21000000.0,
+    "margen_op": -2.7,
+    "util_neta": -71000000.0,
+    "eps": -0.62,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 859000000.0,
+    "util_operativa": -99000000.0,
+    "margen_op": -11.5,
+    "util_neta": -127000000.0,
+    "eps": -0.11,
+    "var_ingresos": 24.0
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "GCC.MX": {
+  "trailingPE": 11.931354,
+  "pegRatio": null,
+  "operatingMargins": 0.24324,
+  "revenueGrowth": 0.15,
+  "debtToEquity": 27.835,
+  "returnOnEquity": 0.13852,
+  "freeCashflow": 12821255,
+  "marketCap": 62926725120,
+  "dividendYield": 1.04,
+  "targetMeanPrice": 248.0886,
+  "numeroAnalistas": 10,
+  "beta": 0.48,
+  "sector": "Basic Materials",
+  "industria": "Building Materials",
+  "bolsa": "MEX",
+  "nombre": "GCC SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 363909000.0,
+    "util_operativa": 91018000.0,
+    "margen_op": 25.0,
+    "util_neta": 73514000.0,
+    "eps": 0.22,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 359751000.0,
+    "util_operativa": 110246000.0,
+    "margen_op": 30.6,
+    "util_neta": 84496000.0,
+    "eps": 0.26,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 295412000.0,
+    "util_operativa": 58019000.0,
+    "margen_op": 19.6,
+    "util_neta": 48136000.0,
+    "eps": 0.15,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 418410000.0,
+    "util_operativa": 102799000.0,
+    "margen_op": 24.6,
+    "util_neta": 74273000.0,
+    "eps": 0.23,
+    "var_ingresos": 69.7
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "AGUA.MX": {
+  "trailingPE": null,
+  "pegRatio": null,
+  "operatingMargins": 0.07125,
+  "revenueGrowth": 0.034,
+  "debtToEquity": 93.355,
+  "returnOnEquity": -0.02421,
+  "freeCashflow": 1340089472,
+  "marketCap": 6686755328,
+  "dividendYield": 3.9,
+  "targetMeanPrice": 26.43333,
+  "numeroAnalistas": 3,
+  "beta": 0.323,
+  "sector": "Industrials",
+  "industria": "Building Products & Equipment",
+  "bolsa": "MEX",
+  "nombre": "GRUPO ROTOPLAS SAB DE CV",
+  "trimestres": [
+   {
+    "periodo": "30 Jun 2025",
+    "ingresos": 2944818000.0,
+    "util_operativa": 206953000.0,
+    "margen_op": 7.0,
+    "util_neta": 42073000.0,
+    "eps": 0.09,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 2829348000.0,
+    "util_operativa": 161248000.0,
+    "margen_op": 5.7,
+    "util_neta": 90974000.0,
+    "eps": 0.19,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 2661015000.0,
+    "util_operativa": 160492000.0,
+    "margen_op": 6.0,
+    "util_neta": 112431000.0,
+    "eps": 0.23,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 3043501000.0,
+    "util_operativa": 216853000.0,
+    "margen_op": 7.1,
+    "util_neta": -193175000.0,
+    "eps": -0.17,
+    "var_ingresos": 15.5
+   }
+  ],
+  "actualizado": "2026-08-14T21:44:06+00:00"
  }
 }
