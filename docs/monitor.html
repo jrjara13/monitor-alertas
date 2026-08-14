@@ -5,69 +5,139 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cazador de Oportunidades - JARASOFT</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#0b0f14;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:20px 16px}
-  .wrap{max-width:1200px;margin:0 auto}
-  h1{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
-  h1 span{display:block;font-size:11px;font-weight:600;color:#475569;letter-spacing:.14em;margin-top:3px}
-  .sub{color:#64748b;font-size:12px;margin-top:6px}
-  .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-  button{background:#131922;border:1px solid #1e2733;color:#cbd5e1;font-size:12px;font-weight:600;padding:8px 12px;border-radius:8px;cursor:pointer;font-family:inherit}
-  button:active{border-color:#64748b}
-  input{width:100%;background:#131922;border:1px solid #1e2733;border-radius:10px;padding:13px 14px;color:#e2e8f0;font-size:16px;outline:none;font-family:inherit;margin-bottom:18px}
-  input:focus{border-color:#64748b}
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --s1:#0a0b10;--s2:#0f1018;--s3:#141520;
+  --border:#1c1d2c;--border2:#242538;
+  --text:#e2e4f0;--muted:#6b6d87;--dim:#3d3f55;
+  --green:#2dd4a0;--gbg:#0a2820;--red:#f05060;--rbg:#2a0c10;
+  --amber:#f0b840;--abg:#281e08;--blue:#60a8f0;--bbg:#0a1828;
+  --mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif;
+}
+html,body{background:#000}
+html{color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{padding:24px 16px 48px}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-size:19px;font-weight:700;line-height:1.2}
+h1 span{display:block;font-family:var(--mono);font-size:10px;font-weight:600;color:var(--dim);letter-spacing:.16em;margin-top:4px}
+.sub{color:var(--muted);font-family:var(--mono);font-size:11px;margin-top:6px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+button{background:var(--s3);border:1px solid var(--border2);color:var(--text);font-family:var(--mono);font-size:11px;font-weight:600;padding:9px 14px;border-radius:8px;cursor:pointer}
+button:active{background:var(--border2)}
+input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--text);font-size:16px;outline:none;font-family:inherit;margin-bottom:20px}
+input:focus{border-color:var(--border2)}
 
-  .secc{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#475569;font-weight:700;margin:4px 0 12px}
-  .idx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-bottom:26px}
-  .idx{background:#131922;border:1px solid #1e2733;border-radius:12px;padding:14px}
-  .idx-n{font-size:12px;color:#94a3b8;font-weight:600}
-  .idx-p{font-size:21px;font-weight:700;margin:4px 0 2px}
-  .idx-c{font-size:12px;font-weight:600}
-  .idx-x{font-size:10px;color:#475569;margin-top:6px}
-  .spark{display:block;margin-top:8px}
+.sl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:12px;padding-left:2px}
+.idx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:11px;margin-bottom:26px}
+.idx{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:13px}
+.idx-n{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.idx-p{font-family:var(--mono);font-size:19px;font-weight:700;margin:5px 0 2px}
+.idx-c{font-family:var(--mono);font-size:11px;font-weight:600}
+.idx-x{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:6px}
 
-  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-  .tab{background:#131922;border:1px solid #1e2733;color:#94a3b8;font-size:12px;font-weight:600;padding:7px 13px;border-radius:20px;cursor:pointer}
-  .tab.on{background:rgba(74,222,128,.12);border-color:rgba(74,222,128,.4);color:#4ade80}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.tab{background:var(--s2);border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:600;padding:7px 13px;border-radius:20px;cursor:pointer;letter-spacing:.04em}
+.tab.on{background:var(--gbg);border-color:#1a4028;color:var(--green)}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-  .card{background:#131922;border:1px solid #1e2733;border-radius:14px;padding:18px}
-  .ch{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;gap:10px}
-  .tk{font-size:19px;font-weight:700}
-  .nm{font-size:11px;color:#64748b;margin-top:1px}
-  .pr{font-size:14px;color:#94a3b8;margin-top:4px}
-  .badge{font-size:10px;font-weight:700;letter-spacing:.04em;padding:5px 9px;border-radius:6px;white-space:nowrap;border:1px solid}
-  .barbg{height:6px;background:#1e2733;border-radius:3px;position:relative;overflow:hidden;margin-top:12px}
-  .barfill{height:100%;border-radius:3px;position:absolute}
-  .sv{font-size:11px;color:#64748b;margin:6px 0 14px}
-  .mg{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-  .mt{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#475569;margin-bottom:6px;font-weight:600}
-  .mf{display:flex;justify-content:space-between;font-size:12px;padding:3px 0;color:#cbd5e1}
-  .mf b{color:#e2e8f0;font-weight:600}
-  .rf{display:flex;align-items:center;gap:8px;padding-top:12px;border-top:1px solid #1e2733;flex-wrap:wrap}
-  .rb{font-size:10px;font-weight:700;padding:4px 8px;border-radius:6px;border:1px solid}
-  .rd{font-size:10px;color:#64748b}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer}
+.ch{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.tk{font-family:var(--mono);font-size:17px;font-weight:700}
+.nm{font-size:11px;color:var(--muted);margin-top:2px}
+.pr{font-family:var(--mono);font-size:14px;color:var(--text);margin-top:5px}
+.chip{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.04em;padding:4px 9px;border-radius:20px;white-space:nowrap;border:1px solid}
+.barbg{height:6px;background:var(--s3);border-radius:3px;position:relative;overflow:hidden;margin-top:10px}
+.barfill{height:100%;border-radius:3px;position:absolute}
+.sv{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:6px}
+.mf{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;padding:4px 0;color:var(--muted)}
+.mf b{color:var(--text);font-weight:600}
+.cardfoot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:11px;margin-top:9px;border-top:1px solid var(--border)}
+.rb{font-family:var(--mono);font-size:9px;font-weight:600;padding:3px 8px;border-radius:4px;border:1px solid}
 
-  .full{background:#131922;border:1px solid #1e2733;border-radius:16px;padding:22px;margin-bottom:14px}
-  .fh{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:18px}
-  .fh .tk{font-size:28px;letter-spacing:-.01em}
-  .fh .pr{font-size:22px;color:#e2e8f0;font-weight:600}
-  .rends{display:flex;gap:14px;flex-wrap:wrap;margin:14px 0 20px}
-  .rend{background:#0b0f14;border:1px solid #1e2733;border-radius:9px;padding:9px 13px;min-width:78px}
-  .rend .l{font-size:10px;color:#475569;font-weight:600}
-  .rend .v{font-size:15px;font-weight:700;margin-top:2px}
-  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:20px}
-  .an{font-size:12.5px;color:#94a3b8;line-height:1.65}
-  .an b{color:#cbd5e1}
-  .niv{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-  .niv-i{flex:1;min-width:88px;background:#0b0f14;border:1px solid #1e2733;border-radius:9px;padding:9px 11px}
-  .niv-i .l{font-size:10px;color:#475569;font-weight:600}
-  .niv-i .v{font-size:14px;font-weight:700;margin-top:2px}
-  .volver{margin-bottom:14px}
-
-  .msg{text-align:center;color:#64748b;font-size:14px;padding:40px 20px;line-height:1.6}
-  .err{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.3);color:#fca5a5;padding:14px;border-radius:10px;font-size:13px}
-  .foot{text-align:center;font-size:11px;color:#475569;margin-top:32px;line-height:1.6}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.ph-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);margin-bottom:4px;text-transform:uppercase}
+.ph-title{font-size:17px;font-weight:700}
+.ph-right{text-align:right}
+.ph-date{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.sbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:15px 18px;background:var(--s2);border:1px solid var(--border);border-radius:10px;margin-bottom:22px}
+.bdiv{width:1px;height:36px;background:var(--border2)}
+.sm{text-align:center}
+.sm .v{font-family:var(--mono);font-size:13px;font-weight:600}
+.sm .l{font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:2px;letter-spacing:.04em}
+.ml{margin-left:auto;text-align:right}
+.gw{display:flex;gap:24px;align-items:center;flex-wrap:wrap;margin-bottom:24px}
+.gsw{position:relative;flex-shrink:0}
+.gc{position:absolute;top:58%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.gs{font-family:var(--mono);font-size:31px;font-weight:700;line-height:1}
+.gl{font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:4px;letter-spacing:.08em}
+.gm{flex:1;min-width:230px}
+.gm h2{font-size:15px;font-weight:600;margin-bottom:7px}
+.gm p{font-size:12.5px;color:var(--muted);line-height:1.68}
+.gm p b{color:var(--text)}
+.gv{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;padding:6px 14px;border-radius:4px;margin-top:11px;border:1px solid}
+.kstrip{display:grid;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px;grid-template-columns:repeat(6,1fr)}
+.kstrip.k5{grid-template-columns:repeat(5,1fr)}
+@media(max-width:640px){.kstrip,.kstrip.k5{grid-template-columns:repeat(3,1fr)}}
+.ki{background:var(--s1);padding:13px 11px}
+.ki .kl{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
+.ki .kv{font-family:var(--mono);font-size:14px;font-weight:600}
+.ki .ks{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:3px}
+.cb{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:17px 15px 11px;margin-bottom:24px}
+.ct{font-size:12.5px;font-weight:600;margin-bottom:3px}
+.cs{font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:12px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
+@media(max-width:580px){.g3{grid-template-columns:1fr 1fr}}
+.mc{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:13px;position:relative;overflow:hidden}
+.mct{display:flex;align-items:flex-start;justify-content:space-between;gap:6px;margin-bottom:6px}
+.mcn{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.mcb{font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.mcv{font-family:var(--mono);font-size:18px;font-weight:700;margin-bottom:3px}
+.mno{font-size:11px;color:var(--muted);line-height:1.5}
+.sb{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:24px}
+.sb h3{font-size:13px;font-weight:600;margin-bottom:14px}
+.sbr{margin-bottom:14px}
+.sbr:last-child{margin-bottom:0}
+.sbh{display:flex;justify-content:space-between;margin-bottom:5px}
+.sbn{font-family:var(--mono);font-size:11px}
+.sbs{font-family:var(--mono);font-size:11px;font-weight:600}
+.sbbar{height:7px;background:var(--s3);border-radius:4px;overflow:hidden}
+.sbf{height:100%;border-radius:4px}
+.sbi{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.sbit{font-family:var(--mono);font-size:9px;padding:3px 8px;border-radius:3px}
+.qt{background:var(--s2);border:1px solid var(--border);border-radius:10px;overflow-x:auto;margin-bottom:24px}
+table{width:100%;border-collapse:collapse;min-width:560px}
+thead tr{background:var(--s3)}
+th{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.07em;text-transform:uppercase;padding:11px 12px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+td{font-family:var(--mono);font-size:11px;padding:10px 12px;border-bottom:1px solid var(--border);white-space:nowrap}
+tr:last-child td{border-bottom:none}
+.trh{background:rgba(45,212,160,.05)}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+@media(max-width:640px){.dual{grid-template-columns:1fr}}
+.dc{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:18px}
+.dc h3{font-size:12px;font-weight:600;margin-bottom:12px}
+.dc ul{list-style:none}
+.dc ul li{font-size:12px;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);line-height:1.55;display:flex;gap:8px}
+.dc ul li:last-child{border-bottom:none}
+.dc ul li::before{flex-shrink:0;font-size:10px;margin-top:2px}
+.cat ul li::before{content:'▲';color:var(--green)}
+.ris ul li::before{content:'▼';color:var(--red)}
+.vb{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:24px}
+.vb h3{font-size:13px;font-weight:600;margin-bottom:15px}
+.rtrack{display:flex;height:28px;border-radius:6px;overflow:hidden;border:1px solid var(--border2)}
+.rseg{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.04em;text-align:center;padding:0 2px}
+.r-active{outline:2px solid #fff;outline-offset:-2px;opacity:1!important}
+.niv{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+@media(max-width:540px){.niv{grid-template-columns:1fr 1fr}}
+.nivc{text-align:center;padding:10px;background:var(--s3);border-radius:6px}
+.nivc .ev{font-family:var(--mono);font-size:14px;font-weight:600}
+.nivc .el{font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:4px}
+.vt{font-size:12.5px;color:var(--muted);line-height:1.72;border-top:1px solid var(--border);padding-top:15px;margin-top:6px}
+.vt b{color:var(--text)}
+.rfooter{font-family:var(--mono);font-size:9px;color:var(--dim);border-top:1px solid var(--border);padding-top:14px;line-height:1.8;margin-top:8px}
+.msg{text-align:center;color:var(--muted);font-size:13px;padding:40px 20px;line-height:1.7}
+.err{background:var(--rbg);border:1px solid #4a1218;color:#fca5a5;padding:14px;border-radius:10px;font-size:13px}
+.volver{margin-bottom:16px}
 </style>
 </head>
 <body>
@@ -77,361 +147,500 @@
       <h1>Cazador de Oportunidades<span>JARASOFT</span></h1>
       <div class="sub" id="sub">Cargando...</div>
     </div>
-    <button onclick="cargar()">Actualizar</button>
+    <button onclick="cargar()">↻ Actualizar</button>
   </div>
-
-  <input id="busq" placeholder="Busca un ticker o nombre (ej. NVDA, WALMEX, Apple)..." oninput="buscar(this.value)" autocomplete="off">
-
+  <input id="busq" placeholder="Busca un ticker o empresa (ej. NVDA, WALMEX, Apple)..." oninput="buscar(this.value)" autocomplete="off">
   <div id="cont"><div class="msg">Cargando datos...</div></div>
-
-  <div class="foot">
-    Herramienta de apoyo cuantitativo — no constituye recomendación de inversión individualizada.<br>
-    Score compuesto = 45% técnico + 40% fundamental − 15% penalización por riesgo.<br>
-    Datos: Yahoo Finance. Fundamentales con actualización semanal; técnicos, cada corrida.
-  </div>
 </div>
 
 <script>
 const URL_JSON = "https://jrjara13.github.io/monitor-alertas/alertas.json";
+const CS = {"COMPRA FUERTE":"#2dd4a0","COMPRA":"#2dd4a0","MANTENER / OBSERVAR":"#6b6d87","VENTA":"#f05060","VENTA FUERTE":"#f05060"};
+const CR = {Bajo:"#2dd4a0",Medio:"#f0b840",Alto:"#f05060"};
+const VERDE="#2dd4a0",ROJO="#f05060",AMBAR="#f0b840",AZUL="#60a8f0",GRIS="#6b6d87";
 
-const CS = {
-  "COMPRA FUERTE": "#22c55e", "COMPRA": "#4ade80",
-  "MANTENER / OBSERVAR": "#94a3b8", "VENTA": "#f87171", "VENTA FUERTE": "#ef4444"
-};
-const CR = { Bajo: "#22c55e", Medio: "#f59e0b", Alto: "#ef4444" };
-const VERDE = "#4ade80", ROJO = "#f87171", GRIS = "#94a3b8";
+let datos=null,indices=null,fechaDatos="",filtro="",vista="compra",detalle=null;
 
-let datos = null, indices = null, filtro = "", vista = "compra", detalle = null;
+const fmt=(v,d=2)=>typeof v==="number"?v.toFixed(d):"—";
+const pct=v=>typeof v==="number"?(v>=0?"+":"")+v.toFixed(2)+"%":"—";
+const pc1=v=>typeof v==="number"?(v*100).toFixed(1)+"%":"—";
+const colr=v=>typeof v!=="number"?GRIS:v>0?VERDE:v<0?ROJO:GRIS;
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const dol=v=>typeof v==="number"?"$"+fmt(v):"—";
 
-const fmt = (v, d = 2) => typeof v === "number" ? v.toFixed(d) : "—";
-const fmtPct = v => typeof v === "number" ? (v * 100).toFixed(1) + "%" : "—";
-const pct = v => typeof v === "number" ? (v >= 0 ? "+" : "") + v.toFixed(2) + "%" : "—";
-const colr = v => typeof v !== "number" ? GRIS : v > 0 ? VERDE : v < 0 ? ROJO : GRIS;
-const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c =>
-  ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-
-function cap(n) {
-  if (typeof n !== "number") return "—";
-  if (n >= 1e12) return "$" + (n / 1e12).toFixed(2) + " B";
-  if (n >= 1e9) return "$" + (n / 1e9).toFixed(1) + " mil M";
-  if (n >= 1e6) return "$" + (n / 1e6).toFixed(0) + " M";
-  return "$" + n;
+function cap(n){
+  if(typeof n!=="number")return "—";
+  if(n>=1e12)return "$"+(n/1e12).toFixed(2)+"T";
+  if(n>=1e9)return "$"+(n/1e9).toFixed(1)+"B";
+  if(n>=1e6)return "$"+(n/1e6).toFixed(0)+"M";
+  return "$"+n;
+}
+function miles(n){
+  if(typeof n!=="number")return "—";
+  const s=n<0?"-":"";n=Math.abs(n);
+  if(n>=1e9)return s+"$"+(n/1e9).toFixed(2)+"B";
+  if(n>=1e6)return s+"$"+(n/1e6).toFixed(1)+"M";
+  return s+"$"+n.toFixed(0);
 }
 
-async function cargar() {
-  document.getElementById("sub").textContent = "Cargando...";
-  try {
-    const r = await fetch(URL_JSON + "?t=" + Date.now());
-    if (!r.ok) throw new Error("HTTP " + r.status);
-    const j = await r.json();
-    datos = j.tickers || j;
-    indices = j.indices || {};
-    let fecha = "—";
-    if (j.actualizado) {
-      const d = new Date(j.actualizado.replace(/\.(\d{3})\d+/, ".$1"));
-      if (!isNaN(d)) fecha = d.toLocaleString("es-MX");
-    }
-    document.getElementById("sub").textContent =
-      Object.keys(datos).length + " emisoras · Actualizado: " + fecha;
+async function cargar(){
+  document.getElementById("sub").textContent="Cargando...";
+  try{
+    const r=await fetch(URL_JSON+"?t="+Date.now());
+    if(!r.ok)throw new Error("HTTP "+r.status);
+    const j=await r.json();
+    datos=j.tickers||j; indices=j.indices||{};
+    fechaDatos="—";
+    if(j.actualizado){const d=new Date(j.actualizado.replace(/\.(\d{3})\d+/,".$1"));if(!isNaN(d))fechaDatos=d.toLocaleString("es-MX");}
+    document.getElementById("sub").textContent=Object.keys(datos).length+" EMISORAS · "+fechaDatos;
     render();
-  } catch (e) {
-    document.getElementById("sub").textContent = "Error";
-    document.getElementById("cont").innerHTML =
-      '<div class="err">No se pudieron cargar los datos: ' + esc(e.message) + '</div>';
+  }catch(e){
+    document.getElementById("sub").textContent="Error";
+    document.getElementById("cont").innerHTML='<div class="err">No se pudieron cargar los datos: '+esc(e.message)+'</div>';
   }
 }
+function buscar(v){filtro=v.trim();detalle=null;render();}
+function cambiarVista(v){vista=v;render();}
+function abrir(t){detalle=t;window.scrollTo(0,0);render();}
+function cerrar(){detalle=null;render();}
 
-function buscar(v) { filtro = v.trim(); detalle = null; render(); }
-function cambiarVista(v) { vista = v; render(); }
-function abrir(t) { detalle = t; window.scrollTo(0, 0); render(); }
-function cerrar() { detalle = null; render(); }
+function media(s,n){const o=[];for(let i=0;i<s.length;i++){if(i<n-1){o.push(null);continue;}let x=0;for(let k=i-n+1;k<=i;k++)x+=s[k];o.push(x/n);}return o;}
 
-function sparkline(serie, color, w = 160, h = 34) {
-  const s = (serie || []).filter(v => typeof v === "number");
-  if (s.length < 2) return "";
-  const mn = Math.min(...s), mx = Math.max(...s), rg = mx - mn || 1;
-  const pts = s.map((v, i) =>
-    (i / (s.length - 1) * w).toFixed(1) + "," + (h - (v - mn) / rg * h).toFixed(1)).join(" ");
-  return '<svg class="spark" width="100%" height="' + h + '" viewBox="0 0 ' + w + ' ' + h +
-    '" preserveAspectRatio="none"><polyline points="' + pts +
-    '" fill="none" stroke="' + color + '" stroke-width="1.6"/></svg>';
+function sparkline(serie,color,w=160,h=32){
+  const s=(serie||[]).filter(v=>typeof v==="number");
+  if(s.length<2)return "";
+  const mn=Math.min(...s),mx=Math.max(...s),rg=mx-mn||1;
+  const pts=s.map((v,i)=>(i/(s.length-1)*w).toFixed(1)+","+(h-(v-mn)/rg*h).toFixed(1)).join(" ");
+  return '<svg width="100%" height="'+h+'" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" style="display:block;margin-top:8px"><polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="1.6"/></svg>';
 }
 
-function media(s, n) {
-  const out = [];
-  for (let i = 0; i < s.length; i++) {
-    if (i < n - 1) { out.push(null); continue; }
-    let sum = 0;
-    for (let k = i - n + 1; k <= i; k++) sum += s[k];
-    out.push(sum / n);
-  }
-  return out;
+function graficoCompleto(serie,niv,pt){
+  const s=(serie||[]).filter(v=>typeof v==="number");
+  if(s.length<25)return '<div class="mno">Sin historial suficiente para graficar.</div>';
+  const W=820,H=210,pL=52,pR=14,pT=20,pB=28,cW=W-pL-pR,cH=H-pT-pB;
+  const m20=media(s,20),m50=media(s,50);
+  let all=s.concat(m20.filter(v=>v!=null),m50.filter(v=>v!=null));
+  if(typeof pt==="number")all=all.concat([pt]);
+  const mn=Math.min(...all)*0.98,mx=Math.max(...all)*1.02,rg=mx-mn||1;
+  const X=i=>(pL+i/(s.length-1)*cW).toFixed(1), Y=v=>(pT+cH-(v-mn)/rg*cH).toFixed(1);
+  let h="";
+  for(let i=0;i<=4;i++){const v=mn+i/4*rg,y=Y(v);
+    h+='<line x1="'+pL+'" y1="'+y+'" x2="'+(W-pR)+'" y2="'+y+'" stroke="#141520"/>';
+    h+='<text x="'+(pL-5)+'" y="'+(+y+3)+'" font-family="JetBrains Mono" font-size="9" fill="#6b6d87" text-anchor="end">$'+v.toFixed(0)+'</text>';}
+  if(typeof pt==="number"&&pt>mn&&pt<mx){
+    h+='<line x1="'+pL+'" y1="'+Y(pt)+'" x2="'+(W-pR)+'" y2="'+Y(pt)+'" stroke="'+AMBAR+'" stroke-width="1" stroke-dasharray="2,4" opacity=".7"/>';
+    h+='<text x="'+(pL+5)+'" y="'+(Y(pt)-4)+'" font-family="JetBrains Mono" font-size="8" fill="'+AMBAR+'">PT CONSENSO $'+fmt(pt)+'</text>';}
+  const li=(a,c,w2)=>{const p=a.map((v,i)=>v==null?null:X(i)+","+Y(v)).filter(Boolean).join(" ");
+    return p?'<polyline points="'+p+'" fill="none" stroke="'+c+'" stroke-width="'+w2+'"/>':"";};
+  const sube=s[s.length-1]>=s[0],col=sube?VERDE:ROJO;
+  const area=X(0)+","+(pT+cH)+" "+s.map((v,i)=>X(i)+","+Y(v)).join(" ")+" "+X(s.length-1)+","+(pT+cH);
+  h+='<defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="'+col+'"/><stop offset="100%" stop-color="'+col+'" stop-opacity="0"/></linearGradient></defs>';
+  h+='<polygon points="'+area+'" fill="url(#lg)" opacity=".13"/>';
+  h+=li(s,col,2)+li(m20,AZUL,1.2)+li(m50,AMBAR,1.2);
+  h+='<circle cx="'+X(s.length-1)+'" cy="'+Y(s[s.length-1])+'" r="4" fill="'+col+'"/>';
+  h+='<text x="'+(pL+6)+'" y="'+(pT+10)+'" font-family="JetBrains Mono" font-size="8" fill="'+col+'">— Precio</text>';
+  h+='<text x="'+(pL+70)+'" y="'+(pT+10)+'" font-family="JetBrains Mono" font-size="8" fill="'+AZUL+'">— SMA 20</text>';
+  h+='<text x="'+(pL+140)+'" y="'+(pT+10)+'" font-family="JetBrains Mono" font-size="8" fill="'+AMBAR+'">— SMA 50</text>';
+  return '<svg width="100%" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" style="display:block">'+h+'</svg>';
 }
 
-function grafico(serie) {
-  const s = (serie || []).filter(v => typeof v === "number");
-  if (s.length < 25) return '<div class="an">Sin historial suficiente para graficar.</div>';
-  const W = 600, H = 190, P = 4;
-  const m20 = media(s, 20), m50 = media(s, 50);
-  const todos = s.concat(m20.filter(v => v != null), m50.filter(v => v != null));
-  const mn = Math.min(...todos), mx = Math.max(...todos), rg = mx - mn || 1;
-  const X = i => (i / (s.length - 1) * (W - P * 2) + P).toFixed(1);
-  const Y = v => (H - P - (v - mn) / rg * (H - P * 2)).toFixed(1);
-  const linea = (arr, color, gr) => {
-    const pts = arr.map((v, i) => v == null ? null : X(i) + "," + Y(v))
-      .filter(Boolean).join(" ");
-    return pts ? '<polyline points="' + pts + '" fill="none" stroke="' + color +
-      '" stroke-width="' + gr + '"/>' : "";
-  };
-  const subida = s[s.length - 1] >= s[0];
-  return '<svg width="100%" height="' + H + '" viewBox="0 0 ' + W + ' ' + H +
-    '" preserveAspectRatio="none" style="margin:6px 0 4px">' +
-    linea(s, subida ? VERDE : ROJO, 1.8) +
-    linea(m20, "#60a5fa", 1.1) +
-    linea(m50, "#f59e0b", 1.1) +
-    '</svg>' +
-    '<div style="font-size:10px;color:#475569;display:flex;gap:14px;flex-wrap:wrap">' +
-    '<span style="color:' + (subida ? VERDE : ROJO) + '">— Precio</span>' +
-    '<span style="color:#60a5fa">— SMA 20</span>' +
-    '<span style="color:#f59e0b">— SMA 50</span>' +
-    '<span>· últimos ' + s.length + ' días hábiles</span></div>';
-}
-
-function render() {
-  if (!datos) return;
-  const cont = document.getElementById("cont");
-
-  if (detalle && datos[detalle]) { cont.innerHTML = vistaCompleta(detalle, datos[detalle]); return; }
-
-  if (filtro) {
-    const f = filtro.toLowerCase();
-    const hits = Object.entries(datos).filter(([t, r]) =>
-      t.toLowerCase().includes(f) || (r.nombre || "").toLowerCase().includes(f));
-    if (!hits.length) {
-      cont.innerHTML = '<div class="msg">Sin resultados para "' + esc(filtro) + '".<br>' +
-        'El universo cubre S&P 500, NASDAQ-100 y BMV. Para emisoras de BMV usa el sufijo .MX (ej. WALMEX.MX).</div>';
-      return;
-    }
-    if (hits.length === 1) { cont.innerHTML = vistaCompleta(hits[0][0], hits[0][1]); return; }
-    hits.sort((a, b) => b[1].compuesto.score_compuesto - a[1].compuesto.score_compuesto);
-    cont.innerHTML = '<div class="secc">' + hits.length + ' coincidencias — toca una para ver el detalle</div>' +
-      '<div class="grid">' + hits.slice(0, 60).map(([t, r]) => card(t, r)).join("") + '</div>';
+function render(){
+  if(!datos)return;
+  const cont=document.getElementById("cont");
+  if(detalle&&datos[detalle]){cont.innerHTML=reporte(detalle,datos[detalle]);return;}
+  if(filtro){
+    const f=filtro.toLowerCase();
+    const hits=Object.entries(datos).filter(([t,r])=>t.toLowerCase().includes(f)||(r.nombre||"").toLowerCase().includes(f));
+    if(!hits.length){cont.innerHTML='<div class="msg">Sin resultados para "'+esc(filtro)+'".<br>El universo cubre S&P 500, NASDAQ-100 y BMV. Para emisoras de BMV usa el sufijo .MX (ej. WALMEX.MX).</div>';return;}
+    if(hits.length===1){cont.innerHTML=reporte(hits[0][0],hits[0][1]);return;}
+    hits.sort((a,b)=>b[1].compuesto.score_compuesto-a[1].compuesto.score_compuesto);
+    cont.innerHTML='<div class="sl">'+hits.length+' coincidencias — toca una para abrir su reporte</div><div class="grid">'+hits.slice(0,60).map(([t,r])=>card(t,r)).join("")+'</div>';
     return;
   }
-
-  const todos = Object.entries(datos);
-  const compra = todos.filter(([, r]) => r.compuesto.señal.includes("COMPRA"));
-  const venta = todos.filter(([, r]) => r.compuesto.señal.includes("VENTA"));
-
-  let html = '<div class="secc">Mercados en este momento</div><div class="idx-grid">' +
-    Object.values(indices || {}).map(tarjetaIndice).join("") + '</div>';
-
-  html += '<div class="secc">Señales activas</div>' +
-    '<div class="tabs">' +
-    tab("compra", "Compras (" + compra.length + ")") +
-    tab("venta", "Ventas (" + venta.length + ")") +
-    tab("riesgo", "Compras de bajo riesgo") + '</div>';
-
+  const todos=Object.entries(datos);
+  const compra=todos.filter(([,r])=>r.compuesto.señal.includes("COMPRA"));
+  const venta=todos.filter(([,r])=>r.compuesto.señal.includes("VENTA"));
+  let h='<div class="sl">Mercados en este momento</div><div class="idx-grid">'+Object.values(indices||{}).map(idxCard).join("")+'</div>';
+  h+='<div class="sl">Señales activas</div><div class="tabs">'+tab("compra","COMPRAS ("+compra.length+")")+tab("venta","VENTAS ("+venta.length+")")+tab("riesgo","COMPRAS BAJO RIESGO")+'</div>';
   let lista;
-  if (vista === "compra") lista = compra.sort((a, b) => b[1].compuesto.score_compuesto - a[1].compuesto.score_compuesto);
-  else if (vista === "venta") lista = venta.sort((a, b) => a[1].compuesto.score_compuesto - b[1].compuesto.score_compuesto);
-  else lista = compra.filter(([, r]) => r.riesgo.nivel_riesgo === "Bajo")
-    .sort((a, b) => b[1].compuesto.score_compuesto - a[1].compuesto.score_compuesto);
-
-  html += lista.length
-    ? '<div class="grid">' + lista.slice(0, 12).map(([t, r]) => card(t, r)).join("") + '</div>' +
-      (lista.length > 12 ? '<div class="msg">Mostrando las 12 principales de ' + lista.length +
-        '. Usa el buscador para ver cualquier emisora.</div>' : '')
-    : '<div class="msg">Sin resultados en esta vista.</div>';
-
-  cont.innerHTML = html;
+  if(vista==="compra")lista=compra.sort((a,b)=>b[1].compuesto.score_compuesto-a[1].compuesto.score_compuesto);
+  else if(vista==="venta")lista=venta.sort((a,b)=>a[1].compuesto.score_compuesto-b[1].compuesto.score_compuesto);
+  else lista=compra.filter(([,r])=>r.riesgo.nivel_riesgo==="Bajo").sort((a,b)=>b[1].compuesto.score_compuesto-a[1].compuesto.score_compuesto);
+  h+=lista.length?'<div class="grid">'+lista.slice(0,12).map(([t,r])=>card(t,r)).join("")+'</div>'+(lista.length>12?'<div class="msg">Mostrando 12 de '+lista.length+'. Usa el buscador para abrir cualquier emisora.</div>':''):'<div class="msg">Sin resultados en esta vista.</div>';
+  cont.innerHTML=h;
 }
 
-function tarjetaIndice(x) {
-  const c = colr(x.cambio_1d);
-  return '<div class="idx"><div class="idx-n">' + esc(x.nombre) + '</div>' +
-    '<div class="idx-p">' + fmt(x.precio) + '</div>' +
-    '<div class="idx-c" style="color:' + c + '">' + pct(x.cambio_1d) + ' hoy</div>' +
-    sparkline(x.serie, c) +
-    '<div class="idx-x">1 mes ' + pct(x.cambio_1m) + ' · YTD ' + pct(x.ytd) + '</div></div>';
+function idxCard(x){
+  const c=colr(x.cambio_1d);
+  return '<div class="idx"><div class="idx-n">'+esc(x.nombre)+'</div><div class="idx-p">'+fmt(x.precio)+'</div>'+
+    '<div class="idx-c" style="color:'+c+'">'+pct(x.cambio_1d)+'</div>'+sparkline(x.serie,c)+
+    '<div class="idx-x">1M '+pct(x.cambio_1m)+' · YTD '+pct(x.ytd)+'</div></div>';
+}
+function tab(v,l){return '<div class="tab'+(vista===v?' on':'')+'" onclick="cambiarVista(\''+v+'\')">'+l+'</div>';}
+function mf(l,v){return '<div class="mf"><span>'+l+'</span><b>'+v+'</b></div>';}
+
+function card(t,r){
+  const c=CS[r.compuesto.señal]||GRIS,cr=CR[r.riesgo.nivel_riesgo]||GRIS;
+  const sc=r.compuesto.score_compuesto,w=Math.min(Math.abs(sc),100)/2,left=sc>=0?50:50-w;
+  return '<div class="card" onclick="abrir(\''+t.replace(/'/g,"\\'")+'\')">'+
+    '<div class="ch"><div><div class="tk">'+esc(t)+'</div>'+(r.nombre?'<div class="nm">'+esc(r.nombre)+'</div>':'')+
+    '<div class="pr">'+dol(r.tecnico.precio_actual)+'</div></div>'+
+    '<div class="chip" style="color:'+c+';background:'+c+'1a;border-color:'+c+'4d">'+esc(r.compuesto.señal)+'</div></div>'+
+    '<div class="barbg"><div class="barfill" style="width:'+w+'%;left:'+left+'%;background:'+c+'"></div></div>'+
+    '<div class="sv">SCORE '+(sc>=0?"+":"")+sc+' / ±100</div>'+
+    '<div style="margin-top:8px">'+mf("RSI (14)",fmt(r.tecnico.rsi,1))+mf("P/E",fmt(r.fundamental.pe,1))+mf("3 meses",pct((r.rendimiento||{}).m3))+'</div>'+
+    '<div class="cardfoot"><span class="rb" style="color:'+cr+';background:'+cr+'1a;border-color:'+cr+'4d">RIESGO '+esc(r.riesgo.nivel_riesgo).toUpperCase()+'</span>'+
+    '<span style="font-family:var(--mono);font-size:9px;color:var(--dim)">TOCA PARA EL REPORTE</span></div></div>';
 }
 
-function tab(v, l) {
-  return '<div class="tab' + (vista === v ? ' on' : '') + '" onclick="cambiarVista(\'' + v + '\')">' + l + '</div>';
+function gauge(score){
+  const p=Math.max(0,Math.min(100,score))/100, ang=Math.PI*(1-p);
+  const x=(100+80*Math.cos(ang)).toFixed(1), y=(100-80*Math.sin(ang)).toFixed(1);
+  return '<svg width="200" height="115" viewBox="0 0 200 115">'+
+    '<defs><linearGradient id="gG" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="'+VERDE+'"/><stop offset="50%" stop-color="'+AMBAR+'"/><stop offset="100%" stop-color="'+ROJO+'"/></linearGradient></defs>'+
+    '<path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="#141520" stroke-width="16" stroke-linecap="round"/>'+
+    '<path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="url(#gG)" stroke-width="16" stroke-linecap="round" opacity=".18"/>'+
+    (p>0.01?'<path d="M 20 100 A 80 80 0 0 1 '+x+' '+y+'" fill="none" stroke="url(#gG)" stroke-width="16" stroke-linecap="round"/>':'')+
+    '<line x1="100" y1="100" x2="'+x+'" y2="'+y+'" stroke="#e2e4f0" stroke-width="2" stroke-linecap="round" opacity=".85"/>'+
+    '<circle cx="100" cy="100" r="5" fill="#e2e4f0"/>'+
+    '<text x="16" y="112" font-family="JetBrains Mono" font-size="9" fill="#6b6d87">0</text>'+
+    '<text x="91" y="18" font-family="JetBrains Mono" font-size="9" fill="#6b6d87">50</text>'+
+    '<text x="178" y="112" font-family="JetBrains Mono" font-size="9" fill="#6b6d87">100</text></svg>';
 }
 
-function card(t, r) {
-  const c = CS[r.compuesto.señal] || GRIS;
-  const cr = CR[r.riesgo.nivel_riesgo] || GRIS;
-  const sc = r.compuesto.score_compuesto;
-  const w = Math.min(Math.abs(sc), 100) / 2, left = sc >= 0 ? 50 : 50 - w;
-
-  return '<div class="card" style="cursor:pointer" onclick="abrir(\'' + t.replace(/'/g, "\\'") + '\')">' +
-    '<div class="ch"><div><div class="tk">' + esc(t) + '</div>' +
-    (r.nombre ? '<div class="nm">' + esc(r.nombre) + '</div>' : '') +
-    '<div class="pr">$' + fmt(r.tecnico.precio_actual) + '</div></div>' +
-    '<div class="badge" style="color:' + c + ';background:' + c + '1a;border-color:' + c + '4d">' +
-    esc(r.compuesto.señal) + '</div></div>' +
-    '<div class="barbg"><div class="barfill" style="width:' + w + '%;left:' + left + '%;background:' + c + '"></div></div>' +
-    '<div class="sv">Score: <b style="color:#cbd5e1">' + sc + '</b> / ±100</div>' +
-    '<div class="mg"><div><div class="mt">Técnico</div>' +
-    mf("RSI (14)", fmt(r.tecnico.rsi, 1)) + mf("MACD hist.", fmt(r.tecnico.macd_hist, 3)) +
-    '</div><div><div class="mt">Fundamental</div>' +
-    mf("P/E", fmt(r.fundamental.pe, 1)) + mf("Margen op.", fmtPct(r.fundamental.margen_operativo)) +
-    '</div></div>' +
-    '<div class="rf"><span class="rb" style="color:' + cr + ';background:' + cr + '1a;border-color:' + cr + '4d">Riesgo ' +
-    esc(r.riesgo.nivel_riesgo) + '</span><span class="rd">Toca para ver el detalle</span></div></div>';
+function mcard(nombre,badge,color,valor,nota){
+  return '<div class="mc"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:'+color+'"></div>'+
+    '<div class="mct"><div class="mcn">'+nombre+'</div><span class="mcb" style="background:'+color+'1a;color:'+color+'">'+badge+'</span></div>'+
+    '<div class="mcv">'+valor+'</div><div class="mno">'+nota+'</div></div>';
 }
 
-function mf(l, v) { return '<div class="mf"><span>' + l + '</span><b>' + v + '</b></div>'; }
+function reporte(t,r){
+  const tc=r.tecnico,fu=r.fundamental,rg=r.riesgo,rd=r.rendimiento||{},nv=r.niveles||{};
+  const c=CS[r.compuesto.señal]||GRIS,cr=CR[rg.nivel_riesgo]||GRIS;
+  const sc=r.compuesto.score_compuesto,w=Math.min(Math.abs(sc),100)/2,left=sc>=0?50:50-w;
+  const p=tc.precio_actual;
+  const desdeMax=(typeof p==="number"&&typeof nv.max52==="number")?(p/nv.max52-1)*100:null;
+  const upside=(typeof fu.precio_objetivo==="number"&&typeof p==="number")?(fu.precio_objetivo/p-1)*100:null;
 
-function vistaCompleta(t, r) {
-  const c = CS[r.compuesto.señal] || GRIS;
-  const cr = CR[r.riesgo.nivel_riesgo] || GRIS;
-  const sc = r.compuesto.score_compuesto;
-  const w = Math.min(Math.abs(sc), 100) / 2, left = sc >= 0 ? 50 : 50 - w;
-  const rd = r.rendimiento || {}, nv = r.niveles || {}, tc = r.tecnico, fu = r.fundamental;
+  let h='<div class="volver"><button onclick="cerrar()">← Volver</button></div>';
+  h+='<div class="ph"><div><div class="ph-tag">Reporte de Riesgo Accionario · Generado automáticamente</div>'+
+     '<div class="ph-title">Cazador de Oportunidades · JARASOFT</div></div>'+
+     '<div class="ph-right"><div class="ph-date">'+esc(fechaDatos)+'</div></div></div>';
 
-  const rend = (l, v) => '<div class="rend"><div class="l">' + l +
-    '</div><div class="v" style="color:' + colr(v) + '">' + pct(v) + '</div></div>';
-  const niv = (l, v, col) => '<div class="niv-i"><div class="l">' + l +
-    '</div><div class="v" style="color:' + col + '">' + (typeof v === "number" ? "$" + fmt(v) : "—") + '</div></div>';
+  h+='<div class="sbar"><div><div class="tk" style="font-size:21px">'+esc(t)+
+     ' <span style="font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:400">'+esc(r.nombre||"")+'</span></div>'+
+     '<div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">'+
+     [r.sector,r.industria].filter(Boolean).map(esc).join(" · ")+'</div></div>'+
+     '<div class="bdiv"></div><div class="sm"><div class="v">'+dol(p)+'</div><div class="l">ÚLTIMO</div></div>'+
+     '<div class="bdiv"></div><div class="sm"><div class="v" style="color:'+colr(desdeMax)+'">'+pct(desdeMax)+'</div><div class="l">DESDE MÁX 52S</div></div>'+
+     '<div class="bdiv"></div><div class="sm"><div class="v">'+dol(nv.min52)+'</div><div class="l">MÍN 52S</div></div>'+
+     '<div class="bdiv"></div><div class="sm"><div class="v">'+dol(nv.max52)+'</div><div class="l">MÁX 52S</div></div>'+
+     '<div class="bdiv"></div><div class="sm"><div class="v">'+cap(fu.market_cap)+'</div><div class="l">CAP. MERC.</div></div>'+
+     '<div class="bdiv"></div><div class="sm"><div class="v">'+fmt(rg.beta,2)+'β</div><div class="l">BETA</div></div>'+
+     '<div class="ml"><span class="chip" style="color:'+c+';background:'+c+'1a;border-color:'+c+'4d">'+esc(r.compuesto.señal)+'</span>'+
+     '<div style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:6px">SCORE '+(sc>=0?"+":"")+sc+
+     (typeof fu.precio_objetivo==="number"?' · PT '+dol(fu.precio_objetivo)+(fu.num_analistas?' ('+fu.num_analistas+' analistas)':''):'')+
+     '</div></div></div>';
 
-  return '<div class="volver"><button onclick="cerrar()">← Volver</button></div>' +
-    '<div class="full">' +
-    '<div class="fh"><div><div class="tk">' + esc(t) + '</div>' +
-    '<div class="nm">' + esc(r.nombre || "") + (r.sector ? ' · ' + esc(r.sector) : '') +
-    (r.industria ? ' · ' + esc(r.industria) : '') + '</div>' +
-    '<div class="pr" style="margin-top:8px">$' + fmt(tc.precio_actual) + '</div></div>' +
-    '<div class="badge" style="font-size:12px;padding:8px 13px;color:' + c + ';background:' + c + '1a;border-color:' + c + '4d">' +
-    esc(r.compuesto.señal) + '</div></div>' +
+  h+='<div class="gw"><div class="gsw">'+gauge(rg.score_riesgo)+
+     '<div class="gc"><div class="gs" style="color:'+cr+'">'+Math.round(rg.score_riesgo)+'</div><div class="gl">SCORE RIESGO</div></div></div>'+
+     '<div class="gm"><h2>'+tituloGauge(rg,r.compuesto)+'</h2><p>'+resumenGauge(r)+'</p>'+
+     '<div class="gv" style="background:'+c+'1a;color:'+c+';border-color:'+c+'4d">'+
+     (sc>=0?'▲ ':'▼ ')+esc(r.compuesto.señal)+' — '+etiquetaSenal(r)+'</div></div></div>';
 
-    '<div class="barbg"><div class="barfill" style="width:' + w + '%;left:' + left + '%;background:' + c + '"></div></div>' +
-    '<div class="sv">Score compuesto: <b style="color:#cbd5e1">' + sc + '</b> / ±100 &nbsp;·&nbsp; ' +
-    'Riesgo <b style="color:' + cr + '">' + esc(r.riesgo.nivel_riesgo) + '</b></div>' +
+  h+='<div class="sl">Métricas Clave</div><div class="kstrip">'+
+     ki("Score Compuesto",(sc>=0?"+":"")+sc,"de ±100",c)+
+     ki("RSI (14)",fmt(tc.rsi,1),tc.rsi<30?"Sobreventa":tc.rsi>70?"Sobrecompra":"Neutral",tc.rsi<30?VERDE:tc.rsi>70?ROJO:AZUL)+
+     ki("P/E Trailing",typeof fu.pe==="number"?fmt(fu.pe,1)+"×":"—","PEG "+(typeof fu.peg==="number"?fmt(fu.peg,2)+"×":"—"),
+        typeof fu.pe!=="number"?GRIS:fu.pe<15?VERDE:fu.pe>35?AMBAR:AZUL)+
+     ki("Margen Operativo",pc1(fu.margen_operativo),"ROE "+pc1(fu.roe),
+        typeof fu.margen_operativo!=="number"?GRIS:fu.margen_operativo>0.2?VERDE:fu.margen_operativo<0.05?ROJO:AMBAR)+
+     ki("Crec. Ingresos",pc1(fu.crecimiento_ingresos),"Últimos 12 meses",
+        typeof fu.crecimiento_ingresos!=="number"?GRIS:fu.crecimiento_ingresos>0.1?VERDE:fu.crecimiento_ingresos<0?ROJO:AMBAR)+
+     ki("Volatilidad Anual",fmt(rg.volatilidad_anualizada,1)+"%","Beta "+fmt(rg.beta,2),
+        rg.volatilidad_anualizada>45?ROJO:rg.volatilidad_anualizada<20?VERDE:AMBAR)+
+     '</div>';
 
-    '<div class="rends">' + rend("5 días", rd.d5) + rend("1 mes", rd.m1) + rend("3 meses", rd.m3) +
-    rend("En el año", rd.ytd) + rend("vs S&P 3m", rd.vs_sp500_3m) + '</div>' +
+  h+='<div class="sl">Gráfica de Precio · 150 Días Hábiles</div><div class="cb">'+
+     '<div class="ct">'+tituloGrafico(tc)+'</div>'+
+     '<div class="cs">MÁX 52S '+dol(nv.max52)+' · MÍN 52S '+dol(nv.min52)+
+     (typeof fu.precio_objetivo==="number"?' · PT consenso '+dol(fu.precio_objetivo):'')+'</div>'+
+     graficoCompleto(r.serie,nv,fu.precio_objetivo)+'</div>';
 
-    grafico(r.serie) +
+  h+='<div class="sl">Rendimiento y Fuerza Relativa</div><div class="kstrip k5">'+
+     ki("5 días",pct(rd.d5),"",colr(rd.d5))+ki("1 mes",pct(rd.m1),"",colr(rd.m1))+
+     ki("3 meses",pct(rd.m3),"",colr(rd.m3))+ki("En el año",pct(rd.ytd),"",colr(rd.ytd))+
+     ki("vs S&P 500 (3m)",typeof rd.vs_sp500_3m==="number"?(rd.vs_sp500_3m>=0?"+":"")+fmt(rd.vs_sp500_3m,1)+" pp":"—",
+        typeof rd.vs_sp500_3m==="number"?(rd.vs_sp500_3m>=0?"Supera al índice":"Bajo el índice"):"",colr(rd.vs_sp500_3m))+
+     '</div>';
 
-    '<div class="cols">' +
+  h+='<div class="sl">Tarjeta de Valuación</div><div class="g3">'+tarjetasValuacion(fu,rg,upside)+'</div>';
 
-    '<div><div class="mt">Análisis técnico</div><div class="an">' + textoTecnico(tc) + '</div>' +
-    '<div class="mt" style="margin-top:16px">Niveles clave</div><div class="niv">' +
-    niv("Soporte 2", nv.s2, ROJO) + niv("Soporte 1", nv.s1, ROJO) +
-    niv("Resist. 1", nv.r1, VERDE) + niv("Resist. 2", nv.r2, VERDE) + '</div>' +
-    '<div style="margin-top:12px">' +
-    mf("SMA 20", "$" + fmt(tc.sma20)) + mf("SMA 50", "$" + fmt(tc.sma50)) +
-    mf("SMA 200", typeof tc.sma200 === "number" ? "$" + fmt(tc.sma200) : "—") +
-    mf("Volumen relativo", fmt(tc.volumen_relativo, 2) + "x") + '</div></div>' +
+  if((r.trimestres||[]).length){
+    h+='<div class="sl">Tendencia Trimestral · Últimos '+r.trimestres.length+' Trimestres Reportados</div><div class="qt"><table>'+
+      '<thead><tr><th>Trimestre</th><th>Ingresos</th><th>Var. a/a</th><th>Util. Operativa</th><th>Margen Op.</th><th>Util. Neta</th><th>EPS</th></tr></thead><tbody>';
+    r.trimestres.forEach((q,i)=>{
+      const ult=i===r.trimestres.length-1;
+      h+='<tr'+(ult?' class="trh"':'')+'><td style="color:'+(ult?VERDE:GRIS)+';font-weight:'+(ult?600:400)+'">'+(ult?'★ ':'')+esc(q.periodo)+'</td>'+
+        '<td>'+miles(q.ingresos)+'</td><td style="color:'+colr(q.var_ingresos)+'">'+(typeof q.var_ingresos==="number"?pct(q.var_ingresos):"—")+'</td>'+
+        '<td>'+miles(q.util_operativa)+'</td><td style="color:'+(typeof q.margen_op==="number"?(q.margen_op>15?VERDE:q.margen_op>0?AMBAR:ROJO):GRIS)+'">'+
+        (typeof q.margen_op==="number"?fmt(q.margen_op,1)+"%":"—")+'</td>'+
+        '<td>'+miles(q.util_neta)+'</td><td>'+(typeof q.eps==="number"?"$"+fmt(q.eps,2):"—")+'</td></tr>';
+    });
+    h+='</tbody></table><div style="font-family:var(--mono);font-size:9px;color:var(--dim);padding:8px 12px">Estados financieros trimestrales según los reporta la fuente. La variación anual compara contra el mismo trimestre del año previo.</div></div>';
+  }
 
-    '<div><div class="mt">Análisis fundamental</div><div class="an">' + textoFundamental(fu, r) + '</div>' +
-    '<div style="margin-top:12px">' +
-    mf("P/E", fmt(fu.pe, 1)) + mf("PEG", fmt(fu.peg, 2)) +
-    mf("Margen operativo", fmtPct(fu.margen_operativo)) +
-    mf("Crecimiento ingresos", fmtPct(fu.crecimiento_ingresos)) +
-    mf("ROE", fmtPct(fu.roe)) + mf("Deuda / Capital", fmt(fu.deuda_capital, 1)) +
-    mf("Dividendo", fmtPct(fu.dividend_yield)) +
-    mf("Capitalización", cap(fu.market_cap)) +
-    mf("Precio objetivo (consenso)", typeof fu.precio_objetivo === "number" ? "$" + fmt(fu.precio_objetivo) : "—") +
-    '</div></div>' +
+  h+=desgloseScore(r);
 
-    '<div><div class="mt">Perfil de riesgo</div><div class="an">' + textoRiesgo(r.riesgo, rd) + '</div>' +
-    '<div style="margin-top:12px">' +
-    mf("Score de riesgo", fmt(r.riesgo.score_riesgo, 1) + " / 100") +
-    mf("Volatilidad anual", fmt(r.riesgo.volatilidad_anualizada, 1) + "%") +
-    mf("Máximo drawdown", fmt(r.riesgo.max_drawdown, 1) + "%") +
-    mf("Beta", fmt(r.riesgo.beta, 2)) +
-    mf("ATR relativo", fmt(r.riesgo.atr_relativo, 2) + "%") + '</div></div>' +
+  const fav=factoresFavor(r),con=factoresContra(r);
+  h+='<div class="sl">Factores a Favor y en Contra · Derivados de las Métricas</div><div class="dual">'+
+     '<div class="dc cat"><h3 style="color:'+VERDE+'">▲ FACTORES A FAVOR</h3><ul>'+
+     (fav.length?fav.map(x=>'<li>'+x+'</li>').join(""):'<li>Sin factores positivos destacables en las métricas actuales.</li>')+'</ul></div>'+
+     '<div class="dc ris"><h3 style="color:'+ROJO+'">▼ FACTORES EN CONTRA</h3><ul>'+
+     (con.length?con.map(x=>'<li>'+x+'</li>').join(""):'<li>Sin factores de riesgo destacables en las métricas actuales.</li>')+'</ul></div></div>';
 
-    '</div></div>';
+  h+='<div class="sl">Niveles Operativos y Veredicto</div>'+veredicto(t,r);
+
+  h+='<div class="rfooter">'+esc(t)+' · Reporte generado automáticamente por Cazador de Oportunidades · JARASOFT · Datos: Yahoo Finance · '+esc(fechaDatos)+'<br>'+
+     'NO CONSTITUYE ASESORÍA DE INVERSIÓN. Herramienta de apoyo cuantitativo basada en reglas fijas. Las señales deben interpretarse junto con su propio análisis y el perfil del cliente.</div>';
+  return h;
 }
 
-function textoTecnico(tc) {
-  const p = tc.precio_actual, partes = [];
-  if (typeof tc.rsi === "number") {
-    partes.push(tc.rsi < 30 ? "El <b>RSI en " + fmt(tc.rsi, 1) + "</b> indica sobreventa: el papel ha caído con fuerza y podría rebotar."
-      : tc.rsi > 70 ? "El <b>RSI en " + fmt(tc.rsi, 1) + "</b> indica sobrecompra: el avance ha sido rápido y podría corregir."
-      : "El <b>RSI en " + fmt(tc.rsi, 1) + "</b> está en zona neutral, sin extremos de sobrecompra ni sobreventa.");
-  }
-  if (typeof tc.macd_hist === "number") {
-    partes.push(tc.macd_hist > 0
-      ? "El <b>histograma MACD es positivo</b>, señal de momentum alcista vigente."
-      : "El <b>histograma MACD es negativo</b>, señal de momentum bajista vigente.");
-  }
-  if (typeof p === "number" && typeof tc.sma20 === "number" && typeof tc.sma50 === "number") {
-    partes.push(p > tc.sma20 && tc.sma20 > tc.sma50
-      ? "El precio cotiza <b>por encima de sus medias de 20 y 50 días</b>, con las medias alineadas al alza: tendencia positiva."
-      : p < tc.sma20 && tc.sma20 < tc.sma50
-      ? "El precio cotiza <b>por debajo de sus medias de 20 y 50 días</b>, con las medias alineadas a la baja: tendencia negativa."
-      : "El precio y sus medias móviles <b>no muestran una alineación clara</b>: tendencia indefinida o en transición.");
-  }
-  if (typeof p === "number" && typeof tc.sma200 === "number") {
-    partes.push(p > tc.sma200
-      ? "Se mantiene <b>sobre la media de 200 días</b>, referencia habitual de tendencia de largo plazo alcista."
-      : "Cotiza <b>bajo la media de 200 días</b>, lo que suele leerse como debilidad de largo plazo.");
-  }
-  if (typeof tc.volumen_relativo === "number" && tc.volumen_relativo > 1.5) {
-    partes.push("El <b>volumen reciente supera en " + fmt(tc.volumen_relativo, 1) +
-      "x su promedio</b>, señal de interés inusual que suele acompañar movimientos relevantes.");
-  }
-  return partes.join(" ") || "Sin datos técnicos suficientes.";
+function ki(l,v,s,col){
+  return '<div class="ki"><div class="kl">'+l+'</div><div class="kv" style="color:'+(col||"var(--text)")+'">'+v+'</div>'+
+    '<div class="ks">'+(s||"&nbsp;")+'</div></div>';
+}
+function tituloGauge(rg,comp){
+  const t=comp.señal.includes("COMPRA")?"Señal de Compra":comp.señal.includes("VENTA")?"Señal de Venta":"Sin Señal Direccional";
+  return "Riesgo "+rg.nivel_riesgo+" · "+t;
+}
+function etiquetaSenal(r){
+  const tp=r.tecnico.score_tecnico>0,fp=r.fundamental.score_fundamental>0;
+  if(tp&&fp)return "TÉCNICO Y FUNDAMENTAL ALINEADOS";
+  if(tp&&!fp)return "MOMENTUM SIN RESPALDO FUNDAMENTAL";
+  if(!tp&&fp)return "FUNDAMENTALES SÓLIDOS, TÉCNICO DÉBIL";
+  return "DEBILIDAD EN AMBOS FRENTES";
+}
+function resumenGauge(r){
+  const rg=r.riesgo,tc=r.tecnico,fu=r.fundamental,sc=r.compuesto.score_compuesto;
+  let s="Score de riesgo <b>"+fmt(rg.score_riesgo,1)+"/100 ("+rg.nivel_riesgo+")</b>: volatilidad anual de "+
+    fmt(rg.volatilidad_anualizada,1)+"%, caída máxima de "+fmt(rg.max_drawdown,1)+"% en los últimos doce meses y beta de "+
+    fmt(rg.beta,2)+". ";
+  s+="El score compuesto de <b>"+(sc>=0?"+":"")+sc+"</b> resulta de un bloque técnico de "+tc.score_tecnico+
+    "/4 y uno fundamental de "+fu.score_fundamental+"/6, con la penalización por riesgo aplicada. ";
+  if(typeof fu.pe==="number")
+    s+="El P/E de "+fmt(fu.pe,1)+"× "+(fu.pe<15?"es bajo frente al promedio del mercado.":fu.pe>35?"es exigente y descuenta crecimiento elevado sostenido.":"se ubica en rango razonable.");
+  return s;
+}
+function tituloGrafico(tc){
+  const p=tc.precio_actual;
+  if(typeof p!=="number"||typeof tc.sma20!=="number"||typeof tc.sma50!=="number")return "Evolución del precio con medias móviles";
+  if(p>tc.sma20&&tc.sma20>tc.sma50)return "Precio sobre SMA20 y SMA50, con las medias alineadas al alza — estructura alcista";
+  if(p<tc.sma20&&tc.sma20<tc.sma50)return "Precio bajo SMA20 y SMA50, con las medias alineadas a la baja — estructura bajista";
+  return "Precio y medias móviles sin alineación clara — tendencia en transición";
 }
 
-function textoFundamental(fu, r) {
-  const partes = [];
-  if (typeof fu.pe === "number") {
-    partes.push(fu.pe < 0 ? "La empresa <b>reporta pérdidas</b>, por lo que el P/E no es interpretable."
-      : fu.pe < 15 ? "Cotiza a <b>" + fmt(fu.pe, 1) + " veces utilidades</b>, múltiplo bajo frente al promedio del mercado."
-      : fu.pe > 35 ? "Cotiza a <b>" + fmt(fu.pe, 1) + " veces utilidades</b>, múltiplo exigente que descuenta crecimiento elevado."
-      : "Cotiza a <b>" + fmt(fu.pe, 1) + " veces utilidades</b>, en rango razonable.");
-  }
-  if (typeof fu.crecimiento_ingresos === "number") {
-    partes.push(fu.crecimiento_ingresos > 0.15 ? "Los ingresos crecen <b>" + fmtPct(fu.crecimiento_ingresos) + " anual</b>, ritmo alto."
-      : fu.crecimiento_ingresos < 0 ? "Los ingresos <b>se contraen " + fmtPct(fu.crecimiento_ingresos) + "</b>, señal de deterioro operativo."
-      : "Los ingresos crecen <b>" + fmtPct(fu.crecimiento_ingresos) + " anual</b>, ritmo moderado.");
-  }
-  if (typeof fu.margen_operativo === "number") {
-    partes.push(fu.margen_operativo > 0.20 ? "El <b>margen operativo de " + fmtPct(fu.margen_operativo) + "</b> refleja alta rentabilidad."
-      : fu.margen_operativo < 0.05 ? "El <b>margen operativo de " + fmtPct(fu.margen_operativo) + "</b> es estrecho: poco colchón ante costos."
-      : "El <b>margen operativo de " + fmtPct(fu.margen_operativo) + "</b> es intermedio.");
-  }
-  if (typeof fu.deuda_capital === "number") {
-    partes.push(fu.deuda_capital > 150 ? "El <b>apalancamiento es elevado</b> (deuda/capital " + fmt(fu.deuda_capital, 0) + "), lo que amplifica el riesgo financiero."
-      : fu.deuda_capital < 50 ? "El <b>balance está poco apalancado</b> (deuda/capital " + fmt(fu.deuda_capital, 0) + ")."
-      : "El <b>apalancamiento es moderado</b> (deuda/capital " + fmt(fu.deuda_capital, 0) + ").");
-  }
-  if (typeof fu.precio_objetivo === "number" && typeof r.tecnico.precio_actual === "number") {
-    const up = (fu.precio_objetivo / r.tecnico.precio_actual - 1) * 100;
-    partes.push("El <b>consenso de analistas</b> ubica el precio objetivo en $" + fmt(fu.precio_objetivo) +
-      " (" + pct(up) + " respecto al precio actual).");
-  }
-  return partes.join(" ") || "Sin datos fundamentales disponibles todavía para esta emisora.";
+function tarjetasValuacion(fu,rg,upside){
+  let h="";
+  h+=mcard("P/U Trailing",typeof fu.pe!=="number"?"SIN DATO":fu.pe<0?"PÉRDIDAS":fu.pe<15?"BAJO":fu.pe>35?"EXIGENTE":"RAZONABLE",
+    typeof fu.pe!=="number"?GRIS:fu.pe<0?ROJO:fu.pe<15?VERDE:fu.pe>35?AMBAR:VERDE,
+    typeof fu.pe==="number"?fmt(fu.pe,1)+"×":"—",
+    typeof fu.pe!=="number"?"Sin dato disponible en la fuente para esta emisora.":
+    fu.pe<0?"La empresa reporta pérdidas; el múltiplo de utilidades no es interpretable.":
+    fu.pe<15?"Múltiplo por debajo del promedio del mercado.":
+    fu.pe>35?"Múltiplo por encima del promedio. Descuenta continuidad del crecimiento; una desaceleración lo comprimiría con rapidez.":
+    "Múltiplo en rango intermedio frente al promedio del mercado.");
+  h+=mcard("PEG",typeof fu.peg!=="number"?"SIN DATO":fu.peg<1?"FAVORABLE":fu.peg>2?"CARO":"NEUTRAL",
+    typeof fu.peg!=="number"?GRIS:fu.peg<1?VERDE:fu.peg>2?ROJO:AMBAR,
+    typeof fu.peg==="number"?fmt(fu.peg,2)+"×":"—",
+    typeof fu.peg!=="number"?"Sin dato disponible.":
+    fu.peg<1?"Por debajo de 1: ajustado por su tasa de crecimiento, el múltiplo deja de verse caro.":
+    fu.peg>2?"Por encima de 2: el precio pagado supera con holgura el crecimiento esperado.":
+    "Cerca de 1: el múltiplo guarda proporción con el crecimiento esperado.");
+  h+=mcard("PT Consenso",typeof upside!=="number"?"SIN DATO":upside>0?pct(upside)+" UPSIDE":pct(upside)+" DOWNSIDE",
+    typeof upside!=="number"?GRIS:upside>0?VERDE:ROJO,
+    typeof fu.precio_objetivo==="number"?dol(fu.precio_objetivo):"—",
+    typeof fu.precio_objetivo!=="number"?"Sin cobertura de analistas registrada en la fuente.":
+    "Precio objetivo promedio de analistas"+(fu.num_analistas?" ("+fu.num_analistas+" opiniones)":"")+". Implica un recorrido de "+pct(upside)+" desde el nivel actual.");
+  h+=mcard("Rentabilidad",typeof fu.margen_operativo!=="number"?"SIN DATO":fu.margen_operativo>0.2?"MUY ALTA":fu.margen_operativo<0.05?"ESTRECHA":"INTERMEDIA",
+    typeof fu.margen_operativo!=="number"?GRIS:fu.margen_operativo>0.2?VERDE:fu.margen_operativo<0.05?ROJO:AMBAR,
+    pc1(fu.margen_operativo),
+    "Margen operativo"+(typeof fu.roe==="number"?", con ROE de "+pc1(fu.roe):"")+". "+
+    (typeof fu.margen_operativo!=="number"?"Sin dato disponible.":
+     fu.margen_operativo>0.2?"Indica poder de fijación de precios y apalancamiento operativo.":
+     fu.margen_operativo<0.05?"Poco colchón ante aumentos de costos o presión competitiva.":
+     "Rentabilidad en línea con el promedio del mercado."));
+  h+=mcard("Apalancamiento",typeof fu.deuda_capital!=="number"?"SIN DATO":fu.deuda_capital<50?"BAJO":fu.deuda_capital>150?"ELEVADO":"MODERADO",
+    typeof fu.deuda_capital!=="number"?GRIS:fu.deuda_capital<50?VERDE:fu.deuda_capital>150?ROJO:AMBAR,
+    typeof fu.deuda_capital==="number"?fmt(fu.deuda_capital,1):"—",
+    "Deuda sobre capital. "+(typeof fu.deuda_capital!=="number"?"Sin dato disponible.":
+     fu.deuda_capital<50?"Balance poco apalancado: baja sensibilidad al ciclo de tasas.":
+     fu.deuda_capital>150?"Apalancamiento elevado: amplifica el riesgo financiero y la sensibilidad a tasas.":
+     "Nivel de deuda manejable frente al capital contable."));
+  h+=mcard("Volatilidad",rg.volatilidad_anualizada>45?"ELEVADA":rg.volatilidad_anualizada<20?"CONTENIDA":"MEDIA",
+    rg.volatilidad_anualizada>45?ROJO:rg.volatilidad_anualizada<20?VERDE:AMBAR,
+    fmt(rg.volatilidad_anualizada,1)+"%",
+    "Anualizada. Con beta de "+fmt(rg.beta,2)+" y caída máxima de "+fmt(rg.max_drawdown,1)+
+    "%, "+(rg.volatilidad_anualizada>45?"requiere dimensionar la posición con cuidado.":"el perfil de fluctuación es manejable."));
+  return h;
 }
 
-function textoRiesgo(rg, rd) {
-  const partes = [];
-  partes.push("Score de riesgo <b>" + fmt(rg.score_riesgo, 1) + "/100 (" + rg.nivel_riesgo + ")</b>.");
-  if (typeof rg.volatilidad_anualizada === "number") {
-    partes.push(rg.volatilidad_anualizada > 45 ? "Su <b>volatilidad anual de " + fmt(rg.volatilidad_anualizada, 1) + "%</b> es muy alta: movimientos amplios en ambos sentidos."
-      : rg.volatilidad_anualizada < 20 ? "Su <b>volatilidad anual de " + fmt(rg.volatilidad_anualizada, 1) + "%</b> es contenida."
-      : "Su <b>volatilidad anual es de " + fmt(rg.volatilidad_anualizada, 1) + "%</b>, en rango medio.");
+function desgloseScore(r){
+  const tc=r.tecnico,fu=r.fundamental,rg=r.riesgo;
+  const st=tc.señales||{},sf=fu.señales||{};
+  const et=(k,l)=>{const v=st[k];if(v===undefined)return "";
+    const col=v>0?VERDE:v<0?ROJO:AMBAR;
+    return '<span class="sbit" style="background:'+col+'1a;color:'+col+'">'+l+' · '+(v>0?"+1":v<0?"−1":"0")+'</span>';};
+  const ef=(k,l)=>{const v=sf[k];if(v===undefined)return "";
+    const col=v>0?VERDE:v<0?ROJO:AMBAR;
+    return '<span class="sbit" style="background:'+col+'1a;color:'+col+'">'+l+' · '+(v>0?"+1":v<0?"−1":"0")+'</span>';};
+  const pctT=(tc.score_tecnico+4)/8*100, pctF=(fu.score_fundamental+6)/12*100, pctR=100-rg.score_riesgo;
+  const colT=tc.score_tecnico>0?VERDE:tc.score_tecnico<0?ROJO:AMBAR;
+  const colF=fu.score_fundamental>0?VERDE:fu.score_fundamental<0?ROJO:AMBAR;
+  const colR=CR[rg.nivel_riesgo]||AMBAR;
+  return '<div class="sl">Desglose del Score</div><div class="sb">'+
+    '<h3>Componentes del Score Compuesto — 45% técnico · 40% fundamental · 15% penalización por riesgo</h3>'+
+    '<div class="sbr"><div class="sbh"><div class="sbn">BLOQUE TÉCNICO</div><div class="sbs" style="color:'+colT+'">'+
+    tc.score_tecnico+' / 4</div></div><div class="sbbar"><div class="sbf" style="width:'+pctT+'%;background:'+colT+'"></div></div>'+
+    '<div class="sbi">'+et("rsi","RSI")+et("macd","MACD")+et("tendencia","Tendencia SMA")+et("bollinger","Bollinger")+'</div></div>'+
+    '<div class="sbr"><div class="sbh"><div class="sbn">BLOQUE FUNDAMENTAL</div><div class="sbs" style="color:'+colF+'">'+
+    fu.score_fundamental+' / 6</div></div><div class="sbbar"><div class="sbf" style="width:'+pctF+'%;background:'+colF+'"></div></div>'+
+    '<div class="sbi">'+ef("pe","P/E")+ef("peg","PEG")+ef("margen","Margen")+ef("crecimiento","Crecimiento")+ef("roe","ROE")+ef("deuda","Deuda")+
+    (Object.keys(sf).length?"":'<span class="sbit" style="background:'+GRIS+'1a;color:'+GRIS+'">Fundamentales aún no disponibles</span>')+'</div></div>'+
+    '<div class="sbr"><div class="sbh"><div class="sbn">PENALIZACIÓN POR RIESGO</div><div class="sbs" style="color:'+colR+'">'+
+    fmt(rg.score_riesgo,1)+' / 100</div></div><div class="sbbar"><div class="sbf" style="width:'+pctR+'%;background:'+colR+'"></div></div>'+
+    '<div class="sbi"><span class="sbit" style="background:'+colR+'1a;color:'+colR+'">Volatilidad '+fmt(rg.volatilidad_anualizada,1)+'% · 35%</span>'+
+    '<span class="sbit" style="background:'+colR+'1a;color:'+colR+'">Drawdown '+fmt(rg.max_drawdown,1)+'% · 30%</span>'+
+    '<span class="sbit" style="background:'+colR+'1a;color:'+colR+'">Beta '+fmt(rg.beta,2)+' · 20%</span>'+
+    '<span class="sbit" style="background:'+colR+'1a;color:'+colR+'">ATR '+fmt(rg.atr_relativo,2)+'% · 15%</span></div></div></div>';
+}
+
+function factoresFavor(r){
+  const tc=r.tecnico,fu=r.fundamental,rg=r.riesgo,rd=r.rendimiento||{},f=[];
+  const p=tc.precio_actual;
+  if(typeof p==="number"&&typeof tc.sma20==="number"&&typeof tc.sma50==="number"&&p>tc.sma20&&tc.sma20>tc.sma50)
+    f.push("Estructura técnica alcista: el precio cotiza sobre sus medias de 20 y 50 días, con las medias alineadas al alza — configuración que suele acompañar continuidad de tendencia");
+  if(typeof p==="number"&&typeof tc.sma200==="number"&&p>tc.sma200)
+    f.push("Se mantiene sobre la media de 200 días ("+dol(tc.sma200)+"), referencia habitual de tendencia alcista de largo plazo");
+  if(typeof tc.macd_hist==="number"&&tc.macd_hist>0)
+    f.push("Histograma MACD positivo: el momentum de corto plazo sigue vigente");
+  if(typeof tc.rsi==="number"&&tc.rsi<30)
+    f.push("RSI en "+fmt(tc.rsi,1)+" indica sobreventa: el papel ha caído con fuerza y podría rebotar técnicamente");
+  if(typeof fu.crecimiento_ingresos==="number"&&fu.crecimiento_ingresos>0.15)
+    f.push("Crecimiento de ingresos de "+pc1(fu.crecimiento_ingresos)+" anual"+
+      (typeof fu.margen_operativo==="number"&&fu.margen_operativo>0.2?" con margen operativo de "+pc1(fu.margen_operativo)+": crecer a esa velocidad sin sacrificar rentabilidad indica poder de fijación de precios":""));
+  if(typeof fu.peg==="number"&&fu.peg<1)
+    f.push("PEG de "+fmt(fu.peg,2)+"×: ajustado por crecimiento, el múltiplo deja de ser caro"+(typeof fu.pe==="number"?" pese al P/E de "+fmt(fu.pe,1)+"×":""));
+  if(typeof fu.pe==="number"&&fu.pe>0&&fu.pe<15)
+    f.push("P/E de "+fmt(fu.pe,1)+"×, por debajo del promedio del mercado");
+  if(typeof fu.roe==="number"&&fu.roe>0.15)
+    f.push("ROE de "+pc1(fu.roe)+": retorno sobre capital en el rango alto del mercado");
+  if(typeof fu.deuda_capital==="number"&&fu.deuda_capital<50)
+    f.push("Deuda/Capital de "+fmt(fu.deuda_capital,1)+": balance sin apalancamiento relevante, baja sensibilidad al ciclo de tasas");
+  if(typeof rd.vs_sp500_3m==="number"&&rd.vs_sp500_3m>0)
+    f.push("Supera al S&P 500 por "+fmt(rd.vs_sp500_3m,1)+" puntos porcentuales en tres meses: fuerza relativa positiva frente al mercado");
+  if(typeof fu.precio_objetivo==="number"&&typeof p==="number"&&fu.precio_objetivo>p)
+    f.push("Precio objetivo de consenso en "+dol(fu.precio_objetivo)+", "+pct((fu.precio_objetivo/p-1)*100)+" sobre el nivel actual");
+  if(rg.nivel_riesgo==="Bajo")
+    f.push("Perfil de riesgo bajo: volatilidad de "+fmt(rg.volatilidad_anualizada,1)+"% y beta de "+fmt(rg.beta,2)+" implican fluctuación contenida");
+  if(typeof tc.volumen_relativo==="number"&&tc.volumen_relativo>1.5)
+    f.push("Volumen reciente "+fmt(tc.volumen_relativo,1)+"× su promedio: interés inusual que suele acompañar movimientos relevantes");
+  return f;
+}
+
+function factoresContra(r){
+  const tc=r.tecnico,fu=r.fundamental,rg=r.riesgo,rd=r.rendimiento||{},f=[];
+  const p=tc.precio_actual;
+  if(typeof p==="number"&&typeof tc.sma20==="number"&&typeof tc.sma50==="number"&&p<tc.sma20&&tc.sma20<tc.sma50)
+    f.push("Estructura técnica bajista: el precio cotiza bajo sus medias de 20 y 50 días, con las medias alineadas a la baja");
+  if(typeof p==="number"&&typeof tc.sma200==="number"&&p<tc.sma200)
+    f.push("Cotiza bajo la media de 200 días ("+dol(tc.sma200)+"), lo que suele leerse como debilidad de largo plazo");
+  if(typeof tc.macd_hist==="number"&&tc.macd_hist<0)
+    f.push("Histograma MACD negativo: el momentum de corto plazo es bajista");
+  if(typeof tc.rsi==="number"&&tc.rsi>70)
+    f.push("RSI en "+fmt(tc.rsi,1)+" indica sobrecompra: el avance ha sido rápido y el margen antes de una corrección se estrecha");
+  else if(typeof tc.rsi==="number"&&tc.rsi>60)
+    f.push("RSI en "+fmt(tc.rsi,1)+" se acerca a la zona alta: sin ser sobrecompra, el margen de avance se reduce");
+  if(typeof fu.pe==="number"&&fu.pe>35)
+    f.push("P/E de "+fmt(fu.pe,1)+"× descuenta la continuidad del crecimiento actual: un trimestre de desaceleración comprimiría el múltiplo de forma desproporcionada");
+  if(typeof fu.pe==="number"&&fu.pe<0)
+    f.push("La empresa reporta pérdidas: sin utilidades, la valuación depende enteramente de expectativas futuras");
+  if(typeof fu.crecimiento_ingresos==="number"&&fu.crecimiento_ingresos<0)
+    f.push("Los ingresos se contraen "+pc1(fu.crecimiento_ingresos)+" anual: señal de deterioro operativo");
+  if(typeof fu.margen_operativo==="number"&&fu.margen_operativo<0.05)
+    f.push("Margen operativo de "+pc1(fu.margen_operativo)+": poco colchón ante aumentos de costos o presión competitiva");
+  if(typeof fu.deuda_capital==="number"&&fu.deuda_capital>150)
+    f.push("Deuda/Capital de "+fmt(fu.deuda_capital,1)+": apalancamiento elevado que amplifica el riesgo financiero y la sensibilidad a tasas");
+  if(rg.volatilidad_anualizada>40)
+    f.push("Volatilidad anualizada de "+fmt(rg.volatilidad_anualizada,1)+"%, muy por encima del promedio del mercado — exige dimensionar la posición con cuidado");
+  if(typeof rg.beta==="number"&&rg.beta>1.3)
+    f.push("Beta de "+fmt(rg.beta,2)+": en una corrección del mercado, la caída esperada es sustancialmente mayor que la del índice");
+  if(typeof rg.max_drawdown==="number"&&rg.max_drawdown<-25)
+    f.push("Caída máxima de "+fmt(rg.max_drawdown,1)+"% en los últimos doce meses: el papel ya demostró capacidad de retrocesos profundos");
+  if(typeof rd.vs_sp500_3m==="number"&&rd.vs_sp500_3m<0)
+    f.push("Queda "+fmt(Math.abs(rd.vs_sp500_3m),1)+" puntos porcentuales por debajo del S&P 500 en tres meses: fuerza relativa negativa");
+  if(typeof fu.precio_objetivo==="number"&&typeof p==="number"&&fu.precio_objetivo<p)
+    f.push("El precio cotiza por encima del objetivo de consenso ("+dol(fu.precio_objetivo)+"): el mercado ya descontó el recorrido estimado por los analistas");
+  if(!Object.keys(fu.señales||{}).length)
+    f.push("Los datos fundamentales de esta emisora aún no están disponibles: la señal se apoya únicamente en el bloque técnico y de riesgo");
+  return f;
+}
+
+function veredicto(t,r){
+  const tc=r.tecnico,fu=r.fundamental,rg=r.riesgo,nv=r.niveles||{},rd=r.rendimiento||{};
+  const sc=r.compuesto.score_compuesto,señal=r.compuesto.señal;
+  const p=tc.precio_actual;
+  const segs=[["VENTA FUERTE","#3d0c14",ROJO,1.5],["VENTA","#2a0c10",ROJO,1],
+              ["MANTENER / OBSERVAR","#1e2010","#b0c060",1.2],["COMPRA","#0e2a1e",VERDE,1],["COMPRA FUERTE","#040e06",VERDE,1.5]];
+  let track='<div class="rtrack">';
+  segs.forEach(([n,bg,col,fl])=>{
+    const act=n===señal;
+    track+='<div class="rseg'+(act?' r-active':'')+'" style="flex:'+fl+';background:'+bg+';color:'+col+';opacity:'+(act?1:.4)+'">'+n+'</div>';
+  });
+  track+='</div>';
+
+  const stopPct=(typeof p==="number"&&typeof nv.s2==="number")?(nv.s2/p-1)*100:null;
+  const vecesATR=(typeof stopPct==="number"&&rg.atr_relativo)?Math.abs(stopPct)/rg.atr_relativo:null;
+
+  let txt='<b>Señal: '+esc(señal)+', con score compuesto de '+(sc>=0?"+":"")+sc+' sobre ±100.</b> ';
+  txt+='La lectura combina tres bloques: el técnico aporta '+tc.score_tecnico+'/4, el fundamental '+fu.score_fundamental+'/6, ';
+  txt+='y el riesgo penaliza con '+fmt(rg.score_riesgo,1)+'/100 ('+rg.nivel_riesgo.toLowerCase()+'). ';
+  txt+=(typeof rd.vs_sp500_3m==="number"?
+    (rd.vs_sp500_3m>0?'Frente al mercado, la emisora supera al S&P 500 en '+fmt(rd.vs_sp500_3m,1)+' pp a tres meses. ':
+     'Frente al mercado, la emisora queda '+fmt(Math.abs(rd.vs_sp500_3m),1)+' pp por debajo del S&P 500 a tres meses. '):'');
+  txt+='<br><br>';
+
+  if(señal.includes("COMPRA")&&typeof nv.s1==="number"&&typeof p==="number"){
+    txt+='<b>Zona de acumulación técnica: '+dol(nv.s1)+' – '+dol(p)+'</b>, entre el soporte de 20 días y el precio actual. ';
+    if(typeof nv.s2==="number"){
+      txt+='Un retroceso hacia el soporte de 60 días ('+dol(nv.s2)+') invalidaría la estructura alcista de corto plazo. ';
+      txt+='<b>Referencia de stop: cierre sostenido por debajo de '+dol(nv.s2)+'</b>'+
+        (typeof stopPct==="number"?', equivalente a '+fmt(stopPct,1)+'% desde el nivel actual':'')+
+        (vecesATR?' y aproximadamente '+fmt(vecesATR,1)+' veces el ATR diario':'')+'. ';
+    }
+  }else if(señal.includes("VENTA")&&typeof nv.r1==="number"){
+    txt+='<b>Resistencia inmediata en '+dol(nv.r1)+'</b> (máximo de 20 días). Una recuperación sostenida por encima de ese nivel ';
+    txt+='invalidaría la lectura bajista de corto plazo y ameritaría reevaluar la señal.';
+  }else{
+    txt+='Sin señal direccional clara: el rango operativo se ubica entre '+dol(nv.s1)+' y '+dol(nv.r1)+
+      ' (mínimo y máximo de las últimas 20 sesiones). Conviene esperar una definición de la estructura antes de tomar posición.';
   }
-  if (typeof rg.max_drawdown === "number") {
-    partes.push("La <b>caída máxima del último año fue de " + fmt(rg.max_drawdown, 1) + "%</b> desde su punto más alto.");
-  }
-  if (typeof rg.beta === "number") {
-    partes.push(rg.beta > 1.3 ? "Con <b>beta de " + fmt(rg.beta, 2) + "</b> amplifica los movimientos del mercado."
-      : rg.beta < 0.8 ? "Con <b>beta de " + fmt(rg.beta, 2) + "</b> se mueve menos que el mercado: perfil defensivo."
-      : "Con <b>beta de " + fmt(rg.beta, 2) + "</b> se mueve en línea con el mercado.");
-  }
-  if (typeof rd.vs_sp500_3m === "number") {
-    partes.push(rd.vs_sp500_3m > 0
-      ? "En los últimos tres meses ha <b>superado al S&P 500 por " + fmt(rd.vs_sp500_3m, 1) + " puntos porcentuales</b>."
-      : "En los últimos tres meses ha <b>quedado " + fmt(Math.abs(rd.vs_sp500_3m), 1) + " puntos porcentuales por debajo del S&P 500</b>.");
-  }
-  return partes.join(" ");
+  txt+='<br><br>';
+
+  const caro=typeof fu.pe==="number"&&fu.pe>35, calidad=typeof fu.margen_operativo==="number"&&fu.margen_operativo>0.2;
+  if(caro&&calidad) txt+='<b>La tensión central de esta emisora es entre calidad operativa y precio pagado:</b> los fundamentales son sólidos, pero el múltiplo no deja margen de error. ';
+  else if(!caro&&calidad) txt+='<b>La combinación de rentabilidad alta con múltiplo contenido</b> es el argumento cuantitativo más fuerte de esta emisora. ';
+  else if(caro&&!calidad) txt+='<b>El múltiplo exigente no está respaldado por la rentabilidad actual:</b> la valuación depende de una mejora operativa que aún no aparece en los números. ';
+  if(rg.volatilidad_anualizada>40) txt+='Dado el perfil de volatilidad ('+fmt(rg.volatilidad_anualizada,1)+'% anual), el dimensionamiento de la posición importa más que la decisión de entrada.';
+
+  return '<div class="vb"><h3>Calificación Ajustada por Riesgo</h3>'+track+
+    '<div class="niv">'+
+    nivc("SOPORTE 2 · MÍN 60D",nv.s2,ROJO)+nivc("SOPORTE 1 · MÍN 20D",nv.s1,ROJO)+
+    nivc("RESISTENCIA 1 · MÁX 20D",nv.r1,VERDE)+nivc("MÁX 52 SEMANAS",nv.max52,VERDE)+
+    '</div><div class="vt">'+txt+'</div></div>';
+}
+function nivc(l,v,col){
+  return '<div class="nivc"><div class="ev" style="color:'+col+'">'+dol(v)+'</div><div class="el">'+l+'</div></div>';
 }
 
 cargar();
