@@ -2,8 +2,15 @@
 universo.py
 Define el universo de tickers a analizar: S&P 500, NASDAQ-100 y BMV (México).
 """
-import pandas as pd
+import io
 
+import pandas as pd
+import requests
+
+# Wikipedia rechaza peticiones sin User-Agent identificable (error 403).
+CABECERAS = {
+    "User-Agent": "MonitorAlertas/1.0 (proyecto personal de análisis financiero)"
+}
 
 # NASDAQ-100 (lista estable, se actualiza anualmente)
 NASDAQ_100 = [
@@ -14,31 +21,36 @@ NASDAQ_100 = [
     "MELI", "MAR", "ORLY", "CSX", "ASML", "ABNB", "CRWD", "FTNT", "CTAS", "MRVL",
     "DASH", "ADSK", "NXPI", "PCAR", "ROP", "MNST", "WDAY", "AEP", "CPRT", "PAYX",
     "MCHP", "ROST", "ODFL", "KDP", "FAST", "EA", "IDXX", "VRSK", "DDOG", "CTSH",
-    "EXC", "GEHC", "CCEP", "TTWO", "KHC", "LULU", "CSGP", "AZN", "XEL", "ANSS",
+    "EXC", "GEHC", "CCEP", "TTWO", "KHC", "LULU", "CSGP", "AZN", "XEL",
     "ON", "DXCM", "CDW", "BIIB", "TEAM", "ZS", "GFS", "ILMN", "MDB", "WBD",
     "SIRI", "ARM", "SMCI", "TTD", "APP", "LIN", "PDD", "BKR", "FANG", "CEG",
 ]
 
-# BMV — principales emisoras del IPC y otras líquidas (sufijo .MX en Yahoo Finance)
+# BMV — emisoras del IPC y otras líquidas (sufijo .MX en Yahoo Finance).
+# Se removieron las que Yahoo ya no reconoce (fusiones, salidas de bolsa).
 BMV = [
     "AMXB.MX", "WALMEX.MX", "FEMSAUBD.MX", "GFNORTEO.MX", "GMEXICOB.MX",
-    "CEMEXCPO.MX", "TLEVISACPO.MX", "ELEKTRA.MX", "KOFUBL.MX", "ASURB.MX",
+    "CEMEXCPO.MX", "TLEVISACPO.MX", "KOFUBL.MX", "ASURB.MX",
     "GAPB.MX", "OMAB.MX", "ALSEA.MX", "BIMBOA.MX", "PINFRA.MX",
     "ORBIA.MX", "GCARSOA1.MX", "PE&OLES.MX", "AC.MX", "LIVEPOLC-1.MX",
     "GRUMAB.MX", "KIMBERA.MX", "CHDRAUIB.MX", "LABB.MX", "MEGACPO.MX",
     "Q.MX", "RA.MX", "VESTA.MX", "FUNO11.MX", "GENTERA.MX",
-    "BBAJIOO.MX", "CUERVO.MX", "SITESB-1.MX", "VOLARA.MX", "GCC.MX",
-    "ALFAA.MX", "AGUA.MX", "CREAL.MX", "TERRA13.MX", "FIBRAPL14.MX",
+    "BBAJIOO.MX", "CUERVO.MX", "VOLARA.MX", "GCC.MX", "AGUA.MX",
+    "FIBRAPL14.MX",
 ]
 
 
 def obtener_sp500() -> list:
     """
-    Descarga la lista actual del S&P 500 desde Wikipedia.
-    Si falla, retorna lista vacía (el resto del universo sigue funcionando).
+    Descarga la lista actual del S&P 500 desde Wikipedia, identificándose
+    con un User-Agent (sin él, Wikipedia responde 403 Forbidden).
+    Si falla, retorna lista vacía y el resto del universo sigue funcionando.
     """
+    url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
     try:
-        tablas = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")
+        resp = requests.get(url, headers=CABECERAS, timeout=30)
+        resp.raise_for_status()
+        tablas = pd.read_html(io.StringIO(resp.text))
         simbolos = tablas[0]["Symbol"].astype(str).tolist()
         # Yahoo usa guion en vez de punto: BRK.B -> BRK-B
         return [s.replace(".", "-").strip() for s in simbolos]
