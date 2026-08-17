@@ -55,6 +55,7 @@ input:focus{border-color:var(--border2)}
 .cardfoot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:11px;margin-top:9px;border-top:1px solid var(--border)}
 .rb{font-family:var(--mono);font-size:9px;font-weight:600;padding:3px 8px;border-radius:4px;border:1px solid}
 
+/* ---- Reporte ---- */
 .ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)}
 .ph-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);margin-bottom:4px;text-transform:uppercase}
 .ph-title{font-size:17px;font-weight:700}
@@ -89,6 +90,7 @@ input:focus{border-color:var(--border2)}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px}
 @media(max-width:580px){.g3{grid-template-columns:1fr 1fr}}
 .mc{background:var(--s2);border:1px solid var(--border);border-radius:8px;padding:13px;position:relative;overflow:hidden}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
 .mct{display:flex;align-items:flex-start;justify-content:space-between;gap:6px;margin-bottom:6px}
 .mcn{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
 .mcb{font-family:var(--mono);font-size:9px;font-weight:600;padding:2px 7px;border-radius:3px;white-space:nowrap}
@@ -137,7 +139,15 @@ tr:last-child td{border-bottom:none}
 .rfooter{font-family:var(--mono);font-size:9px;color:var(--dim);border-top:1px solid var(--border);padding-top:14px;line-height:1.8;margin-top:8px}
 .msg{text-align:center;color:var(--muted);font-size:13px;padding:40px 20px;line-height:1.7}
 .err{background:var(--rbg);border:1px solid #4a1218;color:#fca5a5;padding:14px;border-radius:10px;font-size:13px}
-.volver{margin-bottom:16px}
+.volver{margin-bottom:16px;display:flex;gap:8px;flex-wrap:wrap}
+.star{background:none;border:none;color:var(--dim);font-size:19px;line-height:1;padding:2px 4px;cursor:pointer;flex-shrink:0}
+.star.on{color:var(--amber)}
+.chtop{display:flex;align-items:flex-start;gap:6px}
+.viva{font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.06em;padding:2px 6px;border-radius:3px;background:var(--gbg);color:var(--green);white-space:nowrap}
+.nota{background:var(--s2);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:8px;padding:12px 14px;margin-bottom:18px;font-size:12px;color:var(--muted);line-height:1.6}
+.nota b{color:var(--text)}
+.nota code{font-family:var(--mono);font-size:11px;color:var(--amber)}
+.wlbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
 </style>
 </head>
 <body>
@@ -155,11 +165,41 @@ tr:last-child td{border-bottom:none}
 
 <script>
 const URL_JSON = "https://jrjara13.github.io/monitor-alertas/alertas.json";
+const URL_RAPIDO = "https://jrjara13.github.io/monitor-alertas/rapido.json";
+const CLAVE_WL = "jarasoft_watchlist";
 const CS = {"COMPRA FUERTE":"#2dd4a0","COMPRA":"#2dd4a0","MANTENER / OBSERVAR":"#6b6d87","VENTA":"#f05060","VENTA FUERTE":"#f05060"};
 const CR = {Bajo:"#2dd4a0",Medio:"#f0b840",Alto:"#f05060"};
 const VERDE="#2dd4a0",ROJO="#f05060",AMBAR="#f0b840",AZUL="#60a8f0",GRIS="#6b6d87";
 
-let datos=null,indices=null,fechaDatos="",filtro="",vista="compra",detalle=null;
+let datos=null,indices=null,fechaDatos="",filtro="",vista="watch",detalle=null;
+let wlLocal=[],wlRapido=[],fechaRapido="";
+
+function leerWL(){
+  try{const v=localStorage.getItem(CLAVE_WL);wlLocal=v?JSON.parse(v):[];}
+  catch(e){wlLocal=[];}
+  if(!Array.isArray(wlLocal))wlLocal=[];
+}
+function guardarWL(){
+  try{localStorage.setItem(CLAVE_WL,JSON.stringify(wlLocal));}
+  catch(e){console.warn("No se pudo guardar el watchlist:",e);}
+}
+function enWL(t){return wlLocal.indexOf(t)>=0;}
+function toggleWL(t,ev){
+  if(ev&&ev.stopPropagation)ev.stopPropagation();
+  const i=wlLocal.indexOf(t);
+  if(i>=0)wlLocal.splice(i,1); else wlLocal.push(t);
+  guardarWL(); render();
+}
+function wlUnion(){return [...new Set([...wlRapido,...wlLocal])];}
+function copiarWL(){
+  const lista=wlUnion();
+  const txt="# Watchlist — una emisora por línea.\n"+
+    "# Se actualizan cada 5 minutos en horario de mercado.\n"+lista.join("\n")+"\n";
+  const ok=()=>{const b=document.getElementById("btncopiar");if(b){b.textContent="✓ Copiado";setTimeout(()=>b.textContent="Copiar lista para watchlist.txt",2200);}};
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(ok).catch(()=>alert(txt));
+  }else alert(txt);
+}
 
 const fmt=(v,d=2)=>typeof v==="number"?v.toFixed(d):"—";
 const pct=v=>typeof v==="number"?(v>=0?"+":"")+v.toFixed(2)+"%":"—";
@@ -183,16 +223,36 @@ function miles(n){
   return s+"$"+n.toFixed(0);
 }
 
+function leerFecha(s){
+  if(!s)return "—";
+  const d=new Date(String(s).replace(/\.(\d{3})\d+/,".$1"));
+  return isNaN(d)?"—":d.toLocaleString("es-MX");
+}
+
 async function cargar(){
+  leerWL();
   document.getElementById("sub").textContent="Cargando...";
   try{
     const r=await fetch(URL_JSON+"?t="+Date.now());
     if(!r.ok)throw new Error("HTTP "+r.status);
     const j=await r.json();
     datos=j.tickers||j; indices=j.indices||{};
-    fechaDatos="—";
-    if(j.actualizado){const d=new Date(j.actualizado.replace(/\.(\d{3})\d+/,".$1"));if(!isNaN(d))fechaDatos=d.toLocaleString("es-MX");}
-    document.getElementById("sub").textContent=Object.keys(datos).length+" EMISORAS · "+fechaDatos;
+    fechaDatos=leerFecha(j.actualizado);
+
+    try{
+      const rr=await fetch(URL_RAPIDO+"?t="+Date.now());
+      if(rr.ok){
+        const jr=await rr.json();
+        wlRapido=jr.watchlist||[];
+        fechaRapido=leerFecha(jr.actualizado);
+        if(jr.tickers)for(const [t,v] of Object.entries(jr.tickers))datos[t]=v;
+        if(jr.indices&&Object.keys(jr.indices).length)indices=jr.indices;
+      }
+    }catch(e){}
+
+    document.getElementById("sub").textContent=
+      Object.keys(datos).length+" EMISORAS · "+fechaDatos+
+      (fechaRapido?" · WATCHLIST "+fechaRapido:"");
     render();
   }catch(e){
     document.getElementById("sub").textContent="Error";
@@ -260,8 +320,36 @@ function render(){
   const todos=Object.entries(datos);
   const compra=todos.filter(([,r])=>r.compuesto.señal.includes("COMPRA"));
   const venta=todos.filter(([,r])=>r.compuesto.señal.includes("VENTA"));
+  const union=wlUnion();
   let h='<div class="sl">Mercados en este momento</div><div class="idx-grid">'+Object.values(indices||{}).map(idxCard).join("")+'</div>';
-  h+='<div class="sl">Señales activas</div><div class="tabs">'+tab("compra","COMPRAS ("+compra.length+")")+tab("venta","VENTAS ("+venta.length+")")+tab("riesgo","COMPRAS BAJO RIESGO")+'</div>';
+  h+='<div class="sl">Señales activas</div><div class="tabs">'+
+     tab("watch","★ MI WATCHLIST ("+union.length+")")+
+     tab("compra","COMPRAS ("+compra.length+")")+tab("venta","VENTAS ("+venta.length+")")+
+     tab("riesgo","COMPRAS BAJO RIESGO")+'</div>';
+
+  if(vista==="watch"){
+    const soloLocal=wlLocal.filter(t=>wlRapido.indexOf(t)<0);
+    h+='<div class="wlbar"><button id="btncopiar" onclick="copiarWL()">Copiar lista para watchlist.txt</button></div>';
+    if(soloLocal.length){
+      h+='<div class="nota"><b>'+soloLocal.length+' emisora'+(soloLocal.length>1?'s':'')+
+         ' marcada'+(soloLocal.length>1?'s':'')+' solo en este dispositivo</b> ('+soloLocal.map(esc).join(", ")+
+         '): se actualizan cada 30 minutos con el universo completo. Para que entren al refresco de 5 minutos, '+
+         'copia la lista con el botón de arriba y pégala en <code>watchlist.txt</code> en tu repositorio de GitHub.</div>';
+    }
+    const filas=union.map(t=>[t,datos[t]]).filter(([,r])=>r);
+    const faltan=union.filter(t=>!datos[t]);
+    if(!filas.length){
+      h+='<div class="msg">Tu watchlist está vacío.<br>Toca la estrella ☆ en cualquier emisora para agregarla.</div>';
+    }else{
+      filas.sort((a,b)=>b[1].compuesto.score_compuesto-a[1].compuesto.score_compuesto);
+      h+='<div class="grid">'+filas.map(([t,r])=>card(t,r)).join("")+'</div>';
+    }
+    if(faltan.length)h+='<div class="msg">Sin datos disponibles para: '+faltan.map(esc).join(", ")+
+      '. Puede que el símbolo no exista en la fuente o esté fuera del universo analizado.</div>';
+    cont.innerHTML=h;
+    return;
+  }
+
   let lista;
   if(vista==="compra")lista=compra.sort((a,b)=>b[1].compuesto.score_compuesto-a[1].compuesto.score_compuesto);
   else if(vista==="venta")lista=venta.sort((a,b)=>a[1].compuesto.score_compuesto-b[1].compuesto.score_compuesto);
@@ -282,9 +370,13 @@ function mf(l,v){return '<div class="mf"><span>'+l+'</span><b>'+v+'</b></div>';}
 function card(t,r){
   const c=CS[r.compuesto.señal]||GRIS,cr=CR[r.riesgo.nivel_riesgo]||GRIS;
   const sc=r.compuesto.score_compuesto,w=Math.min(Math.abs(sc),100)/2,left=sc>=0?50:50-w;
-  return '<div class="card" onclick="abrir(\''+t.replace(/'/g,"\\'")+'\')">'+
-    '<div class="ch"><div><div class="tk">'+esc(t)+'</div>'+(r.nombre?'<div class="nm">'+esc(r.nombre)+'</div>':'')+
-    '<div class="pr">'+dol(r.tecnico.precio_actual)+'</div></div>'+
+  const esc_t=t.replace(/'/g,"\\'");
+  const rapido=wlRapido.indexOf(t)>=0?'<span class="viva">5 MIN</span>':'';
+  return '<div class="card" onclick="abrir(\''+esc_t+'\')">'+
+    '<div class="ch"><div><div class="chtop"><button class="star'+(enWL(t)?' on':'')+
+    '" onclick="toggleWL(\''+esc_t+'\',event)" title="Agregar o quitar del watchlist">'+(enWL(t)?'★':'☆')+'</button>'+
+    '<div><div class="tk">'+esc(t)+'</div>'+(r.nombre?'<div class="nm">'+esc(r.nombre)+'</div>':'')+'</div></div>'+
+    '<div class="pr">'+dol(r.tecnico.precio_actual)+' '+rapido+'</div></div>'+
     '<div class="chip" style="color:'+c+';background:'+c+'1a;border-color:'+c+'4d">'+esc(r.compuesto.señal)+'</div></div>'+
     '<div class="barbg"><div class="barfill" style="width:'+w+'%;left:'+left+'%;background:'+c+'"></div></div>'+
     '<div class="sv">SCORE '+(sc>=0?"+":"")+sc+' / ±100</div>'+
@@ -292,7 +384,7 @@ function card(t,r){
     '<div class="cardfoot"><span class="rb" style="color:'+cr+';background:'+cr+'1a;border-color:'+cr+'4d">RIESGO '+esc(r.riesgo.nivel_riesgo).toUpperCase()+'</span>'+
     '<span style="font-family:var(--mono);font-size:9px;color:var(--dim)">TOCA PARA EL REPORTE</span></div></div>';
 }
-
+// ---------------- REPORTE COMPLETO ----------------
 function gauge(score){
   const p=Math.max(0,Math.min(100,score))/100, ang=Math.PI*(1-p);
   const x=(100+80*Math.cos(ang)).toFixed(1), y=(100-80*Math.sin(ang)).toFixed(1);
@@ -322,10 +414,17 @@ function reporte(t,r){
   const desdeMax=(typeof p==="number"&&typeof nv.max52==="number")?(p/nv.max52-1)*100:null;
   const upside=(typeof fu.precio_objetivo==="number"&&typeof p==="number")?(fu.precio_objetivo/p-1)*100:null;
 
-  let h='<div class="volver"><button onclick="cerrar()">← Volver</button></div>';
+  const esc_t=t.replace(/'/g,"\\'");
+  const enWatch=enWL(t), esRapido=wlRapido.indexOf(t)>=0;
+
+  let h='<div class="volver"><button onclick="cerrar()">← Volver</button>'+
+    '<button onclick="toggleWL(\''+esc_t+'\',event)" style="color:'+(enWatch?AMBAR:"var(--text)")+'">'+
+    (enWatch?'★ En mi watchlist':'☆ Agregar al watchlist')+'</button></div>';
+
   h+='<div class="ph"><div><div class="ph-tag">Reporte de Riesgo Accionario · Generado automáticamente</div>'+
      '<div class="ph-title">Cazador de Oportunidades · JARASOFT</div></div>'+
-     '<div class="ph-right"><div class="ph-date">'+esc(fechaDatos)+'</div></div></div>';
+     '<div class="ph-right"><div class="ph-date">'+esc(esRapido&&fechaRapido?fechaRapido:fechaDatos)+'</div>'+
+     (esRapido?'<div class="ph-date" style="color:'+VERDE+'">ACTUALIZACIÓN CADA 5 MIN</div>':'')+'</div></div>';
 
   h+='<div class="sbar"><div><div class="tk" style="font-size:21px">'+esc(t)+
      ' <span style="font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:400">'+esc(r.nombre||"")+'</span></div>'+
@@ -410,9 +509,11 @@ function ki(l,v,s,col){
   return '<div class="ki"><div class="kl">'+l+'</div><div class="kv" style="color:'+(col||"var(--text)")+'">'+v+'</div>'+
     '<div class="ks">'+(s||"&nbsp;")+'</div></div>';
 }
+
 function tituloGauge(rg,comp){
+  const n=rg.nivel_riesgo;
   const t=comp.señal.includes("COMPRA")?"Señal de Compra":comp.señal.includes("VENTA")?"Señal de Venta":"Sin Señal Direccional";
-  return "Riesgo "+rg.nivel_riesgo+" · "+t;
+  return "Riesgo "+n+" · "+t;
 }
 function etiquetaSenal(r){
   const tp=r.tecnico.score_tecnico>0,fp=r.fundamental.score_fundamental>0;
@@ -588,7 +689,7 @@ function factoresContra(r){
 
 function veredicto(t,r){
   const tc=r.tecnico,fu=r.fundamental,rg=r.riesgo,nv=r.niveles||{},rd=r.rendimiento||{};
-  const sc=r.compuesto.score_compuesto,señal=r.compuesto.señal;
+  const sc=r.compuesto.score_compuesto,señal=r.compuesto.señal,c=CS[señal]||GRIS;
   const p=tc.precio_actual;
   const segs=[["VENTA FUERTE","#3d0c14",ROJO,1.5],["VENTA","#2a0c10",ROJO,1],
               ["MANTENER / OBSERVAR","#1e2010","#b0c060",1.2],["COMPRA","#0e2a1e",VERDE,1],["COMPRA FUERTE","#040e06",VERDE,1.5]];
@@ -647,3 +748,4 @@ cargar();
 </script>
 </body>
 </html>
+
