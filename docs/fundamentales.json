@@ -18351,5 +18351,62 @@
    }
   ],
   "actualizado": "2026-08-14T21:44:06+00:00"
+ },
+ "FIBRAPL14.MX": {
+  "trailingPE": 15.62661,
+  "pegRatio": null,
+  "operatingMargins": 0.050040003,
+  "revenueGrowth": 0.042,
+  "debtToEquity": 35.144,
+  "returnOnEquity": 0.06448,
+  "freeCashflow": 333341024,
+  "marketCap": 121478635520,
+  "dividendYield": 3.88,
+  "targetMeanPrice": 84.13431,
+  "numeroAnalistas": 13,
+  "beta": 0.494,
+  "sector": "Real Estate",
+  "industria": "REIT - Industrial",
+  "bolsa": "MEX",
+  "nombre": "BANCO ACTINVER SA",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 164770430.0,
+    "util_operativa": 125035993.0,
+    "margen_op": 75.9,
+    "util_neta": 87668093.0,
+    "eps": 0.05,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 169265193.0,
+    "util_operativa": 124738905.0,
+    "margen_op": 73.7,
+    "util_neta": 187194982.0,
+    "eps": 0.12,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 178261000.0,
+    "util_operativa": 131227000.0,
+    "margen_op": 73.6,
+    "util_neta": 175707000.0,
+    "eps": 0.11,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 176962000.0,
+    "util_operativa": 133820000.0,
+    "margen_op": 75.6,
+    "util_neta": -47617000.0,
+    "eps": -0.03,
+    "var_ingresos": 10.8
+   }
+  ],
+  "actualizado": "2026-08-17T14:04:55+00:00"
  }
 }
