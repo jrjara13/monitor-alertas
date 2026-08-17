@@ -1,0 +1,18 @@
+# Watchlist — una emisora por línea.
+# Se actualizan cada 5 minutos en horario de mercado.
+# Las líneas que empiezan con # se ignoran.
+NVDA
+MSFT
+AMD
+NFLX
+MELI
+TSM
+ORCL
+UBER
+IBM
+GLW
+OKLO
+AAOI
+CLSK
+WALMEX.MX
+GFNORTEO.MX
