@@ -18408,5 +18408,82 @@
    }
   ],
   "actualizado": "2026-08-17T14:04:55+00:00"
+ },
+ "RDDT": {
+  "trailingPE": 37.87063,
+  "pegRatio": 1.06,
+  "operatingMargins": 0.28788,
+  "revenueGrowth": 0.611,
+  "debtToEquity": 0.635,
+  "returnOnEquity": 0.30712,
+  "freeCashflow": 678068736,
+  "marketCap": 31257698304,
+  "dividendYield": null,
+  "targetMeanPrice": 215.46875,
+  "numeroAnalistas": 32,
+  "beta": 2.034,
+  "sector": "Communication Services",
+  "industria": "Internet Content & Information",
+  "bolsa": "NYQ",
+  "nombre": "Reddit, Inc.",
+  "trimestres": [
+   {
+    "periodo": "30 Sep 2025",
+    "ingresos": 584911000.0,
+    "util_operativa": 138542000.0,
+    "margen_op": 23.7,
+    "util_neta": 162663000.0,
+    "eps": 0.8,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Dec 2025",
+    "ingresos": 725607000.0,
+    "util_operativa": 231828000.0,
+    "margen_op": 31.9,
+    "util_neta": 251603000.0,
+    "eps": 1.24,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "31 Mar 2026",
+    "ingresos": 663411000.0,
+    "util_operativa": 182912000.0,
+    "margen_op": 27.6,
+    "util_neta": 203981000.0,
+    "eps": 1.01,
+    "var_ingresos": null
+   },
+   {
+    "periodo": "30 Jun 2026",
+    "ingresos": 804905000.0,
+    "util_operativa": 231716000.0,
+    "margen_op": 28.8,
+    "util_neta": 252848000.0,
+    "eps": 1.25,
+    "var_ingresos": 61.1
+   }
+  ],
+  "actualizado": "2026-08-18T14:47:45+00:00"
+ },
+ "VMRK": {
+  "trailingPE": null,
+  "pegRatio": null,
+  "operatingMargins": null,
+  "revenueGrowth": null,
+  "debtToEquity": null,
+  "returnOnEquity": null,
+  "freeCashflow": null,
+  "marketCap": null,
+  "dividendYield": null,
+  "targetMeanPrice": null,
+  "numeroAnalistas": null,
+  "beta": null,
+  "sector": null,
+  "industria": null,
+  "bolsa": "NYQ",
+  "nombre": null,
+  "trimestres": [],
+  "actualizado": "2026-08-18T14:47:45+00:00"
  }
 }
