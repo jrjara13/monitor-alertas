@@ -157,7 +157,10 @@ tr:last-child td{border-bottom:none}
       <h1>Cazador de Oportunidades<span>JARASOFT</span></h1>
       <div class="sub" id="sub">Cargando...</div>
     </div>
-    <button onclick="cargar()">↻ Actualizar</button>
+    <div style="display:flex;gap:8px;flex-wrap:wrap" id="botones">
+      <button onclick="cargar()">↻ Actualizar</button>
+      <span id="vivobtn"></span>
+    </div>
   </div>
   <input id="busq" placeholder="Busca un ticker o empresa (ej. NVDA, WALMEX, Apple)..." oninput="buscar(this.value)" autocomplete="off">
   <div id="cont"><div class="msg">Cargando datos...</div></div>
@@ -168,6 +171,7 @@ const URL_JSON = "https://jrjara13.github.io/monitor-alertas/alertas.json";
 const URL_RAPIDO = "https://jrjara13.github.io/monitor-alertas/rapido.json";
 const CLAVE_WL = "jarasoft_watchlist";
 const CLAVE_EX = "jarasoft_watchlist_excluidas";
+const CLAVE_FH = "jarasoft_finnhub_key";
 const CS = {"COMPRA FUERTE":"#2dd4a0","COMPRA":"#2dd4a0","MANTENER / OBSERVAR":"#6b6d87","VENTA":"#f05060","VENTA FUERTE":"#f05060"};
 const CR = {Bajo:"#2dd4a0",Medio:"#f0b840",Alto:"#f05060"};
 const VERDE="#2dd4a0",ROJO="#f05060",AMBAR="#f0b840",AZUL="#60a8f0",GRIS="#6b6d87";
@@ -189,8 +193,6 @@ function guardarWL(){
     localStorage.setItem(CLAVE_EX,JSON.stringify(wlExcluir));
   }catch(e){console.warn("No se pudo guardar el watchlist:",e);}
 }
-// Una emisora esta en el watchlist si viene del repo o la marcaste aqui,
-// y no la has ocultado en este dispositivo.
 function enWL(t){
   return (wlLocal.indexOf(t)>=0||wlRapido.indexOf(t)>=0)&&wlExcluir.indexOf(t)<0;
 }
@@ -217,6 +219,82 @@ function copiarWL(){
   if(navigator.clipboard&&navigator.clipboard.writeText){
     navigator.clipboard.writeText(txt).then(ok).catch(()=>alert(txt));
   }else alert(txt);
+}
+
+// ============ PRECIOS EN VIVO (Finnhub) ============
+// La pagina consulta las cotizaciones directamente mientras esta abierta.
+// La llave se guarda solo en este dispositivo, nunca en el repositorio.
+let fhKey="", vivos={}, timerVivo=null, ultimoVivo="", errorVivo="";
+
+// Finnhub gratuito cubre acciones de EE.UU. Se omiten indices, futuros y BMV.
+function esUS(t){return !/[.=^]/.test(t);}
+
+function leerKey(){
+  try{fhKey=localStorage.getItem(CLAVE_FH)||"";}catch(e){fhKey="";}
+}
+function pedirKey(){
+  const actual=fhKey?"(ya configurada)":"";
+  const k=prompt("Pega tu llave gratuita de Finnhub (finnhub.io) "+actual+
+    "\n\nDejala vacia para desactivar los precios en vivo.",fhKey||"");
+  if(k===null)return;
+  fhKey=k.trim();
+  try{localStorage.setItem(CLAVE_FH,fhKey);}catch(e){}
+  vivos={}; errorVivo="";
+  detenerVivo();
+  if(fhKey)iniciarVivo();
+  render();
+}
+
+function tickersAVigilar(){
+  if(detalle)return esUS(detalle)?[detalle]:[];
+  return wlUnion().filter(esUS);
+}
+
+async function jalarVivos(){
+  if(!fhKey||!datos)return;
+  if(typeof document.hidden==="boolean"&&document.hidden)return;
+  const lista=tickersAVigilar();
+  if(!lista.length)return;
+  let hubo=false;
+  for(const t of lista){
+    try{
+      const r=await fetch("https://finnhub.io/api/v1/quote?symbol="+encodeURIComponent(t)+"&token="+encodeURIComponent(fhKey));
+      if(r.status===401||r.status===403){errorVivo="Llave rechazada por Finnhub.";detenerVivo();render();return;}
+      if(r.status===429){errorVivo="Limite de consultas alcanzado; se reintenta en un momento.";break;}
+      if(!r.ok)continue;
+      const q=await r.json();
+      if(typeof q.c==="number"&&q.c>0){
+        vivos[t]={precio:q.c,cambio:q.dp,previo:q.pc,hora:Date.now()};
+        if(datos[t]&&datos[t].tecnico)datos[t].tecnico.precio_actual=+q.c.toFixed(2);
+        hubo=true; errorVivo="";
+      }
+    }catch(e){errorVivo="Sin conexion con Finnhub.";}
+    await new Promise(r=>setTimeout(r,120));
+  }
+  if(hubo){
+    ultimoVivo=new Date().toLocaleTimeString("es-MX");
+    render();
+  }
+}
+
+function iniciarVivo(){
+  if(!fhKey)return;
+  detenerVivo();
+  jalarVivos();
+  timerVivo=setInterval(jalarVivos,15000);
+}
+function detenerVivo(){if(timerVivo){clearInterval(timerVivo);timerVivo=null;}}
+
+if(typeof document.addEventListener==="function"){
+  document.addEventListener("visibilitychange",()=>{
+    if(document.hidden)detenerVivo(); else if(fhKey)iniciarVivo();
+  });
+}
+
+function estadoVivo(){
+  if(!fhKey)return '<button onclick="pedirKey()">◎ Activar precios en vivo</button>';
+  if(errorVivo)return '<button onclick="pedirKey()" style="color:'+ROJO+'">◎ '+esc(errorVivo)+'</button>';
+  return '<button onclick="pedirKey()" style="color:'+VERDE+'">● EN VIVO'+(ultimoVivo?" "+ultimoVivo:"")+'</button>';
 }
 
 const fmt=(v,d=2)=>typeof v==="number"?v.toFixed(d):"—";
@@ -248,7 +326,7 @@ function leerFecha(s){
 }
 
 async function cargar(){
-  leerWL();
+  leerWL(); leerKey();
   document.getElementById("sub").textContent="Cargando...";
   try{
     const r=await fetch(URL_JSON+"?t="+Date.now());
@@ -272,6 +350,7 @@ async function cargar(){
       Object.keys(datos).length+" EMISORAS · "+fechaDatos+
       (fechaRapido?" · WATCHLIST "+fechaRapido:"");
     render();
+    if(fhKey)iniciarVivo();
   }catch(e){
     document.getElementById("sub").textContent="Error";
     document.getElementById("cont").innerHTML='<div class="err">No se pudieron cargar los datos: '+esc(e.message)+'</div>';
@@ -324,6 +403,8 @@ function graficoCompleto(serie,niv,pt){
 
 function render(){
   if(!datos)return;
+  const vb=document.getElementById("vivobtn");
+  if(vb)vb.innerHTML=estadoVivo();
   const cont=document.getElementById("cont");
   if(detalle&&datos[detalle]){cont.innerHTML=reporte(detalle,datos[detalle]);return;}
   if(filtro){
@@ -396,7 +477,10 @@ function card(t,r){
   const c=CS[r.compuesto.señal]||GRIS,cr=CR[r.riesgo.nivel_riesgo]||GRIS;
   const sc=r.compuesto.score_compuesto,w=Math.min(Math.abs(sc),100)/2,left=sc>=0?50:50-w;
   const esc_t=t.replace(/'/g,"\\'");
-  const rapido=wlRapido.indexOf(t)>=0?'<span class="viva">5 MIN</span>':'';
+  const lv=vivos[t];
+  const rapido=lv
+    ?'<span class="viva">EN VIVO '+(typeof lv.cambio==="number"?(lv.cambio>=0?"+":"")+lv.cambio.toFixed(2)+"%":"")+'</span>'
+    :(wlRapido.indexOf(t)>=0?'<span class="viva">5 MIN</span>':'');
   return '<div class="card" onclick="abrir(\''+esc_t+'\')">'+
     '<div class="ch"><div><div class="chtop"><button class="star'+(enWL(t)?' on':'')+
     '" onclick="toggleWL(\''+esc_t+'\',event)" title="Agregar o quitar del watchlist">'+(enWL(t)?'★':'☆')+'</button>'+
@@ -442,6 +526,7 @@ function reporte(t,r){
 
   const esc_t=t.replace(/'/g,"\\'");
   const enWatch=enWL(t), esRapido=wlRapido.indexOf(t)>=0;
+  const lv=vivos[t];
 
   let h='<div class="volver"><button onclick="cerrar()">← Volver</button>'+
     '<button onclick="toggleWL(\''+esc_t+'\',event)" style="color:'+(enWatch?AMBAR:"var(--text)")+'">'+
@@ -450,13 +535,16 @@ function reporte(t,r){
   h+='<div class="ph"><div><div class="ph-tag">Reporte de Riesgo Accionario · Generado automáticamente</div>'+
      '<div class="ph-title">Cazador de Oportunidades · JARASOFT</div></div>'+
      '<div class="ph-right"><div class="ph-date">'+esc(esRapido&&fechaRapido?fechaRapido:fechaDatos)+'</div>'+
-     (esRapido?'<div class="ph-date" style="color:'+VERDE+'">ACTUALIZACIÓN CADA 5 MIN</div>':'')+'</div></div>';
+     (lv?'<div class="ph-date" style="color:'+VERDE+'">PRECIO EN VIVO · '+esc(ultimoVivo)+'</div>':
+      (esRapido?'<div class="ph-date" style="color:'+VERDE+'">ACTUALIZACIÓN CADA 5 MIN</div>':''))+'</div></div>';
 
   h+='<div class="sbar"><div><div class="tk" style="font-size:21px">'+esc(t)+
      ' <span style="font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:400">'+esc(r.nombre||"")+'</span></div>'+
      '<div style="font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:2px">'+
      [r.sector,r.industria].filter(Boolean).map(esc).join(" · ")+'</div></div>'+
-     '<div class="bdiv"></div><div class="sm"><div class="v">'+dol(p)+'</div><div class="l">ÚLTIMO</div></div>'+
+     '<div class="bdiv"></div><div class="sm"><div class="v">'+dol(p)+
+     (lv&&typeof lv.cambio==="number"?' <span style="font-size:11px;color:'+colr(lv.cambio)+'">'+pct(lv.cambio)+'</span>':'')+
+     '</div><div class="l">ÚLTIMO</div></div>'+
      '<div class="bdiv"></div><div class="sm"><div class="v" style="color:'+colr(desdeMax)+'">'+pct(desdeMax)+'</div><div class="l">DESDE MÁX 52S</div></div>'+
      '<div class="bdiv"></div><div class="sm"><div class="v">'+dol(nv.min52)+'</div><div class="l">MÍN 52S</div></div>'+
      '<div class="bdiv"></div><div class="sm"><div class="v">'+dol(nv.max52)+'</div><div class="l">MÁX 52S</div></div>'+
@@ -526,7 +614,8 @@ function reporte(t,r){
 
   h+='<div class="sl">Niveles Operativos y Veredicto</div>'+veredicto(t,r);
 
-  h+='<div class="rfooter">'+esc(t)+' · Reporte generado automáticamente por Cazador de Oportunidades · JARASOFT · Datos: Yahoo Finance · '+esc(fechaDatos)+'<br>'+
+  h+='<div class="rfooter">'+esc(t)+' · Reporte generado automáticamente por Cazador de Oportunidades · JARASOFT · Datos: Yahoo Finance'+
+     (lv?' · Precio en vivo: Finnhub':'')+' · '+esc(fechaDatos)+'<br>'+
      'NO CONSTITUYE ASESORÍA DE INVERSIÓN. Herramienta de apoyo cuantitativo basada en reglas fijas. Las señales deben interpretarse junto con su propio análisis y el perfil del cliente.</div>';
   return h;
 }
