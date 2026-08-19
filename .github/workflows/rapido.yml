@@ -2,24 +2,27 @@ name: Watchlist Rápido
 
 on:
   schedule:
-    # Cada 5 min durante horario de mercado NYSE (9:30am-4pm hora NY
-    # = 7:30am-2pm hora Monterrey). En UTC: 13:30-20:00.
-    # Nota: GitHub Actions no garantiza puntualidad en tareas programadas;
-    # con carga alta puede retrasarse varios minutos o saltarse una corrida.
+    # Cada 5 min en horario de mercado NYSE (7:30am-2pm hora Monterrey).
     - cron: "*/5 13-20 * * 1-5"
   workflow_dispatch: {}
 
-concurrency:
-  group: watchlist-rapido
-  cancel-in-progress: false
-
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Mismo grupo que el workflow principal: nunca despliegan a la vez.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   rapido:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Clonar repositorio
         uses: actions/checkout@v4
@@ -32,23 +35,47 @@ jobs:
       - name: Instalar dependencias
         run: pip install yfinance pandas numpy
 
+      # Solo lectura: el cache lo escribe el workflow principal.
+      - name: Restaurar cache de fundamentales
+        uses: actions/cache/restore@v4
+        with:
+          path: docs/fundamentales.json
+          key: fundamentales-restaurar
+          restore-keys: |
+            fundamentales-
+
       - name: Actualizar watchlist
         run: python3 rapido.py
 
-      - name: Publicar rapido.json
+      - name: Recuperar alertas.json ya publicado
         run: |
-          git config user.name "Motor de Alertas"
-          git config user.email "actions@github.com"
-          git add docs/rapido.json
-          if git diff --staged --quiet; then
-            echo "Sin cambios."
-            exit 0
+          URL="https://jrjara13.github.io/monitor-alertas/alertas.json"
+          if curl -fsSL --max-time 60 "$URL" -o /tmp/alertas.json \
+             && python3 -c "import json;json.load(open('/tmp/alertas.json'))"; then
+            cp /tmp/alertas.json docs/alertas.json
+            echo "alertas.json recuperado del sitio publicado."
+          else
+            echo "ERROR: no se pudo recuperar alertas.json."
+            echo "Se cancela el despliegue para no publicar un sitio incompleto."
+            exit 1
           fi
-          git commit -m "Watchlist $(date -u +'%Y-%m-%d %H:%M UTC')"
-          for i in 1 2 3; do
-            git pull --rebase --autostash origin main && git push && exit 0
-            echo "Reintento $i..."
-            sleep 5
-          done
-          echo "No se pudo publicar tras 3 intentos."
-          exit 1
+
+      - name: Preparar sitio
+        run: |
+          rm -rf _site && mkdir -p _site
+          cp docs/monitor.html _site/index.html
+          cp docs/monitor.html _site/monitor.html
+          cp docs/alertas.json _site/
+          if [ -f docs/rapido.json ]; then cp docs/rapido.json _site/; fi
+          touch _site/.nojekyll
+          echo "--- contenido publicado ---"
+          ls -la _site
+
+      - name: Subir artefacto
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
