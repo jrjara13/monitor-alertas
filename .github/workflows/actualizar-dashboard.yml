@@ -2,19 +2,27 @@ name: Actualizar Dashboard de Alertas
 
 on:
   schedule:
-    # Cada 30 min durante horario de mercado NYSE (9:30am-4pm hora NY
-    # = 7:30am-2pm hora Monterrey, que no cambia a horario de verano).
-    # En UTC eso es 13:30-20:00.
+    # Cada 30 min en horario de mercado NYSE (7:30am-2pm hora Monterrey).
     - cron: "0,30 13-20 * * 1-5"
   workflow_dispatch: {}
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Comparte grupo con el workflow rapido: evita despliegues simultaneos.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   actualizar:
     runs-on: ubuntu-latest
     timeout-minutes: 45
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Clonar repositorio
         uses: actions/checkout@v4
@@ -25,15 +33,54 @@ jobs:
           python-version: "3.11"
 
       - name: Instalar dependencias
-        run: pip install yfinance pandas numpy lxml
+        run: pip install yfinance pandas numpy lxml requests
+
+      # El cache de fundamentales ya no vive en el repositorio.
+      - name: Restaurar cache de fundamentales
+        uses: actions/cache/restore@v4
+        with:
+          path: docs/fundamentales.json
+          key: fundamentales-restaurar
+          restore-keys: |
+            fundamentales-
 
       - name: Correr el motor de alertas
         run: python3 main.py
 
-      - name: Publicar cambios (docs/)
+      - name: Guardar cache de fundamentales
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: docs/fundamentales.json
+          key: fundamentales-${{ github.run_id }}
+
+      - name: Recuperar rapido.json ya publicado
         run: |
-          git config user.name "Motor de Alertas"
-          git config user.email "actions@github.com"
-          git add docs/
-          git diff --staged --quiet || git commit -m "Actualiza dashboard $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push
+          URL="https://jrjara13.github.io/monitor-alertas/rapido.json"
+          if curl -fsSL --max-time 30 "$URL" -o /tmp/rapido.json \
+             && python3 -c "import json;json.load(open('/tmp/rapido.json'))"; then
+            cp /tmp/rapido.json docs/rapido.json
+            echo "rapido.json recuperado del sitio publicado."
+          else
+            echo "No se pudo recuperar rapido.json; se usara la copia local si existe."
+          fi
+
+      - name: Preparar sitio
+        run: |
+          rm -rf _site && mkdir -p _site
+          cp docs/monitor.html _site/index.html
+          cp docs/monitor.html _site/monitor.html
+          if [ -f docs/alertas.json ]; then cp docs/alertas.json _site/; fi
+          if [ -f docs/rapido.json ]; then cp docs/rapido.json _site/; fi
+          touch _site/.nojekyll
+          echo "--- contenido publicado ---"
+          ls -la _site
+
+      - name: Subir artefacto
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Publicar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
