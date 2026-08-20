@@ -11,7 +11,6 @@ permissions:
   pages: write
   id-token: write
 
-# Comparte grupo con el workflow rapido: evita despliegues simultaneos.
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -19,7 +18,7 @@ concurrency:
 jobs:
   actualizar:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -35,8 +34,7 @@ jobs:
       - name: Instalar dependencias
         run: pip install yfinance pandas numpy lxml requests
 
-      # El cache de fundamentales ya no vive en el repositorio.
-     - name: Restaurar cache de fundamentales
+      - name: Restaurar cache de fundamentales
         uses: actions/cache/restore@v4
         with:
           path: docs/fundamentales.json
@@ -52,9 +50,25 @@ jobs:
           restore-keys: |
             universo-
 
+      - name: Verificar universo
+        run: |
+          if [ -f docs/universo.json ]; then
+            python3 -c "
+          import json
+          u=json.load(open('docs/universo.json'))
+          print('Universo encontrado:',u.get('total'),'emisoras')
+          print('  acciones:',len(u.get('acciones',[])))
+          print('  etfs:',len(u.get('etfs',[])))
+          print('  bmv:',len(u.get('bmv',[])))
+          "
+          else
+            echo "AVISO: no hay universo.json en cache."
+            echo "main.py usara su lista de respaldo (8 emisoras)."
+            echo "Corre el workflow 'Seleccion de Universo' para generarlo."
+          fi
+
       - name: Correr el motor de alertas
         run: python3 main.py
-
 
       - name: Guardar cache de fundamentales
         uses: actions/cache/save@v4
@@ -71,7 +85,7 @@ jobs:
             cp /tmp/rapido.json docs/rapido.json
             echo "rapido.json recuperado del sitio publicado."
           else
-            echo "No se pudo recuperar rapido.json; se usara la copia local si existe."
+            echo "No se pudo recuperar rapido.json; se continua sin el."
           fi
 
       - name: Preparar sitio
