@@ -36,7 +36,7 @@ jobs:
         run: pip install yfinance pandas numpy lxml requests
 
       # El cache de fundamentales ya no vive en el repositorio.
-          - name: Restaurar cache de fundamentales
+     - name: Restaurar cache de fundamentales
         uses: actions/cache/restore@v4
         with:
           path: docs/fundamentales.json
@@ -55,9 +55,6 @@ jobs:
       - name: Correr el motor de alertas
         run: python3 main.py
 
-
-      - name: Correr el motor de alertas
-        run: python3 main.py
 
       - name: Guardar cache de fundamentales
         uses: actions/cache/save@v4
