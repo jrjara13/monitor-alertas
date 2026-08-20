@@ -1,5 +1,5 @@
 """
-main.py — v5
+main.py — v6
 Motor de alertas para el universo determinado por seleccion.py:
 acciones liquidas de EE.UU., ETFs y emisoras de BMV.
 """
@@ -58,6 +58,21 @@ def cargar_universo() -> tuple:
     except Exception as e:
         print(f"⚠ No se pudo leer el universo: {e}. Usando respaldo.")
         return UNIVERSO_RESPALDO, []
+
+
+def resumen_corto(txt, limite=520):
+    """Recorta la descripcion de la empresa al final de una frase."""
+    if not txt:
+        return None
+    t = " ".join(str(txt).split())
+    if len(t) <= limite:
+        return t
+    corte = t[:limite]
+    fin = max(corte.rfind(". "), corte.rfind(".\n"))
+    if fin > limite * 0.5:
+        return corte[:fin + 1]
+    esp = corte.rfind(" ")
+    return corte[:esp] + "..." if esp > 0 else corte + "..."
 
 
 def limpiar(obj):
@@ -175,6 +190,9 @@ def guardar_cache_fundamentales(cache: dict):
 def necesita_refresco(entrada: dict) -> bool:
     if not entrada or "actualizado" not in entrada:
         return True
+    # Fuerza el refresco si el registro no trae los campos nuevos.
+    if "resumen" not in entrada:
+        return True
     try:
         ts = datetime.fromisoformat(entrada["actualizado"])
         return (datetime.now(timezone.utc) - ts).days >= DIAS_CACHE_FUND
@@ -220,12 +238,16 @@ def refrescar_fundamentales(tickers: list, cache: dict, etfs: set) -> dict:
                 "rend_3a": info.get("threeYearAverageReturn"),
                 "rend_5a": info.get("fiveYearAverageReturn"),
                 "es_etf": es_etf,
+                "resumen": resumen_corto(info.get("longBusinessSummary")),
+                "empleados": info.get("fullTimeEmployees"),
+                "pais": info.get("country"),
+                "web": info.get("website"),
                 "trimestres": [] if es_etf else trimestrales(tk),
                 "actualizado": ahora,
             }
         except Exception as e:
             print(f"  ⚠ {t}: {e}")
-            cache[t] = {"actualizado": ahora, "es_etf": es_etf}
+            cache[t] = {"actualizado": ahora, "es_etf": es_etf, "resumen": None}
         if i % 20 == 0:
             print(f"  ...{i}/{len(por_hacer)}")
         time.sleep(0.2)
@@ -326,6 +348,10 @@ def main():
             resultados[t] = {
                 "tipo": "etf" if es_etf else "accion",
                 "nombre": fr.get("nombre"),
+                "resumen": fr.get("resumen"),
+                "empleados": fr.get("empleados"),
+                "pais": fr.get("pais"),
+                "web": fr.get("web"),
                 "sector": fr.get("categoria") if es_etf else fr.get("sector"),
                 "industria": fr.get("familia") if es_etf else fr.get("industria"),
                 "bolsa": fr.get("bolsa"),
@@ -391,8 +417,10 @@ def main():
 
     tam = os.path.getsize(ARCHIVO_ALERTAS) / 1_000_000
     n_etf = sum(1 for r in resultados.values() if r["tipo"] == "etf")
+    con_resumen = sum(1 for r in resultados.values() if r.get("resumen"))
     print(f"\n{len(resultados)} emisoras ({len(resultados)-n_etf} acciones, {n_etf} ETFs)"
           f" + {len(indices_out)} índices. JSON: {tam:.2f} MB")
+    print(f"Con descripción de negocio: {con_resumen} de {len(resultados)}")
     print(f"Tiempo total: {time.time() - inicio:.0f}s")
 
     orden = sorted(resultados.items(),
