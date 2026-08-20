@@ -1,0 +1,59 @@
+name: Seleccion de Universo
+
+on:
+  schedule:
+    # Una vez al dia, 6:00am hora Monterrey (12:00 UTC), antes de la apertura.
+    - cron: "0 12 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "seleccion"
+  cancel-in-progress: false
+
+jobs:
+  seleccionar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install yfinance pandas numpy requests
+
+      # Lee el cache de fundamentales para aplicar el filtro de capitalizacion.
+      - name: Restaurar cache de fundamentales
+        uses: actions/cache/restore@v4
+        with:
+          path: docs/fundamentales.json
+          key: fundamentales-restaurar
+          restore-keys: |
+            fundamentales-
+
+      - name: Determinar universo
+        run: python3 seleccion.py
+
+      - name: Guardar universo en cache
+        uses: actions/cache/save@v4
+        with:
+          path: docs/universo.json
+          key: universo-${{ github.run_id }}
+
+      - name: Resumen
+        run: |
+          python3 -c "
+          import json
+          u=json.load(open('docs/universo.json'))
+          print('Acciones:',len(u['acciones']))
+          print('ETFs:',len(u['etfs']))
+          print('BMV:',len(u['bmv']))
+          print('TOTAL:',u['total'])
+          "
