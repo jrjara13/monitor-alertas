@@ -55,7 +55,6 @@ input:focus{border-color:var(--border2)}
 .cardfoot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:11px;margin-top:9px;border-top:1px solid var(--border)}
 .rb{font-family:var(--mono);font-size:9px;font-weight:600;padding:3px 8px;border-radius:4px;border:1px solid}
 
-/* ---- Reporte ---- */
 .ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)}
 .ph-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);margin-bottom:4px;text-transform:uppercase}
 .ph-title{font-size:17px;font-weight:700}
@@ -154,6 +153,7 @@ tr:last-child td{border-bottom:none}
 .perfil-meta{font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:11px;padding-top:11px;border-top:1px solid var(--border);line-height:1.7}
 .perfil-meta a{color:var(--blue);text-decoration:none}
 .perfil-idioma{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:8px}
+.frase{font-size:12px;color:var(--muted);font-style:italic;margin-top:9px;padding-left:11px;border-left:2px solid var(--border2);line-height:1.5;max-width:520px}
 </style>
 </head>
 <body>
@@ -162,6 +162,7 @@ tr:last-child td{border-bottom:none}
     <div>
       <h1>Cazador de Oportunidades<span>JARASOFT</span></h1>
       <div class="sub" id="sub">Cargando...</div>
+      <div class="frase" id="frase"></div>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap" id="botones">
       <button onclick="cargar()">↻ Actualizar</button>
@@ -298,6 +299,59 @@ function estadoVivo(){
   if(!fhKey)return '<button onclick="pedirKey()">◎ Activar precios en vivo</button>';
   if(errorVivo)return '<button onclick="pedirKey()" style="color:'+ROJO+'">◎ '+esc(errorVivo)+'</button>';
   return '<button onclick="pedirKey()" style="color:'+VERDE+'">● EN VIVO'+(ultimoVivo?" "+ultimoVivo:"")+'</button>';
+}
+
+// ============ FRASE DEL DIA ============
+const FRASES = [
+  "El mercado premia la paciencia, no la prisa.",
+  "Un buen proceso soporta un mal resultado; un mal proceso no sobrevive a uno bueno.",
+  "Perder la oportunidad cuesta menos que perder el capital.",
+  "La disciplina vale más que la intuición cuando el mercado se mueve.",
+  "Las convicciones se prueban en las caídas, no en las alzas.",
+  "Quien conoce su horizonte no teme la volatilidad del camino.",
+  "Comprar barato es fácil; sostenerlo, no.",
+  "El riesgo no es la volatilidad: es no entender lo que tienes.",
+  "Cada posición debe poder explicarse en una frase.",
+  "Diversificar es admitir con humildad que uno puede equivocarse.",
+  "El interés compuesto premia a quien no interrumpe.",
+  "Reaccionar al ruido es la forma más cara de sentirse ocupado.",
+  "Los datos informan la decisión; no la toman por ti.",
+  "Un plan escrito resiste mejor que una convicción recordada.",
+  "El mejor momento para definir tu salida es antes de entrar.",
+  "La consistencia supera al acierto aislado.",
+  "Dimensiona la posición antes de enamorarte de la tesis.",
+  "El precio te dice qué opinan; el negocio te dice qué vale.",
+  "Ninguna señal reemplaza el criterio de quien la interpreta.",
+  "Saber cuándo no operar también es una decisión.",
+  "El capital que no arriesgas hoy es el que te permite decidir mañana.",
+  "La prudencia rara vez brilla, pero casi siempre permanece.",
+  "Corrige la tesis cuando cambien los hechos, no cuando cambie el ánimo.",
+  "El largo plazo se construye con decisiones que resisten el corto.",
+  "Toda ganancia rápida tiene una probabilidad que no viste.",
+  "Estudiar la empresa cuesta horas; ignorarla, años.",
+  "El error más caro es el que no se documenta.",
+  "La calma en la caída se prepara en la calma previa.",
+  "Un portafolio ordenado refleja una mente ordenada.",
+  "Medir sin actuar es contemplación; actuar sin medir es apuesta.",
+  "La certeza absoluta suele ser la señal más peligrosa.",
+  "Cuida el riesgo y el rendimiento se cuida solo.",
+  "Compara tu desempeño con tu plan, no con el vecino.",
+  "El mercado siempre ofrece otra oportunidad; tu capital, no siempre.",
+  "Cuestiona con más rigor las ideas que te agradan.",
+  "La información pública es abundante; el criterio, escaso.",
+  "No confundas suerte reciente con habilidad probada.",
+  "La liquidez es la libertad de cambiar de opinión.",
+  "Escribe tu tesis: lo que no se puede explicar, no se entiende.",
+  "El tiempo en el mercado supera al momento de entrada.",
+];
+
+function pintarFrase(){
+  const el=document.getElementById("frase");
+  if(!el)return;
+  const hoy=new Date();
+  const inicio=new Date(hoy.getFullYear(),0,0);
+  const dia=Math.floor((hoy-inicio)/86400000);
+  el.textContent=FRASES[(dia+hoy.getFullYear())%FRASES.length];
 }
 
 const fmt=(v,d=2)=>typeof v==="number"?v.toFixed(d):"—";
@@ -936,6 +990,7 @@ function nivc(l,v,col){
   return '<div class="nivc"><div class="ev" style="color:'+col+'">'+dol(v)+'</div><div class="el">'+l+'</div></div>';
 }
 
+pintarFrase();
 cargar();
 </script>
 </body>
