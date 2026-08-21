@@ -50,6 +50,15 @@ jobs:
           restore-keys: |
             universo-
 
+      # Estado previo de las señales, para detectar cambios.
+      - name: Restaurar estado de señales
+        uses: actions/cache/restore@v4
+        with:
+          path: docs/estado_senales.json
+          key: senales-restaurar
+          restore-keys: |
+            senales-
+
       - name: Verificar universo
         run: |
           if [ -f docs/universo.json ]; then
@@ -57,14 +66,9 @@ jobs:
           import json
           u=json.load(open('docs/universo.json'))
           print('Universo encontrado:',u.get('total'),'emisoras')
-          print('  acciones:',len(u.get('acciones',[])))
-          print('  etfs:',len(u.get('etfs',[])))
-          print('  bmv:',len(u.get('bmv',[])))
           "
           else
-            echo "AVISO: no hay universo.json en cache."
-            echo "main.py usara su lista de respaldo (8 emisoras)."
-            echo "Corre el workflow 'Seleccion de Universo' para generarlo."
+            echo "AVISO: no hay universo.json en cache; se usara la lista de respaldo."
           fi
 
       - name: Correr el motor de alertas
@@ -76,6 +80,20 @@ jobs:
         with:
           path: docs/fundamentales.json
           key: fundamentales-${{ github.run_id }}
+
+      # Manda a Telegram solo los cambios de señal.
+      - name: Enviar alertas a Telegram
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 alertas_telegram.py
+
+      - name: Guardar estado de señales
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: docs/estado_senales.json
+          key: senales-${{ github.run_id }}
 
       - name: Recuperar rapido.json ya publicado
         run: |
@@ -96,7 +114,6 @@ jobs:
           if [ -f docs/alertas.json ]; then cp docs/alertas.json _site/; fi
           if [ -f docs/rapido.json ]; then cp docs/rapido.json _site/; fi
           touch _site/.nojekyll
-          echo "--- contenido publicado ---"
           ls -la _site
 
       - name: Subir artefacto
