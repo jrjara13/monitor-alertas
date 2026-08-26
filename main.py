@@ -1,9 +1,9 @@
 """
-main.py — v8
-Motor de alertas. Los datos de ETF (activos y costo anual) se buscan en
-varias llaves porque yfinance los ha ido moviendo entre versiones; los
-rendimientos a 3 y 5 años se calculan del historial de precios, que es
-mas confiable que depender de metadatos.
+main.py — v9
+Motor de alertas. Los ETFs ya no piden activos ni costo anual: la fuente
+dejo de publicarlos (0 de 391 en la ultima corrida), asi que no tiene
+sentido pedirlos ni mostrar campos vacios. Los rendimientos a 3 y 5 años
+se calculan del historial de precios.
 """
 import json
 import math
@@ -88,21 +88,6 @@ def num(v, dec=2):
         return round(f, dec)
     except (TypeError, ValueError):
         return None
-
-
-def primero(d: dict, llaves: list):
-    """Primera llave presente y utilizable, de una lista de candidatas."""
-    for k in llaves:
-        v = d.get(k)
-        if v is not None:
-            try:
-                f = float(v)
-                if not (math.isnan(f) or math.isinf(f)):
-                    return f
-            except (TypeError, ValueError):
-                if isinstance(v, str) and v.strip():
-                    return v
-    return None
 
 
 def rend_anualizado(serie, años):
@@ -198,42 +183,6 @@ def trimestrales(tk) -> list:
         return []
 
 
-def datos_de_fondo(tk, info: dict) -> dict:
-    """
-    Activos y costo anual de un ETF. yfinance ha movido estos campos entre
-    versiones, asi que se prueban varias llaves y, como ultimo recurso, la
-    interfaz funds_data (disponible en versiones recientes).
-    """
-    activos = primero(info, ["totalAssets", "netAssets", "aum", "fundInceptionAssets"])
-    costo = primero(info, ["annualReportExpenseRatio", "netExpenseRatio",
-                            "expenseRatio", "grossExpenseRatio"])
-    if activos is None or costo is None:
-        try:
-            fd = getattr(tk, "funds_data", None)
-            if fd is not None:
-                resumen = fd.fund_overview
-                if callable(resumen):
-                    resumen = resumen()
-                if isinstance(resumen, dict):
-                    if costo is None:
-                        costo = primero(resumen, ["annualReportExpenseRatio",
-                                                   "netExpenseRatio", "expenseRatio"])
-                ops = getattr(fd, "fund_operations", None)
-                if ops is not None and activos is None:
-                    try:
-                        # La tabla trae los datos del fondo en su primera columna
-                        fila = ops.loc["Total Net Assets"]
-                        activos = float(fila.iloc[0])
-                    except Exception:
-                        pass
-        except Exception:
-            pass
-    # El costo a veces viene como porcentaje (0.09) y a veces como fraccion (0.0009)
-    if isinstance(costo, (int, float)) and costo > 0.5:
-        costo = costo / 100
-    return {"activos": activos, "costo_anual": costo}
-
-
 def cargar_cache_fundamentales() -> dict:
     if os.path.exists(ARCHIVO_FUND):
         try:
@@ -254,9 +203,6 @@ def necesita_refresco(entrada: dict) -> bool:
         return True
     if "resumen" not in entrada:
         return True
-    # Fuerza el refresco de ETFs que quedaron sin activos ni costo
-    if entrada.get("es_etf") and entrada.get("activos") is None and entrada.get("costo_anual") is None:
-        return True
     try:
         ts = datetime.fromisoformat(entrada["actualizado"])
         return (datetime.now(timezone.utc) - ts).days >= DIAS_CACHE_FUND
@@ -273,19 +219,11 @@ def refrescar_fundamentales(tickers: list, cache: dict, etfs: set) -> dict:
 
     print(f"Fundamentales: refrescando {len(por_hacer)} de {len(pendientes)} pendientes...")
     ahora = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
-    diag_etf = {"con_activos": 0, "con_costo": 0, "total": 0}
     for i, t in enumerate(por_hacer, 1):
         es_etf = t in etfs
         try:
             tk = yf.Ticker(t)
             info = tk.info or {}
-            fondo = datos_de_fondo(tk, info) if es_etf else {"activos": None, "costo_anual": None}
-            if es_etf:
-                diag_etf["total"] += 1
-                if fondo["activos"] is not None:
-                    diag_etf["con_activos"] += 1
-                if fondo["costo_anual"] is not None:
-                    diag_etf["con_costo"] += 1
             cache[t] = {
                 "trailingPE": info.get("trailingPE"),
                 "pegRatio": info.get("pegRatio"),
@@ -304,8 +242,6 @@ def refrescar_fundamentales(tickers: list, cache: dict, etfs: set) -> dict:
                 "nombre": info.get("shortName") or info.get("longName"),
                 "categoria": info.get("category") or info.get("categoryName"),
                 "familia": info.get("fundFamily"),
-                "activos": fondo["activos"],
-                "costo_anual": fondo["costo_anual"],
                 "es_etf": es_etf,
                 "resumen": resumen_corto(info.get("longBusinessSummary")),
                 "empleados": info.get("fullTimeEmployees"),
@@ -320,9 +256,6 @@ def refrescar_fundamentales(tickers: list, cache: dict, etfs: set) -> dict:
         if i % 20 == 0:
             print(f"  ...{i}/{len(por_hacer)}")
         time.sleep(0.2)
-    if diag_etf["total"]:
-        print(f"  ETFs en esta tanda: {diag_etf['total']} · "
-              f"con activos {diag_etf['con_activos']} · con costo {diag_etf['con_costo']}")
     return cache
 
 
@@ -366,7 +299,6 @@ def main():
     for s, m in sorted(medianas.items(), key=lambda x: x[1]):
         print(f"  {s:<26} {m:>6.1f}×")
 
-    # Los ETFs se descargan con 5 años para calcular rendimientos anualizados.
     precios = descargar_precios(acciones + lista_indices, PERIODO)
     print()
     precios_etf = descargar_precios(etfs, PERIODO_ETF) if etfs else {}
@@ -400,7 +332,6 @@ def main():
         try:
             fr = cache.get(t, {})
             es_etf = t in set_etfs
-            # Los indicadores tecnicos se calculan sobre el ultimo año
             df_tec = df.tail(252) if es_etf else df
             tec = analisis_tecnico(df_tec)
             if math.isnan(tec["precio_actual"]) or math.isnan(tec["rsi"]):
@@ -435,10 +366,7 @@ def main():
                 "industria": fr.get("familia") if es_etf else fr.get("industria"),
                 "bolsa": fr.get("bolsa"),
                 "etf": ({"categoria": fr.get("categoria"),
-                         "activos": fr.get("activos"),
                          "familia": fr.get("familia"),
-                         "costo_anual": num(fr.get("costo_anual"), 5),
-                         # Calculados del historial, no de metadatos
                          "rend_3a": rend_anualizado(cierres_completos, 3),
                          "rend_5a": rend_anualizado(cierres_completos, 5)} if es_etf else None),
                 "tecnico": {
@@ -501,15 +429,12 @@ def main():
     n_etf = sum(1 for r in resultados.values() if r["tipo"] == "etf")
     con_resumen = sum(1 for r in resultados.values() if r.get("resumen"))
     etfs_ok = [r for r in resultados.values() if r["tipo"] == "etf" and r.get("etf")]
-    con_act = sum(1 for r in etfs_ok if r["etf"].get("activos") is not None)
-    con_cos = sum(1 for r in etfs_ok if r["etf"].get("costo_anual") is not None)
     con_r5 = sum(1 for r in etfs_ok if r["etf"].get("rend_5a") is not None)
 
     print(f"\n{len(resultados)} emisoras ({len(resultados)-n_etf} acciones, {n_etf} ETFs)"
           f" + {len(indices_out)} índices. JSON: {tam:.2f} MB")
     print(f"Con descripción de negocio: {con_resumen} de {len(resultados)}")
-    print(f"ETFs con activos: {con_act}/{n_etf} · con costo anual: {con_cos}/{n_etf} · "
-          f"con rend. 5 años: {con_r5}/{n_etf}")
+    print(f"ETFs con rendimiento a 5 años: {con_r5}/{n_etf}")
 
     regs = {}
     for r in resultados.values():
