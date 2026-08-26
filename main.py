@@ -1,7 +1,8 @@
 """
-main.py — v6
-Motor de alertas para el universo determinado por seleccion.py:
-acciones liquidas de EE.UU., ETFs y emisoras de BMV.
+main.py — v7
+Motor de alertas para el universo determinado por seleccion.py.
+Incorpora el bloque tecnico por regimen, el estocastico diario y el
+P/E comparado contra la mediana de cada sector.
 """
 import json
 import math
@@ -12,7 +13,8 @@ from datetime import datetime, timezone
 import pandas as pd
 import yfinance as yf
 
-from indicadores import analisis_tecnico, analisis_fundamental, score_riesgo, señal_compuesta
+from indicadores import (analisis_tecnico, analisis_fundamental, score_riesgo,
+                          señal_compuesta, medianas_por_sector)
 
 PESOS = {"peso_tecnico": 0.45, "peso_fundamental": 0.40, "peso_riesgo": 0.15}
 
@@ -42,10 +44,8 @@ UNIVERSO_RESPALDO = ["AAPL", "MSFT", "NVDA", "AMZN", "GOOGL", "META", "SPY", "QQ
 
 
 def cargar_universo() -> tuple:
-    """Retorna (acciones, etfs). Las de BMV se tratan como acciones."""
     if not os.path.exists(ARCHIVO_UNIVERSO):
         print(f"⚠ No existe {ARCHIVO_UNIVERSO}. Usando lista de respaldo.")
-        print("  Corre el workflow 'Seleccion de Universo' para generarlo.")
         return UNIVERSO_RESPALDO, []
     try:
         with open(ARCHIVO_UNIVERSO, encoding="utf-8") as f:
@@ -53,7 +53,6 @@ def cargar_universo() -> tuple:
         acciones = list(u.get("acciones", [])) + list(u.get("bmv", []))
         etfs = list(u.get("etfs", []))
         print(f"Universo: {len(acciones)} acciones (incl. BMV), {len(etfs)} ETFs")
-        print(f"  Determinado el {u.get('actualizado','?')}")
         return acciones, etfs
     except Exception as e:
         print(f"⚠ No se pudo leer el universo: {e}. Usando respaldo.")
@@ -61,7 +60,6 @@ def cargar_universo() -> tuple:
 
 
 def resumen_corto(txt, limite=520):
-    """Recorta la descripcion de la empresa al final de una frase."""
     if not txt:
         return None
     t = " ".join(str(txt).split())
@@ -190,7 +188,6 @@ def guardar_cache_fundamentales(cache: dict):
 def necesita_refresco(entrada: dict) -> bool:
     if not entrada or "actualizado" not in entrada:
         return True
-    # Fuerza el refresco si el registro no trae los campos nuevos.
     if "resumen" not in entrada:
         return True
     try:
@@ -289,14 +286,20 @@ def main():
     cache = refrescar_fundamentales(tickers, cache, set_etfs)
     guardar_cache_fundamentales(cache)
 
+    # Mediana de P/E por sector: cada emisora se juzga contra sus pares,
+    # no contra un umbral igual para toda la bolsa.
+    medianas = medianas_por_sector(cache)
+    print(f"\nMedianas de P/E por sector ({len(medianas)} sectores con pares suficientes):")
+    for s, m in sorted(medianas.items(), key=lambda x: x[1]):
+        print(f"  {s:<26} {m:>6.1f}×")
+
     precios = descargar_precios(tickers + lista_indices)
-    print(f"Precios obtenidos para {len(precios)} de {len(tickers) + len(lista_indices)}.")
+    print(f"\nPrecios obtenidos para {len(precios)} de {len(tickers) + len(lista_indices)}.")
 
     indices_out = {}
     for t, nombre in INDICES.items():
         df = precios.get(t)
         if df is None or df.empty:
-            print(f"  ⚠ Sin datos para el índice {t}")
             continue
         c = df["Close"].dropna()
         if len(c) < 2:
@@ -331,13 +334,13 @@ def main():
             if es_etf:
                 fund = {"pe": None, "peg": None, "margen_operativo": None,
                         "crecimiento_ingresos": None, "roe": None,
-                        "deuda_capital": None, "score_fundamental": 0, "señales": {}}
-                # Mismos pesos que las acciones: el bloque fundamental aporta 0.
-                # Asi los umbrales siguen siendo comparables entre ETFs y acciones.
+                        "deuda_capital": None, "pe_mediana_sector": None,
+                        "pe_relativo_sector": None,
+                        "score_fundamental": 0, "señales": {}}
                 comp = señal_compuesta(tec["score_tecnico"], 0,
                                         riesgo["score_riesgo"], **PESOS)
             else:
-                fund = analisis_fundamental(fr)
+                fund = analisis_fundamental(fr, medianas.get(fr.get("sector")))
                 comp = señal_compuesta(tec["score_tecnico"], fund["score_fundamental"],
                                         riesgo["score_riesgo"], **PESOS)
 
@@ -365,11 +368,14 @@ def main():
                     "precio_actual": num(tec["precio_actual"]),
                     "rsi": num(tec["rsi"], 1),
                     "macd_hist": num(tec["macd_hist"], 3),
+                    "estocastico_k": num(tec["estocastico_k"], 1),
+                    "estocastico_d": num(tec["estocastico_d"], 1),
                     "sma20": num(tec["sma20"]),
                     "sma50": num(tec["sma50"]),
                     "sma200": num(tec["sma200"]),
                     "volumen_relativo": tec["volumen_relativo"],
                     "score_tecnico": tec["score_tecnico"],
+                    "regimen": tec["regimen"],
                     "señales": tec["señales"],
                 },
                 "fundamental": {
@@ -379,6 +385,8 @@ def main():
                     "crecimiento_ingresos": num(fund["crecimiento_ingresos"], 4),
                     "roe": num(fund["roe"], 4),
                     "deuda_capital": num(fund["deuda_capital"], 1),
+                    "pe_mediana_sector": fund.get("pe_mediana_sector"),
+                    "pe_relativo_sector": fund.get("pe_relativo_sector"),
                     "market_cap": fr.get("marketCap"),
                     "dividend_yield": num(fr.get("dividendYield"), 4),
                     "precio_objetivo": num(fr.get("targetMeanPrice")),
@@ -409,6 +417,7 @@ def main():
     salida = {
         "actualizado": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
         "total": len(resultados),
+        "medianas_sector": {k: round(v, 2) for k, v in medianas.items()},
         "indices": limpiar(indices_out),
         "tickers": limpiar(resultados),
     }
@@ -421,13 +430,23 @@ def main():
     print(f"\n{len(resultados)} emisoras ({len(resultados)-n_etf} acciones, {n_etf} ETFs)"
           f" + {len(indices_out)} índices. JSON: {tam:.2f} MB")
     print(f"Con descripción de negocio: {con_resumen} de {len(resultados)}")
+
+    # Distribucion de regimenes: util para saber como esta el mercado
+    regs = {}
+    for r in resultados.values():
+        regs[r["tecnico"]["regimen"]] = regs.get(r["tecnico"]["regimen"], 0) + 1
+    print("Régimen técnico:", ", ".join(f"{k} {v}" for k, v in sorted(regs.items())))
     print(f"Tiempo total: {time.time() - inicio:.0f}s")
 
     orden = sorted(resultados.items(),
                    key=lambda kv: kv[1]["compuesto"]["score_compuesto"], reverse=True)
     print("\nTOP 10 COMPRA:")
     for t, r in orden[:10]:
-        print(f"  {t:>12} [{r['tipo'][:3]}]  {r['compuesto']['señal']:<20} {r['compuesto']['score_compuesto']:>6}")
+        s = r["tecnico"]["señales"]
+        print(f"  {t:>12} [{r['tipo'][:3]}] {r['compuesto']['señal']:<15} "
+              f"{r['compuesto']['score_compuesto']:>6}  "
+              f"(tend {s['tendencia']:+d} mom {s['momentum']:+d} tim {s['timing']:+d}, "
+              f"fund {r['fundamental']['score_fundamental']:+d})")
 
 
 if __name__ == "__main__":
