@@ -27,7 +27,6 @@ button{background:var(--s3);border:1px solid var(--border2);color:var(--text);fo
 button:active{background:var(--border2)}
 input{width:100%;background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--text);font-size:16px;outline:none;font-family:inherit;margin-bottom:20px}
 input:focus{border-color:var(--border2)}
-
 .sl{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:12px;padding-left:2px}
 .idx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:11px;margin-bottom:26px}
 .idx{background:var(--s2);border:1px solid var(--border);border-radius:10px;padding:13px}
@@ -35,11 +34,9 @@ input:focus{border-color:var(--border2)}
 .idx-p{font-family:var(--mono);font-size:19px;font-weight:700;margin:5px 0 2px}
 .idx-c{font-family:var(--mono);font-size:11px;font-weight:600}
 .idx-x{font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:6px}
-
 .tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
 .tab{background:var(--s2);border:1px solid var(--border);color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:600;padding:7px 13px;border-radius:20px;cursor:pointer;letter-spacing:.04em}
 .tab.on{background:var(--gbg);border-color:#1a4028;color:var(--green)}
-
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
 .card{background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:16px;cursor:pointer}
 .ch{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
@@ -54,7 +51,6 @@ input:focus{border-color:var(--border2)}
 .mf b{color:var(--text);font-weight:600}
 .cardfoot{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding-top:11px;margin-top:9px;border-top:1px solid var(--border)}
 .rb{font-family:var(--mono);font-size:9px;font-weight:600;padding:3px 8px;border-radius:4px;border:1px solid}
-
 .ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)}
 .ph-tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted);margin-bottom:4px;text-transform:uppercase}
 .ph-title{font-size:17px;font-weight:700}
@@ -230,9 +226,7 @@ function copiarWL(){
 
 // ============ PRECIOS EN VIVO (Finnhub) ============
 let fhKey="", vivos={}, timerVivo=null, ultimoVivo="", errorVivo="";
-
 function esUS(t){return !/[.=^]/.test(t);}
-
 function leerKey(){
   try{fhKey=localStorage.getItem(CLAVE_FH)||"";}catch(e){fhKey="";}
 }
@@ -248,12 +242,10 @@ function pedirKey(){
   if(fhKey)iniciarVivo();
   render();
 }
-
 function tickersAVigilar(){
   if(detalle)return esUS(detalle)?[detalle]:[];
   return wlUnion().filter(esUS);
 }
-
 async function jalarVivos(){
   if(!fhKey||!datos)return;
   if(typeof document.hidden==="boolean"&&document.hidden)return;
@@ -280,7 +272,6 @@ async function jalarVivos(){
     render();
   }
 }
-
 function iniciarVivo(){
   if(!fhKey)return;
   detenerVivo();
@@ -288,13 +279,11 @@ function iniciarVivo(){
   timerVivo=setInterval(jalarVivos,15000);
 }
 function detenerVivo(){if(timerVivo){clearInterval(timerVivo);timerVivo=null;}}
-
 if(typeof document.addEventListener==="function"){
   document.addEventListener("visibilitychange",()=>{
     if(document.hidden)detenerVivo(); else if(fhKey)iniciarVivo();
   });
 }
-
 function estadoVivo(){
   if(!fhKey)return '<button onclick="pedirKey()">◎ Activar precios en vivo</button>';
   if(errorVivo)return '<button onclick="pedirKey()" style="color:'+ROJO+'">◎ '+esc(errorVivo)+'</button>';
@@ -344,7 +333,6 @@ const FRASES = [
   "Escribe tu tesis: lo que no se puede explicar, no se entiende.",
   "El tiempo en el mercado supera al momento de entrada.",
 ];
-
 function pintarFrase(){
   const el=document.getElementById("frase");
   if(!el)return;
@@ -360,7 +348,6 @@ const pc1=v=>typeof v==="number"?(v*100).toFixed(1)+"%":"—";
 const colr=v=>typeof v!=="number"?GRIS:v>0?VERDE:v<0?ROJO:GRIS;
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const dol=v=>typeof v==="number"?"$"+fmt(v):"—";
-
 function cap(n){
   if(typeof n!=="number")return "—";
   if(n>=1e12)return "$"+(n/1e12).toFixed(2)+"T";
@@ -375,7 +362,6 @@ function miles(n){
   if(n>=1e6)return s+"$"+(n/1e6).toFixed(1)+"M";
   return s+"$"+n.toFixed(0);
 }
-
 function leerFecha(s){
   if(!s)return "—";
   const d=new Date(String(s).replace(/\.(\d{3})\d+/,".$1"));
@@ -391,7 +377,6 @@ async function cargar(){
     const j=await r.json();
     datos=j.tickers||j; indices=j.indices||{};
     fechaDatos=leerFecha(j.actualizado);
-
     try{
       const rr=await fetch(URL_RAPIDO+"?t="+Date.now());
       if(rr.ok){
@@ -402,7 +387,6 @@ async function cargar(){
         if(jr.indices&&Object.keys(jr.indices).length)indices=jr.indices;
       }
     }catch(e){}
-
     document.getElementById("sub").textContent=
       Object.keys(datos).length+" EMISORAS · "+fechaDatos+
       (fechaRapido?" · WATCHLIST "+fechaRapido:"");
@@ -417,9 +401,7 @@ function buscar(v){filtro=v.trim();detalle=null;render();}
 function cambiarVista(v){vista=v;render();}
 function abrir(t){detalle=t;window.scrollTo(0,0);render();}
 function cerrar(){detalle=null;render();}
-
 function media(s,n){const o=[];for(let i=0;i<s.length;i++){if(i<n-1){o.push(null);continue;}let x=0;for(let k=i-n+1;k<=i;k++)x+=s[k];o.push(x/n);}return o;}
-
 function sparkline(serie,color,w=160,h=32){
   const s=(serie||[]).filter(v=>typeof v==="number");
   if(s.length<2)return "";
@@ -427,7 +409,6 @@ function sparkline(serie,color,w=160,h=32){
   const pts=s.map((v,i)=>(i/(s.length-1)*w).toFixed(1)+","+(h-(v-mn)/rg*h).toFixed(1)).join(" ");
   return '<svg width="100%" height="'+h+'" viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none" style="display:block;margin-top:8px"><polyline points="'+pts+'" fill="none" stroke="'+color+'" stroke-width="1.6"/></svg>';
 }
-
 function graficoCompleto(serie,niv,pt){
   const s=(serie||[]).filter(v=>typeof v==="number");
   if(s.length<25)return '<div class="mno">Sin historial suficiente para graficar.</div>';
@@ -482,7 +463,6 @@ function render(){
      tab("watch","★ MI WATCHLIST ("+union.length+")")+
      tab("compra","COMPRAS ("+compra.length+")")+tab("venta","VENTAS ("+venta.length+")")+
      tab("etf","ETFs")+tab("riesgo","COMPRAS BAJO RIESGO")+'</div>';
-
   if(vista==="watch"){
     const soloLocal=wlLocal.filter(t=>wlRapido.indexOf(t)<0&&wlExcluir.indexOf(t)<0);
     h+='<div class="wlbar"><button id="btncopiar" onclick="copiarWL()">Copiar lista para watchlist.txt</button></div>';
@@ -496,8 +476,7 @@ function render(){
     if(ocultas.length){
       h+='<div class="nota"><b>'+ocultas.length+' emisora'+(ocultas.length>1?'s':'')+
          ' oculta'+(ocultas.length>1?'s':'')+' en este dispositivo</b> ('+ocultas.map(esc).join(", ")+
-         '): el motor las sigue actualizando cada 5 minutos porque siguen en <code>watchlist.txt</code>. '+
-         'Para dejar de procesarlas, copia la lista con el boton de arriba y pegala en ese archivo.</div>';
+         '): el motor las sigue actualizando cada 5 minutos porque siguen en <code>watchlist.txt</code>.</div>';
     }
     const filas=union.map(t=>[t,datos[t]]).filter(([,r])=>r);
     const faltan=union.filter(t=>!datos[t]);
@@ -507,12 +486,10 @@ function render(){
       filas.sort((a,b)=>b[1].compuesto.score_compuesto-a[1].compuesto.score_compuesto);
       h+='<div class="grid">'+filas.map(([t,r])=>card(t,r)).join("")+'</div>';
     }
-    if(faltan.length)h+='<div class="msg">Sin datos disponibles para: '+faltan.map(esc).join(", ")+
-      '. Puede que el símbolo no exista en la fuente o esté fuera del universo analizado.</div>';
+    if(faltan.length)h+='<div class="msg">Sin datos disponibles para: '+faltan.map(esc).join(", ")+'.</div>';
     cont.innerHTML=h;
     return;
   }
-
   let lista;
   if(vista==="compra")lista=compra.sort((a,b)=>b[1].compuesto.score_compuesto-a[1].compuesto.score_compuesto);
   else if(vista==="venta")lista=venta.sort((a,b)=>a[1].compuesto.score_compuesto-b[1].compuesto.score_compuesto);
@@ -547,8 +524,8 @@ function card(t,r){
     '<div class="pr">'+dol(r.tecnico.precio_actual)+' '+rapido+'</div></div>'+
     '<div class="chip" style="color:'+c+';background:'+c+'1a;border-color:'+c+'4d">'+esc(r.compuesto.señal)+'</div></div>'+
     '<div class="barbg"><div class="barfill" style="width:'+w+'%;left:'+left+'%;background:'+c+'"></div></div>'+
-    '<div class="sv">SCORE '+(sc>=0?"+":"")+sc+' / ±100</div>'+
-    '<div style="margin-top:8px">'+mf("RSI (14)",fmt(r.tecnico.rsi,1))+
+    '<div class="sv">SCORE '+(sc>=0?"+":"")+sc+' / ±100 · '+esc(r.tecnico.regimen||"—")+'</div>'+
+    '<div style="margin-top:8px">'+mf("RSI / Estoc.",fmt(r.tecnico.rsi,1)+" / "+fmt(r.tecnico.estocastico_k,0))+
     (r.tipo==="etf"?mf("Categoría",esc((r.etf&&r.etf.categoria)||"—")):mf("P/E",fmt(r.fundamental.pe,1)))+
     mf("3 meses",pct((r.rendimiento||{}).m3))+'</div>'+
     '<div class="cardfoot">'+etiqueta+'<span class="rb" style="color:'+cr+';background:'+cr+'1a;border-color:'+cr+'4d">RIESGO '+esc(r.riesgo.nivel_riesgo).toUpperCase()+'</span>'+
@@ -570,7 +547,6 @@ function gauge(score){
     '<text x="91" y="18" font-family="JetBrains Mono" font-size="9" fill="#6b6d87">50</text>'+
     '<text x="178" y="112" font-family="JetBrains Mono" font-size="9" fill="#6b6d87">100</text></svg>';
 }
-
 function mcard(nombre,badge,color,valor,nota){
   return '<div class="mc"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:'+color+'"></div>'+
     '<div class="mct"><div class="mcn">'+nombre+'</div><span class="mcb" style="background:'+color+'1a;color:'+color+'">'+badge+'</span></div>'+
@@ -585,7 +561,6 @@ function reporte(t,r){
   const esETF=r.tipo==="etf";
   const desdeMax=(typeof p==="number"&&typeof nv.max52==="number")?(p/nv.max52-1)*100:null;
   const upside=(typeof fu.precio_objetivo==="number"&&typeof p==="number")?(fu.precio_objetivo/p-1)*100:null;
-
   const esc_t=t.replace(/'/g,"\\'");
   const enWatch=enWL(t), esRapido=wlRapido.indexOf(t)>=0;
   const lv=vivos[t];
@@ -618,7 +593,6 @@ function reporte(t,r){
      (typeof fu.precio_objetivo==="number"?' · PT '+dol(fu.precio_objetivo)+(fu.num_analistas?' ('+fu.num_analistas+' analistas)':''):'')+
      '</div></div></div>';
 
-  // Perfil: a que se dedica la emisora
   {
     const ex=[];
     if(r.pais)ex.push(esc(r.pais));
@@ -651,14 +625,20 @@ function reporte(t,r){
 
   h+='<div class="sl">Métricas Clave</div><div class="kstrip">'+
      ki("Score Compuesto",(sc>=0?"+":"")+sc,"de ±100",c)+
-     ki("RSI (14)",fmt(tc.rsi,1),tc.rsi<30?"Sobreventa":tc.rsi>70?"Sobrecompra":"Neutral",tc.rsi<30?VERDE:tc.rsi>70?ROJO:AZUL)+
+     ki("RSI / Estocástico",fmt(tc.rsi,1)+" / "+fmt(tc.estocastico_k,0),
+        "Régimen "+esc(tc.regimen||"—"),
+        tc.regimen==="Alcista"?VERDE:tc.regimen==="Bajista"?ROJO:AMBAR)+
      (esETF
        ? ki("Costo Anual",pc1(r.etf&&r.etf.costo_anual),"Comisión del fondo",
             (r.etf&&typeof r.etf.costo_anual==="number")?(r.etf.costo_anual<0.002?VERDE:r.etf.costo_anual>0.0075?ROJO:AMBAR):GRIS)+
          ki("Rend. 3 años",pc1(r.etf&&r.etf.rend_3a),"Anualizado",colr((r.etf&&r.etf.rend_3a)||null))+
          ki("Rend. 5 años",pc1(r.etf&&r.etf.rend_5a),"Anualizado",colr((r.etf&&r.etf.rend_5a)||null))
-       : ki("P/E Trailing",typeof fu.pe==="number"?fmt(fu.pe,1)+"×":"—","PEG "+(typeof fu.peg==="number"?fmt(fu.peg,2)+"×":"—"),
-            typeof fu.pe!=="number"?GRIS:fu.pe<15?VERDE:fu.pe>35?AMBAR:AZUL)+
+       : ki("P/E vs Sector",typeof fu.pe==="number"?fmt(fu.pe,1)+"×":"—",
+            typeof fu.pe_relativo_sector==="number"
+              ?fmt(fu.pe_relativo_sector,2)+"× la mediana ("+fmt(fu.pe_mediana_sector,1)+"×)"
+              :"PEG "+(typeof fu.peg==="number"?fmt(fu.peg,2)+"×":"—"),
+            typeof fu.pe_relativo_sector!=="number"?GRIS
+              :fu.pe_relativo_sector<0.80?VERDE:fu.pe_relativo_sector>1.30?AMBAR:AZUL)+
          ki("Margen Operativo",pc1(fu.margen_operativo),"ROE "+pc1(fu.roe),
             typeof fu.margen_operativo!=="number"?GRIS:fu.margen_operativo>0.2?VERDE:fu.margen_operativo<0.05?ROJO:AMBAR)+
          ki("Crec. Ingresos",pc1(fu.crecimiento_ingresos),"Últimos 12 meses",
@@ -695,7 +675,7 @@ function reporte(t,r){
         (typeof q.margen_op==="number"?fmt(q.margen_op,1)+"%":"—")+'</td>'+
         '<td>'+miles(q.util_neta)+'</td><td>'+(typeof q.eps==="number"?"$"+fmt(q.eps,2):"—")+'</td></tr>';
     });
-    h+='</tbody></table><div style="font-family:var(--mono);font-size:9px;color:var(--dim);padding:8px 12px">Estados financieros trimestrales según los reporta la fuente. La variación anual compara contra el mismo trimestre del año previo.</div></div>';
+    h+='</tbody></table><div style="font-family:var(--mono);font-size:9px;color:var(--dim);padding:8px 12px">Estados financieros trimestrales según los reporta la fuente.</div></div>';
   }
 
   h+=desgloseScore(r);
@@ -719,7 +699,6 @@ function ki(l,v,s,col){
   return '<div class="ki"><div class="kl">'+l+'</div><div class="kv" style="color:'+(col||"var(--text)")+'">'+v+'</div>'+
     '<div class="ks">'+(s||"&nbsp;")+'</div></div>';
 }
-
 function tituloGauge(rg,comp){
   const n=rg.nivel_riesgo;
   const t=comp.señal.includes("COMPRA")?"Señal de Compra":comp.señal.includes("VENTA")?"Señal de Venta":"Sin Señal Direccional";
@@ -746,8 +725,11 @@ function resumenGauge(r){
   }
   s+="El score compuesto de <b>"+(sc>=0?"+":"")+sc+"</b> resulta de un bloque técnico de "+tc.score_tecnico+
     "/4 y uno fundamental de "+fu.score_fundamental+"/6, con la penalización por riesgo aplicada. ";
-  if(typeof fu.pe==="number")
-    s+="El P/E de "+fmt(fu.pe,1)+"× "+(fu.pe<15?"es bajo frente al promedio del mercado.":fu.pe>35?"es exigente y descuenta crecimiento elevado sostenido.":"se ubica en rango razonable.");
+  if(typeof fu.pe_relativo_sector==="number")
+    s+="Su P/E de "+fmt(fu.pe,1)+"× equivale a "+fmt(fu.pe_relativo_sector,2)+
+      "× la mediana de su sector ("+fmt(fu.pe_mediana_sector,1)+"×).";
+  else if(typeof fu.pe==="number")
+    s+="El P/E de "+fmt(fu.pe,1)+"× "+(fu.pe<15?"es bajo frente al promedio del mercado.":fu.pe>35?"es exigente.":"está en rango razonable.");
   return s;
 }
 function tituloGrafico(tc){
@@ -760,14 +742,20 @@ function tituloGrafico(tc){
 
 function tarjetasValuacion(fu,rg,upside){
   let h="";
-  h+=mcard("P/U Trailing",typeof fu.pe!=="number"?"SIN DATO":fu.pe<0?"PÉRDIDAS":fu.pe<15?"BAJO":fu.pe>35?"EXIGENTE":"RAZONABLE",
-    typeof fu.pe!=="number"?GRIS:fu.pe<0?ROJO:fu.pe<15?VERDE:fu.pe>35?AMBAR:VERDE,
+  const rel=fu.pe_relativo_sector, med=fu.pe_mediana_sector;
+  h+=mcard("P/U vs Sector",
+    typeof fu.pe!=="number"?"SIN DATO":fu.pe<0?"PÉRDIDAS":
+      typeof rel!=="number"?"SIN PARES":rel<0.80?"BARATA":rel>1.30?"CARA":"EN LÍNEA",
+    typeof fu.pe!=="number"?GRIS:fu.pe<0?ROJO:
+      typeof rel!=="number"?GRIS:rel<0.80?VERDE:rel>1.30?AMBAR:AZUL,
     typeof fu.pe==="number"?fmt(fu.pe,1)+"×":"—",
     typeof fu.pe!=="number"?"Sin dato disponible en la fuente para esta emisora.":
     fu.pe<0?"La empresa reporta pérdidas; el múltiplo de utilidades no es interpretable.":
-    fu.pe<15?"Múltiplo por debajo del promedio del mercado.":
-    fu.pe>35?"Múltiplo por encima del promedio. Descuenta continuidad del crecimiento; una desaceleración lo comprimiría con rapidez.":
-    "Múltiplo en rango intermedio frente al promedio del mercado.");
+    typeof rel!=="number"?"Su sector no tiene suficientes emisoras comparables en el universo; se evalúa contra umbrales generales.":
+    "La mediana de su sector es "+fmt(med,1)+"×, de modo que cotiza a <b>"+fmt(rel,2)+
+      "× sus pares</b>. "+(rel<0.80?"Descuento frente a empresas del mismo giro.":
+      rel>1.30?"Prima frente a empresas del mismo giro: el mercado le exige más.":
+      "Valuación alineada con su industria."));
   h+=mcard("PEG",typeof fu.peg!=="number"?"SIN DATO":fu.peg<1?"FAVORABLE":fu.peg>2?"CARO":"NEUTRAL",
     typeof fu.peg!=="number"?GRIS:fu.peg<1?VERDE:fu.peg>2?ROJO:AMBAR,
     typeof fu.peg==="number"?fmt(fu.peg,2)+"×":"—",
@@ -793,7 +781,7 @@ function tarjetasValuacion(fu,rg,upside){
     typeof fu.deuda_capital==="number"?fmt(fu.deuda_capital,1):"—",
     "Deuda sobre capital. "+(typeof fu.deuda_capital!=="number"?"Sin dato disponible.":
      fu.deuda_capital<50?"Balance poco apalancado: baja sensibilidad al ciclo de tasas.":
-     fu.deuda_capital>150?"Apalancamiento elevado: amplifica el riesgo financiero y la sensibilidad a tasas.":
+     fu.deuda_capital>150?"Apalancamiento elevado: amplifica el riesgo financiero.":
      "Nivel de deuda manejable frente al capital contable."));
   h+=mcard("Volatilidad",rg.volatilidad_anualizada>45?"ELEVADA":rg.volatilidad_anualizada<20?"CONTENIDA":"MEDIA",
     rg.volatilidad_anualizada>45?ROJO:rg.volatilidad_anualizada<20?VERDE:AMBAR,
@@ -803,12 +791,32 @@ function tarjetasValuacion(fu,rg,upside){
   return h;
 }
 
+function explicaTecnico(r){
+  const s=r.tecnico.señales||{}, reg=r.tecnico.regimen;
+  const partes=[];
+  if(reg==="Alcista")partes.push("El precio se ubica sobre sus medias: <b>tendencia alcista</b>.");
+  else if(reg==="Bajista")partes.push("El precio se ubica bajo sus medias: <b>tendencia bajista</b>.");
+  else partes.push("Las medias no muestran dirección clara: <b>régimen lateral</b>.");
+  if(s.momentum>0)partes.push("El MACD acompaña y gana fuerza.");
+  else if(s.momentum<0)partes.push("El MACD se debilita.");
+  else partes.push("El MACD no aporta dirección.");
+  if(s.timing>0)partes.push(reg==="Alcista"
+    ?"El RSI y el estocástico señalan un <b>retroceso dentro de la tendencia</b>: punto de entrada favorable."
+    :"El estocástico gira al alza desde sobreventa.");
+  else if(s.timing<0)partes.push(reg==="Bajista"
+    ?"El rebote luce agotado dentro de una tendencia a la baja."
+    :"El papel viene <b>extendido</b>: entrar aquí ofrece poco margen.");
+  else if(reg==="Bajista")partes.push("Aunque marque sobreventa, <b>no se premia comprar en tendencia bajista</b>.");
+  else partes.push("Sin lectura de entrada destacable.");
+  return partes.join(" ");
+}
+
 function desgloseScore(r){
   const tc=r.tecnico,fu=r.fundamental,rg=r.riesgo,esETF=r.tipo==="etf";
   const st=tc.señales||{},sf=fu.señales||{};
   const et=(k,l)=>{const v=st[k];if(v===undefined)return "";
     const col=v>0?VERDE:v<0?ROJO:AMBAR;
-    return '<span class="sbit" style="background:'+col+'1a;color:'+col+'">'+l+' · '+(v>0?"+1":v<0?"−1":"0")+'</span>';};
+    return '<span class="sbit" style="background:'+col+'1a;color:'+col+'">'+l+' · '+(v>0?"+"+v:v<0?"−"+Math.abs(v):"0")+'</span>';};
   const ef=(k,l)=>{const v=sf[k];if(v===undefined)return "";
     const col=v>0?VERDE:v<0?ROJO:AMBAR;
     return '<span class="sbit" style="background:'+col+'1a;color:'+col+'">'+l+' · '+(v>0?"+1":v<0?"−1":"0")+'</span>';};
@@ -820,7 +828,9 @@ function desgloseScore(r){
     '<h3>Componentes del Score Compuesto — 45% técnico · 40% fundamental · 15% penalización por riesgo</h3>'+
     '<div class="sbr"><div class="sbh"><div class="sbn">BLOQUE TÉCNICO</div><div class="sbs" style="color:'+colT+'">'+
     tc.score_tecnico+' / 4</div></div><div class="sbbar"><div class="sbf" style="width:'+pctT+'%;background:'+colT+'"></div></div>'+
-    '<div class="sbi">'+et("rsi","RSI")+et("macd","MACD")+et("tendencia","Tendencia SMA")+et("bollinger","Bollinger")+'</div></div>'+
+    '<div class="sbi">'+et("tendencia","Tendencia")+et("momentum","Momentum")+et("timing","Timing")+
+    '<span class="sbit" style="background:'+GRIS+'1a;color:'+GRIS+'">Régimen: '+esc(tc.regimen||"—")+'</span></div>'+
+    '<div class="mno" style="margin-top:8px">'+explicaTecnico(r)+'</div></div>'+
     '<div class="sbr"><div class="sbh"><div class="sbn">BLOQUE FUNDAMENTAL</div><div class="sbs" style="color:'+(esETF?GRIS:colF)+'">'+
     (esETF?'No aplica':fu.score_fundamental+' / 6')+'</div></div><div class="sbbar"><div class="sbf" style="width:'+(esETF?50:pctF)+'%;background:'+(esETF?GRIS:colF)+'"></div></div>'+
     '<div class="sbi">'+(esETF
@@ -839,40 +849,44 @@ function factoresFavor(r){
   const tc=r.tecnico,fu=r.fundamental,rg=r.riesgo,rd=r.rendimiento||{},f=[];
   const p=tc.precio_actual, esETF=r.tipo==="etf";
   if(typeof p==="number"&&typeof tc.sma20==="number"&&typeof tc.sma50==="number"&&p>tc.sma20&&tc.sma20>tc.sma50)
-    f.push("Estructura técnica alcista: el precio cotiza sobre sus medias de 20 y 50 días, con las medias alineadas al alza — configuración que suele acompañar continuidad de tendencia");
+    f.push("Estructura técnica alcista: el precio cotiza sobre sus medias de 20 y 50 días, con las medias alineadas al alza");
   if(typeof p==="number"&&typeof tc.sma200==="number"&&p>tc.sma200)
-    f.push("Se mantiene sobre la media de 200 días ("+dol(tc.sma200)+"), referencia habitual de tendencia alcista de largo plazo");
+    f.push("Se mantiene sobre la media de 200 días ("+dol(tc.sma200)+"), referencia de tendencia alcista de largo plazo");
   if(typeof tc.macd_hist==="number"&&tc.macd_hist>0)
     f.push("Histograma MACD positivo: el momentum de corto plazo sigue vigente");
-  if(typeof tc.rsi==="number"&&tc.rsi<30)
-    f.push("RSI en "+fmt(tc.rsi,1)+" indica sobreventa: el papel ha caído con fuerza y podría rebotar técnicamente");
+  if((tc.señales||{}).timing>0)
+    f.push("Timing favorable: con RSI en "+fmt(tc.rsi,1)+" y estocástico en "+fmt(tc.estocastico_k,0)+
+      ", ofrece un punto de entrada dentro de su tendencia en vez de estar extendido");
+  if(typeof fu.pe_relativo_sector==="number"&&fu.pe_relativo_sector<0.80)
+    f.push("Cotiza a "+fmt(fu.pe_relativo_sector,2)+"× la mediana de P/E de su sector ("+
+      fmt(fu.pe_mediana_sector,1)+"×): barata frente a sus pares, no solo frente al mercado");
   if(esETF&&r.etf){
     if(typeof r.etf.costo_anual==="number"&&r.etf.costo_anual<0.002)
-      f.push("Costo anual de "+pc1(r.etf.costo_anual)+": comisión muy baja, el fondo erosiona poco el rendimiento en el largo plazo");
+      f.push("Costo anual de "+pc1(r.etf.costo_anual)+": comisión muy baja, erosiona poco el rendimiento de largo plazo");
     if(typeof r.etf.activos==="number"&&r.etf.activos>1e10)
-      f.push("Activos bajo gestión de "+cap(r.etf.activos)+": tamaño que suele traducirse en mejor liquidez y menor diferencial de compra-venta");
+      f.push("Activos bajo gestión de "+cap(r.etf.activos)+": tamaño que suele traducirse en mejor liquidez");
     if(typeof r.etf.rend_5a==="number"&&r.etf.rend_5a>0.08)
       f.push("Rendimiento anualizado de "+pc1(r.etf.rend_5a)+" a cinco años");
   }
   if(typeof fu.crecimiento_ingresos==="number"&&fu.crecimiento_ingresos>0.15)
     f.push("Crecimiento de ingresos de "+pc1(fu.crecimiento_ingresos)+" anual"+
-      (typeof fu.margen_operativo==="number"&&fu.margen_operativo>0.2?" con margen operativo de "+pc1(fu.margen_operativo)+": crecer a esa velocidad sin sacrificar rentabilidad indica poder de fijación de precios":""));
+      (typeof fu.margen_operativo==="number"&&fu.margen_operativo>0.2?" con margen operativo de "+pc1(fu.margen_operativo):""));
   if(typeof fu.peg==="number"&&fu.peg<1)
-    f.push("PEG de "+fmt(fu.peg,2)+"×: ajustado por crecimiento, el múltiplo deja de ser caro"+(typeof fu.pe==="number"?" pese al P/E de "+fmt(fu.pe,1)+"×":""));
-  if(typeof fu.pe==="number"&&fu.pe>0&&fu.pe<15)
+    f.push("PEG de "+fmt(fu.peg,2)+"×: ajustado por crecimiento, el múltiplo deja de ser caro");
+  if(typeof fu.pe==="number"&&fu.pe>0&&fu.pe<15&&typeof fu.pe_relativo_sector!=="number")
     f.push("P/E de "+fmt(fu.pe,1)+"×, por debajo del promedio del mercado");
   if(typeof fu.roe==="number"&&fu.roe>0.15)
     f.push("ROE de "+pc1(fu.roe)+": retorno sobre capital en el rango alto del mercado");
   if(typeof fu.deuda_capital==="number"&&fu.deuda_capital<50)
-    f.push("Deuda/Capital de "+fmt(fu.deuda_capital,1)+": balance sin apalancamiento relevante, baja sensibilidad al ciclo de tasas");
+    f.push("Deuda/Capital de "+fmt(fu.deuda_capital,1)+": balance sin apalancamiento relevante");
   if(typeof rd.vs_sp500_3m==="number"&&rd.vs_sp500_3m>0)
-    f.push("Supera al S&P 500 por "+fmt(rd.vs_sp500_3m,1)+" puntos porcentuales en tres meses: fuerza relativa positiva frente al mercado");
+    f.push("Supera al S&P 500 por "+fmt(rd.vs_sp500_3m,1)+" puntos porcentuales en tres meses");
   if(typeof fu.precio_objetivo==="number"&&typeof p==="number"&&fu.precio_objetivo>p)
     f.push("Precio objetivo de consenso en "+dol(fu.precio_objetivo)+", "+pct((fu.precio_objetivo/p-1)*100)+" sobre el nivel actual");
   if(rg.nivel_riesgo==="Bajo")
-    f.push("Perfil de riesgo bajo: volatilidad de "+fmt(rg.volatilidad_anualizada,1)+"% y beta de "+fmt(rg.beta,2)+" implican fluctuación contenida");
+    f.push("Perfil de riesgo bajo: volatilidad de "+fmt(rg.volatilidad_anualizada,1)+"% y beta de "+fmt(rg.beta,2));
   if(typeof tc.volumen_relativo==="number"&&tc.volumen_relativo>1.5)
-    f.push("Volumen reciente "+fmt(tc.volumen_relativo,1)+"× su promedio: interés inusual que suele acompañar movimientos relevantes");
+    f.push("Volumen reciente "+fmt(tc.volumen_relativo,1)+"× su promedio: interés inusual");
   return f;
 }
 
@@ -880,44 +894,49 @@ function factoresContra(r){
   const tc=r.tecnico,fu=r.fundamental,rg=r.riesgo,rd=r.rendimiento||{},f=[];
   const p=tc.precio_actual, esETF=r.tipo==="etf";
   if(typeof p==="number"&&typeof tc.sma20==="number"&&typeof tc.sma50==="number"&&p<tc.sma20&&tc.sma20<tc.sma50)
-    f.push("Estructura técnica bajista: el precio cotiza bajo sus medias de 20 y 50 días, con las medias alineadas a la baja");
+    f.push("Estructura técnica bajista: el precio cotiza bajo sus medias de 20 y 50 días");
   if(typeof p==="number"&&typeof tc.sma200==="number"&&p<tc.sma200)
-    f.push("Cotiza bajo la media de 200 días ("+dol(tc.sma200)+"), lo que suele leerse como debilidad de largo plazo");
+    f.push("Cotiza bajo la media de 200 días ("+dol(tc.sma200)+"), señal de debilidad de largo plazo");
   if(typeof tc.macd_hist==="number"&&tc.macd_hist<0)
     f.push("Histograma MACD negativo: el momentum de corto plazo es bajista");
-  if(typeof tc.rsi==="number"&&tc.rsi>70)
-    f.push("RSI en "+fmt(tc.rsi,1)+" indica sobrecompra: el avance ha sido rápido y el margen antes de una corrección se estrecha");
-  else if(typeof tc.rsi==="number"&&tc.rsi>60)
-    f.push("RSI en "+fmt(tc.rsi,1)+" se acerca a la zona alta: sin ser sobrecompra, el margen de avance se reduce");
+  if((tc.señales||{}).timing<0)
+    f.push("Timing desfavorable: con RSI en "+fmt(tc.rsi,1)+" y estocástico en "+fmt(tc.estocastico_k,0)+
+      ", el papel está extendido y entrar en este punto deja poco margen");
+  if(tc.regimen==="Bajista"&&typeof tc.estocastico_k==="number"&&tc.estocastico_k<20)
+    f.push("El estocástico marca sobreventa ("+fmt(tc.estocastico_k,0)+") pero dentro de una tendencia bajista: "+
+      "comprar aquí equivale a atrapar un cuchillo cayendo");
+  if(typeof fu.pe_relativo_sector==="number"&&fu.pe_relativo_sector>1.30)
+    f.push("Cotiza a "+fmt(fu.pe_relativo_sector,2)+"× la mediana de P/E de su sector ("+
+      fmt(fu.pe_mediana_sector,1)+"×): cara incluso comparada con sus pares directos");
   if(esETF){
-    f.push("Al ser un fondo cotizado, la señal se apoya solo en el bloque técnico y de riesgo: no hay múltiplos ni estados financieros que respalden o contradigan la lectura");
+    f.push("Al ser un fondo cotizado, la señal se apoya solo en el bloque técnico y de riesgo");
     if(r.etf&&typeof r.etf.costo_anual==="number"&&r.etf.costo_anual>0.0075)
-      f.push("Costo anual de "+pc1(r.etf.costo_anual)+": comisión elevada que erosiona el rendimiento compuesto en el largo plazo");
+      f.push("Costo anual de "+pc1(r.etf.costo_anual)+": comisión elevada que erosiona el rendimiento compuesto");
     if(r.etf&&typeof r.etf.activos==="number"&&r.etf.activos<5e8)
-      f.push("Activos bajo gestión de "+cap(r.etf.activos)+": tamaño reducido, que puede implicar diferenciales de compra-venta más amplios y riesgo de cierre del fondo");
+      f.push("Activos bajo gestión de "+cap(r.etf.activos)+": tamaño reducido, con diferenciales más amplios");
   }
-  if(typeof fu.pe==="number"&&fu.pe>35)
-    f.push("P/E de "+fmt(fu.pe,1)+"× descuenta la continuidad del crecimiento actual: un trimestre de desaceleración comprimiría el múltiplo de forma desproporcionada");
+  if(typeof fu.pe==="number"&&fu.pe>35&&typeof fu.pe_relativo_sector!=="number")
+    f.push("P/E de "+fmt(fu.pe,1)+"× descuenta la continuidad del crecimiento actual");
   if(typeof fu.pe==="number"&&fu.pe<0)
-    f.push("La empresa reporta pérdidas: sin utilidades, la valuación depende enteramente de expectativas futuras");
+    f.push("La empresa reporta pérdidas: la valuación depende enteramente de expectativas futuras");
   if(typeof fu.crecimiento_ingresos==="number"&&fu.crecimiento_ingresos<0)
     f.push("Los ingresos se contraen "+pc1(fu.crecimiento_ingresos)+" anual: señal de deterioro operativo");
   if(typeof fu.margen_operativo==="number"&&fu.margen_operativo<0.05)
-    f.push("Margen operativo de "+pc1(fu.margen_operativo)+": poco colchón ante aumentos de costos o presión competitiva");
+    f.push("Margen operativo de "+pc1(fu.margen_operativo)+": poco colchón ante aumentos de costos");
   if(typeof fu.deuda_capital==="number"&&fu.deuda_capital>150)
-    f.push("Deuda/Capital de "+fmt(fu.deuda_capital,1)+": apalancamiento elevado que amplifica el riesgo financiero y la sensibilidad a tasas");
+    f.push("Deuda/Capital de "+fmt(fu.deuda_capital,1)+": apalancamiento elevado");
   if(rg.volatilidad_anualizada>40)
-    f.push("Volatilidad anualizada de "+fmt(rg.volatilidad_anualizada,1)+"%, muy por encima del promedio del mercado — exige dimensionar la posición con cuidado");
+    f.push("Volatilidad anualizada de "+fmt(rg.volatilidad_anualizada,1)+"%, muy por encima del promedio del mercado");
   if(typeof rg.beta==="number"&&rg.beta>1.3)
-    f.push("Beta de "+fmt(rg.beta,2)+": en una corrección del mercado, la caída esperada es sustancialmente mayor que la del índice");
+    f.push("Beta de "+fmt(rg.beta,2)+": en una corrección, la caída esperada supera a la del índice");
   if(typeof rg.max_drawdown==="number"&&rg.max_drawdown<-25)
-    f.push("Caída máxima de "+fmt(rg.max_drawdown,1)+"% en los últimos doce meses: el papel ya demostró capacidad de retrocesos profundos");
+    f.push("Caída máxima de "+fmt(rg.max_drawdown,1)+"% en los últimos doce meses");
   if(typeof rd.vs_sp500_3m==="number"&&rd.vs_sp500_3m<0)
-    f.push("Queda "+fmt(Math.abs(rd.vs_sp500_3m),1)+" puntos porcentuales por debajo del S&P 500 en tres meses: fuerza relativa negativa");
+    f.push("Queda "+fmt(Math.abs(rd.vs_sp500_3m),1)+" puntos porcentuales por debajo del S&P 500 en tres meses");
   if(typeof fu.precio_objetivo==="number"&&typeof p==="number"&&fu.precio_objetivo<p)
-    f.push("El precio cotiza por encima del objetivo de consenso ("+dol(fu.precio_objetivo)+"): el mercado ya descontó el recorrido estimado por los analistas");
+    f.push("El precio cotiza por encima del objetivo de consenso ("+dol(fu.precio_objetivo)+")");
   if(!esETF&&!Object.keys(fu.señales||{}).length)
-    f.push("Los datos fundamentales de esta emisora aún no están disponibles: la señal se apoya únicamente en el bloque técnico y de riesgo");
+    f.push("Los datos fundamentales aún no están disponibles: la señal se apoya solo en técnico y riesgo");
   return f;
 }
 
@@ -933,7 +952,6 @@ function veredicto(t,r){
     track+='<div class="rseg'+(act?' r-active':'')+'" style="flex:'+fl+';background:'+bg+';color:'+col+';opacity:'+(act?1:.4)+'">'+n+'</div>';
   });
   track+='</div>';
-
   const stopPct=(typeof p==="number"&&typeof nv.s2==="number")?(nv.s2/p-1)*100:null;
   const vecesATR=(typeof stopPct==="number"&&rg.atr_relativo)?Math.abs(stopPct)/rg.atr_relativo:null;
 
@@ -942,7 +960,10 @@ function veredicto(t,r){
     txt+='Al tratarse de un fondo cotizado, la lectura combina solo dos bloques: el técnico aporta '+tc.score_tecnico+
       '/4 y el riesgo penaliza con '+fmt(rg.score_riesgo,1)+'/100 ('+rg.nivel_riesgo.toLowerCase()+'). ';
   }else{
-    txt+='La lectura combina tres bloques: el técnico aporta '+tc.score_tecnico+'/4, el fundamental '+fu.score_fundamental+'/6, ';
+    txt+='La lectura combina tres bloques: el técnico aporta '+tc.score_tecnico+'/4 (tendencia '+
+      ((tc.señales||{}).tendencia>=0?"+":"")+(tc.señales||{}).tendencia+', momentum '+
+      ((tc.señales||{}).momentum>=0?"+":"")+(tc.señales||{}).momentum+', timing '+
+      ((tc.señales||{}).timing>=0?"+":"")+(tc.señales||{}).timing+'), el fundamental '+fu.score_fundamental+'/6, ';
     txt+='y el riesgo penaliza con '+fmt(rg.score_riesgo,1)+'/100 ('+rg.nivel_riesgo.toLowerCase()+'). ';
   }
   txt+=(typeof rd.vs_sp500_3m==="number"?
@@ -960,23 +981,24 @@ function veredicto(t,r){
     }
   }else if(señal.includes("VENTA")&&typeof nv.r1==="number"){
     txt+='<b>Resistencia inmediata en '+dol(nv.r1)+'</b> (máximo de 20 días). Una recuperación sostenida por encima de ese nivel ';
-    txt+='invalidaría la lectura bajista de corto plazo y ameritaría reevaluar la señal.';
+    txt+='invalidaría la lectura bajista de corto plazo.';
   }else{
     txt+='Sin señal direccional clara: el rango operativo se ubica entre '+dol(nv.s1)+' y '+dol(nv.r1)+
-      ' (mínimo y máximo de las últimas 20 sesiones). Conviene esperar una definición de la estructura antes de tomar posición.';
+      '. Conviene esperar una definición de la estructura antes de tomar posición.';
   }
   txt+='<br><br>';
 
   if(esETF){
     txt+='<b>Recuerda que un ETF replica una canasta:</b> su comportamiento depende del índice o sector que sigue, no de una tesis '+
-      'sobre una empresa en particular. El análisis técnico aquí describe el momentum del vehículo, no la calidad de sus componentes.';
+      'sobre una empresa en particular.';
     if(r.etf&&typeof r.etf.costo_anual==="number")
       txt+=' El costo anual de '+pc1(r.etf.costo_anual)+' se descuenta del rendimiento año con año.';
   }else{
-    const caro=typeof fu.pe==="number"&&fu.pe>35, calidad=typeof fu.margen_operativo==="number"&&fu.margen_operativo>0.2;
+    const caro=typeof fu.pe_relativo_sector==="number"?fu.pe_relativo_sector>1.30:(typeof fu.pe==="number"&&fu.pe>35);
+    const calidad=typeof fu.margen_operativo==="number"&&fu.margen_operativo>0.2;
     if(caro&&calidad) txt+='<b>La tensión central de esta emisora es entre calidad operativa y precio pagado:</b> los fundamentales son sólidos, pero el múltiplo no deja margen de error. ';
-    else if(!caro&&calidad) txt+='<b>La combinación de rentabilidad alta con múltiplo contenido</b> es el argumento cuantitativo más fuerte de esta emisora. ';
-    else if(caro&&!calidad) txt+='<b>El múltiplo exigente no está respaldado por la rentabilidad actual:</b> la valuación depende de una mejora operativa que aún no aparece en los números. ';
+    else if(!caro&&calidad) txt+='<b>La combinación de rentabilidad alta con múltiplo contenido frente a sus pares</b> es el argumento cuantitativo más fuerte de esta emisora. ';
+    else if(caro&&!calidad) txt+='<b>El múltiplo exigente no está respaldado por la rentabilidad actual.</b> ';
     if(rg.volatilidad_anualizada>40) txt+='Dado el perfil de volatilidad ('+fmt(rg.volatilidad_anualizada,1)+'% anual), el dimensionamiento de la posición importa más que la decisión de entrada.';
   }
 
