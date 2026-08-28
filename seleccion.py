@@ -1,10 +1,12 @@
 """
-seleccion.py
+seleccion.py — v2
 Determina el universo a analizar. Corre una vez al dia.
 
 1. Descarga el directorio oficial de emisoras listadas en EE.UU.
-   (NASDAQ Trader publica estos archivos de forma abierta).
-2. Descarga 3 meses de precios de todas las candidatas.
+2. Descarga 3 meses de precios de todas las candidatas (CON REINTENTO:
+   los simbolos que no se obtienen en la primera pasada se intentan de
+   nuevo antes de descartarlos, para no perder emisoras liquidas por
+   fallas transitorias de red).
 3. Filtra por liquidez: volumen promedio operado en dolares.
 4. Separa acciones de ETFs (el directorio trae la bandera).
 5. Aplica filtro de capitalizacion cuando el cache ya la tiene.
@@ -51,12 +53,10 @@ BMV = [
 
 
 def limpiar_simbolo(s: str) -> str:
-    """Yahoo usa guion donde el directorio usa punto: BRK.B -> BRK-B"""
     return str(s).strip().replace(".", "-").replace("$", "-")
 
 
 def simbolo_valido(s: str) -> bool:
-    """Descarta warrants, unidades, derechos y simbolos con formato raro."""
     if not s or len(s) > 6:
         return False
     if not all(c.isalnum() or c == "-" for c in s):
@@ -67,7 +67,6 @@ def simbolo_valido(s: str) -> bool:
 
 
 def descargar_directorio() -> tuple:
-    """Retorna (acciones, etfs) desde el directorio publico de NASDAQ Trader."""
     acciones, etfs = set(), set()
 
     def procesar(url, col_simbolo, col_etf, col_prueba):
@@ -95,36 +94,63 @@ def descargar_directorio() -> tuple:
     return sorted(acciones), sorted(etfs)
 
 
+def _lote_liquidez(lote):
+    """Un intento de descarga de precios para medir liquidez de un lote."""
+    resultado = {}
+    try:
+        data = yf.download(lote, period="3mo", group_by="ticker",
+                            auto_adjust=True, threads=True, progress=False)
+    except Exception as e:
+        print(f"    ⚠ Excepción en el lote: {e}")
+        return resultado
+    for t in lote:
+        try:
+            df = data[t] if isinstance(data.columns, pd.MultiIndex) else data
+            df = df.dropna(how="all")
+            if df.empty or len(df) < 30:
+                continue
+            cierre = df["Close"].tail(DIAS_VOLUMEN)
+            volumen = df["Volume"].tail(DIAS_VOLUMEN)
+            dolares = float((cierre * volumen).mean())
+            ultimo = float(cierre.iloc[-1])
+            if math.isnan(dolares) or math.isnan(ultimo) or ultimo <= 0:
+                continue
+            resultado[t] = (dolares, ultimo)
+        except Exception:
+            continue
+    return resultado
+
+
 def liquidez(tickers: list) -> dict:
-    """Retorna {ticker: (volumen_dolares_promedio, ultimo_precio)}."""
+    """
+    Retorna {ticker: (volumen_dolares_promedio, ultimo_precio)}.
+    Los simbolos que no se obtienen en la primera pasada se reintentan
+    una vez mas: sin esto, una falla transitoria de red en el lote de
+    turno descarta emisoras liquidas de forma permanente e injustificada.
+    """
     resultado = {}
     total = len(tickers)
     for inicio in range(0, total, TAMANO_LOTE):
         lote = tickers[inicio:inicio + TAMANO_LOTE]
         n = inicio // TAMANO_LOTE + 1
         print(f"  Lote {n} ({inicio + len(lote)}/{total})...")
-        try:
-            data = yf.download(lote, period="3mo", group_by="ticker",
-                                auto_adjust=True, threads=True, progress=False)
-        except Exception as e:
-            print(f"    ⚠ Falló: {e}")
-            continue
-        for t in lote:
-            try:
-                df = data[t] if isinstance(data.columns, pd.MultiIndex) else data
-                df = df.dropna(how="all")
-                if df.empty or len(df) < 30:
-                    continue
-                cierre = df["Close"].tail(DIAS_VOLUMEN)
-                volumen = df["Volume"].tail(DIAS_VOLUMEN)
-                dolares = float((cierre * volumen).mean())
-                ultimo = float(cierre.iloc[-1])
-                if math.isnan(dolares) or math.isnan(ultimo) or ultimo <= 0:
-                    continue
-                resultado[t] = (dolares, ultimo)
-            except Exception:
-                continue
+        resultado.update(_lote_liquidez(lote))
         time.sleep(0.5)
+
+    faltantes = [t for t in tickers if t not in resultado]
+    if faltantes:
+        print(f"  Reintentando {len(faltantes)} símbolos sin datos de liquidez...")
+        for inicio in range(0, len(faltantes), TAMANO_LOTE):
+            sublote = faltantes[inicio:inicio + TAMANO_LOTE]
+            resultado.update(_lote_liquidez(sublote))
+            time.sleep(0.5)
+        aun_faltan = [t for t in tickers if t not in resultado]
+        if aun_faltan:
+            muestra = ", ".join(aun_faltan[:20])
+            extra = f" y {len(aun_faltan)-20} más" if len(aun_faltan) > 20 else ""
+            print(f"  ⚠ {len(aun_faltan)} símbolos sin datos de liquidez tras reintentar: {muestra}{extra}")
+        else:
+            print(f"  Reintento exitoso: se recuperaron los {len(faltantes)} símbolos.")
     return resultado
 
 
