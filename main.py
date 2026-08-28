@@ -1,9 +1,10 @@
 """
-main.py — v9
-Motor de alertas. Los ETFs ya no piden activos ni costo anual: la fuente
-dejo de publicarlos (0 de 391 en la ultima corrida), asi que no tiene
-sentido pedirlos ni mostrar campos vacios. Los rendimientos a 3 y 5 años
-se calculan del historial de precios.
+main.py — v10
+Motor de alertas. Los ETFs no piden activos ni costo anual (la fuente
+dejo de publicarlos). Los rendimientos a 3 y 5 años se calculan del
+historial de precios. La descarga de precios reintenta automaticamente
+los simbolos que fallan en la primera pasada, y reporta por nombre
+cualquiera que siga faltando al final.
 """
 import json
 import math
@@ -91,7 +92,6 @@ def num(v, dec=2):
 
 
 def rend_anualizado(serie, años):
-    """Rendimiento anualizado a partir del historial de precios."""
     dias = int(252 * años)
     if len(serie) < dias * 0.9:
         return None
@@ -259,27 +259,53 @@ def refrescar_fundamentales(tickers: list, cache: dict, etfs: set) -> dict:
     return cache
 
 
+def _descargar_lote(lote, periodo):
+    """Un intento de descarga para un lote de tickers."""
+    out = {}
+    try:
+        data = yf.download(lote, period=periodo, group_by="ticker",
+                            auto_adjust=True, threads=True, progress=False)
+    except Exception as e:
+        print(f"    ⚠ Excepción en el lote: {e}")
+        return out
+    for t in lote:
+        try:
+            df = data[t] if isinstance(data.columns, pd.MultiIndex) else data
+            df = df.dropna(how="all")
+            if df.empty or len(df) < 60:
+                continue
+            out[t] = df
+        except Exception:
+            continue
+    return out
+
+
 def descargar_precios(tickers: list, periodo=PERIODO) -> dict:
+    """
+    Descarga por lotes. Los simbolos que no se obtienen en la primera
+    pasada (por fallas transitorias de red o del lote completo) se
+    reintentan una vez mas al final, agrupados en lotes nuevos.
+    """
     resultado = {}
     for inicio in range(0, len(tickers), TAMANO_LOTE):
         lote = tickers[inicio:inicio + TAMANO_LOTE]
         n_lote = inicio // TAMANO_LOTE + 1
         print(f"Precios ({periodo}): lote {n_lote} ({inicio + len(lote)}/{len(tickers)})...")
-        try:
-            data = yf.download(lote, period=periodo, group_by="ticker",
-                                auto_adjust=True, threads=True, progress=False)
-        except Exception as e:
-            print(f"  ⚠ Falló el lote {n_lote}: {e}")
-            continue
-        for t in lote:
-            try:
-                df = data[t] if isinstance(data.columns, pd.MultiIndex) else data
-                df = df.dropna(how="all")
-                if df.empty or len(df) < 60:
-                    continue
-                resultado[t] = df
-            except Exception:
-                continue
+        resultado.update(_descargar_lote(lote, periodo))
+
+    faltantes = [t for t in tickers if t not in resultado]
+    if faltantes:
+        print(f"  Reintentando {len(faltantes)} símbolos que no se obtuvieron en la primera pasada...")
+        for inicio in range(0, len(faltantes), TAMANO_LOTE):
+            sublote = faltantes[inicio:inicio + TAMANO_LOTE]
+            resultado.update(_descargar_lote(sublote, periodo))
+        aun_faltan = [t for t in tickers if t not in resultado]
+        if aun_faltan:
+            muestra = ", ".join(aun_faltan[:20])
+            extra = f" y {len(aun_faltan)-20} más" if len(aun_faltan) > 20 else ""
+            print(f"  ⚠ {len(aun_faltan)} símbolos sin datos tras el reintento: {muestra}{extra}")
+        else:
+            print(f"  Reintento exitoso: se recuperaron los {len(faltantes)} símbolos.")
     return resultado
 
 
