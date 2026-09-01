@@ -400,6 +400,7 @@ def main():
                     "rsi": num(tec["rsi"], 1),
                     "macd_hist": num(tec["macd_hist"], 3),
                     "estocastico_k": num(tec["estocastico_k"], 1),
+                    "macd_cruce_alcista": bool(tec["macd_cruce_alcista"]),
                     "estocastico_d": num(tec["estocastico_d"], 1),
                     "sma20": num(tec["sma20"]), "sma50": num(tec["sma50"]),
                     "sma200": num(tec["sma200"]),
