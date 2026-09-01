@@ -1,13 +1,22 @@
 """
-alertas_telegram.py
-Envia a Telegram solo los CAMBIOS de señal, no el estado completo.
+alertas_telegram.py — v2
+Ya no avisa por cruzar el umbral de COMPRA FUERTE (generaba demasiado
+ruido con un universo grande). Ahora detecta una SEÑAL DE ENTRADA
+TECNICA concreta:
 
-Alcance:
-  - Watchlist: cualquier cambio de señal.
-  - Resto del universo: solo cuando una emisora ENTRA a COMPRA FUERTE.
+  - Cruce alcista de MACD (histograma pasa de negativo a positivo), o
+  - RSI y estocastico en sobreventa simultanea (RSI<30 y %K<20)
+  - siempre con volumen de apoyo (volumen relativo > 1.2x su promedio)
+  - se excluye si la tendencia de fondo es bajista Y el riesgo es alto
+    (evita comprar "cuchillos cayendo")
 
-Guarda el estado previo en estado_senales.json para poder comparar.
-En la primera corrida no manda alertas: solo establece la linea base.
+Maximo 5 emisoras por alerta, priorizando las de mejor respaldo
+fundamental. Cada emisora que se alerta no se vuelve a incluir en las
+siguientes horas (evita reenviar la misma señal cada 30 minutos
+mientras la condicion sigue activa).
+
+El watchlist conserva su propio aviso: cualquier cambio de señal
+compuesta en las emisoras que sigues de cerca, sin filtro de volumen.
 """
 import json
 import os
@@ -18,20 +27,22 @@ from urllib import request, parse, error
 CARPETA = "docs" if os.environ.get("GITHUB_ACTIONS") else "."
 ARCHIVO_ALERTAS = os.path.join(CARPETA, "alertas.json")
 ARCHIVO_ESTADO = os.path.join(CARPETA, "estado_senales.json")
+ARCHIVO_HISTORIAL = os.path.join(CARPETA, "historial_entradas.json")
 ARCHIVO_WATCHLIST = "watchlist.txt"
 
 TOKEN = os.environ.get("TELEGRAM_TOKEN", "").strip()
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
-MAX_NUEVAS_COMPRA_FUERTE = 12
+MAX_POR_ALERTA = 5
+HORAS_SIN_REPETIR = 6      # no volver a avisar la misma emisora antes de este tiempo
+RSI_SOBREVENTA = 30
+STOCH_SOBREVENTA = 20
+VOLUMEN_MINIMO = 1.2
 LIMITE_TELEGRAM = 3900
 
 EMOJI = {
-    "COMPRA FUERTE": "🟢",
-    "COMPRA": "🟩",
-    "MANTENER / OBSERVAR": "⬜️",
-    "VENTA": "🟥",
-    "VENTA FUERTE": "🔴",
+    "COMPRA FUERTE": "🟢", "COMPRA": "🟩", "MANTENER / OBSERVAR": "⬜️",
+    "VENTA": "🟥", "VENTA FUERTE": "🔴",
 }
 ORDEN = ["VENTA FUERTE", "VENTA", "MANTENER / OBSERVAR", "COMPRA", "COMPRA FUERTE"]
 
@@ -56,14 +67,11 @@ def cargar_json(ruta, defecto):
 
 
 def enviar(texto: str) -> bool:
-    """Envia un mensaje a Telegram. Retorna True si se entrego."""
     if not TOKEN or not CHAT_ID:
         print("⚠ Faltan TELEGRAM_TOKEN o TELEGRAM_CHAT_ID. No se envia nada.")
         return False
     datos = parse.urlencode({
-        "chat_id": CHAT_ID,
-        "text": texto,
-        "parse_mode": "HTML",
+        "chat_id": CHAT_ID, "text": texto, "parse_mode": "HTML",
         "disable_web_page_preview": "true",
     }).encode()
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
@@ -75,8 +83,7 @@ def enviar(texto: str) -> bool:
                 return False
             return True
     except error.HTTPError as e:
-        cuerpo = e.read().decode(errors="replace")[:300]
-        print(f"⚠ Error HTTP {e.code} de Telegram: {cuerpo}")
+        print(f"⚠ Error HTTP {e.code} de Telegram: {e.read().decode(errors='replace')[:300]}")
         return False
     except Exception as e:
         print(f"⚠ No se pudo contactar a Telegram: {e}")
@@ -84,7 +91,6 @@ def enviar(texto: str) -> bool:
 
 
 def enviar_por_partes(lineas: list, encabezado: str):
-    """Arma mensajes respetando el limite de longitud de Telegram."""
     bloques, actual = [], encabezado
     for linea in lineas:
         if len(actual) + len(linea) + 1 > LIMITE_TELEGRAM:
@@ -107,17 +113,100 @@ def flecha(previa: str, nueva: str) -> str:
         return "→"
 
 
-def linea_emisora(t, r, previa=None) -> str:
+# ------------------------------------------------------------------
+# SEÑAL DE ENTRADA TECNICA
+# ------------------------------------------------------------------
+def evaluar_entrada(t: str, r: dict):
+    """Retorna el motivo de la señal si califica, o None si no."""
+    tc = r.get("tecnico") or {}
+    rg = r.get("riesgo") or {}
+
+    vol = tc.get("volumen_relativo")
+    if not isinstance(vol, (int, float)) or vol <= VOLUMEN_MINIMO:
+        return None
+
+    peligroso = (tc.get("regimen") == "Bajista" and rg.get("nivel_riesgo") == "Alto")
+    if peligroso:
+        return None
+
+    cruce = bool(tc.get("macd_cruce_alcista"))
+    rsi_v = tc.get("rsi")
+    k_v = tc.get("estocastico_k")
+    rsi_ov = isinstance(rsi_v, (int, float)) and rsi_v < RSI_SOBREVENTA
+    stoch_ov = isinstance(k_v, (int, float)) and k_v < STOCH_SOBREVENTA
+    osciladores_ov = rsi_ov and stoch_ov
+
+    if cruce and osciladores_ov:
+        return "Cruce alcista de MACD + RSI y estocástico en sobreventa"
+    if cruce:
+        return "Cruce alcista de MACD"
+    if osciladores_ov:
+        return "RSI y estocástico en sobreventa simultánea"
+    return None
+
+
+def noticia_reciente(ticker: str):
+    """Titular mas reciente de Yahoo Finance para esta emisora, si hay."""
+    try:
+        import yfinance as yf
+        items = yf.Ticker(ticker).news or []
+        for it in items[:3]:
+            titulo = (it.get("title") or it.get("content", {}).get("title"))
+            if titulo:
+                return titulo.strip()
+    except Exception:
+        pass
+    return None
+
+
+def linea_entrada(t: str, r: dict, motivo: str, con_noticia: bool) -> str:
+    tc, fu, rg = r["tecnico"], r["fundamental"], r["riesgo"]
+    precio = tc.get("precio_actual")
+    precio_txt = f"${precio:,.2f}" if isinstance(precio, (int, float)) else "—"
+    tipo = " [ETF]" if r.get("tipo") == "etf" else ""
+
+    partes = [f"🎯 <b>{t}</b>{tipo} — {motivo}",
+              f"    {precio_txt} · vol {tc.get('volumen_relativo','—')}x · "
+              f"RSI {tc.get('rsi','—')} · %K {tc.get('estocastico_k','—')} · "
+              f"riesgo {rg.get('nivel_riesgo','?')}"]
+
+    if r.get("tipo") != "etf":
+        pe = fu.get("pe")
+        rel = fu.get("pe_relativo_sector")
+        cred = fu.get("crecimiento_ingresos")
+        bits = []
+        if isinstance(pe, (int, float)):
+            bits.append(f"P/E {pe:.1f}×" + (f" ({rel:.2f}× sector)" if isinstance(rel, (int, float)) else ""))
+        if isinstance(cred, (int, float)):
+            bits.append(f"crec. ingresos {cred*100:.1f}%")
+        if bits:
+            partes.append("    Fundamental: " + " · ".join(bits))
+
+    if con_noticia:
+        titular = noticia_reciente(t)
+        if titular:
+            partes.append(f"    📰 {titular}")
+
+    return "\n".join(partes)
+
+
+def linea_watchlist(t, r, previa) -> str:
     c = r["compuesto"]
     sc = c["score_compuesto"]
     signo = "+" if sc >= 0 else ""
-    tipo = " [ETF]" if r.get("tipo") == "etf" else ""
     precio = (r.get("tecnico") or {}).get("precio_actual")
     precio_txt = f"${precio:,.2f}" if isinstance(precio, (int, float)) else "—"
     riesgo = (r.get("riesgo") or {}).get("nivel_riesgo", "?")
-    cambio = f"  <i>{previa} {flecha(previa, c['señal'])}</i>" if previa else ""
-    return (f"{EMOJI.get(c['señal'],'')} <b>{t}</b>{tipo} · {c['señal']}{cambio}\n"
+    return (f"{EMOJI.get(c['señal'],'')} <b>{t}</b> · {c['señal']}  "
+            f"<i>{previa} {flecha(previa, c['señal'])}</i>\n"
             f"    {precio_txt} · score {signo}{sc} · riesgo {riesgo}")
+
+
+def _valido(ts, limite_epoch):
+    try:
+        return datetime.fromisoformat(ts).timestamp() >= limite_epoch
+    except Exception:
+        return False
 
 
 def main():
@@ -128,70 +217,96 @@ def main():
         return
 
     watch = leer_watchlist()
+
+    # --- Watchlist: cambios de señal, igual que antes ---
     previo = cargar_json(ARCHIVO_ESTADO, {})
     estado_previo = previo.get("senales") or {}
-
     estado_actual = {t: r["compuesto"]["señal"] for t, r in tickers.items()}
+    es_primera_corrida = not estado_previo
 
-    if not estado_previo:
-        with open(ARCHIVO_ESTADO, "w", encoding="utf-8") as f:
-            json.dump({"actualizado": datetime.now(timezone.utc)
-                       .replace(microsecond=0).isoformat(),
-                       "senales": estado_actual}, f, ensure_ascii=False)
-        print(f"Linea base establecida con {len(estado_actual)} emisoras.")
-        enviar("🎯 <b>Cazador de Oportunidades · JARASOFT</b>\n\n"
-               "Bot conectado correctamente.\n\n"
-               f"Vigilando <b>{len(estado_actual)}</b> emisoras.\n"
-               f"Watchlist: <b>{len(watch)}</b>.\n\n"
-               "<i>A partir de ahora recibirás avisos solo cuando una señal cambie. "
-               "Esta primera corrida solo estableció el punto de partida.</i>")
-        return
-
-    cambios_watch, nuevas_fuertes = [], []
-    for t, r in tickers.items():
-        nueva = r["compuesto"]["señal"]
-        previa = estado_previo.get(t)
-        if previa is None or previa == nueva:
-            continue
-        if t in watch:
-            cambios_watch.append((t, r, previa))
-        elif nueva == "COMPRA FUERTE":
-            nuevas_fuertes.append((t, r, previa))
-
-    if not cambios_watch and not nuevas_fuertes:
-        print("Sin cambios de señal. No se envia nada.")
-    else:
-        hora = datetime.now(timezone.utc).replace(microsecond=0)
-        lineas = []
-        if cambios_watch:
-            cambios_watch.sort(key=lambda x: x[1]["compuesto"]["score_compuesto"],
-                               reverse=True)
-            lineas.append("\n<b>━━ TU WATCHLIST ━━</b>")
-            lineas += [linea_emisora(t, r, p) for t, r, p in cambios_watch]
-        if nuevas_fuertes:
-            nuevas_fuertes.sort(key=lambda x: x[1]["compuesto"]["score_compuesto"],
-                                reverse=True)
-            total = len(nuevas_fuertes)
-            mostrar = nuevas_fuertes[:MAX_NUEVAS_COMPRA_FUERTE]
-            lineas.append(f"\n<b>━━ NUEVAS EN COMPRA FUERTE ━━</b>")
-            lineas += [linea_emisora(t, r, p) for t, r, p in mostrar]
-            if total > len(mostrar):
-                lineas.append(f"\n<i>… y {total - len(mostrar)} más. "
-                              f"Revisa el panel para verlas todas.</i>")
-
-        encabezado = ("🎯 <b>Cazador de Oportunidades</b>\n"
-                      f"<i>{hora.strftime('%d/%m/%Y %H:%M')} UTC</i>")
-        pie = ("\n\n<i>Señales de un modelo cuantitativo de reglas fijas. "
-               "No constituyen recomendación de inversión.</i>")
-        enviar_por_partes(lineas + [pie], encabezado)
-        print(f"Enviados: {len(cambios_watch)} de watchlist, "
-              f"{len(nuevas_fuertes)} nuevas en compra fuerte.")
+    cambios_watch = []
+    if not es_primera_corrida:
+        for t in watch:
+            r = tickers.get(t)
+            if not r:
+                continue
+            nueva = r["compuesto"]["señal"]
+            previa = estado_previo.get(t)
+            if previa and previa != nueva:
+                cambios_watch.append((t, r, previa))
 
     with open(ARCHIVO_ESTADO, "w", encoding="utf-8") as f:
-        json.dump({"actualizado": datetime.now(timezone.utc)
-                   .replace(microsecond=0).isoformat(),
+        json.dump({"actualizado": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
                    "senales": estado_actual}, f, ensure_ascii=False)
-    print(f"Estado guardado con {len(estado_actual)} emisoras.")
+
+    # --- Señales de entrada tecnica, en todo el universo ---
+    historial = cargar_json(ARCHIVO_HISTORIAL, {})
+    ahora = datetime.now(timezone.utc)
+
+    def hace_poco(t):
+        ts = historial.get(t)
+        if not ts:
+            return False
+        try:
+            return (ahora - datetime.fromisoformat(ts)).total_seconds() < HORAS_SIN_REPETIR * 3600
+        except Exception:
+            return False
+
+    candidatos = []
+    for t, r in tickers.items():
+        if hace_poco(t):
+            continue
+        motivo = evaluar_entrada(t, r)
+        if motivo:
+            candidatos.append((t, r, motivo))
+
+    candidatos.sort(key=lambda x: (
+        x[1]["fundamental"]["score_fundamental"],
+        x[1]["compuesto"]["score_compuesto"],
+    ), reverse=True)
+    elegidos = candidatos[:MAX_POR_ALERTA]
+
+    if es_primera_corrida:
+        print(f"Primera corrida: se establece la línea base ({len(estado_actual)} emisoras). "
+              f"No se envían señales de entrada todavía.")
+        enviar("🎯 <b>Cazador de Oportunidades · JARASOFT</b>\n\n"
+               "Bot reconfigurado: ahora avisa señales de entrada técnica "
+               "(cruce de MACD, sobreventa RSI+estocástico con volumen de apoyo), "
+               f"máximo {MAX_POR_ALERTA} por alerta.\n\n"
+               f"Vigilando <b>{len(estado_actual)}</b> emisoras. Watchlist: <b>{len(watch)}</b>.")
+        return
+
+    if not cambios_watch and not elegidos:
+        print("Sin cambios de watchlist ni señales de entrada nuevas. No se envía nada.")
+        return
+
+    hora = ahora.strftime("%d/%m/%Y %H:%M")
+    lineas = []
+    if cambios_watch:
+        lineas.append("\n<b>━━ TU WATCHLIST ━━</b>")
+        lineas += [linea_watchlist(t, r, p) for t, r, p in cambios_watch]
+    if elegidos:
+        extra = f"/{len(candidatos)}" if len(candidatos) > len(elegidos) else ""
+        lineas.append(f"\n<b>━━ SEÑALES DE ENTRADA ({len(elegidos)}{extra}) ━━</b>")
+        lineas += [linea_entrada(t, r, motivo, con_noticia=True) for t, r, motivo in elegidos]
+        if len(candidatos) > len(elegidos):
+            lineas.append(f"\n<i>Hay {len(candidatos)-len(elegidos)} candidatas más "
+                          f"que no entraron por espacio; revisa el panel para verlas.</i>")
+
+    encabezado = f"🎯 <b>Cazador de Oportunidades</b>\n<i>{hora} UTC</i>"
+    pie = ("\n\n<i>Señales de un modelo cuantitativo de reglas fijas. "
+           "No constituyen recomendación de inversión.</i>")
+    enviar_por_partes(lineas + [pie], encabezado)
+
+    for t, _, _ in elegidos:
+        historial[t] = ahora.isoformat()
+    limite = ahora.timestamp() - (7 * 86400)
+    historial = {t: ts for t, ts in historial.items() if _valido(ts, limite)}
+    with open(ARCHIVO_HISTORIAL, "w", encoding="utf-8") as f:
+        json.dump(historial, f, ensure_ascii=False)
+
+    print(f"Enviados: {len(cambios_watch)} de watchlist, {len(elegidos)} señales de entrada "
+          f"(de {len(candidatos)} candidatas totales).")
 
 
 if __name__ == "__main__":
