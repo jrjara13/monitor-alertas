@@ -58,6 +58,15 @@ jobs:
           key: senales-restaurar
           restore-keys: |
             senales-
+            
+      - name: Restaurar historial de entradas
+        uses: actions/cache/restore@v4
+        with:
+          path: docs/historial_entradas.json
+          key: historial-restaurar
+          restore-keys: |
+            historial-
+
 
       - name: Verificar universo
         run: |
@@ -94,6 +103,14 @@ jobs:
         with:
           path: docs/estado_senales.json
           key: senales-${{ github.run_id }}
+          
+      - name: Guardar historial de entradas
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: docs/historial_entradas.json
+          key: historial-${{ github.run_id }}
+
 
       - name: Recuperar rapido.json ya publicado
         run: |
