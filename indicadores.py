@@ -1,16 +1,8 @@
 """
-indicadores.py — v2
-Calculo de indicadores tecnicos, fundamentales y de riesgo.
-
-Cambios respecto a la version anterior:
-  1. El bloque tecnico ya no suma señales contradictorias. Se separa en
-     TENDENCIA, MOMENTUM y TIMING, y el timing se interpreta SEGUN la
-     tendencia: una sobreventa dentro de una tendencia alcista es una
-     oportunidad de entrada; la misma sobreventa en tendencia bajista
-     no lo es (es un cuchillo cayendo).
-  2. Se agrega el oscilador estocastico diario (14,3).
-  3. El P/E se compara contra la mediana de su sector, no contra un
-     umbral fijo igual para todos.
+indicadores.py — v3
+Igual que v2, mas un detector explicito de cruce alcista de MACD
+(histograma pasa de negativo a positivo entre la sesion anterior y la
+actual), usado por el bot de alertas para señales de entrada.
 """
 import numpy as np
 import pandas as pd
@@ -28,9 +20,6 @@ def rsi(close: pd.Series, periodo: int = 14) -> pd.Series:
     avg_loss = perdida.ewm(alpha=1 / periodo, min_periods=periodo).mean()
     rs = avg_gain / avg_loss.replace(0, np.nan)
     out = 100 - (100 / (1 + rs))
-    # Sin perdidas en la ventana el RSI es 100 (no indefinido); sin
-    # movimiento alguno, 50. Sin esto, un papel que solo sube devolveria
-    # NaN y quedaria descartado del analisis.
     sin_perdidas = (avg_loss == 0) & (avg_gain > 0)
     sin_movimiento = (avg_loss == 0) & (avg_gain == 0)
     out = out.mask(sin_perdidas, 100.0).mask(sin_movimiento, 50.0)
@@ -47,12 +36,6 @@ def macd(close: pd.Series, rapida=12, lenta=26, señal=9):
 
 def estocastico(high: pd.Series, low: pd.Series, close: pd.Series,
                 periodo=14, suavizado=3):
-    """
-    Oscilador estocastico diario.
-    %K = posicion del cierre dentro del rango de las ultimas N sesiones.
-    %D = media movil de %K (señal).
-    Bajo 20 = sobreventa; sobre 80 = sobrecompra.
-    """
     minimo = low.rolling(periodo).min()
     maximo = high.rolling(periodo).max()
     rango = (maximo - minimo).replace(0, np.nan)
@@ -93,7 +76,6 @@ def tendencia_volumen(volume: pd.Series, periodo=20) -> float:
 
 
 def _v(serie, i=-1):
-    """Valor de una serie, o None si no es utilizable."""
     try:
         x = float(serie.iloc[i])
         return None if (np.isnan(x) or np.isinf(x)) else x
@@ -101,12 +83,14 @@ def _v(serie, i=-1):
         return None
 
 
+def _cruce_alcista(hist_actual, hist_previo):
+    """True si el histograma de MACD paso de negativo a positivo/cero."""
+    if hist_actual is None or hist_previo is None:
+        return False
+    return hist_previo < 0 and hist_actual >= 0
+
+
 def analisis_tecnico(df: pd.DataFrame) -> dict:
-    """
-    Retorna valores actuales y tres sub-lecturas independientes:
-      tendencia (-2..+2), momentum (-1..+1), timing (-1..+1)
-    El score tecnico es su suma, en el mismo rango -4..+4 de antes.
-    """
     close, high, low = df["Close"], df["High"], df["Low"]
 
     rsi_s = rsi(close)
@@ -122,6 +106,8 @@ def analisis_tecnico(df: pd.DataFrame) -> dict:
     hist, hist_prev = _v(macd_h), _v(macd_h, -2)
     k_v, d_v = _v(k), _v(d)
     bb_s, bb_i = _v(bb_sup), _v(bb_inf)
+
+    cruce_macd = _cruce_alcista(hist, hist_prev)
 
     # ---------- TENDENCIA (-2 a +2) ----------
     tendencia = 0
@@ -159,14 +145,14 @@ def analisis_tecnico(df: pd.DataFrame) -> dict:
     timing = 0
     if alcista:
         if sobrevendido or cruce_k:
-            timing = 1      # retroceso dentro de tendencia alcista: buena entrada
+            timing = 1
         elif sobrecomprado:
-            timing = -1     # extendido: mala entrada, aunque la tendencia sea buena
+            timing = -1
     elif bajista:
         if sobrecomprado:
-            timing = -1     # rebote agotandose dentro de tendencia bajista
+            timing = -1
         elif sobrevendido:
-            timing = 0      # sobreventa en caida NO es señal de compra
+            timing = 0
     else:
         if sobrevendido and cruce_k:
             timing = 1
@@ -179,6 +165,7 @@ def analisis_tecnico(df: pd.DataFrame) -> dict:
         "precio_actual": p if p is not None else float("nan"),
         "rsi": rsi_v if rsi_v is not None else float("nan"),
         "macd_hist": hist,
+        "macd_cruce_alcista": cruce_macd,
         "estocastico_k": k_v,
         "estocastico_d": d_v,
         "sma20": sma20, "sma50": sma50, "sma200": sma200,
@@ -197,11 +184,6 @@ def analisis_tecnico(df: pd.DataFrame) -> dict:
 # ============================================================
 
 def analisis_fundamental(info: dict, mediana_sector: float = None) -> dict:
-    """
-    info: diccionario del cache (estilo yfinance .info)
-    mediana_sector: P/E mediano del sector de esta emisora, si se conoce.
-                    Si no, se usan umbrales absolutos como respaldo.
-    """
     pe = info.get("trailingPE")
     peg = info.get("pegRatio")
     margen = info.get("operatingMargins")
@@ -304,11 +286,6 @@ def señal_compuesta(score_tecnico: int, score_fundamental: int, score_riesgo_v:
 
 
 def medianas_por_sector(cache: dict, minimo_pares: int = 5) -> dict:
-    """
-    Calcula el P/E mediano de cada sector a partir del cache.
-    Solo devuelve sectores con suficientes emisoras para que la mediana
-    sea representativa. Descarta P/E negativos y valores extremos.
-    """
     por_sector = {}
     for datos in cache.values():
         if not isinstance(datos, dict) or datos.get("es_etf"):
